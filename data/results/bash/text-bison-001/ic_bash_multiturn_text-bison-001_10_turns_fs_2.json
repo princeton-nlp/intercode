@@ -1,0 +1,2720 @@
+{
+  "0": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_2.json",
+    "task_id": 0,
+    "query": "Recursively finds all files with any cased text \"Hello\" in the '/system/folder1' folder, and precedes found string with its number in file.",
+    "turn_history": {
+      "actions": [
+        "find /system/folder1 -type f -exec grep -n \"hello\" {} \\;",
+        "find /system/folder1 -type f -exec grep -n \"hello\" {} \\;",
+        "find /system/folder1 -type f -exec grep -n \"hello\" {} \\;",
+        "find /system/folder1 -type f -exec grep -n \"hello\" {} \\;",
+        "find /system/folder1 -type f -exec grep -n \"hello\" {} \\;",
+        "find /system/folder1 -type f -exec grep -n \"hello\" {} \\;",
+        "find /system/folder1 -type f -exec grep -n \"hello\" {} \\;",
+        "find /system/folder1 -type f -exec grep -n \"hello\" {} \\;",
+        "find /system/folder1 -type f -exec grep -n \"hello\" {} \\;",
+        "find /system/folder1 -type f -exec grep -n \"hello\" {} \\;"
+      ],
+      "observations": [
+        "2:Another hello world file\n1:Another hello world file\n1:- e Hello!\\nAnother hello world file\n",
+        "2:Another hello world file\n1:Another hello world file\n1:- e Hello!\\nAnother hello world file\n",
+        "2:Another hello world file\n1:Another hello world file\n1:- e Hello!\\nAnother hello world file\n",
+        "2:Another hello world file\n1:Another hello world file\n1:- e Hello!\\nAnother hello world file\n",
+        "2:Another hello world file\n1:Another hello world file\n1:- e Hello!\\nAnother hello world file\n",
+        "2:Another hello world file\n1:Another hello world file\n1:- e Hello!\\nAnother hello world file\n",
+        "2:Another hello world file\n1:Another hello world file\n1:- e Hello!\\nAnother hello world file\n",
+        "2:Another hello world file\n1:Another hello world file\n1:- e Hello!\\nAnother hello world file\n",
+        "2:Another hello world file\n1:Another hello world file\n1:- e Hello!\\nAnother hello world file\n",
+        "2:Another hello world file\n1:Another hello world file\n1:- e Hello!\\nAnother hello world file\n"
+      ],
+      "rewards": [
+        0.8500000000000001,
+        0.8500000000000001,
+        0.8500000000000001,
+        0.8500000000000001,
+        0.8500000000000001,
+        0.8500000000000001,
+        0.8500000000000001,
+        0.8500000000000001,
+        0.8500000000000001,
+        0.8500000000000001
+      ],
+      "valid_action": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 0.8500000000000001,
+      "max_reward_idx": 0,
+      "turns_taken": 10,
+      "turns_max": 10
+    }
+  },
+  "1": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_2.json",
+    "task_id": 1,
+    "query": "Recursively finds all files with whole word \"foo\" in the '/system', and precedes found string with its number in file.",
+    "turn_history": {
+      "actions": [
+        "find /system -type f -exec grep -n \"foo\" {} \\;",
+        "find /system -type f -exec grep -n \"foo\" {} \\;",
+        "find /system -type f -exec grep -n \"foo\" {} \\;",
+        "find /system -type f -exec grep -n \"foo\" {} \\;",
+        "find /system -type f -exec grep -n \"foo\" {} \\;",
+        "find /system -type f -exec grep -n \"foo\" {} \\;",
+        "find /system -type f -exec grep -n \"foo\" {} \\;",
+        "find /system -type f -exec grep -n \"foo\" {} \\;",
+        "find /system -type f -exec grep -n \"foo\" {} \\;",
+        "find /system -type f -exec grep -n \"foo\" {} \\;"
+      ],
+      "observations": [
+        "1:The first foo file in this directory!\n2: The first line in this file is foo\n",
+        "1:The first foo file in this directory!\n2: The first line in this file is foo\n",
+        "1:The first foo file in this directory!\n2: The first line in this file is foo\n",
+        "1:The first foo file in this directory!\n2: The first line in this file is foo\n",
+        "1:The first foo file in this directory!\n2: The first line in this file is foo\n",
+        "1:The first foo file in this directory!\n2: The first line in this file is foo\n",
+        "1:The first foo file in this directory!\n2: The first line in this file is foo\n",
+        "1:The first foo file in this directory!\n2: The first line in this file is foo\n",
+        "1:The first foo file in this directory!\n2: The first line in this file is foo\n",
+        "1:The first foo file in this directory!\n2: The first line in this file is foo\n"
+      ],
+      "rewards": [
+        0.92,
+        0.92,
+        0.92,
+        0.92,
+        0.92,
+        0.92,
+        0.92,
+        0.92,
+        0.92,
+        0.92
+      ],
+      "valid_action": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 0.92,
+      "max_reward_idx": 0,
+      "turns_taken": 10,
+      "turns_max": 10
+    }
+  },
+  "2": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_2.json",
+    "task_id": 2,
+    "query": "Recursively list contents of the '/system' directory in a tree-like format",
+    "turn_history": {
+      "actions": [
+        "tree /system"
+      ],
+      "observations": [
+        "/system\n|-- MANIFEST\n|-- a.out\n|-- folder1\n|   |-- a.out\n|   |-- data.csv\n|   |-- doc1.doc\n|   |-- doc2.doc\n|   |-- keep.txt\n|   |-- log1.log\n|   |-- new.sh\n|   |-- old2.txt\n|   |-- recent.txt\n|   |-- script1.sh\n|   |-- text2.txt\n|   |-- text3.txt\n|   `-- text4.txt\n|-- folder2\n|   |-- special\\ text3.txt\n|   |-- special_text1.txt\n|   |-- special_text2.txt\n|   `-- text1.txt\n|-- folder2.tar.gz\n|-- folder3\n|   |-- backup_dbg\n|   |   |-- sql1.sql\n|   |   `-- text1_dbg.txt\n|   |-- special\\ text4.txt\n|   `-- temp\n|       |-- empty.txt\n|       `-- temp1\n|           `-- text1.txt\n|-- html1.html\n|-- temp\n|   `-- keep.txt\n|-- text1.txt\n`-- text3.txt\n\n7 directories, 29 files\n"
+      ],
+      "rewards": [
+        1.0
+      ],
+      "valid_action": [
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 1.0,
+      "max_reward_idx": 0,
+      "turns_taken": 1,
+      "turns_max": 10
+    }
+  },
+  "3": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_2.json",
+    "task_id": 3,
+    "query": "Recursively print all files and directories in the '/system/folder2' directory tree including hidden files",
+    "turn_history": {
+      "actions": [
+        "find /system/folder2 -type f -print",
+        "find /system/folder2 -type f -print 2>/dev/null",
+        "find /system/folder2 -type f -print 2>/dev/null",
+        "find /system/folder2 -type f -print 2>/dev/null",
+        "find /system/folder2 -type f -print 2>/dev/null",
+        "find /system/folder2 -type f -print 2>/dev/null",
+        "find /system/folder2 -type f -print 2>/dev/null",
+        "find /system/folder2 -type f -print 2>/dev/null",
+        "find /system/folder2 -type f -print 2>/dev/null",
+        "find /system/folder2 -type f -print 2>/dev/null"
+      ],
+      "observations": [
+        "/system/folder2/special_text2.txt\n/system/folder2/text1.txt\n/system/folder2/special text3.txt\n/system/folder2/special_text1.txt\n",
+        "/system/folder2/special_text2.txt\n/system/folder2/text1.txt\n/system/folder2/special text3.txt\n/system/folder2/special_text1.txt\n",
+        "/system/folder2/special_text2.txt\n/system/folder2/text1.txt\n/system/folder2/special text3.txt\n/system/folder2/special_text1.txt\n",
+        "/system/folder2/special_text2.txt\n/system/folder2/text1.txt\n/system/folder2/special text3.txt\n/system/folder2/special_text1.txt\n",
+        "/system/folder2/special_text2.txt\n/system/folder2/text1.txt\n/system/folder2/special text3.txt\n/system/folder2/special_text1.txt\n",
+        "/system/folder2/special_text2.txt\n/system/folder2/text1.txt\n/system/folder2/special text3.txt\n/system/folder2/special_text1.txt\n",
+        "/system/folder2/special_text2.txt\n/system/folder2/text1.txt\n/system/folder2/special text3.txt\n/system/folder2/special_text1.txt\n",
+        "/system/folder2/special_text2.txt\n/system/folder2/text1.txt\n/system/folder2/special text3.txt\n/system/folder2/special_text1.txt\n",
+        "/system/folder2/special_text2.txt\n/system/folder2/text1.txt\n/system/folder2/special text3.txt\n/system/folder2/special_text1.txt\n",
+        "/system/folder2/special_text2.txt\n/system/folder2/text1.txt\n/system/folder2/special text3.txt\n/system/folder2/special_text1.txt\n"
+      ],
+      "rewards": [
+        0.92,
+        0.92,
+        0.92,
+        0.92,
+        0.92,
+        0.92,
+        0.92,
+        0.92,
+        0.92,
+        0.92
+      ],
+      "valid_action": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 0.92,
+      "max_reward_idx": 0,
+      "turns_taken": 10,
+      "turns_max": 10
+    }
+  },
+  "4": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_2.json",
+    "task_id": 4,
+    "query": "Recursively prints all folders in the '/system' folder that contain files like \"*.out\".",
+    "turn_history": {
+      "actions": [
+        "find /system -type d -name \"*.out\"",
+        "find /system -type d -name \"*.out\" -print",
+        "find /system -type d -name \"*.out\" -print",
+        "find /system -type d -name \"*.out\" -print",
+        "find /system -type d -name \"*.out\" -print",
+        "find /system -type d -name \"*.out\" -print",
+        "find /system -type d -name \"*.out\" -print",
+        "find /system -type d -name \"*.out\" -print",
+        "find /system -type d -name \"*.out\" -print",
+        "find /system -type d -name \"*.out\" -print"
+      ],
+      "observations": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "rewards": [
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67
+      ],
+      "valid_action": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 0.67,
+      "max_reward_idx": 0,
+      "turns_taken": 10,
+      "turns_max": 10
+    }
+  },
+  "5": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_2.json",
+    "task_id": 5,
+    "query": "Recursively remove all \"*.txt\" files in the '/system' folder and answer \"y\" to any prompt",
+    "turn_history": {
+      "actions": [
+        "find /system -name \"*.txt\" -exec rm -rf {} \\;",
+        "find /system -name \"*.txt\" -exec rm -rf {} \\;",
+        "find /system -name \"*.txt\" -exec rm -rf {} \\;",
+        "find /system -name \"*.txt\" -exec rm -rf {} \\;",
+        "find /system -name \"*.txt\" -exec rm -rf {} \\;",
+        "find /system -name \"*.txt\" -exec rm -rf {} \\;",
+        "find /system -name \"*.txt\" -exec rm -rf {} \\;",
+        "find /system -name \"*.txt\" -exec rm -rf {} \\;",
+        "find /system -name \"*.txt\" -exec rm -rf {} \\;",
+        "find /system -name \"*.txt\" -exec rm -rf {} \\;"
+      ],
+      "observations": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "rewards": [
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67
+      ],
+      "valid_action": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 0.67,
+      "max_reward_idx": 0,
+      "turns_taken": 10,
+      "turns_max": 10
+    }
+  },
+  "6": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_2.json",
+    "task_id": 6,
+    "query": "Recursively removes all empty folders from the /system/folder3/temp folder.",
+    "turn_history": {
+      "actions": [
+        "find /system/folder3/temp -type d -empty -delete",
+        "find /system/folder3/temp -type d -empty -delete",
+        "find /system/folder3/temp -type d -empty -delete",
+        "find /system/folder3/temp -type d -empty -delete",
+        "find /system/folder3/temp -type d -empty -delete",
+        "find /system/folder3/temp -type d -empty -delete",
+        "find /system/folder3/temp -type d -empty -delete",
+        "find /system/folder3/temp -type d -empty -delete",
+        "find /system/folder3/temp -type d -empty -delete",
+        "find /system/folder3/temp -type d -empty -delete"
+      ],
+      "observations": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "rewards": [
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67
+      ],
+      "valid_action": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 0.67,
+      "max_reward_idx": 0,
+      "turns_taken": 10,
+      "turns_max": 10
+    }
+  },
+  "7": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_2.json",
+    "task_id": 7,
+    "query": "Recursively removes all empty folders under /system/folder3/temp, printing info message on each operation, and suppressing error messages if folder is not empty.",
+    "turn_history": {
+      "actions": [
+        "for i in `find /system/folder3/temp -type d -empty`; do echo \"removing empty folder $i\"; rmdir $i; done",
+        "for i in `find /system/folder3/temp -type d -empty`; do echo \"removing empty folder $i\"; rmdir $i 2>/dev/null; done",
+        "for i in `find /system/folder3/temp -type d -empty`; do echo \"removing empty folder $i\"; rmdir $i 2>/dev/null; done",
+        "for i in `find /system/folder3/temp -type d -empty`; do echo \"removing empty folder $i\"; rmdir $i 2>/dev/null; done",
+        "for i in `find /system/folder3/temp -type d -empty`; do echo \"removing empty folder $i\"; rmdir $i 2>/dev/null; done",
+        "for i in `find /system/folder3/temp -type d -empty`; do echo \"removing empty folder $i\"; rmdir $i 2>/dev/null; done",
+        "for i in `find /system/folder3/temp -type d -empty`; do echo \"removing empty folder $i\"; rmdir $i 2>/dev/null; done",
+        "for i in `find /system/folder3/temp -type d -empty`; do echo \"removing empty folder $i\"; rmdir $i 2>/dev/null; done",
+        "for i in `find /system/folder3/temp -type d -empty`; do echo \"removing empty folder $i\"; rmdir $i 2>/dev/null; done",
+        "for i in `find /system/folder3/temp -type d -empty`; do echo \"removing empty folder $i\"; rmdir $i 2>/dev/null; done"
+      ],
+      "observations": [
+        "empty: -c: line 2: syntax error: unexpected end of file\n",
+        "empty: -c: line 2: syntax error: unexpected end of file\n",
+        "empty: -c: line 2: syntax error: unexpected end of file\n",
+        "empty: -c: line 2: syntax error: unexpected end of file\n",
+        "empty: -c: line 2: syntax error: unexpected end of file\n",
+        "empty: -c: line 2: syntax error: unexpected end of file\n",
+        "empty: -c: line 2: syntax error: unexpected end of file\n",
+        "empty: -c: line 2: syntax error: unexpected end of file\n",
+        "empty: -c: line 2: syntax error: unexpected end of file\n",
+        "empty: -c: line 2: syntax error: unexpected end of file\n"
+      ],
+      "rewards": [
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67
+      ],
+      "valid_action": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "summary": {
+      "max_reward": 0.67,
+      "max_reward_idx": 0,
+      "turns_taken": 10,
+      "turns_max": 10
+    }
+  },
+  "8": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_2.json",
+    "task_id": 8,
+    "query": "Recursively removes all files in the /system/folder1 folder but '*txt' files.",
+    "turn_history": {
+      "actions": [
+        "find /system/folder1 -type f -not -name \"*.txt\" -delete"
+      ],
+      "observations": [
+        ""
+      ],
+      "rewards": [
+        1.0
+      ],
+      "valid_action": [
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 1.0,
+      "max_reward_idx": 0,
+      "turns_taken": 1,
+      "turns_max": 10
+    }
+  },
+  "9": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_2.json",
+    "task_id": 9,
+    "query": "Recursively rename all files under /system/folder1 replacing 'special' with 'regular' - all file/diretory names may not include spaces, and directory names containing such files may not contain the word 'special' in their name.",
+    "turn_history": {
+      "actions": [
+        "for i in `find /system/folder1 -type f -name '*special*'`; do mv \"$i\" \"${i/special/regular}\"; done for i in `find /system/folder1 -type d -name 'special*'`; do mv \"$i\" \"${i/special/regular}\"; done",
+        "for i in `find /system/folder1 -type f -name '*special*'`; do mv \"$i\" \"${i/special/regular}\"; done for i in `find /system/folder1 -type d -name 'special*'`; do mv \"$i\" \"${i/special/regular}\"; done for i in `find /system/folder1 -type d -name '*special*'`; do mv \"$i\" \"${i/special/regular}\"; done",
+        "for i in `find /system/folder1 -type f -name '*special*'`; do mv \"$i\" \"${i/special/regular}\"; done for i in `find /system/folder1 -type d -name 'special*'`; do mv \"$i\" \"${i/special/regular}\"; done",
+        "for i in `find /system/folder1 -type f -name '*special*'`; do mv \"$i\" \"${i/special/regular}\"; done for i in `find /system/folder1 -type d -name 'special*'`; do mv \"$i\" \"${i/special/regular}\"; done for i in `find /system/folder1 -type d -name 'special*'`; do mv \"$i\" \"${i/special/regular}\"; done",
+        "for i in `find /system/folder1 -type f -name '*special*'`; do mv \"$i\" \"${i/special/regular}\"; done for i in `find /system/folder1 -type d -name 'special*'`; do mv \"$i\" \"${i/special/regular}\"; done for i in `find /system/folder1 -type d -name '*special*'`; do mv \"$i\" \"${i/special/regular}\"; done",
+        "for i in `find /system/folder1 -type f -name '*special*'`; do mv \"$i\" \"${i/special/regular}\"; done for i in `find /system/folder1 -type d -name 'special*'`; do mv \"$i\" \"${i/special/regular}\"; done for i in `find /system/folder1 -type d -name 'special*'`; do mv \"$i\" \"${i/special/regular}\"; done",
+        "for i in `find /system/folder1 -type f -name '*special*'`; do mv \"$i\" \"${i/special/regular}\"; done for i in `find /system/folder1 -type d -name 'special*'`; do mv \"$i\" \"${i/special/regular}\"; done for i in `find /system/folder1 -type d -name 'special*'`; do mv \"$i\" \"${i/special/regular}\"; done",
+        "blocked"
+      ],
+      "observations": [
+        "/bin/bash: -c: line 1: syntax error near unexpected token `for'\n/bin/bash: -c: line 1: `for i in `find /system/folder1 -type f -name '*special*'`; do mv $i ${i/special/regular}; done for i in `find /system/folder1 -type d -name 'special*'`; do mv $i ${i/special/regular}; done'\n",
+        "/bin/bash: -c: line 1: syntax error near unexpected token `for'\n/bin/bash: -c: line 1: `for i in `find /system/folder1 -type f -name '*special*'`; do mv $i ${i/special/regular}; done for i in `find /system/folder1 -type d -name 'special*'`; do mv $i ${i/special/regular}; done for i in `find /system/folder1 -type d -name '*special*'`; do mv $i ${i/special/regular}; done'\n",
+        "/bin/bash: -c: line 1: syntax error near unexpected token `for'\n/bin/bash: -c: line 1: `for i in `find /system/folder1 -type f -name '*special*'`; do mv $i ${i/special/regular}; done for i in `find /system/folder1 -type d -name 'special*'`; do mv $i ${i/special/regular}; done'\n",
+        "/bin/bash: -c: line 1: syntax error near unexpected token `for'\n/bin/bash: -c: line 1: `for i in `find /system/folder1 -type f -name '*special*'`; do mv $i ${i/special/regular}; done for i in `find /system/folder1 -type d -name 'special*'`; do mv $i ${i/special/regular}; done for i in `find /system/folder1 -type d -name 'special*'`; do mv $i ${i/special/regular}; done'\n",
+        "/bin/bash: -c: line 1: syntax error near unexpected token `for'\n/bin/bash: -c: line 1: `for i in `find /system/folder1 -type f -name '*special*'`; do mv $i ${i/special/regular}; done for i in `find /system/folder1 -type d -name 'special*'`; do mv $i ${i/special/regular}; done for i in `find /system/folder1 -type d -name '*special*'`; do mv $i ${i/special/regular}; done'\n",
+        "/bin/bash: -c: line 1: syntax error near unexpected token `for'\n/bin/bash: -c: line 1: `for i in `find /system/folder1 -type f -name '*special*'`; do mv $i ${i/special/regular}; done for i in `find /system/folder1 -type d -name 'special*'`; do mv $i ${i/special/regular}; done for i in `find /system/folder1 -type d -name 'special*'`; do mv $i ${i/special/regular}; done'\n",
+        "/bin/bash: -c: line 1: syntax error near unexpected token `for'\n/bin/bash: -c: line 1: `for i in `find /system/folder1 -type f -name '*special*'`; do mv $i ${i/special/regular}; done for i in `find /system/folder1 -type d -name 'special*'`; do mv $i ${i/special/regular}; done for i in `find /system/folder1 -type d -name 'special*'`; do mv $i ${i/special/regular}; done'\n"
+      ],
+      "rewards": [
+        0.68,
+        0.6900000000000001,
+        0.68,
+        0.6900000000000001,
+        0.6900000000000001,
+        0.6900000000000001,
+        0.6900000000000001,
+        0
+      ],
+      "valid_action": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "summary": {
+      "max_reward": 0.6900000000000001,
+      "max_reward_idx": 1,
+      "turns_taken": 8,
+      "turns_max": 10
+    }
+  },
+  "10": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_2.json",
+    "task_id": 10,
+    "query": "Recursively search for \"foo\" in the '/system' folder and write the output to the console followed by the number of matched lines",
+    "turn_history": {
+      "actions": [
+        "find /system -type f -name '*foo*' | xargs -i@ echo @ | wc -l",
+        "find /system -type f -name '*foo*' | xargs -i@ echo @ | wc -l",
+        "find /system -type f -name '*foo*' | xargs -i@ echo @ | wc -l",
+        "find /system -type f -name '*foo*' | xargs -i@ echo @ | wc -l",
+        "find /system -type f -name '*foo*' | xargs -i@ echo @ | wc -l",
+        "find /system -type f -name '*foo*' | xargs -i@ echo @ | wc -l",
+        "find /system -type f -name '*foo*' | xargs -i@ echo @ | wc -l",
+        "find /system -type f -name '*foo*' | xargs -i@ echo @ | wc -l",
+        "find /system -type f -name '*foo*' | xargs -i@ echo @ | wc -l",
+        "find /system -type f -name '*foo*' | xargs -i@ echo @ | wc -l"
+      ],
+      "observations": [
+        "0\n",
+        "0\n",
+        "0\n",
+        "0\n",
+        "0\n",
+        "0\n",
+        "0\n",
+        "0\n",
+        "0\n",
+        "0\n"
+      ],
+      "rewards": [
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67
+      ],
+      "valid_action": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 0.67,
+      "max_reward_idx": 0,
+      "turns_taken": 10,
+      "turns_max": 10
+    }
+  },
+  "11": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_2.json",
+    "task_id": 11,
+    "query": "Recursively search for all regular files below directory \"/system/folder3/\", and output the name of each, without any containing directories.",
+    "turn_history": {
+      "actions": [
+        "find /system/folder3 -type f -print0 | xargs -0 -i@ echo @",
+        "find /system/folder3 -type f -print0 | xargs -0 -i@ echo @",
+        "find /system/folder3 -type f -print0 | xargs -0 -i@ echo @",
+        "find /system/folder3 -type f -print0 | xargs -0 -i@ echo @",
+        "find /system/folder3 -type f -print0 | xargs -0 -i@ echo @",
+        "find /system/folder3 -type f -print0 | xargs -0 -i@ echo @",
+        "find /system/folder3 -type f -print0 | xargs -0 -i@ echo @",
+        "find /system/folder3 -type f -print0 | xargs -0 -i@ echo @",
+        "find /system/folder3 -type f -print0 | xargs -0 -i@ echo @",
+        "find /system/folder3 -type f -print0 | xargs -0 -i@ echo @"
+      ],
+      "observations": [
+        "/system/folder3/special text4.txt\n/system/folder3/backup_dbg/sql1.sql\n/system/folder3/backup_dbg/text1_dbg.txt\n/system/folder3/temp/empty.txt\n/system/folder3/temp/temp1/text1.txt\n",
+        "/system/folder3/special text4.txt\n/system/folder3/backup_dbg/sql1.sql\n/system/folder3/backup_dbg/text1_dbg.txt\n/system/folder3/temp/empty.txt\n/system/folder3/temp/temp1/text1.txt\n",
+        "/system/folder3/special text4.txt\n/system/folder3/backup_dbg/sql1.sql\n/system/folder3/backup_dbg/text1_dbg.txt\n/system/folder3/temp/empty.txt\n/system/folder3/temp/temp1/text1.txt\n",
+        "/system/folder3/special text4.txt\n/system/folder3/backup_dbg/sql1.sql\n/system/folder3/backup_dbg/text1_dbg.txt\n/system/folder3/temp/empty.txt\n/system/folder3/temp/temp1/text1.txt\n",
+        "/system/folder3/special text4.txt\n/system/folder3/backup_dbg/sql1.sql\n/system/folder3/backup_dbg/text1_dbg.txt\n/system/folder3/temp/empty.txt\n/system/folder3/temp/temp1/text1.txt\n",
+        "/system/folder3/special text4.txt\n/system/folder3/backup_dbg/sql1.sql\n/system/folder3/backup_dbg/text1_dbg.txt\n/system/folder3/temp/empty.txt\n/system/folder3/temp/temp1/text1.txt\n",
+        "/system/folder3/special text4.txt\n/system/folder3/backup_dbg/sql1.sql\n/system/folder3/backup_dbg/text1_dbg.txt\n/system/folder3/temp/empty.txt\n/system/folder3/temp/temp1/text1.txt\n",
+        "/system/folder3/special text4.txt\n/system/folder3/backup_dbg/sql1.sql\n/system/folder3/backup_dbg/text1_dbg.txt\n/system/folder3/temp/empty.txt\n/system/folder3/temp/temp1/text1.txt\n",
+        "/system/folder3/special text4.txt\n/system/folder3/backup_dbg/sql1.sql\n/system/folder3/backup_dbg/text1_dbg.txt\n/system/folder3/temp/empty.txt\n/system/folder3/temp/temp1/text1.txt\n",
+        "/system/folder3/special text4.txt\n/system/folder3/backup_dbg/sql1.sql\n/system/folder3/backup_dbg/text1_dbg.txt\n/system/folder3/temp/empty.txt\n/system/folder3/temp/temp1/text1.txt\n"
+      ],
+      "rewards": [
+        0.8,
+        0.8,
+        0.8,
+        0.8,
+        0.8,
+        0.8,
+        0.8,
+        0.8,
+        0.8,
+        0.8
+      ],
+      "valid_action": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 0.8,
+      "max_reward_idx": 0,
+      "turns_taken": 10,
+      "turns_max": 10
+    }
+  },
+  "12": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_2.json",
+    "task_id": 12,
+    "query": "Recursively unzip files to stdout in \"/system/folder2.tar.gz\" and search for \"special\"",
+    "turn_history": {
+      "actions": [
+        "tar -xzf /system/folder2.tar.gz | grep special",
+        "tar -xzf /system/folder2.tar.gz | grep special",
+        "tar -xzf /system/folder2.tar.gz | grep special",
+        "tar -xzf /system/folder2.tar.gz | grep special",
+        "tar -xzf /system/folder2.tar.gz | grep special",
+        "tar -xzf /system/folder2.tar.gz | grep special",
+        "tar -xzf /system/folder2.tar.gz | grep special",
+        "tar -xzf /system/folder2.tar.gz | grep special",
+        "tar -xzf /system/folder2.tar.gz | grep special",
+        "tar -xzf /system/folder2.tar.gz | grep special"
+      ],
+      "observations": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "rewards": [
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67
+      ],
+      "valid_action": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "summary": {
+      "max_reward": 0.67,
+      "max_reward_idx": 0,
+      "turns_taken": 10,
+      "turns_max": 10
+    }
+  },
+  "13": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_2.json",
+    "task_id": 13,
+    "query": "Remove \"\\r\" at the end of each line in \"system/folder3/temp/temp1/text1.txt\" and display the result as printable characters or backslash escapes",
+    "turn_history": {
+      "actions": [
+        "sed -i 's/\\r$//g' system/folder3/temp/temp1/text1.txt",
+        "sed -i 's/\\r$//g' system/folder3/temp/temp1/text1.txt | tr -d '\\r'",
+        "sed -i 's/\\r$//g' system/folder3/temp/temp1/text1.txt | tr -d '\\r' | cat -a",
+        "sed -i 's/\\r$//g' system/folder3/temp/temp1/text1.txt | tr -d '\\r' | cat -v",
+        "sed -i 's/\\r$//g' system/folder3/temp/temp1/text1.txt | tr -d '\\r' | cat -v",
+        "sed -i 's/\\r$//g' system/folder3/temp/temp1/text1.txt | tr -d '\\r' | cat -v",
+        "sed -i 's/\\r$//g' system/folder3/temp/temp1/text1.txt | tr -d '\\r' | cat -v",
+        "sed -i 's/\\r$//g' system/folder3/temp/temp1/text1.txt | tr -d '\\r' | cat -v",
+        "sed -i 's/\\r$//g' system/folder3/temp/temp1/text1.txt | tr -d '\\r' | cat -v",
+        "sed -i 's/\\r$//g' system/folder3/temp/temp1/text1.txt | tr -d '\\r' | cat -v"
+      ],
+      "observations": [
+        "",
+        "",
+        "cat: invalid option -- 'a'\nTry 'cat --help' for more information.\n",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "rewards": [
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67
+      ],
+      "valid_action": [
+        true,
+        true,
+        false,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 0.67,
+      "max_reward_idx": 0,
+      "turns_taken": 10,
+      "turns_max": 10
+    }
+  },
+  "14": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_2.json",
+    "task_id": 14,
+    "query": "Remove all *.doc files from the /system/folder1 tree",
+    "turn_history": {
+      "actions": [
+        "find /system/folder1 -name \"*.doc\" -delete"
+      ],
+      "observations": [
+        ""
+      ],
+      "rewards": [
+        1.0
+      ],
+      "valid_action": [
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 1.0,
+      "max_reward_idx": 0,
+      "turns_taken": 1,
+      "turns_max": 10
+    }
+  },
+  "15": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_2.json",
+    "task_id": 15,
+    "query": "Remove all *.log files from the /system/folder1 tree",
+    "turn_history": {
+      "actions": [
+        "find /system/folder1 -name \"*.log\" -delete"
+      ],
+      "observations": [
+        ""
+      ],
+      "rewards": [
+        1.0
+      ],
+      "valid_action": [
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 1.0,
+      "max_reward_idx": 0,
+      "turns_taken": 1,
+      "turns_max": 10
+    }
+  },
+  "16": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_2.json",
+    "task_id": 16,
+    "query": "Remove all *.txt files in '/system' directory but not in it's subdirectories",
+    "turn_history": {
+      "actions": [
+        "find /system -type f -name \"*.txt\" -not -path \"*/.*\" -delete",
+        "find /system -type f -name \"*.txt\" -not -path \"*/.*\" -delete",
+        "find /system -type f -name \"*.txt\" -not -path \"*/.*\" -delete",
+        "find /system -type f -name \"*.txt\" -not -path \"*/.*\" -delete",
+        "find /system -type f -name \"*.txt\" -not -path \"*/.*\" -delete",
+        "find /system -type f -name \"*.txt\" -not -path \"*/.*\" -delete",
+        "find /system -type f -name \"*.txt\" -not -path \"*/.*\" -delete",
+        "find /system -type f -name \"*.txt\" -not -path \"*/.*\" -delete",
+        "find /system -type f -name \"*.txt\" -not -path \"*/.*\" -delete",
+        "find /system -type f -name \"*.txt\" -not -path \"*/.*\" -delete"
+      ],
+      "observations": [
+        "find: paths must precede expression: `bin/..'\nfind: possible unquoted pattern after predicate `-path'?\n",
+        "find: paths must precede expression: `bin/..'\nfind: possible unquoted pattern after predicate `-path'?\n",
+        "find: paths must precede expression: `bin/..'\nfind: possible unquoted pattern after predicate `-path'?\n",
+        "find: paths must precede expression: `bin/..'\nfind: possible unquoted pattern after predicate `-path'?\n",
+        "find: paths must precede expression: `bin/..'\nfind: possible unquoted pattern after predicate `-path'?\n",
+        "find: paths must precede expression: `bin/..'\nfind: possible unquoted pattern after predicate `-path'?\n",
+        "find: paths must precede expression: `bin/..'\nfind: possible unquoted pattern after predicate `-path'?\n",
+        "find: paths must precede expression: `bin/..'\nfind: possible unquoted pattern after predicate `-path'?\n",
+        "find: paths must precede expression: `bin/..'\nfind: possible unquoted pattern after predicate `-path'?\n",
+        "find: paths must precede expression: `bin/..'\nfind: possible unquoted pattern after predicate `-path'?\n"
+      ],
+      "rewards": [
+        0.34,
+        0.34,
+        0.34,
+        0.34,
+        0.34,
+        0.34,
+        0.34,
+        0.34,
+        0.34,
+        0.34
+      ],
+      "valid_action": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "summary": {
+      "max_reward": 0.34,
+      "max_reward_idx": 0,
+      "turns_taken": 10,
+      "turns_max": 10
+    }
+  },
+  "17": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_2.json",
+    "task_id": 17,
+    "query": "Remove all *.sql files in the '/system/folder3/backup_dbg' directory that were last modified more than 25 days ago",
+    "turn_history": {
+      "actions": [
+        "find /system/folder3/backup_dbg -type f -name \"*.sql\" -mtime +25 -delete"
+      ],
+      "observations": [
+        ""
+      ],
+      "rewards": [
+        1.0
+      ],
+      "valid_action": [
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 1.0,
+      "max_reward_idx": 0,
+      "turns_taken": 1,
+      "turns_max": 10
+    }
+  },
+  "18": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_2.json",
+    "task_id": 18,
+    "query": "Remove all *.txt files under the /system/folder1 directory modified more than 5 minutes ago",
+    "turn_history": {
+      "actions": [
+        "find /system/folder1 -type f -name \"*.txt\" -mtime +5 -delete",
+        "find /system/folder1 -type f -name \"*.txt\" -mtime +5 -delete"
+      ],
+      "observations": [
+        "",
+        ""
+      ],
+      "rewards": [
+        0.67,
+        1.0
+      ],
+      "valid_action": [
+        true,
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 1.0,
+      "max_reward_idx": 1,
+      "turns_taken": 2,
+      "turns_max": 10
+    }
+  },
+  "19": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_2.json",
+    "task_id": 19,
+    "query": "Remove all *.txt files, except \"keep.txt\", under /system/folder1 directory modified more than 5 minutes ago",
+    "turn_history": {
+      "actions": [
+        "find /system/folder1 -type f -name \"*.txt\" -mtime +5 -exec rm {} \\; -exec echo \"removed file: ${}\" \\;",
+        "find /system/folder1 -type f -name \"*.txt\" -mtime +5 -exec rm {} \\; -exec echo \"removed file: ${}\" \\;",
+        "find /system/folder1 -type f -name \"*.txt\" -mtime +5 -exec rm {} \\; -exec echo \"removed file: ${}\" \\;",
+        "find /system/folder1 -type f -name \"*.txt\" -mtime +5 -exec rm {} \\; -exec echo \"removed file: ${}\" \\;",
+        "find /system/folder1 -type f -name \"*.txt\" -mtime +5 -exec rm {} \\; -exec echo \"removed file: ${}\" \\;",
+        "find /system/folder1 -type f -name \"*.txt\" -mtime +5 -exec rm {} \\; -exec echo \"removed file: ${}\" \\;",
+        "find /system/folder1 -type f -name \"*.txt\" -mtime +5 -exec rm {} \\; -exec echo \"removed file: ${}\" \\;",
+        "find /system/folder1 -type f -name \"*.txt\" -mtime +5 -exec rm {} \\; -exec echo \"removed file: ${}\" \\;",
+        "find /system/folder1 -type f -name \"*.txt\" -mtime +5 -exec rm {} \\; -exec echo \"removed file: ${}\" \\;",
+        "find /system/folder1 -type f -name \"*.txt\" -mtime +5 -exec rm {} \\; -exec echo \"removed file: ${}\" \\;"
+      ],
+      "observations": [
+        "find: missing argument to `-exec'\n",
+        "find: missing argument to `-exec'\n",
+        "find: missing argument to `-exec'\n",
+        "find: missing argument to `-exec'\n",
+        "find: missing argument to `-exec'\n",
+        "find: missing argument to `-exec'\n",
+        "find: missing argument to `-exec'\n",
+        "find: missing argument to `-exec'\n",
+        "find: missing argument to `-exec'\n",
+        "find: missing argument to `-exec'\n"
+      ],
+      "rewards": [
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67
+      ],
+      "valid_action": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "summary": {
+      "max_reward": 0.67,
+      "max_reward_idx": 0,
+      "turns_taken": 10,
+      "turns_max": 10
+    }
+  },
+  "20": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_2.json",
+    "task_id": 20,
+    "query": "Remove all .sh files in the '/system/folder1' tree whose names begin with \"new\"",
+    "turn_history": {
+      "actions": [
+        "find /system/folder1 -name 'new*.sh' -delete"
+      ],
+      "observations": [
+        ""
+      ],
+      "rewards": [
+        1.0
+      ],
+      "valid_action": [
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 1.0,
+      "max_reward_idx": 0,
+      "turns_taken": 1,
+      "turns_max": 10
+    }
+  },
+  "21": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_2.json",
+    "task_id": 21,
+    "query": "Remove all a.out, *.o, and core files under the '/system' directory",
+    "turn_history": {
+      "actions": [
+        "find /system -name 'a.out' -o -name '*.o' -o -name 'core' -delete",
+        "find /system -name 'a.out' -o -name '*.o' -o -name 'core' -delete",
+        "find /system -name 'a.out' -o -name '*.o' -o -name 'core' -delete",
+        "find /system -name 'a.out' -o -name '*.o' -o -name 'core' -delete",
+        "find /system -name 'a.out' -o -name '*.o' -o -name 'core' -delete",
+        "find /system -name 'a.out' -o -name '*.o' -o -name 'core' -delete",
+        "find /system -name 'a.out' -o -name '*.o' -o -name 'core' -delete",
+        "find /system -name 'a.out' -o -name '*.o' -o -name 'core' -delete",
+        "find /system -name 'a.out' -o -name '*.o' -o -name 'core' -delete",
+        "find /system -name 'a.out' -o -name '*.o' -o -name 'core' -delete"
+      ],
+      "observations": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "rewards": [
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67
+      ],
+      "valid_action": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 0.67,
+      "max_reward_idx": 0,
+      "turns_taken": 10,
+      "turns_max": 10
+    }
+  },
+  "22": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_2.json",
+    "task_id": 22,
+    "query": "Remove all but 5 last comma-separated fields from each line in '/system/folder1/data.csv'",
+    "turn_history": {
+      "actions": [
+        "awk -f, '{print $nf, $nf-1, $nf-2, $nf-3, $nf-4}' /system/folder1/data.csv",
+        "awk -f, '{print $nf, $nf-1, $nf-2, $nf-3, $nf-4}' /system/folder1/data.csv",
+        "awk -f, '{print $nf, $nf-1, $nf-2, $nf-3, $nf-4}' /system/folder1/data.csv",
+        "awk -f, '{print $nf, $nf-1, $nf-2, $nf-3, $nf-4}' /system/folder1/data.csv",
+        "awk -f, '{print $nf, $nf-1, $nf-2, $nf-3, $nf-4}' /system/folder1/data.csv",
+        "awk -f, '{print $nf, $nf-1, $nf-2, $nf-3, $nf-4}' /system/folder1/data.csv",
+        "awk -f, '{print $nf, $nf-1, $nf-2, $nf-3, $nf-4}' /system/folder1/data.csv",
+        "awk -f, '{print $nf, $nf-1, $nf-2, $nf-3, $nf-4}' /system/folder1/data.csv",
+        "awk -f, '{print $nf, $nf-1, $nf-2, $nf-3, $nf-4}' /system/folder1/data.csv",
+        "awk -f, '{print $nf, $nf-1, $nf-2, $nf-3, $nf-4}' /system/folder1/data.csv"
+      ],
+      "observations": [
+        "awk: cannot open , (No such file or directory)\n",
+        "awk: cannot open , (No such file or directory)\n",
+        "awk: cannot open , (No such file or directory)\n",
+        "awk: cannot open , (No such file or directory)\n",
+        "awk: cannot open , (No such file or directory)\n",
+        "awk: cannot open , (No such file or directory)\n",
+        "awk: cannot open , (No such file or directory)\n",
+        "awk: cannot open , (No such file or directory)\n",
+        "awk: cannot open , (No such file or directory)\n",
+        "awk: cannot open , (No such file or directory)\n"
+      ],
+      "rewards": [
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67
+      ],
+      "valid_action": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "summary": {
+      "max_reward": 0.67,
+      "max_reward_idx": 0,
+      "turns_taken": 10,
+      "turns_max": 10
+    }
+  },
+  "23": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_2.json",
+    "task_id": 23,
+    "query": "Remove all directories called \"temp\" from the /system directory tree",
+    "turn_history": {
+      "actions": [
+        "find /system -type d -name \"temp\" -exec rm -rf {} \\;",
+        "find /system -type d -name \"temp\" -exec rm -rf {} \\;",
+        "find /system -type d -name \"temp\" -exec rm -rf {} \\;",
+        "find /system -type d -name \"temp\" -exec rm -rf {} \\;",
+        "find /system -type d -name \"temp\" -exec rm -rf {} \\;",
+        "find /system -type d -name \"temp\" -exec rm -rf {} \\;",
+        "find /system -type d -name \"temp\" -exec rm -rf {} \\;",
+        "find /system -type d -name \"temp\" -exec rm -rf {} \\;",
+        "find /system -type d -name \"temp\" -exec rm -rf {} \\;",
+        "find /system -type d -name \"temp\" -exec rm -rf {} \\;"
+      ],
+      "observations": [
+        "find: '/system/folder3/temp': No such file or directory\nfind: '/system/temp': No such file or directory\n",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "rewards": [
+        0.34,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67
+      ],
+      "valid_action": [
+        false,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 0.67,
+      "max_reward_idx": 1,
+      "turns_taken": 10,
+      "turns_max": 10
+    }
+  },
+  "24": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_2.json",
+    "task_id": 24,
+    "query": "Remove all empty files in /system/folder3/temp and below",
+    "turn_history": {
+      "actions": [
+        "find /system/folder3/temp -type f -empty -delete"
+      ],
+      "observations": [
+        ""
+      ],
+      "rewards": [
+        1.0
+      ],
+      "valid_action": [
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 1.0,
+      "max_reward_idx": 0,
+      "turns_taken": 1,
+      "turns_max": 10
+    }
+  },
+  "25": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_2.json",
+    "task_id": 25,
+    "query": "Remove all files 'a.out' and *.o in the /system directory tree that were modified more than 7 days ago",
+    "turn_history": {
+      "actions": [
+        "find /system -type f -name 'a.out' -o -name '*.o' -mtime +7 -delete"
+      ],
+      "observations": [
+        ""
+      ],
+      "rewards": [
+        1.0
+      ],
+      "valid_action": [
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 1.0,
+      "max_reward_idx": 0,
+      "turns_taken": 1,
+      "turns_max": 10
+    }
+  },
+  "26": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_2.json",
+    "task_id": 26,
+    "query": "Remove all files and directories under '/system/folder3/temp' directory tree that match with one of the name patterns '.DS_Store', '._.DS_Store' , '._*', '.TemporaryItems' or '.apdisk'",
+    "turn_history": {
+      "actions": [
+        "find /system/folder3/temp -type f -name '.ds_store' -delete find /system/folder3/temp -type f -name '._.ds_store' -delete find /system/folder3/temp -type f -name '._*' -delete find /system/folder3/temp -type f -name '.temporaryitems' -delete find /system/folder3/temp -type f -name '.apdisk' -delete",
+        "find /system/folder3/temp -type f -name '.ds_store' -delete find /system/folder3/temp -type f -name '._.ds_store' -delete find /system/folder3/temp -type f -name '._*' -delete find /system/folder3/temp -type f -name '.temporaryitems' -delete find /system/folder3/temp -type f -name '.apdisk' -delete",
+        "find /system/folder3/temp -type f -name '.ds_store' -delete find /system/folder3/temp -type f -name '._.ds_store' -delete find /system/folder3/temp -type f -name '._*' -delete find /system/folder3/temp -type f -name '.temporaryitems' -delete find /system/folder3/temp -type f -name '.apdisk' -delete",
+        "find /system/folder3/temp -type f -name '.ds_store' -delete find /system/folder3/temp -type f -name '._.ds_store' -delete find /system/folder3/temp -type f -name '._*' -delete find /system/folder3/temp -type f -name '.temporaryitems' -delete find /system/folder3/temp -type f -name '.apdisk' -delete",
+        "find /system/folder3/temp -type f -name '.ds_store' -delete find /system/folder3/temp -type f -name '._.ds_store' -delete find /system/folder3/temp -type f -name '._*' -delete find /system/folder3/temp -type f -name '.temporaryitems' -delete find /system/folder3/temp -type f -name '.apdisk' -delete",
+        "find /system/folder3/temp -type f -name '.ds_store' -delete find /system/folder3/temp -type f -name '._.ds_store' -delete find /system/folder3/temp -type f -name '._*' -delete find /system/folder3/temp -type f -name '.temporaryitems' -delete find /system/folder3/temp -type f -name '.apdisk' -delete",
+        "find /system/folder3/temp -type f -name '.ds_store' -delete find /system/folder3/temp -type f -name '._.ds_store' -delete find /system/folder3/temp -type f -name '._*' -delete find /system/folder3/temp -type f -name '.temporaryitems' -delete find /system/folder3/temp -type f -name '.apdisk' -delete",
+        "find /system/folder3/temp -type f -name '.ds_store' -delete find /system/folder3/temp -type f -name '._.ds_store' -delete find /system/folder3/temp -type f -name '._*' -delete find /system/folder3/temp -type f -name '.temporaryitems' -delete find /system/folder3/temp -type f -name '.apdisk' -delete",
+        "find /system/folder3/temp -type f -name '.ds_store' -delete find /system/folder3/temp -type f -name '._.ds_store' -delete find /system/folder3/temp -type f -name '._*' -delete find /system/folder3/temp -type f -name '.temporaryitems' -delete find /system/folder3/temp -type f -name '.apdisk' -delete",
+        "find /system/folder3/temp -type f -name '.ds_store' -delete find /system/folder3/temp -type f -name '._.ds_store' -delete find /system/folder3/temp -type f -name '._*' -delete find /system/folder3/temp -type f -name '.temporaryitems' -delete find /system/folder3/temp -type f -name '.apdisk' -delete"
+      ],
+      "observations": [
+        "find: paths must precede expression: `find'\n",
+        "find: paths must precede expression: `find'\n",
+        "find: paths must precede expression: `find'\n",
+        "find: paths must precede expression: `find'\n",
+        "find: paths must precede expression: `find'\n",
+        "find: paths must precede expression: `find'\n",
+        "find: paths must precede expression: `find'\n",
+        "find: paths must precede expression: `find'\n",
+        "find: paths must precede expression: `find'\n",
+        "find: paths must precede expression: `find'\n"
+      ],
+      "rewards": [
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67
+      ],
+      "valid_action": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "summary": {
+      "max_reward": 0.67,
+      "max_reward_idx": 0,
+      "turns_taken": 10,
+      "turns_max": 10
+    }
+  },
+  "27": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_2.json",
+    "task_id": 27,
+    "query": "Remove empty directories from directory tree /system",
+    "turn_history": {
+      "actions": [
+        "find /system -type d -empty -delete"
+      ],
+      "observations": [
+        ""
+      ],
+      "rewards": [
+        1.0
+      ],
+      "valid_action": [
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 1.0,
+      "max_reward_idx": 0,
+      "turns_taken": 1,
+      "turns_max": 10
+    }
+  },
+  "28": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_2.json",
+    "task_id": 28,
+    "query": "Remove everything within parentheses and substitute all non digit characters with a space from \"1/2 [3] (27/03/2012 19:32:54) word word word word 4/5\" and format the output as a table",
+    "turn_history": {
+      "actions": [
+        "echo \"1/2 [3] (27/03/2012 19:32:54) word word word word 4/5\" | sed 's/[^0-9]/ /g' | sed 's/\\([^0-9]\\)/ /g' | tr -d ' '",
+        "echo \"1/2 [3] (27/03/2012 19:32:54) word word word word 4/5\" | sed 's/[^0-9]/ /g' | sed 's/\\([^0-9]\\)/ /g' | tr -d ' '",
+        "echo \"1/2 [3] (27/03/2012 19:32:54) word word word word 4/5\" | sed 's/[^0-9]/ /g' | sed 's/\\([^0-9]\\)/ /g' | tr -d ' '",
+        "echo \"1/2 [3] (27/03/2012 19:32:54) word word word word 4/5\" | sed 's/[^0-9]/ /g' | sed 's/\\([^0-9]\\)/ /g' | tr -d ' '",
+        "echo \"1/2 [3] (27/03/2012 19:32:54) word word word word 4/5\" | sed 's/[^0-9]/ /g' | sed 's/\\([^0-9]\\)/ /g' | tr -d ' '",
+        "echo \"1/2 [3] (27/03/2012 19:32:54) word word word word 4/5\" | sed 's/[^0-9]/ /g' | sed 's/\\([^0-9]\\)/ /g' | tr -d ' '",
+        "echo \"1/2 [3] (27/03/2012 19:32:54) word word word word 4/5\" | sed 's/[^0-9]/ /g' | sed 's/\\([^0-9]\\)/ /g' | tr -d ' '",
+        "echo \"1/2 [3] (27/03/2012 19:32:54) word word word word 4/5\" | sed 's/[^0-9]/ /g' | sed 's/\\([^0-9]\\)/ /g' | tr -d ' '",
+        "echo \"1/2 [3] (27/03/2012 19:32:54) word word word word 4/5\" | sed 's/[^0-9]/ /g' | sed 's/\\([^0-9]\\)/ /g' | tr -d ' '",
+        "blocked"
+      ],
+      "observations": [
+        "1/2\n",
+        "1/2\n",
+        "1/2\n",
+        "1/2\n",
+        "1/2\n",
+        "1/2\n",
+        "1/2\n",
+        "1/2\n",
+        "1/2\n"
+      ],
+      "rewards": [
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0
+      ],
+      "valid_action": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 0.67,
+      "max_reward_idx": 0,
+      "turns_taken": 10,
+      "turns_max": 10
+    }
+  },
+  "29": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_2.json",
+    "task_id": 29,
+    "query": "Remove files text2, text3, text4 in directory /system/folder1",
+    "turn_history": {
+      "actions": [
+        "rm /system/folder1/text2 /system/folder1/text3 /system/folder1/text4",
+        "rm -rf /system/folder1/text2 /system/folder1/text3 /system/folder1/text4"
+      ],
+      "observations": [
+        "rm: cannot remove '/system/folder1/text2': No such file or directory\nrm: cannot remove '/system/folder1/text3': No such file or directory\nrm: cannot remove '/system/folder1/text4': No such file or directory\n",
+        ""
+      ],
+      "rewards": [
+        0.67,
+        1.0
+      ],
+      "valid_action": [
+        false,
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 1.0,
+      "max_reward_idx": 1,
+      "turns_taken": 2,
+      "turns_max": 10
+    }
+  },
+  "30": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_2.json",
+    "task_id": 30,
+    "query": "Remove files from the /system directory that are owned by nobody",
+    "turn_history": {
+      "actions": [
+        "rm -rf /system/* -o nogroup",
+        "rm -rf /system/* -o nogroup",
+        "rm -rf /system/* -o nogroup",
+        "rm -rf /system/* -o nogroup",
+        "rm -rf /system/* -o nogroup",
+        "rm -rf /system/* -o nogroup",
+        "rm -rf /system/* -o nogroup",
+        "rm -rf /system/* -o nogroup",
+        "rm -rf /system/* -o nogroup",
+        "rm -rf /system/* -o nogroup"
+      ],
+      "observations": [
+        "rm: invalid option -- 'o'\nTry 'rm --help' for more information.\n",
+        "rm: invalid option -- 'o'\nTry 'rm --help' for more information.\n",
+        "rm: invalid option -- 'o'\nTry 'rm --help' for more information.\n",
+        "rm: invalid option -- 'o'\nTry 'rm --help' for more information.\n",
+        "rm: invalid option -- 'o'\nTry 'rm --help' for more information.\n",
+        "rm: invalid option -- 'o'\nTry 'rm --help' for more information.\n",
+        "rm: invalid option -- 'o'\nTry 'rm --help' for more information.\n",
+        "rm: invalid option -- 'o'\nTry 'rm --help' for more information.\n",
+        "rm: invalid option -- 'o'\nTry 'rm --help' for more information.\n",
+        "rm: invalid option -- 'o'\nTry 'rm --help' for more information.\n"
+      ],
+      "rewards": [
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67
+      ],
+      "valid_action": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "summary": {
+      "max_reward": 0.67,
+      "max_reward_idx": 0,
+      "turns_taken": 10,
+      "turns_max": 10
+    }
+  },
+  "31": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_2.json",
+    "task_id": 31,
+    "query": "Remove files that are greater than 1KB in size under /system directory",
+    "turn_history": {
+      "actions": [
+        "find /system -type f -size +1024 -delete"
+      ],
+      "observations": [
+        ""
+      ],
+      "rewards": [
+        1.0
+      ],
+      "valid_action": [
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 1.0,
+      "max_reward_idx": 0,
+      "turns_taken": 1,
+      "turns_max": 10
+    }
+  },
+  "32": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_2.json",
+    "task_id": 32,
+    "query": "Remove junk files modified more than 31 days ago recursively from \"/system\"",
+    "turn_history": {
+      "actions": [
+        "find /system -mtime +31 -type f -exec rm -f {} \\;",
+        "find /system -mtime +31 -type f -exec rm -f {} \\;",
+        "find /system -mtime +31 -type f -exec rm -f {} \\;",
+        "find /system -mtime +31 -type f -exec rm -f {} \\;",
+        "find /system -mtime +31 -type f -exec rm -f {} \\;",
+        "find /system -mtime +31 -type f -exec rm -f {} \\;",
+        "find /system -mtime +31 -type f -exec rm -f {} \\;",
+        "find /system -mtime +31 -type f -exec rm -f {} \\;",
+        "find /system -mtime +31 -type f -exec rm -f {} \\;",
+        "find /system -mtime +31 -type f -exec rm -f {} \\;"
+      ],
+      "observations": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "rewards": [
+        0.67,
+        0.72,
+        0.72,
+        0.72,
+        0.72,
+        0.72,
+        0.72,
+        0.72,
+        0.72,
+        0.72
+      ],
+      "valid_action": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 0.72,
+      "max_reward_idx": 1,
+      "turns_taken": 10,
+      "turns_max": 10
+    }
+  },
+  "33": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_2.json",
+    "task_id": 33,
+    "query": "Remove newline characters from \"/system/folder3/temp/temp1/text1.txt\"",
+    "turn_history": {
+      "actions": [
+        "sed 's/\\n//g' /system/folder3/temp/temp1/text1.txt",
+        "sed 's/\\n//g' /system/folder3/temp/temp1/text1.txt",
+        "sed 's/\\n//g' /system/folder3/temp/temp1/text1.txt",
+        "sed 's/\\n//g' /system/folder3/temp/temp1/text1.txt",
+        "sed 's/\\n//g' /system/folder3/temp/temp1/text1.txt",
+        "sed 's/\\n//g' /system/folder3/temp/temp1/text1.txt",
+        "sed 's/\\n//g' /system/folder3/temp/temp1/text1.txt",
+        "sed 's/\\n//g' /system/folder3/temp/temp1/text1.txt",
+        "sed 's/\\n//g' /system/folder3/temp/temp1/text1.txt",
+        "sed 's/\\n//g' /system/folder3/temp/temp1/text1.txt"
+      ],
+      "observations": [
+        "The first line\nThe second line\nThe third line\nThe fourth line;\nThe fifth line\n",
+        "The first line\nThe second line\nThe third line\nThe fourth line;\nThe fifth line\n",
+        "The first line\nThe second line\nThe third line\nThe fourth line;\nThe fifth line\n",
+        "The first line\nThe second line\nThe third line\nThe fourth line;\nThe fifth line\n",
+        "The first line\nThe second line\nThe third line\nThe fourth line;\nThe fifth line\n",
+        "The first line\nThe second line\nThe third line\nThe fourth line;\nThe fifth line\n",
+        "The first line\nThe second line\nThe third line\nThe fourth line;\nThe fifth line\n",
+        "The first line\nThe second line\nThe third line\nThe fourth line;\nThe fifth line\n",
+        "The first line\nThe second line\nThe third line\nThe fourth line;\nThe fifth line\n",
+        "The first line\nThe second line\nThe third line\nThe fourth line;\nThe fifth line\n"
+      ],
+      "rewards": [
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67
+      ],
+      "valid_action": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 0.67,
+      "max_reward_idx": 0,
+      "turns_taken": 10,
+      "turns_max": 10
+    }
+  },
+  "34": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_2.json",
+    "task_id": 34,
+    "query": "Remove regular files in the /system directory tree",
+    "turn_history": {
+      "actions": [
+        "find /system -type f -delete",
+        "find /system -type f -delete",
+        "find /system -type f -delete",
+        "find /system -type f -delete",
+        "find /system -type f -delete",
+        "find /system -type f -delete",
+        "find /system -type f -delete",
+        "find /system -type f -delete",
+        "find /system -type f -delete",
+        "find /system -type f -delete"
+      ],
+      "observations": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "rewards": [
+        0.34,
+        0.34,
+        0.34,
+        0.34,
+        0.34,
+        0.34,
+        0.34,
+        0.34,
+        0.34,
+        0.34
+      ],
+      "valid_action": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 0.34,
+      "max_reward_idx": 0,
+      "turns_taken": 10,
+      "turns_max": 10
+    }
+  },
+  "35": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_2.json",
+    "task_id": 35,
+    "query": "Print summary of new/missing files, and which files differ between /system/folder1 and /system/folder2, sorted alphabetically.",
+    "turn_history": {
+      "actions": [
+        "diff -r /system/folder1 /system/folder2 | sort",
+        "diff -r /system/folder1 /system/folder2 | sort | uniq -d"
+      ],
+      "observations": [
+        "Only in /system/folder1: a.out\nOnly in /system/folder1: data.csv\nOnly in /system/folder1: doc1.doc\nOnly in /system/folder1: doc2.doc\nOnly in /system/folder1: keep.txt\nOnly in /system/folder1: log1.log\nOnly in /system/folder1: new.sh\nOnly in /system/folder1: old2.txt\nOnly in /system/folder1: recent.txt\nOnly in /system/folder1: script1.sh\nOnly in /system/folder1: text2.txt\nOnly in /system/folder1: text3.txt\nOnly in /system/folder1: text4.txt\nOnly in /system/folder2: special text3.txt\nOnly in /system/folder2: special_text1.txt\nOnly in /system/folder2: special_text2.txt\nOnly in /system/folder2: text1.txt\n",
+        ""
+      ],
+      "rewards": [
+        0.67,
+        1.0
+      ],
+      "valid_action": [
+        true,
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 1.0,
+      "max_reward_idx": 1,
+      "turns_taken": 2,
+      "turns_max": 10
+    }
+  },
+  "36": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_2.json",
+    "task_id": 36,
+    "query": "Print amount of space available on the file system containing path to the /system directory in megabytes.",
+    "turn_history": {
+      "actions": [
+        "df -h /system | awk '{print $4}' | cut -d 'm' -f 1",
+        "df -h /system | awk '{print $4}' | cut -d 'g' -f 1",
+        "df -h /system | awk '{print $4}' | cut -d 'g' -f 1",
+        "df -h /system | awk '{print $4}' | cut -d 'g' -f 1",
+        "df -h /system | awk '{print $4}' | cut -d 'g' -f 1",
+        "df -h /system | awk '{print $4}' | cut -d 'g' -f 1",
+        "df -h /system | awk '{print $4}' | cut -d 'g' -f 1",
+        "df -h /system | awk '{print $4}' | cut -d 'g' -f 1",
+        "df -h /system | awk '{print $4}' | cut -d 'g' -f 1",
+        "df -h /system | awk '{print $4}' | cut -d 'g' -f 1"
+      ],
+      "observations": [
+        "Avail\n19G\n",
+        "Avail\n19G\n",
+        "Avail\n19G\n",
+        "Avail\n19G\n",
+        "Avail\n19G\n",
+        "Avail\n19G\n",
+        "Avail\n19G\n",
+        "Avail\n19G\n",
+        "Avail\n19G\n",
+        "Avail\n19G\n"
+      ],
+      "rewards": [
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67
+      ],
+      "valid_action": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 0.67,
+      "max_reward_idx": 0,
+      "turns_taken": 10,
+      "turns_max": 10
+    }
+  },
+  "37": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_2.json",
+    "task_id": 37,
+    "query": "Recursively find the latest modified file in the /system directory",
+    "turn_history": {
+      "actions": [
+        "find /system -type f -mtime -1 -print",
+        "find /system -type f -mtime -1 -print",
+        "find /system -type f -mtime -1 -print",
+        "find /system -type f -mtime -1 -print",
+        "find /system -type f -mtime -1 -print",
+        "find /system -type f -mtime -1 -print",
+        "find /system -type f -mtime -1 -print",
+        "find /system -type f -mtime -1 -print",
+        "find /system -type f -mtime -1 -print",
+        "find /system -type f -mtime -1 -print"
+      ],
+      "observations": [
+        "/system/MANIFEST\n/system/html1.html\n/system/text1.txt\n/system/.DS_Store\n/system/folder2.tar.gz\n/system/folder3/special text4.txt\n/system/folder3/backup_dbg/sql1.sql\n/system/folder3/backup_dbg/text1_dbg.txt\n/system/folder3/temp/empty.txt\n/system/folder3/temp/temp1/text1.txt\n/system/folder2/special_text2.txt\n/system/folder2/text1.txt\n/system/folder2/special text3.txt\n/system/folder2/special_text1.txt\n/system/folder1/doc1.doc\n/system/folder1/script1.sh\n/system/folder1/new.sh\n/system/folder1/keep.txt\n/system/folder1/log1.log\n/system/folder1/recent.txt\n/system/folder1/text4.txt\n/system/folder1/data.csv\n/system/folder1/text2.txt\n/system/folder1/old2.txt\n/system/folder1/a.out\n/system/folder1/text3.txt\n/system/folder1/doc2.doc\n/system/temp/keep.txt\n/system/a.out\n/system/text3.txt\n",
+        "/system/MANIFEST\n/system/html1.html\n/system/text1.txt\n/system/.DS_Store\n/system/folder2.tar.gz\n/system/folder3/special text4.txt\n/system/folder3/backup_dbg/sql1.sql\n/system/folder3/backup_dbg/text1_dbg.txt\n/system/folder3/temp/empty.txt\n/system/folder3/temp/temp1/text1.txt\n/system/folder2/special_text2.txt\n/system/folder2/text1.txt\n/system/folder2/special text3.txt\n/system/folder2/special_text1.txt\n/system/folder1/doc1.doc\n/system/folder1/script1.sh\n/system/folder1/new.sh\n/system/folder1/keep.txt\n/system/folder1/log1.log\n/system/folder1/recent.txt\n/system/folder1/text4.txt\n/system/folder1/data.csv\n/system/folder1/text2.txt\n/system/folder1/old2.txt\n/system/folder1/a.out\n/system/folder1/text3.txt\n/system/folder1/doc2.doc\n/system/temp/keep.txt\n/system/a.out\n/system/text3.txt\n",
+        "/system/MANIFEST\n/system/html1.html\n/system/text1.txt\n/system/.DS_Store\n/system/folder2.tar.gz\n/system/folder3/special text4.txt\n/system/folder3/backup_dbg/sql1.sql\n/system/folder3/backup_dbg/text1_dbg.txt\n/system/folder3/temp/empty.txt\n/system/folder3/temp/temp1/text1.txt\n/system/folder2/special_text2.txt\n/system/folder2/text1.txt\n/system/folder2/special text3.txt\n/system/folder2/special_text1.txt\n/system/folder1/doc1.doc\n/system/folder1/script1.sh\n/system/folder1/new.sh\n/system/folder1/keep.txt\n/system/folder1/log1.log\n/system/folder1/recent.txt\n/system/folder1/text4.txt\n/system/folder1/data.csv\n/system/folder1/text2.txt\n/system/folder1/old2.txt\n/system/folder1/a.out\n/system/folder1/text3.txt\n/system/folder1/doc2.doc\n/system/temp/keep.txt\n/system/a.out\n/system/text3.txt\n",
+        "/system/MANIFEST\n/system/html1.html\n/system/text1.txt\n/system/.DS_Store\n/system/folder2.tar.gz\n/system/folder3/special text4.txt\n/system/folder3/backup_dbg/sql1.sql\n/system/folder3/backup_dbg/text1_dbg.txt\n/system/folder3/temp/empty.txt\n/system/folder3/temp/temp1/text1.txt\n/system/folder2/special_text2.txt\n/system/folder2/text1.txt\n/system/folder2/special text3.txt\n/system/folder2/special_text1.txt\n/system/folder1/doc1.doc\n/system/folder1/script1.sh\n/system/folder1/new.sh\n/system/folder1/keep.txt\n/system/folder1/log1.log\n/system/folder1/recent.txt\n/system/folder1/text4.txt\n/system/folder1/data.csv\n/system/folder1/text2.txt\n/system/folder1/old2.txt\n/system/folder1/a.out\n/system/folder1/text3.txt\n/system/folder1/doc2.doc\n/system/temp/keep.txt\n/system/a.out\n/system/text3.txt\n",
+        "/system/MANIFEST\n/system/html1.html\n/system/text1.txt\n/system/.DS_Store\n/system/folder2.tar.gz\n/system/folder3/special text4.txt\n/system/folder3/backup_dbg/sql1.sql\n/system/folder3/backup_dbg/text1_dbg.txt\n/system/folder3/temp/empty.txt\n/system/folder3/temp/temp1/text1.txt\n/system/folder2/special_text2.txt\n/system/folder2/text1.txt\n/system/folder2/special text3.txt\n/system/folder2/special_text1.txt\n/system/folder1/doc1.doc\n/system/folder1/script1.sh\n/system/folder1/new.sh\n/system/folder1/keep.txt\n/system/folder1/log1.log\n/system/folder1/recent.txt\n/system/folder1/text4.txt\n/system/folder1/data.csv\n/system/folder1/text2.txt\n/system/folder1/old2.txt\n/system/folder1/a.out\n/system/folder1/text3.txt\n/system/folder1/doc2.doc\n/system/temp/keep.txt\n/system/a.out\n/system/text3.txt\n",
+        "/system/MANIFEST\n/system/html1.html\n/system/text1.txt\n/system/.DS_Store\n/system/folder2.tar.gz\n/system/folder3/special text4.txt\n/system/folder3/backup_dbg/sql1.sql\n/system/folder3/backup_dbg/text1_dbg.txt\n/system/folder3/temp/empty.txt\n/system/folder3/temp/temp1/text1.txt\n/system/folder2/special_text2.txt\n/system/folder2/text1.txt\n/system/folder2/special text3.txt\n/system/folder2/special_text1.txt\n/system/folder1/doc1.doc\n/system/folder1/script1.sh\n/system/folder1/new.sh\n/system/folder1/keep.txt\n/system/folder1/log1.log\n/system/folder1/recent.txt\n/system/folder1/text4.txt\n/system/folder1/data.csv\n/system/folder1/text2.txt\n/system/folder1/old2.txt\n/system/folder1/a.out\n/system/folder1/text3.txt\n/system/folder1/doc2.doc\n/system/temp/keep.txt\n/system/a.out\n/system/text3.txt\n",
+        "/system/MANIFEST\n/system/html1.html\n/system/text1.txt\n/system/.DS_Store\n/system/folder2.tar.gz\n/system/folder3/special text4.txt\n/system/folder3/backup_dbg/sql1.sql\n/system/folder3/backup_dbg/text1_dbg.txt\n/system/folder3/temp/empty.txt\n/system/folder3/temp/temp1/text1.txt\n/system/folder2/special_text2.txt\n/system/folder2/text1.txt\n/system/folder2/special text3.txt\n/system/folder2/special_text1.txt\n/system/folder1/doc1.doc\n/system/folder1/script1.sh\n/system/folder1/new.sh\n/system/folder1/keep.txt\n/system/folder1/log1.log\n/system/folder1/recent.txt\n/system/folder1/text4.txt\n/system/folder1/data.csv\n/system/folder1/text2.txt\n/system/folder1/old2.txt\n/system/folder1/a.out\n/system/folder1/text3.txt\n/system/folder1/doc2.doc\n/system/temp/keep.txt\n/system/a.out\n/system/text3.txt\n",
+        "/system/MANIFEST\n/system/html1.html\n/system/text1.txt\n/system/.DS_Store\n/system/folder2.tar.gz\n/system/folder3/special text4.txt\n/system/folder3/backup_dbg/sql1.sql\n/system/folder3/backup_dbg/text1_dbg.txt\n/system/folder3/temp/empty.txt\n/system/folder3/temp/temp1/text1.txt\n/system/folder2/special_text2.txt\n/system/folder2/text1.txt\n/system/folder2/special text3.txt\n/system/folder2/special_text1.txt\n/system/folder1/doc1.doc\n/system/folder1/script1.sh\n/system/folder1/new.sh\n/system/folder1/keep.txt\n/system/folder1/log1.log\n/system/folder1/recent.txt\n/system/folder1/text4.txt\n/system/folder1/data.csv\n/system/folder1/text2.txt\n/system/folder1/old2.txt\n/system/folder1/a.out\n/system/folder1/text3.txt\n/system/folder1/doc2.doc\n/system/temp/keep.txt\n/system/a.out\n/system/text3.txt\n",
+        "/system/MANIFEST\n/system/html1.html\n/system/text1.txt\n/system/.DS_Store\n/system/folder2.tar.gz\n/system/folder3/special text4.txt\n/system/folder3/backup_dbg/sql1.sql\n/system/folder3/backup_dbg/text1_dbg.txt\n/system/folder3/temp/empty.txt\n/system/folder3/temp/temp1/text1.txt\n/system/folder2/special_text2.txt\n/system/folder2/text1.txt\n/system/folder2/special text3.txt\n/system/folder2/special_text1.txt\n/system/folder1/doc1.doc\n/system/folder1/script1.sh\n/system/folder1/new.sh\n/system/folder1/keep.txt\n/system/folder1/log1.log\n/system/folder1/recent.txt\n/system/folder1/text4.txt\n/system/folder1/data.csv\n/system/folder1/text2.txt\n/system/folder1/old2.txt\n/system/folder1/a.out\n/system/folder1/text3.txt\n/system/folder1/doc2.doc\n/system/temp/keep.txt\n/system/a.out\n/system/text3.txt\n",
+        "/system/MANIFEST\n/system/html1.html\n/system/text1.txt\n/system/.DS_Store\n/system/folder2.tar.gz\n/system/folder3/special text4.txt\n/system/folder3/backup_dbg/sql1.sql\n/system/folder3/backup_dbg/text1_dbg.txt\n/system/folder3/temp/empty.txt\n/system/folder3/temp/temp1/text1.txt\n/system/folder2/special_text2.txt\n/system/folder2/text1.txt\n/system/folder2/special text3.txt\n/system/folder2/special_text1.txt\n/system/folder1/doc1.doc\n/system/folder1/script1.sh\n/system/folder1/new.sh\n/system/folder1/keep.txt\n/system/folder1/log1.log\n/system/folder1/recent.txt\n/system/folder1/text4.txt\n/system/folder1/data.csv\n/system/folder1/text2.txt\n/system/folder1/old2.txt\n/system/folder1/a.out\n/system/folder1/text3.txt\n/system/folder1/doc2.doc\n/system/temp/keep.txt\n/system/a.out\n/system/text3.txt\n"
+      ],
+      "rewards": [
+        0.75,
+        0.75,
+        0.75,
+        0.75,
+        0.75,
+        0.75,
+        0.75,
+        0.75,
+        0.75,
+        0.75
+      ],
+      "valid_action": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 0.75,
+      "max_reward_idx": 0,
+      "turns_taken": 10,
+      "turns_max": 10
+    }
+  },
+  "38": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_2.json",
+    "task_id": 38,
+    "query": "Display the number of sub-directories for all directories under /system directory tree, sort them according to the decreasing order of the number and show only the first 10 of them",
+    "turn_history": {
+      "actions": [
+        "ls -l /system | awk '{print $9}' | sort -nr | head -n 10",
+        "ls -l /system | awk '{print $9}' | sort -nr | head -n 10",
+        "ls -l /system | awk '{print $9}' | sort -nr | head -n 10",
+        "ls -l /system | awk '{print $9}' | sort -nr | head -n 10",
+        "ls -l /system | awk '{print $9}' | sort -nr | head -n 10",
+        "ls -l /system | awk '{print $9}' | sort -nr | head -n 10",
+        "ls -l /system | awk '{print $9}' | sort -nr | head -n 10",
+        "ls -l /system | awk '{print $9}' | sort -nr | head -n 10",
+        "ls -l /system | awk '{print $9}' | sort -nr | head -n 10",
+        "ls -l /system | awk '{print $9}' | sort -nr | head -n 10"
+      ],
+      "observations": [
+        "text3.txt\ntext1.txt\ntemp\nhtml1.html\nfolder3\nfolder2.tar.gz\nfolder2\nfolder1\na.out\nMANIFEST\n",
+        "text3.txt\ntext1.txt\ntemp\nhtml1.html\nfolder3\nfolder2.tar.gz\nfolder2\nfolder1\na.out\nMANIFEST\n",
+        "text3.txt\ntext1.txt\ntemp\nhtml1.html\nfolder3\nfolder2.tar.gz\nfolder2\nfolder1\na.out\nMANIFEST\n",
+        "text3.txt\ntext1.txt\ntemp\nhtml1.html\nfolder3\nfolder2.tar.gz\nfolder2\nfolder1\na.out\nMANIFEST\n",
+        "text3.txt\ntext1.txt\ntemp\nhtml1.html\nfolder3\nfolder2.tar.gz\nfolder2\nfolder1\na.out\nMANIFEST\n",
+        "text3.txt\ntext1.txt\ntemp\nhtml1.html\nfolder3\nfolder2.tar.gz\nfolder2\nfolder1\na.out\nMANIFEST\n",
+        "text3.txt\ntext1.txt\ntemp\nhtml1.html\nfolder3\nfolder2.tar.gz\nfolder2\nfolder1\na.out\nMANIFEST\n",
+        "text3.txt\ntext1.txt\ntemp\nhtml1.html\nfolder3\nfolder2.tar.gz\nfolder2\nfolder1\na.out\nMANIFEST\n",
+        "text3.txt\ntext1.txt\ntemp\nhtml1.html\nfolder3\nfolder2.tar.gz\nfolder2\nfolder1\na.out\nMANIFEST\n",
+        "text3.txt\ntext1.txt\ntemp\nhtml1.html\nfolder3\nfolder2.tar.gz\nfolder2\nfolder1\na.out\nMANIFEST\n"
+      ],
+      "rewards": [
+        0.7200000000000001,
+        0.7200000000000001,
+        0.7200000000000001,
+        0.7200000000000001,
+        0.7200000000000001,
+        0.7200000000000001,
+        0.7200000000000001,
+        0.7200000000000001,
+        0.7200000000000001,
+        0.7200000000000001
+      ],
+      "valid_action": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 0.7200000000000001,
+      "max_reward_idx": 0,
+      "turns_taken": 10,
+      "turns_max": 10
+    }
+  },
+  "39": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_2.json",
+    "task_id": 39,
+    "query": "archive all files in /system/folder1 directory modified in the last 60 days to \"/mytarfile.tgz\"",
+    "turn_history": {
+      "actions": [
+        "tar -zcvf /mytarfile.tgz --mtime=-60 /system/folder1",
+        "tar -zcvf /mytarfile.tgz --mtime=-60 /system/folder1",
+        "tar -zcvf /mytarfile.tgz --mtime=-60 /system/folder1",
+        "tar -zcvf /mytarfile.tgz --mtime=-60 /system/folder1",
+        "tar -zcvf /mytarfile.tgz --mtime=-60 /system/folder1",
+        "tar -zcvf /mytarfile.tgz --mtime=-60 /system/folder1",
+        "tar -zcvf /mytarfile.tgz --mtime=-60 /system/folder1",
+        "tar -zcvf /mytarfile.tgz --mtime=-60 /system/folder1",
+        "tar -zcvf /mytarfile.tgz --mtime=-60 /system/folder1",
+        "tar -zcvf /mytarfile.tgz --mtime=-60 /system/folder1"
+      ],
+      "observations": [
+        "tar: Substituting -9223372036854775807 for unknown date format '-60'\ntar: Removing leading `/' from member names\n/system/folder1/\n/system/folder1/doc1.doc\n/system/folder1/script1.sh\n/system/folder1/new.sh\n/system/folder1/keep.txt\n/system/folder1/log1.log\n/system/folder1/recent.txt\n/system/folder1/text4.txt\n/system/folder1/data.csv\n/system/folder1/text2.txt\n/system/folder1/old2.txt\n/system/folder1/a.out\n/system/folder1/text3.txt\n/system/folder1/doc2.doc\n",
+        "tar: Substituting -9223372036854775807 for unknown date format '-60'\ntar: Removing leading `/' from member names\n/system/folder1/\n/system/folder1/doc1.doc\n/system/folder1/script1.sh\n/system/folder1/new.sh\n/system/folder1/keep.txt\n/system/folder1/log1.log\n/system/folder1/recent.txt\n/system/folder1/text4.txt\n/system/folder1/data.csv\n/system/folder1/text2.txt\n/system/folder1/old2.txt\n/system/folder1/a.out\n/system/folder1/text3.txt\n/system/folder1/doc2.doc\n",
+        "tar: Substituting -9223372036854775807 for unknown date format '-60'\ntar: Removing leading `/' from member names\n/system/folder1/\n/system/folder1/doc1.doc\n/system/folder1/script1.sh\n/system/folder1/new.sh\n/system/folder1/keep.txt\n/system/folder1/log1.log\n/system/folder1/recent.txt\n/system/folder1/text4.txt\n/system/folder1/data.csv\n/system/folder1/text2.txt\n/system/folder1/old2.txt\n/system/folder1/a.out\n/system/folder1/text3.txt\n/system/folder1/doc2.doc\n",
+        "tar: Substituting -9223372036854775807 for unknown date format '-60'\ntar: Removing leading `/' from member names\n/system/folder1/\n/system/folder1/doc1.doc\n/system/folder1/script1.sh\n/system/folder1/new.sh\n/system/folder1/keep.txt\n/system/folder1/log1.log\n/system/folder1/recent.txt\n/system/folder1/text4.txt\n/system/folder1/data.csv\n/system/folder1/text2.txt\n/system/folder1/old2.txt\n/system/folder1/a.out\n/system/folder1/text3.txt\n/system/folder1/doc2.doc\n",
+        "tar: Substituting -9223372036854775807 for unknown date format '-60'\ntar: Removing leading `/' from member names\n/system/folder1/\n/system/folder1/doc1.doc\n/system/folder1/script1.sh\n/system/folder1/new.sh\n/system/folder1/keep.txt\n/system/folder1/log1.log\n/system/folder1/recent.txt\n/system/folder1/text4.txt\n/system/folder1/data.csv\n/system/folder1/text2.txt\n/system/folder1/old2.txt\n/system/folder1/a.out\n/system/folder1/text3.txt\n/system/folder1/doc2.doc\n",
+        "tar: Substituting -9223372036854775807 for unknown date format '-60'\ntar: Removing leading `/' from member names\n/system/folder1/\n/system/folder1/doc1.doc\n/system/folder1/script1.sh\n/system/folder1/new.sh\n/system/folder1/keep.txt\n/system/folder1/log1.log\n/system/folder1/recent.txt\n/system/folder1/text4.txt\n/system/folder1/data.csv\n/system/folder1/text2.txt\n/system/folder1/old2.txt\n/system/folder1/a.out\n/system/folder1/text3.txt\n/system/folder1/doc2.doc\n",
+        "tar: Substituting -9223372036854775807 for unknown date format '-60'\ntar: Removing leading `/' from member names\n/system/folder1/\n/system/folder1/doc1.doc\n/system/folder1/script1.sh\n/system/folder1/new.sh\n/system/folder1/keep.txt\n/system/folder1/log1.log\n/system/folder1/recent.txt\n/system/folder1/text4.txt\n/system/folder1/data.csv\n/system/folder1/text2.txt\n/system/folder1/old2.txt\n/system/folder1/a.out\n/system/folder1/text3.txt\n/system/folder1/doc2.doc\n",
+        "tar: Substituting -9223372036854775807 for unknown date format '-60'\ntar: Removing leading `/' from member names\n/system/folder1/\n/system/folder1/doc1.doc\n/system/folder1/script1.sh\n/system/folder1/new.sh\n/system/folder1/keep.txt\n/system/folder1/log1.log\n/system/folder1/recent.txt\n/system/folder1/text4.txt\n/system/folder1/data.csv\n/system/folder1/text2.txt\n/system/folder1/old2.txt\n/system/folder1/a.out\n/system/folder1/text3.txt\n/system/folder1/doc2.doc\n",
+        "tar: Substituting -9223372036854775807 for unknown date format '-60'\ntar: Removing leading `/' from member names\n/system/folder1/\n/system/folder1/doc1.doc\n/system/folder1/script1.sh\n/system/folder1/new.sh\n/system/folder1/keep.txt\n/system/folder1/log1.log\n/system/folder1/recent.txt\n/system/folder1/text4.txt\n/system/folder1/data.csv\n/system/folder1/text2.txt\n/system/folder1/old2.txt\n/system/folder1/a.out\n/system/folder1/text3.txt\n/system/folder1/doc2.doc\n",
+        "tar: Substituting -9223372036854775807 for unknown date format '-60'\ntar: Removing leading `/' from member names\n/system/folder1/\n/system/folder1/doc1.doc\n/system/folder1/script1.sh\n/system/folder1/new.sh\n/system/folder1/keep.txt\n/system/folder1/log1.log\n/system/folder1/recent.txt\n/system/folder1/text4.txt\n/system/folder1/data.csv\n/system/folder1/text2.txt\n/system/folder1/old2.txt\n/system/folder1/a.out\n/system/folder1/text3.txt\n/system/folder1/doc2.doc\n"
+      ],
+      "rewards": [
+        0.66,
+        0.66,
+        0.66,
+        0.66,
+        0.66,
+        0.66,
+        0.66,
+        0.66,
+        0.66,
+        0.66
+      ],
+      "valid_action": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 0.66,
+      "max_reward_idx": 0,
+      "turns_taken": 10,
+      "turns_max": 10
+    }
+  },
+  "40": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_2.json",
+    "task_id": 40,
+    "query": "Create a symbolc link in the /system/folder1 to root folder",
+    "turn_history": {
+      "actions": [
+        "ln -s /root /system/folder1",
+        "ln -s /root /system/folder1",
+        "ln -s /root /system/folder1",
+        "ln -s /root /system/folder1",
+        "ln -s /root /system/folder1",
+        "ln -s /root /system/folder1",
+        "ln -s /root /system/folder1",
+        "ln -s /root /system/folder1",
+        "ln -s /root /system/folder1",
+        "ln -s /root /system/folder1"
+      ],
+      "observations": [
+        "",
+        "ln: failed to create symbolic link '/system/folder1/root': File exists\n",
+        "ln: failed to create symbolic link '/system/folder1/root': File exists\n",
+        "ln: failed to create symbolic link '/system/folder1/root': File exists\n",
+        "ln: failed to create symbolic link '/system/folder1/root': File exists\n",
+        "ln: failed to create symbolic link '/system/folder1/root': File exists\n",
+        "ln: failed to create symbolic link '/system/folder1/root': File exists\n",
+        "ln: failed to create symbolic link '/system/folder1/root': File exists\n",
+        "ln: failed to create symbolic link '/system/folder1/root': File exists\n",
+        "ln: failed to create symbolic link '/system/folder1/root': File exists\n"
+      ],
+      "rewards": [
+        0.72,
+        0.39,
+        0.39,
+        0.39,
+        0.39,
+        0.39,
+        0.39,
+        0.39,
+        0.39,
+        0.39
+      ],
+      "valid_action": [
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "summary": {
+      "max_reward": 0.72,
+      "max_reward_idx": 0,
+      "turns_taken": 10,
+      "turns_max": 10
+    }
+  },
+  "41": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_2.json",
+    "task_id": 41,
+    "query": "Remove files in the /system directory tree modified more than 31 days ago recursively",
+    "turn_history": {
+      "actions": [
+        "find /system -mtime +31 -exec rm -rf {} \\;"
+      ],
+      "observations": [
+        ""
+      ],
+      "rewards": [
+        1.0
+      ],
+      "valid_action": [
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 1.0,
+      "max_reward_idx": 0,
+      "turns_taken": 1,
+      "turns_max": 10
+    }
+  },
+  "42": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_2.json",
+    "task_id": 42,
+    "query": "Write the current date and time followed by \" 1\" to the console and append to \"/system/folder3/temp/empty.txt\"",
+    "turn_history": {
+      "actions": [
+        "date +%f-%t | tee -a /system/folder3/temp/empty.txt",
+        "date +%f-%t | tee -a /system/folder3/temp/empty.txt",
+        "date +%f-%t | tee -a /system/folder3/temp/empty.txt",
+        "date +%f-%t | tee -a /system/folder3/temp/empty.txt",
+        "date +%f-%t | tee -a /system/folder3/temp/empty.txt",
+        "date +%f-%t | tee -a /system/folder3/temp/empty.txt",
+        "date +%f-%t | tee -a /system/folder3/temp/empty.txt",
+        "date +%f-%t | tee -a /system/folder3/temp/empty.txt",
+        "date +%f-%t | tee -a /system/folder3/temp/empty.txt",
+        "date +%f-%t | tee -a /system/folder3/temp/empty.txt"
+      ],
+      "observations": [
+        "%f-\t\n",
+        "%f-\t\n",
+        "%f-\t\n",
+        "%f-\t\n",
+        "%f-\t\n",
+        "%f-\t\n",
+        "%f-\t\n",
+        "%f-\t\n",
+        "%f-\t\n",
+        "%f-\t\n"
+      ],
+      "rewards": [
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67
+      ],
+      "valid_action": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 0.67,
+      "max_reward_idx": 0,
+      "turns_taken": 10,
+      "turns_max": 10
+    }
+  },
+  "43": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_2.json",
+    "task_id": 43,
+    "query": "Concatenate all .txt files residing in the /system tree into a single file \"/system/folder3/temp/empty.txt\"",
+    "turn_history": {
+      "actions": [
+        "cat /system/*.txt > /system/folder3/temp/empty.txt",
+        "cat /system/*.txt > /system/folder3/temp/empty.txt",
+        "cat /system/*.txt > /system/folder3/temp/empty.txt",
+        "cat /system/*.txt > /system/folder3/temp/empty.txt",
+        "cat /system/*.txt > /system/folder3/temp/empty.txt",
+        "cat /system/*.txt > /system/folder3/temp/empty.txt",
+        "cat /system/*.txt > /system/folder3/temp/empty.txt",
+        "cat /system/*.txt > /system/folder3/temp/empty.txt",
+        "cat /system/*.txt > /system/folder3/temp/empty.txt",
+        "cat /system/*.txt > /system/folder3/temp/empty.txt"
+      ],
+      "observations": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "rewards": [
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67
+      ],
+      "valid_action": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 0.67,
+      "max_reward_idx": 0,
+      "turns_taken": 10,
+      "turns_max": 10
+    }
+  },
+  "44": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_2.json",
+    "task_id": 44,
+    "query": "compresses all the files in the /system folder with default depth to /backup",
+    "turn_history": {
+      "actions": [
+        "tar -zcvf /backup/system.tar.gz /system",
+        "tar -zcvf /backup/system.tar.gz /system",
+        "tar -zcvf /backup/system.tar.gz /system",
+        "tar -zcvf /backup/system.tar.gz /system",
+        "tar -zcvf /backup/system.tar.gz /system",
+        "tar -zcvf /backup/system.tar.gz /system",
+        "tar -zcvf /backup/system.tar.gz /system",
+        "tar -zcvf /backup/system.tar.gz /system",
+        "tar -zcvf /backup/system.tar.gz /system",
+        "tar -zcvf /backup/system.tar.gz /system"
+      ],
+      "observations": [
+        "tar: Removing leading `/' from member names\n/system/\ntar (child): /backup/system.tar.gz: Cannot open: No such file or directory\ntar (child): Error is not recoverable: exiting now\n/system/MANIFEST\n/system/html1.html\n/system/text1.txt\n/system/.DS_Store\n/system/folder2.tar.gz\n/system/folder3/\n/system/folder3/special text4.txt\n/system/folder3/backup_dbg/\n/system/folder3/backup_dbg/sql1.sql\n/system/folder3/backup_dbg/text1_dbg.txt\n/system/folder3/temp/\n/system/folder3/temp/empty.txt\ntar: /backup/system.tar.gz: Cannot write: Broken pipe\ntar: Child returned status 2\ntar: Error is not recoverable: exiting now\n",
+        "tar: Removing leading `/' from member names\n/system/\n/system/MANIFEST\n/system/html1.html\n/system/text1.txt\n/system/.DS_Store\n/system/folder2.tar.gz\n/system/folder3/\n/system/folder3/special text4.txt\n/system/folder3/backup_dbg/\n/system/folder3/backup_dbg/sql1.sql\n/system/folder3/backup_dbg/text1_dbg.txt\n/system/folder3/temp/\n/system/folder3/temp/empty.txt\n/system/folder3/temp/temp1/\n/system/folder3/temp/temp1/text1.txt\n/system/folder2/\n/system/folder2/special_text2.txt\n/system/folder2/text1.txt\n/system/folder2/special text3.txt\n/system/folder2/special_text1.txt\n/system/folder1/\n/system/folder1/doc1.doc\n/system/folder1/script1.sh\n/system/folder1/new.sh\n/system/folder1/keep.txt\n/system/folder1/log1.log\n/system/folder1/recent.txt\n/system/folder1/text4.txt\n/system/folder1/data.csv\n/system/folder1/text2.txt\n/system/folder1/old2.txt\n/system/folder1/a.out\n/system/folder1/text3.txt\n/system/folder1/doc2.doc\n/system/folder1/root\n/system/temp/\n/system/temp/keep.txt\n/system/a.out\n/system/text3.txt\ntar (child): /backup/system.tar.gz: Cannot open: No such file or directory\ntar (child): Error is not recoverable: exiting now\ntar: Child returned status 2\ntar: Error is not recoverable: exiting now\n",
+        "tar: Removing leading `/' from member names\ntar (child): /backup/system.tar.gz: Cannot open: No such file or directory\ntar (child): Error is not recoverable: exiting now\n/system/\n/system/MANIFEST\n/system/html1.html\n/system/text1.txt\n/system/.DS_Store\n/system/folder2.tar.gz\n/system/folder3/\n/system/folder3/special text4.txt\n/system/folder3/backup_dbg/\n/system/folder3/backup_dbg/sql1.sql\n/system/folder3/backup_dbg/text1_dbg.txt\n/system/folder3/temp/\n/system/folder3/temp/empty.txt\n/system/folder3/temp/temp1/\n/system/folder3/temp/temp1/text1.txt\n/system/folder2/\n/system/folder2/special_text2.txt\n/system/folder2/text1.txt\n/system/folder2/special text3.txt\n/system/folder2/special_text1.txt\n/system/folder1/\n/system/folder1/doc1.doc\n/system/folder1/script1.sh\n/system/folder1/new.sh\n/system/folder1/keep.txt\ntar: /backup/system.tar.gz: Cannot write: Broken pipe\ntar: Child returned status 2\ntar: Error is not recoverable: exiting now\n",
+        "tar: Removing leading `/' from member names\ntar (child): /backup/system.tar.gz: Cannot open: No such file or directory\ntar (child): Error is not recoverable: exiting now\ntar: /backup/system.tar.gz: Cannot write: Broken pipe\ntar: Child returned status 2\ntar: Error is not recoverable: exiting now\n/system/\n/system/MANIFEST\n/system/html1.html\n/system/text1.txt\n/system/.DS_Store\n/system/folder2.tar.gz\n/system/folder3/\n/system/folder3/special text4.txt\n/system/folder3/backup_dbg/\n/system/folder3/backup_dbg/sql1.sql\n/system/folder3/backup_dbg/text1_dbg.txt\n/system/folder3/temp/\n/system/folder3/temp/empty.txt\n/system/folder3/temp/temp1/\n/system/folder3/temp/temp1/text1.txt\n/system/folder2/\n/system/folder2/special_text2.txt\n/system/folder2/text1.txt\n/system/folder2/special text3.txt\n/system/folder2/special_text1.txt\n/system/folder1/\n/system/folder1/doc1.doc\n/system/folder1/script1.sh\n/system/folder1/new.sh\n/system/folder1/keep.txt\n/system/folder1/log1.log\n/system/folder1/recent.txt\n/system/folder1/text4.txt\n/system/folder1/data.csv\n/system/folder1/text2.txt\n/system/folder1/old2.txt\n/system/folder1/a.out\n/system/folder1/text3.txt\n/system/folder1/doc2.doc\n/system/folder1/root\n/system/temp/\n/system/temp/keep.txt\n",
+        "tar: Removing leading `/' from member names\n/system/\n/system/MANIFEST\n/system/html1.html\n/system/text1.txt\n/system/.DS_Store\n/system/folder2.tar.gz\n/system/folder3/\n/system/folder3/special text4.txt\ntar (child): /backup/system.tar.gz: Cannot open: No such file or directory\ntar (child): Error is not recoverable: exiting now\n/system/folder3/backup_dbg/\n/system/folder3/backup_dbg/sql1.sql\n/system/folder3/backup_dbg/text1_dbg.txt\n/system/folder3/temp/\n/system/folder3/temp/empty.txt\n/system/folder3/temp/temp1/\n/system/folder3/temp/temp1/text1.txt\n/system/folder2/\n/system/folder2/special_text2.txt\n/system/folder2/text1.txt\n/system/folder2/special text3.txt\n/system/folder2/special_text1.txt\n/system/folder1/\n/system/folder1/doc1.doc\ntar: /backup/system.tar.gz: Cannot write: Broken pipe\n/system/folder1/script1.sh\n/system/folder1/new.sh\n/system/folder1/keep.txt\ntar: Child returned status 2\ntar: Error is not recoverable: exiting now\n",
+        "tar: Removing leading `/' from member names\ntar (child): /backup/system.tar.gz: Cannot open: No such file or directory\ntar (child): Error is not recoverable: exiting now\n/system/\n/system/MANIFEST\n/system/html1.html\n/system/text1.txt\n/system/.DS_Store\n/system/folder2.tar.gz\n/system/folder3/\n/system/folder3/special text4.txt\n/system/folder3/backup_dbg/\n/system/folder3/backup_dbg/sql1.sql\n/system/folder3/backup_dbg/text1_dbg.txt\n/system/folder3/temp/\n/system/folder3/temp/empty.txt\ntar: /backup/system.tar.gz: Cannot write: Broken pipe\ntar: Child returned status 2\ntar: Error is not recoverable: exiting now\n",
+        "/system/\n/system/MANIFEST\n/system/html1.html\n/system/text1.txt\n/system/.DS_Store\n/system/folder2.tar.gz\n/system/folder3/\n/system/folder3/special text4.txt\n/system/folder3/backup_dbg/\n/system/folder3/backup_dbg/sql1.sql\n/system/folder3/backup_dbg/text1_dbg.txt\n/system/folder3/temp/\n/system/folder3/temp/empty.txt\ntar: Removing leading `/' from member names\ntar (child): /backup/system.tar.gz: Cannot open: No such file or directory\ntar (child): Error is not recoverable: exiting now\ntar: /backup/system.tar.gz: Cannot write: Broken pipe\ntar: Child returned status 2\ntar: Error is not recoverable: exiting now\n",
+        "/system/\n/system/MANIFEST\n/system/html1.html\n/system/text1.txt\n/system/.DS_Store\n/system/folder2.tar.gz\n/system/folder3/\n/system/folder3/special text4.txt\n/system/folder3/backup_dbg/\n/system/folder3/backup_dbg/sql1.sql\n/system/folder3/backup_dbg/text1_dbg.txt\n/system/folder3/temp/\n/system/folder3/temp/empty.txt\n/system/folder3/temp/temp1/\n/system/folder3/temp/temp1/text1.txt\n/system/folder2/\n/system/folder2/special_text2.txt\n/system/folder2/text1.txt\n/system/folder2/special text3.txt\n/system/folder2/special_text1.txt\n/system/folder1/\n/system/folder1/doc1.doc\n/system/folder1/script1.sh\n/system/folder1/new.sh\n/system/folder1/keep.txt\ntar: Removing leading `/' from member names\ntar (child): /backup/system.tar.gz: Cannot open: No such file or directory\ntar (child): Error is not recoverable: exiting now\ntar: /backup/system.tar.gz: Cannot write: Broken pipe\ntar: Child returned status 2\ntar: Error is not recoverable: exiting now\n",
+        "tar: Removing leading `/' from member names\ntar (child): /backup/system.tar.gz: Cannot open: No such file or directory\ntar (child): Error is not recoverable: exiting now\n/system/\n/system/MANIFEST\n/system/html1.html\n/system/text1.txt\n/system/.DS_Store\n/system/folder2.tar.gz\n/system/folder3/\n/system/folder3/special text4.txt\n/system/folder3/backup_dbg/\n/system/folder3/backup_dbg/sql1.sql\n/system/folder3/backup_dbg/text1_dbg.txt\n/system/folder3/temp/\n/system/folder3/temp/empty.txt\ntar: /backup/system.tar.gz: Cannot write: Broken pipe\ntar: Child returned status 2\ntar: Error is not recoverable: exiting now\n",
+        "tar: Removing leading `/' from member names\n/system/\n/system/MANIFEST\n/system/html1.html\n/system/text1.txt\n/system/.DS_Store\n/system/folder2.tar.gz\n/system/folder3/\n/system/folder3/special text4.txt\ntar (child): /backup/system.tar.gz: Cannot open: No such file or directory\ntar (child): Error is not recoverable: exiting now\n/system/folder3/backup_dbg/\n/system/folder3/backup_dbg/sql1.sql\n/system/folder3/backup_dbg/text1_dbg.txt\n/system/folder3/temp/\n/system/folder3/temp/empty.txt\n/system/folder3/temp/temp1/\n/system/folder3/temp/temp1/text1.txt\n/system/folder2/\n/system/folder2/special_text2.txt\n/system/folder2/text1.txt\n/system/folder2/special text3.txt\n/system/folder2/special_text1.txt\n/system/folder1/\n/system/folder1/doc1.doc\n/system/folder1/script1.sh\n/system/folder1/new.sh\n/system/folder1/keep.txt\n/system/folder1/log1.log\n/system/folder1/recent.txt\n/system/folder1/text4.txt\n/system/folder1/data.csv\n/system/folder1/text2.txt\n/system/folder1/old2.txt\n/system/folder1/a.out\n/system/folder1/text3.txt\n/system/folder1/doc2.doc\n/system/folder1/root\n/system/temp/\n/system/temp/keep.txt\ntar: /backup/system.tar.gz: Cannot write: Broken pipe\ntar: Child returned status 2\ntar: Error is not recoverable: exiting now\n"
+      ],
+      "rewards": [
+        0.39,
+        0.39,
+        0.39,
+        0.39,
+        0.39,
+        0.39,
+        0.39,
+        0.39,
+        0.39,
+        0.39
+      ],
+      "valid_action": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "summary": {
+      "max_reward": 0.39,
+      "max_reward_idx": 0,
+      "turns_taken": 10,
+      "turns_max": 10
+    }
+  },
+  "45": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_2.json",
+    "task_id": 45,
+    "query": "Copy all files in the /system directory except those containing 'text' to '/system/folder3/backup_dbg/backup'.",
+    "turn_history": {
+      "actions": [
+        "for i in `ls /system`; do if [[ ! $i =~ \"text\" ]]; then cp $i /system/folder3/backup_dbg/backup; fi; done",
+        "for i in `ls /system`; do if [[ ! $i =~ \"text\" ]]; then cp $i /system/folder3/backup_dbg/backup; fi; done",
+        "for i in `ls /system`; do if [[ ! $i =~ \"text\" ]]; then cp $i /system/folder3/backup_dbg/backup; fi; done",
+        "for i in `ls /system`; do if [[ ! $i =~ \"text\" ]]; then cp $i /system/folder3/backup_dbg/backup; fi; done",
+        "for i in `ls /system`; do if [[ ! $i =~ \"text\" ]]; then cp $i /system/folder3/backup_dbg/backup; fi; done",
+        "for i in `ls /system`; do if [[ ! $i =~ \"text\" ]]; then cp $i /system/folder3/backup_dbg/backup; fi; done",
+        "for i in `ls /system`; do if [[ ! $i =~ \"text\" ]]; then cp $i /system/folder3/backup_dbg/backup; fi; done",
+        "for i in `ls /system`; do if [[ ! $i =~ \"text\" ]]; then cp $i /system/folder3/backup_dbg/backup; fi; done",
+        "for i in `ls /system`; do if [[ ! $i =~ \"text\" ]]; then cp $i /system/folder3/backup_dbg/backup; fi; done",
+        "for i in `ls /system`; do if [[ ! $i =~ \"text\" ]]; then cp $i /system/folder3/backup_dbg/backup; fi; done"
+      ],
+      "observations": [
+        "cp: cannot stat 'MANIFEST': No such file or directory\ncp: cannot stat 'a.out': No such file or directory\ncp: cannot stat 'folder1': No such file or directory\ncp: cannot stat 'folder2': No such file or directory\ncp: cannot stat 'folder2.tar.gz': No such file or directory\ncp: cannot stat 'folder3': No such file or directory\ncp: cannot stat 'html1.html': No such file or directory\ncp: cannot stat 'temp': No such file or directory\n",
+        "cp: cannot stat 'MANIFEST': No such file or directory\ncp: cannot stat 'a.out': No such file or directory\ncp: cannot stat 'folder1': No such file or directory\ncp: cannot stat 'folder2': No such file or directory\ncp: cannot stat 'folder2.tar.gz': No such file or directory\ncp: cannot stat 'folder3': No such file or directory\ncp: cannot stat 'html1.html': No such file or directory\ncp: cannot stat 'temp': No such file or directory\n",
+        "cp: cannot stat 'MANIFEST': No such file or directory\ncp: cannot stat 'a.out': No such file or directory\ncp: cannot stat 'folder1': No such file or directory\ncp: cannot stat 'folder2': No such file or directory\ncp: cannot stat 'folder2.tar.gz': No such file or directory\ncp: cannot stat 'folder3': No such file or directory\ncp: cannot stat 'html1.html': No such file or directory\ncp: cannot stat 'temp': No such file or directory\n",
+        "cp: cannot stat 'MANIFEST': No such file or directory\ncp: cannot stat 'a.out': No such file or directory\ncp: cannot stat 'folder1': No such file or directory\ncp: cannot stat 'folder2': No such file or directory\ncp: cannot stat 'folder2.tar.gz': No such file or directory\ncp: cannot stat 'folder3': No such file or directory\ncp: cannot stat 'html1.html': No such file or directory\ncp: cannot stat 'temp': No such file or directory\n",
+        "cp: cannot stat 'MANIFEST': No such file or directory\ncp: cannot stat 'a.out': No such file or directory\ncp: cannot stat 'folder1': No such file or directory\ncp: cannot stat 'folder2': No such file or directory\ncp: cannot stat 'folder2.tar.gz': No such file or directory\ncp: cannot stat 'folder3': No such file or directory\ncp: cannot stat 'html1.html': No such file or directory\ncp: cannot stat 'temp': No such file or directory\n",
+        "cp: cannot stat 'MANIFEST': No such file or directory\ncp: cannot stat 'a.out': No such file or directory\ncp: cannot stat 'folder1': No such file or directory\ncp: cannot stat 'folder2': No such file or directory\ncp: cannot stat 'folder2.tar.gz': No such file or directory\ncp: cannot stat 'folder3': No such file or directory\ncp: cannot stat 'html1.html': No such file or directory\ncp: cannot stat 'temp': No such file or directory\n",
+        "cp: cannot stat 'MANIFEST': No such file or directory\ncp: cannot stat 'a.out': No such file or directory\ncp: cannot stat 'folder1': No such file or directory\ncp: cannot stat 'folder2': No such file or directory\ncp: cannot stat 'folder2.tar.gz': No such file or directory\ncp: cannot stat 'folder3': No such file or directory\ncp: cannot stat 'html1.html': No such file or directory\ncp: cannot stat 'temp': No such file or directory\n",
+        "cp: cannot stat 'MANIFEST': No such file or directory\ncp: cannot stat 'a.out': No such file or directory\ncp: cannot stat 'folder1': No such file or directory\ncp: cannot stat 'folder2': No such file or directory\ncp: cannot stat 'folder2.tar.gz': No such file or directory\ncp: cannot stat 'folder3': No such file or directory\ncp: cannot stat 'html1.html': No such file or directory\ncp: cannot stat 'temp': No such file or directory\n",
+        "cp: cannot stat 'MANIFEST': No such file or directory\ncp: cannot stat 'a.out': No such file or directory\ncp: cannot stat 'folder1': No such file or directory\ncp: cannot stat 'folder2': No such file or directory\ncp: cannot stat 'folder2.tar.gz': No such file or directory\ncp: cannot stat 'folder3': No such file or directory\ncp: cannot stat 'html1.html': No such file or directory\ncp: cannot stat 'temp': No such file or directory\n",
+        "cp: cannot stat 'MANIFEST': No such file or directory\ncp: cannot stat 'a.out': No such file or directory\ncp: cannot stat 'folder1': No such file or directory\ncp: cannot stat 'folder2': No such file or directory\ncp: cannot stat 'folder2.tar.gz': No such file or directory\ncp: cannot stat 'folder3': No such file or directory\ncp: cannot stat 'html1.html': No such file or directory\ncp: cannot stat 'temp': No such file or directory\n"
+      ],
+      "rewards": [
+        0.39,
+        0.39,
+        0.39,
+        0.39,
+        0.39,
+        0.39,
+        0.39,
+        0.39,
+        0.39,
+        0.39
+      ],
+      "valid_action": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 0.39,
+      "max_reward_idx": 0,
+      "turns_taken": 10,
+      "turns_max": 10
+    }
+  },
+  "46": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_2.json",
+    "task_id": 46,
+    "query": "Rename \"/system/folder3/temp/temp1\" to \"/system/folder3/temp/temp1_old\" and backup to \"/system/folder3/temp/temp1_old.old\" if \"/system/folder3/temp/temp1_old\" exists",
+    "turn_history": {
+      "actions": [
+        "mv /system/folder3/temp/temp1 /system/folder3/temp/temp1_old if [ -f /system/folder3/temp/temp1_old ]; then mv /system/folder3/temp/temp1_old /system/folder3/temp/temp1_old.old fi",
+        "mv /system/folder3/temp/temp1 /system/folder3/temp/temp1_old if [ -f /system/folder3/temp/temp1_old ]; then mv /system/folder3/temp/temp1_old /system/folder3/temp/temp1_old.old fi",
+        "mv /system/folder3/temp/temp1 /system/folder3/temp/temp1_old if [ -f /system/folder3/temp/temp1_old ]; then mv /system/folder3/temp/temp1_old /system/folder3/temp/temp1_old.old fi",
+        "mv /system/folder3/temp/temp1 /system/folder3/temp/temp1_old if [ -f /system/folder3/temp/temp1_old ]; then mv /system/folder3/temp/temp1_old /system/folder3/temp/temp1_old.old fi",
+        "mv /system/folder3/temp/temp1 /system/folder3/temp/temp1_old if [ -f /system/folder3/temp/temp1_old ]; then mv /system/folder3/temp/temp1_old /system/folder3/temp/temp1_old.old fi",
+        "blocked"
+      ],
+      "observations": [
+        "/bin/bash: -c: line 1: syntax error near unexpected token `then'\n/bin/bash: -c: line 1: `mv /system/folder3/temp/temp1 /system/folder3/temp/temp1_old if [ -f /system/folder3/temp/temp1_old ]; then mv /system/folder3/temp/temp1_old /system/folder3/temp/temp1_old.old fi'\n",
+        "/bin/bash: -c: line 1: syntax error near unexpected token `then'\n/bin/bash: -c: line 1: `mv /system/folder3/temp/temp1 /system/folder3/temp/temp1_old if [ -f /system/folder3/temp/temp1_old ]; then mv /system/folder3/temp/temp1_old /system/folder3/temp/temp1_old.old fi'\n",
+        "/bin/bash: -c: line 1: syntax error near unexpected token `then'\n/bin/bash: -c: line 1: `mv /system/folder3/temp/temp1 /system/folder3/temp/temp1_old if [ -f /system/folder3/temp/temp1_old ]; then mv /system/folder3/temp/temp1_old /system/folder3/temp/temp1_old.old fi'\n",
+        "/bin/bash: -c: line 1: syntax error near unexpected token `then'\n/bin/bash: -c: line 1: `mv /system/folder3/temp/temp1 /system/folder3/temp/temp1_old if [ -f /system/folder3/temp/temp1_old ]; then mv /system/folder3/temp/temp1_old /system/folder3/temp/temp1_old.old fi'\n",
+        "/bin/bash: -c: line 1: syntax error near unexpected token `then'\n/bin/bash: -c: line 1: `mv /system/folder3/temp/temp1 /system/folder3/temp/temp1_old if [ -f /system/folder3/temp/temp1_old ]; then mv /system/folder3/temp/temp1_old /system/folder3/temp/temp1_old.old fi'\n"
+      ],
+      "rewards": [
+        0.34,
+        0.34,
+        0.34,
+        0.34,
+        0.34,
+        0
+      ],
+      "valid_action": [
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "summary": {
+      "max_reward": 0.34,
+      "max_reward_idx": 0,
+      "turns_taken": 6,
+      "turns_max": 10
+    }
+  },
+  "47": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_2.json",
+    "task_id": 47,
+    "query": "Dump \"/system/text1.txt\" as ASCII characters",
+    "turn_history": {
+      "actions": [
+        "cat /system/text1.txt",
+        "cat /system/text1.txt | tr -d '\\n'",
+        "cat /system/text1.txt | tr -d '\\n' | xxd -p",
+        "cat /system/text1.txt | tr -d '\\n' | xxd -p",
+        "cat /system/text1.txt | tr -d '\\n' | xxd -p",
+        "cat /system/text1.txt | tr -d '\\n' | xxd -p",
+        "cat /system/text1.txt | tr -d '\\n' | xxd -p",
+        "cat /system/text1.txt | tr -d '\\n' | xxd -p",
+        "cat /system/text1.txt | tr -d '\\n' | xxd -p",
+        "cat /system/text1.txt | tr -d '\\n' | xxd -p"
+      ],
+      "observations": [
+        "Hello world!\n",
+        "Hello world!",
+        "/bin/bash: line 1: xxd: command not found\n",
+        "/bin/bash: line 1: xxd: command not found\n",
+        "/bin/bash: line 1: xxd: command not found\n",
+        "/bin/bash: line 1: xxd: command not found\n",
+        "/bin/bash: line 1: xxd: command not found\n",
+        "/bin/bash: line 1: xxd: command not found\n",
+        "/bin/bash: line 1: xxd: command not found\n",
+        "/bin/bash: line 1: xxd: command not found\n"
+      ],
+      "rewards": [
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67
+      ],
+      "valid_action": [
+        true,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "summary": {
+      "max_reward": 0.67,
+      "max_reward_idx": 0,
+      "turns_taken": 10,
+      "turns_max": 10
+    }
+  },
+  "48": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_2.json",
+    "task_id": 48,
+    "query": "create a compressed archive of /system/folder1 \"compress_folder1.tar.gz\" with verbose output",
+    "turn_history": {
+      "actions": [
+        "tar -zcvf compress_folder1.tar.gz /system/folder1 --verbose",
+        "tar -zcvf compress_folder1.tar.gz /system/folder1 --verbose",
+        "tar -zcvf compress_folder1.tar.gz /system/folder1 --verbose",
+        "tar -zcvf compress_folder1.tar.gz /system/folder1 --verbose",
+        "tar -zcvf compress_folder1.tar.gz /system/folder1 --verbose",
+        "tar -zcvf compress_folder1.tar.gz /system/folder1 --verbose",
+        "tar -zcvf compress_folder1.tar.gz /system/folder1 --verbose",
+        "tar -zcvf compress_folder1.tar.gz /system/folder1 --verbose",
+        "bash tar -zcvf compress_folder1.tar.gz /system/folder1 --verbose",
+        "tar -zcvf compress_folder1.tar.gz /system/folder1 --verbose"
+      ],
+      "observations": [
+        "tar: Removing leading `/' from member names\ndrwxr-xr-x root/root         0 2023-05-28 23:27 /system/folder1/\n-rw-r--r-- root/root        19 2023-05-28 23:24 /system/folder1/doc1.doc\n-rw-r--r-- root/root        37 2023-05-28 23:24 /system/folder1/script1.sh\n-rw-r--r-- root/root        31 2023-05-28 23:24 /system/folder1/new.sh\n-rw-r--r-- root/root        15 2023-05-28 23:24 /system/folder1/keep.txt\n-rw-r--r-- root/root        19 2023-05-28 23:24 /system/folder1/log1.log\n-rw-r--r-- root/root         0 2023-05-28 23:24 /system/folder1/recent.txt\n-rw-r--r-- root/root        32 2023-05-28 23:24 /system/folder1/text4.txt\n-rw-r--r-- root/root        21 2023-05-28 23:24 /system/folder1/data.csv\n-rw-r--r-- root/root        25 2023-05-28 23:24 /system/folder1/text2.txt\n-rw-r--r-- root/root         0 2023-05-28 23:24 /system/folder1/old2.txt\n-rw-r--r-- root/root        36 2023-05-28 23:24 /system/folder1/a.out\n-rw-r--r-- root/root        37 2023-05-28 23:24 /system/folder1/text3.txt\n-rw-r--r-- root/root        25 2023-05-28 23:24 /system/folder1/doc2.doc\nlrwxrwxrwx root/root         0 2023-05-28 23:27 /system/folder1/root -> /root\n",
+        "tar: Removing leading `/' from member names\ndrwxr-xr-x root/root         0 2023-05-28 23:27 /system/folder1/\n-rw-r--r-- root/root        19 2023-05-28 23:24 /system/folder1/doc1.doc\n-rw-r--r-- root/root        37 2023-05-28 23:24 /system/folder1/script1.sh\n-rw-r--r-- root/root        31 2023-05-28 23:24 /system/folder1/new.sh\n-rw-r--r-- root/root        15 2023-05-28 23:24 /system/folder1/keep.txt\n-rw-r--r-- root/root        19 2023-05-28 23:24 /system/folder1/log1.log\n-rw-r--r-- root/root         0 2023-05-28 23:24 /system/folder1/recent.txt\n-rw-r--r-- root/root        32 2023-05-28 23:24 /system/folder1/text4.txt\n-rw-r--r-- root/root        21 2023-05-28 23:24 /system/folder1/data.csv\n-rw-r--r-- root/root        25 2023-05-28 23:24 /system/folder1/text2.txt\n-rw-r--r-- root/root         0 2023-05-28 23:24 /system/folder1/old2.txt\n-rw-r--r-- root/root        36 2023-05-28 23:24 /system/folder1/a.out\n-rw-r--r-- root/root        37 2023-05-28 23:24 /system/folder1/text3.txt\n-rw-r--r-- root/root        25 2023-05-28 23:24 /system/folder1/doc2.doc\nlrwxrwxrwx root/root         0 2023-05-28 23:27 /system/folder1/root -> /root\n",
+        "tar: Removing leading `/' from member names\ndrwxr-xr-x root/root         0 2023-05-28 23:27 /system/folder1/\n-rw-r--r-- root/root        19 2023-05-28 23:24 /system/folder1/doc1.doc\n-rw-r--r-- root/root        37 2023-05-28 23:24 /system/folder1/script1.sh\n-rw-r--r-- root/root        31 2023-05-28 23:24 /system/folder1/new.sh\n-rw-r--r-- root/root        15 2023-05-28 23:24 /system/folder1/keep.txt\n-rw-r--r-- root/root        19 2023-05-28 23:24 /system/folder1/log1.log\n-rw-r--r-- root/root         0 2023-05-28 23:24 /system/folder1/recent.txt\n-rw-r--r-- root/root        32 2023-05-28 23:24 /system/folder1/text4.txt\n-rw-r--r-- root/root        21 2023-05-28 23:24 /system/folder1/data.csv\n-rw-r--r-- root/root        25 2023-05-28 23:24 /system/folder1/text2.txt\n-rw-r--r-- root/root         0 2023-05-28 23:24 /system/folder1/old2.txt\n-rw-r--r-- root/root        36 2023-05-28 23:24 /system/folder1/a.out\n-rw-r--r-- root/root        37 2023-05-28 23:24 /system/folder1/text3.txt\n-rw-r--r-- root/root        25 2023-05-28 23:24 /system/folder1/doc2.doc\nlrwxrwxrwx root/root         0 2023-05-28 23:27 /system/folder1/root -> /root\n",
+        "tar: Removing leading `/' from member names\ndrwxr-xr-x root/root         0 2023-05-28 23:27 /system/folder1/\n-rw-r--r-- root/root        19 2023-05-28 23:24 /system/folder1/doc1.doc\n-rw-r--r-- root/root        37 2023-05-28 23:24 /system/folder1/script1.sh\n-rw-r--r-- root/root        31 2023-05-28 23:24 /system/folder1/new.sh\n-rw-r--r-- root/root        15 2023-05-28 23:24 /system/folder1/keep.txt\n-rw-r--r-- root/root        19 2023-05-28 23:24 /system/folder1/log1.log\n-rw-r--r-- root/root         0 2023-05-28 23:24 /system/folder1/recent.txt\n-rw-r--r-- root/root        32 2023-05-28 23:24 /system/folder1/text4.txt\n-rw-r--r-- root/root        21 2023-05-28 23:24 /system/folder1/data.csv\n-rw-r--r-- root/root        25 2023-05-28 23:24 /system/folder1/text2.txt\n-rw-r--r-- root/root         0 2023-05-28 23:24 /system/folder1/old2.txt\n-rw-r--r-- root/root        36 2023-05-28 23:24 /system/folder1/a.out\n-rw-r--r-- root/root        37 2023-05-28 23:24 /system/folder1/text3.txt\n-rw-r--r-- root/root        25 2023-05-28 23:24 /system/folder1/doc2.doc\nlrwxrwxrwx root/root         0 2023-05-28 23:27 /system/folder1/root -> /root\n",
+        "tar: Removing leading `/' from member names\ndrwxr-xr-x root/root         0 2023-05-28 23:27 /system/folder1/\n-rw-r--r-- root/root        19 2023-05-28 23:24 /system/folder1/doc1.doc\n-rw-r--r-- root/root        37 2023-05-28 23:24 /system/folder1/script1.sh\n-rw-r--r-- root/root        31 2023-05-28 23:24 /system/folder1/new.sh\n-rw-r--r-- root/root        15 2023-05-28 23:24 /system/folder1/keep.txt\n-rw-r--r-- root/root        19 2023-05-28 23:24 /system/folder1/log1.log\n-rw-r--r-- root/root         0 2023-05-28 23:24 /system/folder1/recent.txt\n-rw-r--r-- root/root        32 2023-05-28 23:24 /system/folder1/text4.txt\n-rw-r--r-- root/root        21 2023-05-28 23:24 /system/folder1/data.csv\n-rw-r--r-- root/root        25 2023-05-28 23:24 /system/folder1/text2.txt\n-rw-r--r-- root/root         0 2023-05-28 23:24 /system/folder1/old2.txt\n-rw-r--r-- root/root        36 2023-05-28 23:24 /system/folder1/a.out\n-rw-r--r-- root/root        37 2023-05-28 23:24 /system/folder1/text3.txt\n-rw-r--r-- root/root        25 2023-05-28 23:24 /system/folder1/doc2.doc\nlrwxrwxrwx root/root         0 2023-05-28 23:27 /system/folder1/root -> /root\n",
+        "tar: Removing leading `/' from member names\ndrwxr-xr-x root/root         0 2023-05-28 23:27 /system/folder1/\n-rw-r--r-- root/root        19 2023-05-28 23:24 /system/folder1/doc1.doc\n-rw-r--r-- root/root        37 2023-05-28 23:24 /system/folder1/script1.sh\n-rw-r--r-- root/root        31 2023-05-28 23:24 /system/folder1/new.sh\n-rw-r--r-- root/root        15 2023-05-28 23:24 /system/folder1/keep.txt\n-rw-r--r-- root/root        19 2023-05-28 23:24 /system/folder1/log1.log\n-rw-r--r-- root/root         0 2023-05-28 23:24 /system/folder1/recent.txt\n-rw-r--r-- root/root        32 2023-05-28 23:24 /system/folder1/text4.txt\n-rw-r--r-- root/root        21 2023-05-28 23:24 /system/folder1/data.csv\n-rw-r--r-- root/root        25 2023-05-28 23:24 /system/folder1/text2.txt\n-rw-r--r-- root/root         0 2023-05-28 23:24 /system/folder1/old2.txt\n-rw-r--r-- root/root        36 2023-05-28 23:24 /system/folder1/a.out\n-rw-r--r-- root/root        37 2023-05-28 23:24 /system/folder1/text3.txt\n-rw-r--r-- root/root        25 2023-05-28 23:24 /system/folder1/doc2.doc\nlrwxrwxrwx root/root         0 2023-05-28 23:27 /system/folder1/root -> /root\n",
+        "tar: Removing leading `/' from member names\ndrwxr-xr-x root/root         0 2023-05-28 23:27 /system/folder1/\n-rw-r--r-- root/root        19 2023-05-28 23:24 /system/folder1/doc1.doc\n-rw-r--r-- root/root        37 2023-05-28 23:24 /system/folder1/script1.sh\n-rw-r--r-- root/root        31 2023-05-28 23:24 /system/folder1/new.sh\n-rw-r--r-- root/root        15 2023-05-28 23:24 /system/folder1/keep.txt\n-rw-r--r-- root/root        19 2023-05-28 23:24 /system/folder1/log1.log\n-rw-r--r-- root/root         0 2023-05-28 23:24 /system/folder1/recent.txt\n-rw-r--r-- root/root        32 2023-05-28 23:24 /system/folder1/text4.txt\n-rw-r--r-- root/root        21 2023-05-28 23:24 /system/folder1/data.csv\n-rw-r--r-- root/root        25 2023-05-28 23:24 /system/folder1/text2.txt\n-rw-r--r-- root/root         0 2023-05-28 23:24 /system/folder1/old2.txt\n-rw-r--r-- root/root        36 2023-05-28 23:24 /system/folder1/a.out\n-rw-r--r-- root/root        37 2023-05-28 23:24 /system/folder1/text3.txt\n-rw-r--r-- root/root        25 2023-05-28 23:24 /system/folder1/doc2.doc\nlrwxrwxrwx root/root         0 2023-05-28 23:27 /system/folder1/root -> /root\n",
+        "tar: Removing leading `/' from member names\ndrwxr-xr-x root/root         0 2023-05-28 23:27 /system/folder1/\n-rw-r--r-- root/root        19 2023-05-28 23:24 /system/folder1/doc1.doc\n-rw-r--r-- root/root        37 2023-05-28 23:24 /system/folder1/script1.sh\n-rw-r--r-- root/root        31 2023-05-28 23:24 /system/folder1/new.sh\n-rw-r--r-- root/root        15 2023-05-28 23:24 /system/folder1/keep.txt\n-rw-r--r-- root/root        19 2023-05-28 23:24 /system/folder1/log1.log\n-rw-r--r-- root/root         0 2023-05-28 23:24 /system/folder1/recent.txt\n-rw-r--r-- root/root        32 2023-05-28 23:24 /system/folder1/text4.txt\n-rw-r--r-- root/root        21 2023-05-28 23:24 /system/folder1/data.csv\n-rw-r--r-- root/root        25 2023-05-28 23:24 /system/folder1/text2.txt\n-rw-r--r-- root/root         0 2023-05-28 23:24 /system/folder1/old2.txt\n-rw-r--r-- root/root        36 2023-05-28 23:24 /system/folder1/a.out\n-rw-r--r-- root/root        37 2023-05-28 23:24 /system/folder1/text3.txt\n-rw-r--r-- root/root        25 2023-05-28 23:24 /system/folder1/doc2.doc\nlrwxrwxrwx root/root         0 2023-05-28 23:27 /system/folder1/root -> /root\n",
+        "/usr/bin/tar: /usr/bin/tar: cannot execute binary file\n",
+        "tar: Removing leading `/' from member names\ndrwxr-xr-x root/root         0 2023-05-28 23:27 /system/folder1/\n-rw-r--r-- root/root        19 2023-05-28 23:24 /system/folder1/doc1.doc\n-rw-r--r-- root/root        37 2023-05-28 23:24 /system/folder1/script1.sh\n-rw-r--r-- root/root        31 2023-05-28 23:24 /system/folder1/new.sh\n-rw-r--r-- root/root        15 2023-05-28 23:24 /system/folder1/keep.txt\n-rw-r--r-- root/root        19 2023-05-28 23:24 /system/folder1/log1.log\n-rw-r--r-- root/root         0 2023-05-28 23:24 /system/folder1/recent.txt\n-rw-r--r-- root/root        32 2023-05-28 23:24 /system/folder1/text4.txt\n-rw-r--r-- root/root        21 2023-05-28 23:24 /system/folder1/data.csv\n-rw-r--r-- root/root        25 2023-05-28 23:24 /system/folder1/text2.txt\n-rw-r--r-- root/root         0 2023-05-28 23:24 /system/folder1/old2.txt\n-rw-r--r-- root/root        36 2023-05-28 23:24 /system/folder1/a.out\n-rw-r--r-- root/root        37 2023-05-28 23:24 /system/folder1/text3.txt\n-rw-r--r-- root/root        25 2023-05-28 23:24 /system/folder1/doc2.doc\nlrwxrwxrwx root/root         0 2023-05-28 23:27 /system/folder1/root -> /root\n"
+      ],
+      "rewards": [
+        0.45,
+        0.45,
+        0.45,
+        0.45,
+        0.45,
+        0.45,
+        0.45,
+        0.45,
+        0.34,
+        0.45
+      ],
+      "valid_action": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 0.45,
+      "max_reward_idx": 0,
+      "turns_taken": 10,
+      "turns_max": 10
+    }
+  },
+  "49": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_2.json",
+    "task_id": 49,
+    "query": "download content from \"http://example.com/textfile.txt\" and output to 'textfile.txt' in /system",
+    "turn_history": {
+      "actions": [
+        "wget http://example.com/textfile.txt -o /system/textfile.txt",
+        "curl -o /system/textfile.txt http://example.com/textfile.txt",
+        "curl -o /system/textfile.txt http://example.com/textfile.txt",
+        "curl -o /system/textfile.txt http://example.com/textfile.txt",
+        "curl -o /system/textfile.txt http://example.com/textfile.txt",
+        "curl -o /system/textfile.txt http://example.com/textfile.txt",
+        "curl -o /system/textfile.txt http://example.com/textfile.txt",
+        "blocked"
+      ],
+      "observations": [
+        "/bin/bash: line 1: wget: command not found\n",
+        "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\r100  1256  100  1256    0     0  40740      0 --:--:-- --:--:-- --:--:-- 41866\n",
+        "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\r100  1256  100  1256    0     0  46577      0 --:--:-- --:--:-- --:--:-- 48307\n",
+        "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\r100  1256  100  1256    0     0  51336      0 --:--:-- --:--:-- --:--:-- 52333\n",
+        "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\r100  1256  100  1256    0     0  48344      0 --:--:-- --:--:-- --:--:-- 50240\n",
+        "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\r100  1256  100  1256    0     0  48257      0 --:--:-- --:--:-- --:--:-- 50240\n",
+        "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\r100  1256  100  1256    0     0  55340      0 --:--:-- --:--:-- --:--:-- 57090\n"
+      ],
+      "rewards": [
+        0.39,
+        0.96,
+        0.96,
+        0.96,
+        0.96,
+        0.96,
+        0.96,
+        0
+      ],
+      "valid_action": [
+        false,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 0.96,
+      "max_reward_idx": 1,
+      "turns_taken": 8,
+      "turns_max": 10
+    }
+  },
+  "50": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_2.json",
+    "task_id": 50,
+    "query": "Search in /system downwards all files whose size is 10 bytes ( Characters ) .",
+    "turn_history": {
+      "actions": [
+        "find /system -size 10c"
+      ],
+      "observations": [
+        ""
+      ],
+      "rewards": [
+        1.0
+      ],
+      "valid_action": [
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 1.0,
+      "max_reward_idx": 0,
+      "turns_taken": 1,
+      "turns_max": 10
+    }
+  },
+  "51": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_2.json",
+    "task_id": 51,
+    "query": "Calculate the md5sum of each \".txt\" file under \"/system\", sort the output, and calculate the md5sum of that",
+    "turn_history": {
+      "actions": [
+        "for i in `find /system -name \"*.txt\"`; do echo $i | md5sum; done | sort | md5sum",
+        "for i in `find /system -name \"*.txt\"`; do echo $i | md5sum; done | sort | md5sum",
+        "for i in `find /system -name \"*.txt\"`; do echo $i | md5sum; done | sort | md5sum",
+        "for i in `find /system -name \"*.txt\"`; do echo $i | md5sum; done | sort | md5sum",
+        "for i in `find /system -name \"*.txt\"`; do echo $i | md5sum; done | sort | md5sum",
+        "for i in `find /system -name \"*.txt\"`; do echo $i | md5sum; done | sort | md5sum",
+        "for i in `find /system -name \"*.txt\"`; do echo $i | md5sum; done | sort | md5sum",
+        "for i in `find /system -name \"*.txt\"`; do echo $i | md5sum; done | sort | md5sum",
+        "for i in `find /system -name \"*.txt\"`; do echo $i | md5sum; done | sort | md5sum",
+        "for i in `find /system -name \"*.txt\"`; do echo $i | md5sum; done | sort | md5sum"
+      ],
+      "observations": [
+        "3932a3fb5921332e9e516f45532e2d9f  -\n",
+        "3932a3fb5921332e9e516f45532e2d9f  -\n",
+        "3932a3fb5921332e9e516f45532e2d9f  -\n",
+        "3932a3fb5921332e9e516f45532e2d9f  -\n",
+        "3932a3fb5921332e9e516f45532e2d9f  -\n",
+        "3932a3fb5921332e9e516f45532e2d9f  -\n",
+        "3932a3fb5921332e9e516f45532e2d9f  -\n",
+        "3932a3fb5921332e9e516f45532e2d9f  -\n",
+        "3932a3fb5921332e9e516f45532e2d9f  -\n",
+        "3932a3fb5921332e9e516f45532e2d9f  -\n"
+      ],
+      "rewards": [
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67
+      ],
+      "valid_action": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 0.67,
+      "max_reward_idx": 0,
+      "turns_taken": 10,
+      "turns_max": 10
+    }
+  },
+  "52": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_2.json",
+    "task_id": 52,
+    "query": "Search for the system host name in \"/etc/hosts\" and print the IP address in the first awk field",
+    "turn_history": {
+      "actions": [
+        "awk '{print $1}' /etc/hosts | grep `hostname`",
+        "awk '{print $1}' /etc/hosts | grep `hostname`",
+        "awk '{print $1}' /etc/hosts | grep `hostname`",
+        "awk '{print $1}' /etc/hosts | grep `hostname`",
+        "awk '{print $1}' /etc/hosts | grep `hostname`",
+        "awk '{print $1}' /etc/hosts | grep `hostname`",
+        "awk '{print $1}' /etc/hosts | grep `hostname`",
+        "awk '{print $1}' /etc/hosts | grep `hostname`",
+        "awk '{print $1}' /etc/hosts | grep `hostname`",
+        "awk '{print $1}' /etc/hosts | grep `hostname`"
+      ],
+      "observations": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "rewards": [
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67
+      ],
+      "valid_action": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "summary": {
+      "max_reward": 0.67,
+      "max_reward_idx": 0,
+      "turns_taken": 10,
+      "turns_max": 10
+    }
+  }
+}

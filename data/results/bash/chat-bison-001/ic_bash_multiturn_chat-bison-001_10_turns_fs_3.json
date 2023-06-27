@@ -1,0 +1,2206 @@
+{
+  "0": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_3.json",
+    "task_id": 0,
+    "query": "find files in /workspace directory which are modified 30 days ago",
+    "turn_history": {
+      "actions": [
+        "find /workspace -type f -mtime +30",
+        "find /workspace -type f -mtime +30 -print0 | xargs -0 ls -1",
+        "find /workspace -type f -mtime +30 -exec ls -1 {} +",
+        "find /workspace -type f -mtime +30 -exec ls -1 {} \\;",
+        "find /workspace -type f -mtime +30 -exec ls -1 {} + | sort -u",
+        "find /workspace -type f -mtime +30 -exec ls -1 {} + | sort -u | tail -n 1",
+        "find /workspace -type f -mtime +30 -exec ls -1 {} + | sort -u | tail -n 1 | head -1",
+        "find /workspace -type f -mtime +30 -exec cat {} + | sort -u | tail -n 1 | head -1",
+        "find /workspace -type f -mtime +30 -exec ls -1 {} + | sort -u | tail -n 1",
+        "find /workspace -type f -mtime +30 -exec ls -1 {} + | sort -u | tail -n 1 | head -1"
+      ],
+      "observations": [
+        "/workspace/old2.txt\n",
+        "/workspace/old2.txt\n",
+        "/workspace/old2.txt\n",
+        "/workspace/old2.txt\n",
+        "/workspace/old2.txt\n",
+        "/workspace/old2.txt\n",
+        "/workspace/old2.txt\n",
+        "",
+        "/workspace/old2.txt\n",
+        "/workspace/old2.txt\n"
+      ],
+      "rewards": [
+        0.8500000000000001,
+        0.8500000000000001,
+        0.8500000000000001,
+        0.8500000000000001,
+        0.8500000000000001,
+        0.8500000000000001,
+        0.8500000000000001,
+        0.67,
+        0.8500000000000001,
+        0.8500000000000001
+      ],
+      "valid_action": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 0.8500000000000001,
+      "max_reward_idx": 0,
+      "turns_taken": 10,
+      "turns_max": 10
+    }
+  },
+  "1": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_3.json",
+    "task_id": 1,
+    "query": "find files in the /workspace directory with pattern` *.c  that larger than 1 Kilobytes",
+    "turn_history": {
+      "actions": [
+        "find /workspace -type f -size +1024c -name '*.c'"
+      ],
+      "observations": [
+        "/workspace/dir1/file.c\n"
+      ],
+      "rewards": [
+        1.0
+      ],
+      "valid_action": [
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 1.0,
+      "max_reward_idx": 0,
+      "turns_taken": 1,
+      "turns_max": 10
+    }
+  },
+  "2": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_3.json",
+    "task_id": 2,
+    "query": "find files in the /workspace directory and sub-directories, that changed within last hour",
+    "turn_history": {
+      "actions": [
+        "find /workspace -type f -mtime -1",
+        "find /workspace -type f -mtime -1 -print0 | xargs -0 ls -1",
+        "find /workspace -type f -mtime -1 -exec ls -1 {} +",
+        "find /workspace -type f -mtime -1 -exec sh -c ' for file do echo $file done' sh {} +",
+        "blocked"
+      ],
+      "observations": [
+        "/workspace/recent1.txt\n",
+        "/workspace/recent1.txt\n",
+        "/workspace/recent1.txt\n",
+        "sh: 1: Syntax error: end of file unexpected (expecting \"done\")\n"
+      ],
+      "rewards": [
+        0.8200000000000001,
+        0.8200000000000001,
+        0.8200000000000001,
+        0.67,
+        0
+      ],
+      "valid_action": [
+        true,
+        true,
+        true,
+        false
+      ]
+    },
+    "summary": {
+      "max_reward": 0.8200000000000001,
+      "max_reward_idx": 0,
+      "turns_taken": 5,
+      "turns_max": 10
+    }
+  },
+  "3": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_3.json",
+    "task_id": 3,
+    "query": "find files in the /workspace directory and sub-directories, that were accessed within last hour",
+    "turn_history": {
+      "actions": [
+        "find /workspace -type f -mtime -1",
+        "find /workspace -type f -mtime -1 -exec ls -l {} +",
+        "blocked"
+      ],
+      "observations": [
+        "/workspace/recent1.txt\n",
+        "-rw-r--r-- 1 root root 0 May 31  2023 /workspace/recent1.txt\n"
+      ],
+      "rewards": [
+        0.8200000000000001,
+        0.74,
+        0
+      ],
+      "valid_action": [
+        true,
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 0.8200000000000001,
+      "max_reward_idx": 0,
+      "turns_taken": 3,
+      "turns_max": 10
+    }
+  },
+  "4": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_3.json",
+    "task_id": 4,
+    "query": "list all the drectories present in the /workspace directory and do not search in the sub directories.",
+    "turn_history": {
+      "actions": [
+        "ls -1 /workspace",
+        "find /workspace -type d -not -name . -not -name ..",
+        "shopt -s dotglob find /workspace -type d",
+        "find /workspace -type d -not -name . -not -name .. -prune -o -print",
+        "find /workspace -type d -not -name . -not -name .. -print0 | xargs -0 ls -1",
+        "blocked"
+      ],
+      "observations": [
+        "archive.tar.gz\ndir1\ndir2\nfiles.txt\nnew.sh\nold2.txt\nrecent1.txt\nresults.txt\n",
+        "/workspace\n/workspace/dir2\n/workspace/dir2/mysql\n/workspace/dir1\n",
+        "/bin/bash: line 1: shopt: find: invalid shell option name\n/bin/bash: line 1: shopt: /workspace: invalid shell option name\n/bin/bash: line 1: shopt: -type: invalid shell option name\n/bin/bash: line 1: shopt: d: invalid shell option name\n",
+        "",
+        "/workspace:\narchive.tar.gz\ndir1\ndir2\nfiles.txt\nnew.sh\nold2.txt\nrecent1.txt\nresults.txt\n\n/workspace/dir1:\na.txt\nall.txt\nfile.c\nfile.txt\nhello.c\nhello.txt\nlong.txt\nnew1.sh\nreadonly.txt\nscript1.sh\nsum.c\nterminate.txt\n\n/workspace/dir2:\ncsvfile1.csv\nfoo.txt\nhello.txt\nmysql\n\n/workspace/dir2/mysql:\nsql1.sql\n"
+      ],
+      "rewards": [
+        0.6900000000000001,
+        0.98,
+        0.6900000000000001,
+        0.67,
+        0.75,
+        0
+      ],
+      "valid_action": [
+        true,
+        true,
+        false,
+        true,
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 0.98,
+      "max_reward_idx": 1,
+      "turns_taken": 6,
+      "turns_max": 10
+    }
+  },
+  "5": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_3.json",
+    "task_id": 5,
+    "query": "list all the files in the /workspace directory which are of size 0 bytes.",
+    "turn_history": {
+      "actions": [
+        "find /workspace -type f -size 0"
+      ],
+      "observations": [
+        "/workspace/recent1.txt\n/workspace/dir1/all.txt\n/workspace/dir1/readonly.txt\n/workspace/old2.txt\n"
+      ],
+      "rewards": [
+        1.0
+      ],
+      "valid_action": [
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 1.0,
+      "max_reward_idx": 0,
+      "turns_taken": 1,
+      "turns_max": 10
+    }
+  },
+  "6": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_3.json",
+    "task_id": 6,
+    "query": "list all zero-length files under the /workspace directory",
+    "turn_history": {
+      "actions": [
+        "find /workspace -type f -size 0"
+      ],
+      "observations": [
+        "/workspace/recent1.txt\n/workspace/dir1/all.txt\n/workspace/dir1/readonly.txt\n/workspace/old2.txt\n"
+      ],
+      "rewards": [
+        1.0
+      ],
+      "valid_action": [
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 1.0,
+      "max_reward_idx": 0,
+      "turns_taken": 1,
+      "turns_max": 10
+    }
+  },
+  "7": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_3.json",
+    "task_id": 7,
+    "query": "locate and remove large files (> 1 KB) in /workspace",
+    "turn_history": {
+      "actions": [
+        "find /workspace -type f -size +1024k -delete",
+        "find /workspace -type f -size +1024k -exec rm -f {} +",
+        "find /workspace -type f -size +1024k -exec rm -f {} + 2>/dev/null",
+        "find /workspace -type f -size +1024k -exec rm -f {} + 2>/dev/null | grep -v \"rm: remove write-protected regular empty file\"",
+        "find /workspace -type f -size +1024k -exec rm -f {} + 2>/dev/null | grep -v \"rm: remove write-protected regular empty file\" | sort -n | tail -n 1",
+        "find /workspace -type f -size +1024k -exec rm -f {} + 2>/dev/null | grep -v \"rm: remove write-protected regular empty file\" | sort -n | tail -n 1 | xargs ls -l",
+        "find /workspace -type f -size +1024k -exec rm -f {} + 2>/dev/null | grep -v \"rm: remove write-protected regular empty file\" | sort -n | tail -n 1 | xargs ls -l | awk '{print $5}'",
+        "find /workspace -type f -size +1024k -exec rm -f {} + 2>/dev/null | grep -v \"rm: remove write-protected regular empty file\" | sort -n | tail -n 1 | xargs ls -l | awk '{print $5}' | sort -n | tail -n 1",
+        "find /workspace -type f -size +1024k -exec rm -f {} + 2>/dev/null | grep -v \"rm: remove write-protected regular empty file\" | sort -n | tail -n 1 | xargs ls -l | awk '{print $5}' | sort -n | tail -n 1 | xargs rm -f",
+        "find /workspace -type f -size +1024k -exec rm -f {} + 2>/dev/null | grep -v \"rm: remove write-protected regular empty file\" | sort -n | tail -n 1 | xargs ls -l | awk '{print $5}' | sort -n | tail -n 1 | xargs rm -f"
+      ],
+      "observations": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "rewards": [
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67
+      ],
+      "valid_action": [
+        true,
+        true,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "summary": {
+      "max_reward": 0.67,
+      "max_reward_idx": 0,
+      "turns_taken": 10,
+      "turns_max": 10
+    }
+  },
+  "8": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_3.json",
+    "task_id": 8,
+    "query": "long list al the files in the /workspace directory which have only read permission to the group",
+    "turn_history": {
+      "actions": [
+        "find /workspace -type f -perm -g=r",
+        "blocked"
+      ],
+      "observations": [
+        "/workspace/.hidden.txt\n/workspace/archive.tar.gz\n/workspace/recent1.txt\n/workspace/new.sh\n/workspace/dir2/mysql/sql1.sql\n/workspace/dir2/csvfile1.csv\n/workspace/dir2/foo.txt\n/workspace/dir2/hello.txt\n/workspace/results.txt\n/workspace/dir1/hello.c\n/workspace/dir1/script1.sh\n/workspace/dir1/all.txt\n/workspace/dir1/sum.c\n/workspace/dir1/.hidden1.txt\n/workspace/dir1/a.txt\n/workspace/dir1/file.txt\n/workspace/dir1/hello.txt\n/workspace/dir1/file.c\n/workspace/dir1/terminate.txt\n/workspace/dir1/new1.sh\n/workspace/dir1/long.txt\n/workspace/old2.txt\n/workspace/files.txt\n"
+      ],
+      "rewards": [
+        0.78,
+        0
+      ],
+      "valid_action": [
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 0.78,
+      "max_reward_idx": 0,
+      "turns_taken": 2,
+      "turns_max": 10
+    }
+  },
+  "9": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_3.json",
+    "task_id": 9,
+    "query": "long list al the files in the /workspace directory which have all the permissions",
+    "turn_history": {
+      "actions": [
+        "ls -l /workspace/*",
+        "blocked"
+      ],
+      "observations": [
+        "-rw-r--r-- 1 root root  153 May 26 09:43 /workspace/archive.tar.gz\n-rw-r--r-- 1 root root   24 May 26 09:43 /workspace/files.txt\n-rwxr-xr-x 1 root root   31 May 26 09:43 /workspace/new.sh\n-rw-r--r-- 1 root root    0 Jan 31 23:59 /workspace/old2.txt\n-rw-r--r-- 1 root root    0 May 31  2023 /workspace/recent1.txt\n-rw-r--r-- 1 root root   16 May 26 09:43 /workspace/results.txt\n\n/workspace/dir1:\ntotal 40\n-rw-r--r-- 1 root root   25 May 26 09:43 a.txt\n-rwxrwxrwx 1 root root    0 May 26 09:43 all.txt\n-rw-r--r-- 1 root root 2048 May 26 09:43 file.c\n-rw-r--r-- 1 root root 4096 May 26 09:43 file.txt\n-rw-r--r-- 1 root root   72 May 26 09:43 hello.c\n-rw-r--r-- 1 root root    7 May 26 09:43 hello.txt\n-rw-r--r-- 1 root root   78 May 26 09:43 long.txt\n-rwxr-xr-x 1 root root   31 May 26 09:43 new1.sh\n-r-------- 1 root root    0 May 26 09:43 readonly.txt\n-rwxr-xr-x 1 root root   37 May 26 09:43 script1.sh\n-rw-r--r-- 1 root root  185 May 26 09:43 sum.c\n-rw-r--r-- 1 root root  104 May 26 09:43 terminate.txt\n\n/workspace/dir2:\ntotal 16\n-rw-r--r-- 1 root root   89 May 26 09:43 csvfile1.csv\n-rw-r--r-- 1 root root   25 May 26 09:43 foo.txt\n-rw-r--r-- 1 root root    7 May 26 09:43 hello.txt\ndrwxr-xr-x 2 root root 4096 May 26 09:43 mysql\n"
+      ],
+      "rewards": [
+        0.93,
+        0
+      ],
+      "valid_action": [
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 0.93,
+      "max_reward_idx": 0,
+      "turns_taken": 2,
+      "turns_max": 10
+    }
+  },
+  "10": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_3.json",
+    "task_id": 10,
+    "query": "long list the details of all the shell scripts in /workspace directory",
+    "turn_history": {
+      "actions": [
+        "find /workspace -type f -name '*.sh' -exec ls -l {} +",
+        "find /workspace -type f -name '*.sh' -exec ls -l {} + | less",
+        "for file in /workspace/*.sh; do ls -l \"$file\" done",
+        "blocked"
+      ],
+      "observations": [
+        "-rwxr-xr-x 1 root root 31 May 26 09:43 /workspace/dir1/new1.sh\n-rwxr-xr-x 1 root root 37 May 26 09:43 /workspace/dir1/script1.sh\n-rwxr-xr-x 1 root root 31 May 26 09:43 /workspace/new.sh\n",
+        "-rwxr-xr-x 1 root root 31 May 26 09:43 /workspace/dir1/new1.sh\n-rwxr-xr-x 1 root root 37 May 26 09:43 /workspace/dir1/script1.sh\n-rwxr-xr-x 1 root root 31 May 26 09:43 /workspace/new.sh\n",
+        "/bin/bash: -c: line 2: syntax error: unexpected end of file\n"
+      ],
+      "rewards": [
+        0.67,
+        0.67,
+        0.67,
+        0
+      ],
+      "valid_action": [
+        true,
+        true,
+        false
+      ]
+    },
+    "summary": {
+      "max_reward": 0.67,
+      "max_reward_idx": 0,
+      "turns_taken": 4,
+      "turns_max": 10
+    }
+  },
+  "11": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_3.json",
+    "task_id": 11,
+    "query": "move all files in the /workspace folder to / and do not move the files in the sub folder",
+    "turn_history": {
+      "actions": [
+        "mv /workspace/* / && rmdir /workspace",
+        "find /workspace -not -path '/workspace/subfolder' -exec mv -t / {} +",
+        "blocked"
+      ],
+      "observations": [
+        "rmdir: failed to remove '/workspace': Directory not empty\n",
+        "mv: '/workspace' and '/workspace' are the same file\n"
+      ],
+      "rewards": [
+        0.34,
+        0.34,
+        0
+      ],
+      "valid_action": [
+        false,
+        false
+      ]
+    },
+    "summary": {
+      "max_reward": 0.34,
+      "max_reward_idx": 0,
+      "turns_taken": 3,
+      "turns_max": 10
+    }
+  },
+  "12": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_3.json",
+    "task_id": 12,
+    "query": "move files in /workspace accessed more than one day ago to directory /",
+    "turn_history": {
+      "actions": [
+        "find /workspace -type f -mtime +1 -exec mv {} / \\;",
+        "find /workspace -type f -mtime +1 -exec mv {} / && echo \"all files moved.\"",
+        "blocked"
+      ],
+      "observations": [
+        "",
+        "find: missing argument to `-exec'\n"
+      ],
+      "rewards": [
+        0.67,
+        0.67,
+        0
+      ],
+      "valid_action": [
+        true,
+        false
+      ]
+    },
+    "summary": {
+      "max_reward": 0.67,
+      "max_reward_idx": 0,
+      "turns_taken": 3,
+      "turns_max": 10
+    }
+  },
+  "13": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_3.json",
+    "task_id": 13,
+    "query": "print all filenames of files under /workspace/dir1 dir containing 'hello', case-insensitive",
+    "turn_history": {
+      "actions": [
+        "find /workspace/dir1 -name '*hello*' -iname '*hello*'"
+      ],
+      "observations": [
+        "/workspace/dir1/hello.c\n/workspace/dir1/hello.txt\n"
+      ],
+      "rewards": [
+        1.0
+      ],
+      "valid_action": [
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 1.0,
+      "max_reward_idx": 0,
+      "turns_taken": 1,
+      "turns_max": 10
+    }
+  },
+  "14": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_3.json",
+    "task_id": 14,
+    "query": "print disk usage of files or folders in /workspace",
+    "turn_history": {
+      "actions": [
+        "df -h /workspace",
+        "du -sh /workspace",
+        "du -sh /workspace/*",
+        "du -sh /workspace | sort -nr",
+        "du -sh /workspace | sort -nr | tail -n 1",
+        "du -sh /workspace | sort -nr | tail -n 1 | awk '{print $1}'",
+        "du -sh /workspace | sort -nr | tail -n 1 | awk '{print $1}' | sed 's/\\s//g'",
+        "du -sh /workspace | sort -nr | tail -n 1 | awk '{print $1}' | sed 's/\\s//g' | head -1",
+        "du -sh /workspace | sort -nr | tail -n 1 | awk '{print $1}' | sed 's/\\s//g' | head -1 | bc",
+        "blocked"
+      ],
+      "observations": [
+        "Filesystem      Size  Used Avail Use% Mounted on\noverlay          59G   37G   19G  67% /\n",
+        "100K\t/workspace\n",
+        "4.0K\t/workspace/archive.tar.gz\n48K\t/workspace/dir1\n24K\t/workspace/dir2\n4.0K\t/workspace/files.txt\n4.0K\t/workspace/new.sh\n0\t/workspace/old2.txt\n0\t/workspace/recent1.txt\n4.0K\t/workspace/results.txt\n",
+        "100K\t/workspace\n",
+        "100K\t/workspace\n",
+        "100K\n",
+        "100K\n",
+        "100K\n",
+        "/bin/bash: line 1: bc: command not found\n"
+      ],
+      "rewards": [
+        0.67,
+        0.78,
+        0.79,
+        0.78,
+        0.78,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0
+      ],
+      "valid_action": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false
+      ]
+    },
+    "summary": {
+      "max_reward": 0.79,
+      "max_reward_idx": 2,
+      "turns_taken": 10,
+      "turns_max": 10
+    }
+  },
+  "15": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_3.json",
+    "task_id": 15,
+    "query": "print the last word in /workspace/dir1/long.txt",
+    "turn_history": {
+      "actions": [
+        "tail -n 1 /workspace/dir1/long.txt | cut -d' ' -f -1",
+        "blocked"
+      ],
+      "observations": [
+        "The\n"
+      ],
+      "rewards": [
+        0.67,
+        0
+      ],
+      "valid_action": [
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 0.67,
+      "max_reward_idx": 0,
+      "turns_taken": 2,
+      "turns_max": 10
+    }
+  },
+  "16": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_3.json",
+    "task_id": 16,
+    "query": "print top 3 largest files and /workspace",
+    "turn_history": {
+      "actions": [
+        "find /workspace -type f -size +100m -ls | sort -n | tail -3",
+        "blocked"
+      ],
+      "observations": [
+        "find: invalid -size type `m'\n"
+      ],
+      "rewards": [
+        0.67,
+        0
+      ],
+      "valid_action": [
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 0.67,
+      "max_reward_idx": 0,
+      "turns_taken": 2,
+      "turns_max": 10
+    }
+  },
+  "17": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_3.json",
+    "task_id": 17,
+    "query": "prints first line of \"/workspace/dir1/long.txt\"",
+    "turn_history": {
+      "actions": [
+        "head -n 1 /workspace/dir1/long.txt"
+      ],
+      "observations": [
+        "The first line\n"
+      ],
+      "rewards": [
+        1.0
+      ],
+      "valid_action": [
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 1.0,
+      "max_reward_idx": 0,
+      "turns_taken": 1,
+      "turns_max": 10
+    }
+  },
+  "18": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_3.json",
+    "task_id": 18,
+    "query": "prints the last non-empty line of \"/workspace/dir1/a.txt\"",
+    "turn_history": {
+      "actions": [
+        "tail -n 1 /workspace/dir1/a.txt",
+        "blocked"
+      ],
+      "observations": [
+        "\n"
+      ],
+      "rewards": [
+        0.67,
+        0
+      ],
+      "valid_action": [
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 0.67,
+      "max_reward_idx": 0,
+      "turns_taken": 2,
+      "turns_max": 10
+    }
+  },
+  "19": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_3.json",
+    "task_id": 19,
+    "query": "prune all the files in the /workspace directory",
+    "turn_history": {
+      "actions": [
+        "rm -rf /workspace/*",
+        "rm -rf /workspace/*",
+        "rm -rf /workspace/*",
+        "rm -rf /workspace/*",
+        "rm -rf /workspace/*",
+        "rm -rf /workspace/*",
+        "rm -rf /workspace/*",
+        "rm -rf /workspace/*",
+        "rm -rf /workspace/*",
+        "rm -rf /workspace/*"
+      ],
+      "observations": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "rewards": [
+        0.34,
+        0.34,
+        0.34,
+        0.34,
+        0.34,
+        0.34,
+        0.34,
+        0.34,
+        0.34,
+        0.34
+      ],
+      "valid_action": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 0.34,
+      "max_reward_idx": 0,
+      "turns_taken": 10,
+      "turns_max": 10
+    }
+  },
+  "20": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_3.json",
+    "task_id": 20,
+    "query": "search for all the files in the  /workspace directory which have size greater than 1KB (approx) and less than 32KB(approx).",
+    "turn_history": {
+      "actions": [
+        "find /workspace -type f -size +1024k -size -32k",
+        "find /workspace -type f -size +1024k -size -32k -exec ls -l {} +",
+        "find /workspace -type f -size +1024k -size -32k -exec ls -l {} \\;",
+        "find /workspace -type f -size +1024k -size -32k -exec ls -l {} + | grep -v ^- | sort -n",
+        "find /workspace -type f -size +1024k -size -32k -exec ls -l {} + | grep -v ^- | sort -n | head -n 10",
+        "find /workspace -type f -size +1024k -size -32k -exec ls -l {} + | grep -v ^- | sort -n | head -n 10 | tail -n 1",
+        "find /workspace -type f -size +1024k -size -32k -exec ls -l {} + | grep -v ^- | sort -n | head -n 10 | tail -n 1 | cut -d' ' -f 5",
+        "find /workspace -type f -size +1024k -size -32k -exec ls -l {} + | grep -v ^- | sort -n | head -n 10 | tail -n 1 | cut -d' ' -f 5 | sed 's/\\s\\+$//'",
+        "find /workspace -type f -size +1024k -size -32k -exec ls -l {} + | grep -v ^- | sort -n | head -n 10 | tail -n 1 | cut -d' ' -f 5 | sed 's/\\s\\+$//' | tr '\\n' ' '",
+        "find /workspace -type f -size +1024k -size -32k -exec ls -l {} + | grep -v ^- | sort -n | head -n 10 | tail -n 1 | cut -d' ' -f 5 | sed 's/\\s\\+$//' | tr '\\n' ' ' | sort -n | tail -n 1"
+      ],
+      "observations": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "rewards": [
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67
+      ],
+      "valid_action": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 0.67,
+      "max_reward_idx": 0,
+      "turns_taken": 10,
+      "turns_max": 10
+    }
+  },
+  "21": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_3.json",
+    "task_id": 21,
+    "query": "search for all the files in the  /workspace folder and sort them in the order of their depth and display the file names",
+    "turn_history": {
+      "actions": [
+        "find /workspace -type f -printf '%p\\n' | sort -nr",
+        "blocked"
+      ],
+      "observations": [
+        "/workspace/results.txt\n/workspace/recent1.txt\n/workspace/old2.txt\n/workspace/new.sh\n/workspace/files.txt\n/workspace/dir2/mysql/sql1.sql\n/workspace/dir2/hello.txt\n/workspace/dir2/foo.txt\n/workspace/dir2/csvfile1.csv\n/workspace/dir1/terminate.txt\n/workspace/dir1/sum.c\n/workspace/dir1/script1.sh\n/workspace/dir1/readonly.txt\n/workspace/dir1/new1.sh\n/workspace/dir1/long.txt\n/workspace/dir1/hello.txt\n/workspace/dir1/hello.c\n/workspace/dir1/file.txt\n/workspace/dir1/file.c\n/workspace/dir1/all.txt\n/workspace/dir1/a.txt\n/workspace/dir1/.hidden1.txt\n/workspace/archive.tar.gz\n/workspace/.hidden.txt\n"
+      ],
+      "rewards": [
+        0.74,
+        0
+      ],
+      "valid_action": [
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 0.74,
+      "max_reward_idx": 0,
+      "turns_taken": 2,
+      "turns_max": 10
+    }
+  },
+  "22": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_3.json",
+    "task_id": 22,
+    "query": "search for all the files in the /workspace folder which are bigger than 1KB and display them biggest file",
+    "turn_history": {
+      "actions": [
+        "find /workspace -type f -size +1024c -printf '%s\\n' | sort -n | tail -1",
+        "find /workspace -type f -size +1024c -printf '%s\\n' | sort -n | tail -1 | head -1",
+        "find /workspace -type f -size +1024c -printf '%s\\n' | sort -n | tail -1",
+        "find /workspace -type f -size +1024c -printf '%s\\n' | sort -n | tail -1",
+        "find /workspace -type f -size +1024c -printf '%s\\n' | sort -n | tail -1",
+        "find /workspace -type f -size +1024c -printf '%s\\n' | sort -n | tail -1",
+        "find /workspace -type f -size +1024c -printf '%s\\n' | sort -n | tail -1",
+        "find /workspace -type f -size +1024c -printf '%s\\n' | sort -n | tail -1",
+        "find /workspace -type f -size +1024c -printf '%s\\n' | sort -n | tail -1",
+        "find /workspace -type f -size +1024c -printf '%s\\n' | sort -n | tail -1 | head -1"
+      ],
+      "observations": [
+        "4096\n",
+        "4096\n",
+        "4096\n",
+        "4096\n",
+        "4096\n",
+        "4096\n",
+        "4096\n",
+        "4096\n",
+        "4096\n",
+        "4096\n"
+      ],
+      "rewards": [
+        0.74,
+        0.74,
+        0.74,
+        0.74,
+        0.74,
+        0.74,
+        0.74,
+        0.74,
+        0.74,
+        0.74
+      ],
+      "valid_action": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 0.74,
+      "max_reward_idx": 0,
+      "turns_taken": 10,
+      "turns_max": 10
+    }
+  },
+  "23": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_3.json",
+    "task_id": 23,
+    "query": "search for text files in the  /workspace folder which do not have write access to others",
+    "turn_history": {
+      "actions": [
+        "find /workspace -type f -perm -o= -ls",
+        "blocked"
+      ],
+      "observations": [
+        "  1710948      4 -rw-r--r--   1 root     root           28 May 28 20:24 /workspace/.hidden.txt\n  1710910      4 -rw-r--r--   1 root     root          153 May 28 20:28 /workspace/archive.tar.gz\n  1711228      0 -rw-r--r--   1 root     root            0 May 28 20:28 /workspace/recent1.txt\n  1710947      4 -rwxr-xr-x   1 root     root           31 May 28 20:28 /workspace/new.sh\n  1710945      4 -rw-r--r--   1 root     root          127 May 28 20:28 /workspace/dir2/mysql/sql1.sql\n  1710938      4 -rw-r--r--   1 root     root           89 May 28 20:28 /workspace/dir2/csvfile1.csv\n  1710940      4 -rw-r--r--   1 root     root           25 May 28 20:28 /workspace/dir2/foo.txt\n  1710942      4 -rw-r--r--   1 root     root            7 May 28 20:28 /workspace/dir2/hello.txt\n  1711229      4 -rw-r--r--   1 root     root           16 May 28 20:28 /workspace/results.txt\n  1710921      4 -rw-r--r--   1 root     root           72 May 28 20:28 /workspace/dir1/hello.c\n  1710929      4 -rwxr-xr-x   1 root     root           37 May 28 20:28 /workspace/dir1/script1.sh\n  1710916      0 -rwxr-xr-x   1 root     root            0 May 28 20:28 /workspace/dir1/all.txt\n  1710931      4 -rw-r--r--   1 root     root          185 May 28 20:28 /workspace/dir1/sum.c\n  1710912      4 -rw-r--r--   1 root     root           22 May 28 20:28 /workspace/dir1/.hidden1.txt\n  1710914      4 -rw-r--r--   1 root     root           25 May 28 20:28 /workspace/dir1/a.txt\n  1710919      4 -rw-r--r--   1 root     root         4096 May 28 20:28 /workspace/dir1/file.txt\n  1710923      4 -rw-r--r--   1 root     root            7 May 28 20:28 /workspace/dir1/hello.txt\n  1710917      4 -rw-r--r--   1 root     root         2048 May 28 20:28 /workspace/dir1/file.c\n  1710933      4 -rw-r--r--   1 root     root          104 May 28 20:28 /workspace/dir1/terminate.txt\n  1710928      0 -rw-r--r--   1 root     root            0 May 28 20:28 /workspace/dir1/readonly.txt\n  1710926      4 -rwxr-xr-x   1 root     root           31 May 28 20:28 /workspace/dir1/new1.sh\n  1710925      4 -rw-r--r--   1 root     root           78 May 28 20:28 /workspace/dir1/long.txt\n  1711227      0 -rw-r--r--   1 root     root            0 May 28 20:28 /workspace/old2.txt\n  1710946      4 -rw-r--r--   1 root     root           24 May 28 20:28 /workspace/files.txt\n"
+      ],
+      "rewards": [
+        0.76,
+        0
+      ],
+      "valid_action": [
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 0.76,
+      "max_reward_idx": 0,
+      "turns_taken": 2,
+      "turns_max": 10
+    }
+  },
+  "24": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_3.json",
+    "task_id": 24,
+    "query": "search for the directory \"mysql\" in the entire file system",
+    "turn_history": {
+      "actions": [
+        "find / -name mysql"
+      ],
+      "observations": [
+        "/workspace/dir2/mysql\n"
+      ],
+      "rewards": [
+        1.0
+      ],
+      "valid_action": [
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 1.0,
+      "max_reward_idx": 0,
+      "turns_taken": 1,
+      "turns_max": 10
+    }
+  },
+  "25": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_3.json",
+    "task_id": 25,
+    "query": "Print a list of all duplicate case insensitive filenames in the /workspace directory tree",
+    "turn_history": {
+      "actions": [
+        "find /workspace -type f -exec sh -c ' for file do for file2 do if [ \"$(file -i \"$file\")\" == \"$(file -i \"$file2\")\" ]; then echo \"$file $file2\" fi done done' sh {} +",
+        "blocked"
+      ],
+      "observations": [
+        "-i: -c: line 1: unexpected EOF while looking for matching `''\n-i: -c: line 2: syntax error: unexpected end of file\n"
+      ],
+      "rewards": [
+        0.67,
+        0
+      ],
+      "valid_action": [
+        false
+      ]
+    },
+    "summary": {
+      "max_reward": 0.67,
+      "max_reward_idx": 0,
+      "turns_taken": 2,
+      "turns_max": 10
+    }
+  },
+  "26": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_3.json",
+    "task_id": 26,
+    "query": "search for the file foo in  the /workspace folder and display a long listing of it in sorted order of modification date",
+    "turn_history": {
+      "actions": [
+        "find /workspace -name foo -ls -o -exec ls -l {} +",
+        "blocked"
+      ],
+      "observations": [
+        "-rw-r--r-- 1 root root   28 May 28 20:24 /workspace/.hidden.txt\n-rw-r--r-- 1 root root  153 May 28 20:28 /workspace/archive.tar.gz\n-rw-r--r-- 1 root root   22 May 28 20:28 /workspace/dir1/.hidden1.txt\n-rw-r--r-- 1 root root   25 May 28 20:28 /workspace/dir1/a.txt\n-rwxr-xr-x 1 root root    0 May 28 20:28 /workspace/dir1/all.txt\n-rw-r--r-- 1 root root 2048 May 28 20:28 /workspace/dir1/file.c\n-rw-r--r-- 1 root root 4096 May 28 20:28 /workspace/dir1/file.txt\n-rw-r--r-- 1 root root   72 May 28 20:28 /workspace/dir1/hello.c\n-rw-r--r-- 1 root root    7 May 28 20:28 /workspace/dir1/hello.txt\n-rw-r--r-- 1 root root   78 May 28 20:28 /workspace/dir1/long.txt\n-rwxr-xr-x 1 root root   31 May 28 20:28 /workspace/dir1/new1.sh\n-rw-r--r-- 1 root root    0 May 28 20:28 /workspace/dir1/readonly.txt\n-rwxr-xr-x 1 root root   37 May 28 20:28 /workspace/dir1/script1.sh\n-rw-r--r-- 1 root root  185 May 28 20:28 /workspace/dir1/sum.c\n-rw-r--r-- 1 root root  104 May 28 20:28 /workspace/dir1/terminate.txt\n-rw-r--r-- 1 root root   89 May 28 20:28 /workspace/dir2/csvfile1.csv\n-rw-r--r-- 1 root root   25 May 28 20:28 /workspace/dir2/foo.txt\n-rw-r--r-- 1 root root    7 May 28 20:28 /workspace/dir2/hello.txt\n-rw-r--r-- 1 root root  127 May 28 20:28 /workspace/dir2/mysql/sql1.sql\n-rw-r--r-- 1 root root   24 May 28 20:28 /workspace/files.txt\n-rwxr-xr-x 1 root root   31 May 28 20:28 /workspace/new.sh\n-rw-r--r-- 1 root root    0 May 28 20:28 /workspace/old2.txt\n-rw-r--r-- 1 root root    0 May 28 20:28 /workspace/recent1.txt\n-rw-r--r-- 1 root root   16 May 28 20:28 /workspace/results.txt\n\n/workspace:\ntotal 24\n-rw-r--r-- 1 root root  153 May 28 20:28 archive.tar.gz\ndrwxr-xr-x 2 root root 4096 May 28 20:28 dir1\ndrwxr-xr-x 3 root root 4096 May 28 20:28 dir2\n-rw-r--r-- 1 root root   24 May 28 20:28 files.txt\n-rwxr-xr-x 1 root root   31 May 28 20:28 new.sh\n-rw-r--r-- 1 root root    0 May 28 20:28 old2.txt\n-rw-r--r-- 1 root root    0 May 28 20:28 recent1.txt\n-rw-r--r-- 1 root root   16 May 28 20:28 results.txt\n\n/workspace/dir1:\ntotal 40\n-rw-r--r-- 1 root root   25 May 28 20:28 a.txt\n-rwxr-xr-x 1 root root    0 May 28 20:28 all.txt\n-rw-r--r-- 1 root root 2048 May 28 20:28 file.c\n-rw-r--r-- 1 root root 4096 May 28 20:28 file.txt\n-rw-r--r-- 1 root root   72 May 28 20:28 hello.c\n-rw-r--r-- 1 root root    7 May 28 20:28 hello.txt\n-rw-r--r-- 1 root root   78 May 28 20:28 long.txt\n-rwxr-xr-x 1 root root   31 May 28 20:28 new1.sh\n-rw-r--r-- 1 root root    0 May 28 20:28 readonly.txt\n-rwxr-xr-x 1 root root   37 May 28 20:28 script1.sh\n-rw-r--r-- 1 root root  185 May 28 20:28 sum.c\n-rw-r--r-- 1 root root  104 May 28 20:28 terminate.txt\n\n/workspace/dir2:\ntotal 16\n-rw-r--r-- 1 root root   89 May 28 20:28 csvfile1.csv\n-rw-r--r-- 1 root root   25 May 28 20:28 foo.txt\n-rw-r--r-- 1 root root    7 May 28 20:28 hello.txt\ndrwxr-xr-x 2 root root 4096 May 28 20:28 mysql\n\n/workspace/dir2/mysql:\ntotal 4\n-rw-r--r-- 1 root root 127 May 28 20:28 sql1.sql\n"
+      ],
+      "rewards": [
+        0.8500000000000001,
+        0
+      ],
+      "valid_action": [
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 0.8500000000000001,
+      "max_reward_idx": 0,
+      "turns_taken": 2,
+      "turns_max": 10
+    }
+  },
+  "27": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_3.json",
+    "task_id": 27,
+    "query": "search for the word \"hello\" in all the regular/normal files in the  /workspace folder and display the matched file name",
+    "turn_history": {
+      "actions": [
+        "find /workspace -type f -name '*.txt' -exec grep -l hello {} +"
+      ],
+      "observations": [
+        "/workspace/dir2/foo.txt\n/workspace/dir2/hello.txt\n/workspace/dir1/hello.txt\n"
+      ],
+      "rewards": [
+        1.0
+      ],
+      "valid_action": [
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 1.0,
+      "max_reward_idx": 0,
+      "turns_taken": 1,
+      "turns_max": 10
+    }
+  },
+  "28": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_3.json",
+    "task_id": 28,
+    "query": "Calculate the md5 sum of all files in the /workspace directory with the filename printed first",
+    "turn_history": {
+      "actions": [
+        "for file in /workspace/*; do md5sum \"$file\" done",
+        "for file in /workspace/*; do echo \"$file\" | md5sum done",
+        "for file in /workspace/*; do echo \"$file\" | md5sum | sed 's/: //' done",
+        "for file in /workspace/*; do echo \"$file\" | md5sum | cut -d' ' -f1 done",
+        "for file in /workspace/*; do echo \"$file\" | md5sum | awk '{print $1}' done",
+        "for file in /workspace/*; do echo \"$file\" | md5sum | head -1 done",
+        "for file in /workspace/*; do md5sum \"$file\" | awk '{print $1}' | sort -u done",
+        "md5sum /workspace/* | awk '{print $1}' | sort -u",
+        "for file in /workspace/*; do md5sum \"$file\" | awk '{print $1}' | sort -u done",
+        "md5sum /workspace/* | awk '{print $1}' | sort -u"
+      ],
+      "observations": [
+        "/bin/bash: -c: line 2: syntax error: unexpected end of file\n",
+        "/bin/bash: -c: line 2: syntax error: unexpected end of file\n",
+        "/bin/bash: -c: line 2: syntax error: unexpected end of file\n",
+        "/bin/bash: -c: line 2: syntax error: unexpected end of file\n",
+        "/bin/bash: -c: line 2: syntax error: unexpected end of file\n",
+        "/bin/bash: -c: line 2: syntax error: unexpected end of file\n",
+        "/bin/bash: -c: line 2: syntax error: unexpected end of file\n",
+        "md5sum: /workspace/dir1: Is a directory\nmd5sum: /workspace/dir2: Is a directory\n73f369633560985902e921f25f4c719e\nb8a7891e55178c73ba58858ba4b420fc\nd41d8cd98f00b204e9800998ecf8427e\nf7029d399ae782fb8f3860986b7535d6\nfde7af370e4bea930e584390dcbb9e50\n",
+        "/bin/bash: -c: line 2: syntax error: unexpected end of file\n",
+        "md5sum: /workspace/dir1: Is a directory\nmd5sum: /workspace/dir2: Is a directory\n73f369633560985902e921f25f4c719e\nb8a7891e55178c73ba58858ba4b420fc\nd41d8cd98f00b204e9800998ecf8427e\nf7029d399ae782fb8f3860986b7535d6\nfde7af370e4bea930e584390dcbb9e50\n"
+      ],
+      "rewards": [
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.88,
+        0.67,
+        0.88
+      ],
+      "valid_action": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        true,
+        false,
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 0.88,
+      "max_reward_idx": 7,
+      "turns_taken": 10,
+      "turns_max": 10
+    }
+  },
+  "29": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_3.json",
+    "task_id": 29,
+    "query": "Calculate the md5 sum of the contents of all files sorted in directory tree \"/workspace\"",
+    "turn_history": {
+      "actions": [
+        "find /workspace -type f -exec md5sum {} + | sort -u",
+        "blocked"
+      ],
+      "observations": [
+        "10cf89885a2167cf37ff7338c34355c1  /workspace/dir2/csvfile1.csv\n296c284c2f77e2f56926bbf7b12ad8e3  /workspace/dir2/foo.txt\n3add5e1546cfbbb91c765a1a67021a10  /workspace/dir1/hello.c\n56ffd3e71d612b1b218c5d6c5ba376d5  /workspace/dir1/sum.c\n5bf6b7349149944d65ea0b1f423b5009  /workspace/dir2/mysql/sql1.sql\n620f0b67a91f7f74151bc5be745b7110  /workspace/dir1/file.txt\n6e6aa4f4bd0506361054fd363338d301  /workspace/dir1/a.txt\n73f369633560985902e921f25f4c719e  /workspace/results.txt\n7803e02080c2131dc1c6a53af1c378e7  /workspace/dir1/.hidden1.txt\n8b8db3dfa426f6bdb1798d578f5239ae  /workspace/dir1/hello.txt\n8b8db3dfa426f6bdb1798d578f5239ae  /workspace/dir2/hello.txt\n94d098bed182dde0ab8721800cbf895f  /workspace/dir1/long.txt\nb8722e02cb8a308049d627f44a6fa34e  /workspace/.hidden.txt\nb8a7891e55178c73ba58858ba4b420fc  /workspace/archive.tar.gz\nc260d983a362d037fec0331a8a8ad112  /workspace/dir1/terminate.txt\nc99a74c555371a433d121f551d6c6398  /workspace/dir1/file.c\nd41d8cd98f00b204e9800998ecf8427e  /workspace/dir1/all.txt\nd41d8cd98f00b204e9800998ecf8427e  /workspace/dir1/readonly.txt\nd41d8cd98f00b204e9800998ecf8427e  /workspace/old2.txt\nd41d8cd98f00b204e9800998ecf8427e  /workspace/recent1.txt\nf7029d399ae782fb8f3860986b7535d6  /workspace/dir1/new1.sh\nf7029d399ae782fb8f3860986b7535d6  /workspace/new.sh\nfd58478c962652af8e07021061aca66a  /workspace/dir1/script1.sh\nfde7af370e4bea930e584390dcbb9e50  /workspace/files.txt\n"
+      ],
+      "rewards": [
+        0.67,
+        0
+      ],
+      "valid_action": [
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 0.67,
+      "max_reward_idx": 0,
+      "turns_taken": 2,
+      "turns_max": 10
+    }
+  },
+  "30": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_3.json",
+    "task_id": 30,
+    "query": "Change directory to the alphabetically last path under the /workspace directory",
+    "turn_history": {
+      "actions": [
+        "cd $(find /workspace -type d -printf '%p\\n' | sort -nr | tail -1)"
+      ],
+      "observations": [
+        ""
+      ],
+      "rewards": [
+        1.0
+      ],
+      "valid_action": [
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 1.0,
+      "max_reward_idx": 0,
+      "turns_taken": 1,
+      "turns_max": 10
+    }
+  },
+  "31": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_3.json",
+    "task_id": 31,
+    "query": "Count the number of unique 3 to 6 character file extensions are in the /workspace directory tree",
+    "turn_history": {
+      "actions": [
+        "find /workspace -type f -name '*.{3,6}' -exec sh -c ' for file do extension=${file##*/} [[ -z \"$extension\" ]] && continue [[ -n \"$extension\" ]] && echo \"$extension\" done' sh {} + | sort | uniq -c",
+        "blocked"
+      ],
+      "observations": [
+        ""
+      ],
+      "rewards": [
+        0.67,
+        0
+      ],
+      "valid_action": [
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 0.67,
+      "max_reward_idx": 0,
+      "turns_taken": 2,
+      "turns_max": 10
+    }
+  },
+  "32": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_3.json",
+    "task_id": 32,
+    "query": "Create a copy of the /workspace directory structure in the /usr directory,",
+    "turn_history": {
+      "actions": [
+        "mkdir -p /usr/workspace rsync -a /workspace /usr/workspace",
+        "blocked"
+      ],
+      "observations": [
+        "mkdir: invalid option -- 'a'\nTry 'mkdir --help' for more information.\n"
+      ],
+      "rewards": [
+        0.67,
+        0
+      ],
+      "valid_action": [
+        false
+      ]
+    },
+    "summary": {
+      "max_reward": 0.67,
+      "max_reward_idx": 0,
+      "turns_taken": 2,
+      "turns_max": 10
+    }
+  },
+  "33": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_3.json",
+    "task_id": 33,
+    "query": "Display a long listing of the oldest file under '/workspace' directory tree",
+    "turn_history": {
+      "actions": [
+        "find /workspace -type f -printf '%t@\\n' | sort -n | tail -1",
+        "find /workspace -type f -printf '%t@\\n' | sort -n | tail -1 | head -1",
+        "find /workspace -type f -printf '%t@\\n' | sort -n | tail -1 | less -r",
+        "find /workspace -type f -printf '%t@\\n' | sort -n | tail -1 | ls -l",
+        "find /workspace -type f -printf '%t@\\n' | sort -n | tail -1 | ls -l --time-style=\"+%f %t\"",
+        "find /workspace -type f -printf '%t@\\n' | sort -n | tail -1 | head -1 | ls -l --time-style=\"+%f %t\" | sed 's/\\t/ /g'",
+        "find /workspace -type f -printf '%t@\\n' | sort -n | tail -1 | head -1 | ls -l --time-style=\"+%f %t\" | sed 's/\\t/ /g' | cut -d' ' -f 5",
+        "find /workspace -type f -printf '%t@\\n' | sort -n | tail -1 | head -1 | ls -l --time-style=\"+%f %t\" | sed 's/\\t/ /g' | cut -d' ' -f 5 | xargs ls -l",
+        "find /workspace -type f -printf '%t@\\n' | sort -n | tail -1 | head -1 | ls -l --time-style=\"+%f %t\"",
+        "find /workspace -type f -printf '%t@\\n' | sort -n | tail -1 | head -1 | ls -l --time-style=\"+%f %t\" | sed 's/\\t/ /g' | cut -d' ' -f 5 | xargs ls -l"
+      ],
+      "observations": [
+        "Sun May 28 20:28:27.9567320090 2023@\n",
+        "Sun May 28 20:28:27.9567320090 2023@\n",
+        "Sun May 28 20:28:27.9567320090 2023@\n",
+        "total 64\ndrwxr-xr-x   2 root root 4096 May 26 09:43 backup\nlrwxrwxrwx   1 root root    7 Apr 25 14:06 bin -> usr/bin\ndrwxr-xr-x   2 root root 4096 Apr 18  2022 boot\ndrwxr-xr-x   5 root root  360 May 28 20:21 dev\ndrwxr-xr-x   1 root root 4096 May 28 20:21 etc\ndrwxr-xr-x   2 root root 4096 Apr 18  2022 home\nlrwxrwxrwx   1 root root    7 Apr 25 14:06 lib -> usr/lib\ndrwxr-xr-x   2 root root 4096 Apr 25 14:06 media\ndrwxr-xr-x   2 root root 4096 Apr 25 14:06 opt\ndr-xr-xr-x 213 root root    0 May 28 20:21 proc\ndrwx------   1 root root 4096 May 26 09:43 root\ndrwxr-xr-x   5 root root 4096 Apr 25 14:16 run\nlrwxrwxrwx   1 root root    8 Apr 25 14:06 sbin -> usr/sbin\n-rwxr-xr-x   1 root root 3055 May 19 02:22 setup_nl2b_fs_3.sh\ndrwxr-xr-x   2 root root 4096 Apr 25 14:06 srv\ndr-xr-xr-x  13 root root    0 May 28 20:21 sys\ndrwxr-xr-x   1 root root 4096 Apr 25 14:06 usr\ndrwxr-xr-x   1 root root 4096 Apr 25 14:16 var\ndrwxr-xr-x   1 root root 4096 May 28 20:28 workspace\n",
+        "total 64\ndrwxr-xr-x   2 root root 4096 %f backup\nlrwxrwxrwx   1 root root    7 %f bin -> usr/bin\ndrwxr-xr-x   2 root root 4096 %f boot\ndrwxr-xr-x   5 root root  360 %f dev\ndrwxr-xr-x   1 root root 4096 %f etc\ndrwxr-xr-x   2 root root 4096 %f home\nlrwxrwxrwx   1 root root    7 %f lib -> usr/lib\ndrwxr-xr-x   2 root root 4096 %f media\ndrwxr-xr-x   2 root root 4096 %f opt\ndr-xr-xr-x 213 root root    0 %f proc\ndrwx------   1 root root 4096 %f root\ndrwxr-xr-x   5 root root 4096 %f run\nlrwxrwxrwx   1 root root    8 %f sbin -> usr/sbin\n-rwxr-xr-x   1 root root 3055 %f setup_nl2b_fs_3.sh\ndrwxr-xr-x   2 root root 4096 %f srv\ndr-xr-xr-x  13 root root    0 %f sys\ndrwxr-xr-x   1 root root 4096 %f usr\ndrwxr-xr-x   1 root root 4096 %f var\ndrwxr-xr-x   1 root root 4096 %f workspace\n",
+        "total 64\ndrwxr-xr-x   2 root root 4096 %f backup\nlrwxrwxrwx   1 root root    7 %f bin -> usr/bin\ndrwxr-xr-x   2 root root 4096 %f boot\ndrwxr-xr-x   5 root root  360 %f dev\ndrwxr-xr-x   1 root root 4096 %f etc\ndrwxr-xr-x   2 root root 4096 %f home\nlrwxrwxrwx   1 root root    7 %f lib -> usr/lib\ndrwxr-xr-x   2 root root 4096 %f media\ndrwxr-xr-x   2 root root 4096 %f opt\ndr-xr-xr-x 213 root root    0 %f proc\ndrwx------   1 root root 4096 %f root\ndrwxr-xr-x   5 root root 4096 %f run\nlrwxrwxrwx   1 root root    8 %f sbin -> usr/sbin\n-rwxr-xr-x   1 root root 3055 %f setup_nl2b_fs_3.sh\ndrwxr-xr-x   2 root root 4096 %f srv\ndr-xr-xr-x  13 root root    0 %f sys\ndrwxr-xr-x   1 root root 4096 %f usr\ndrwxr-xr-x   1 root root 4096 %f var\ndrwxr-xr-x   1 root root 4096 %f workspace\n",
+        "total 64\ndrwxr-xr-x   2 root root 4096 %f backup\nlrwxrwxrwx   1 root root    7 %f bin -> usr/bin\ndrwxr-xr-x   2 root root 4096 %f boot\ndrwxr-xr-x   5 root root  360 %f dev\ndrwxr-xr-x   1 root root 4096 %f etc\ndrwxr-xr-x   2 root root 4096 %f home\nlrwxrwxrwx   1 root root    7 %f lib -> usr/lib\ndrwxr-xr-x   2 root root 4096 %f media\ndrwxr-xr-x   2 root root 4096 %f opt\ndr-xr-xr-x 215 root root    0 %f proc\ndrwx------   1 root root 4096 %f root\ndrwxr-xr-x   5 root root 4096 %f run\nlrwxrwxrwx   1 root root    8 %f sbin -> usr/sbin\n-rwxr-xr-x   1 root root 3055 %f setup_nl2b_fs_3.sh\ndrwxr-xr-x   2 root root 4096 %f srv\ndr-xr-xr-x  13 root root    0 %f sys\ndrwxr-xr-x   1 root root 4096 %f usr\ndrwxr-xr-x   1 root root 4096 %f var\ndrwxr-xr-x   1 root root 4096 %f workspace\n",
+        "total 64\ndrwxr-xr-x   2 root root 4096 %f backup\nlrwxrwxrwx   1 root root    7 %f bin -> usr/bin\ndrwxr-xr-x   2 root root 4096 %f boot\ndrwxr-xr-x   5 root root  360 %f dev\ndrwxr-xr-x   1 root root 4096 %f etc\ndrwxr-xr-x   2 root root 4096 %f home\nlrwxrwxrwx   1 root root    7 %f lib -> usr/lib\ndrwxr-xr-x   2 root root 4096 %f media\ndrwxr-xr-x   2 root root 4096 %f opt\ndr-xr-xr-x 217 root root    0 %f proc\ndrwx------   1 root root 4096 %f root\ndrwxr-xr-x   5 root root 4096 %f run\nlrwxrwxrwx   1 root root    8 %f sbin -> usr/sbin\n-rwxr-xr-x   1 root root 3055 %f setup_nl2b_fs_3.sh\ndrwxr-xr-x   2 root root 4096 %f srv\ndr-xr-xr-x  13 root root    0 %f sys\ndrwxr-xr-x   1 root root 4096 %f usr\ndrwxr-xr-x   1 root root 4096 %f var\ndrwxr-xr-x   1 root root 4096 %f workspace\n",
+        "total 64\ndrwxr-xr-x   2 root root 4096 %f backup\nlrwxrwxrwx   1 root root    7 %f bin -> usr/bin\ndrwxr-xr-x   2 root root 4096 %f boot\ndrwxr-xr-x   5 root root  360 %f dev\ndrwxr-xr-x   1 root root 4096 %f etc\ndrwxr-xr-x   2 root root 4096 %f home\nlrwxrwxrwx   1 root root    7 %f lib -> usr/lib\ndrwxr-xr-x   2 root root 4096 %f media\ndrwxr-xr-x   2 root root 4096 %f opt\ndr-xr-xr-x 217 root root    0 %f proc\ndrwx------   1 root root 4096 %f root\ndrwxr-xr-x   5 root root 4096 %f run\nlrwxrwxrwx   1 root root    8 %f sbin -> usr/sbin\n-rwxr-xr-x   1 root root 3055 %f setup_nl2b_fs_3.sh\ndrwxr-xr-x   2 root root 4096 %f srv\ndr-xr-xr-x  13 root root    0 %f sys\ndrwxr-xr-x   1 root root 4096 %f usr\ndrwxr-xr-x   1 root root 4096 %f var\ndrwxr-xr-x   1 root root 4096 %f workspace\n",
+        "total 64\ndrwxr-xr-x   2 root root 4096 %f backup\nlrwxrwxrwx   1 root root    7 %f bin -> usr/bin\ndrwxr-xr-x   2 root root 4096 %f boot\ndrwxr-xr-x   5 root root  360 %f dev\ndrwxr-xr-x   1 root root 4096 %f etc\ndrwxr-xr-x   2 root root 4096 %f home\nlrwxrwxrwx   1 root root    7 %f lib -> usr/lib\ndrwxr-xr-x   2 root root 4096 %f media\ndrwxr-xr-x   2 root root 4096 %f opt\ndr-xr-xr-x 217 root root    0 %f proc\ndrwx------   1 root root 4096 %f root\ndrwxr-xr-x   5 root root 4096 %f run\nlrwxrwxrwx   1 root root    8 %f sbin -> usr/sbin\n-rwxr-xr-x   1 root root 3055 %f setup_nl2b_fs_3.sh\ndrwxr-xr-x   2 root root 4096 %f srv\ndr-xr-xr-x  13 root root    0 %f sys\ndrwxr-xr-x   1 root root 4096 %f usr\ndrwxr-xr-x   1 root root 4096 %f var\ndrwxr-xr-x   1 root root 4096 %f workspace\n"
+      ],
+      "rewards": [
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67
+      ],
+      "valid_action": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 0.67,
+      "max_reward_idx": 0,
+      "turns_taken": 10,
+      "turns_max": 10
+    }
+  },
+  "34": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_3.json",
+    "task_id": 34,
+    "query": "Find the largest 2 directories under /workspace directory",
+    "turn_history": {
+      "actions": [
+        "find /workspace -type d -size +100m -printf '%h\\n' | sort -nr | head -2",
+        "blocked"
+      ],
+      "observations": [
+        "find: invalid -size type `m'\n"
+      ],
+      "rewards": [
+        0.67,
+        0
+      ],
+      "valid_action": [
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 0.67,
+      "max_reward_idx": 0,
+      "turns_taken": 2,
+      "turns_max": 10
+    }
+  },
+  "35": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_3.json",
+    "task_id": 35,
+    "query": "List all files with their paths that have identical content in /workspace directory",
+    "turn_history": {
+      "actions": [
+        "find /workspace -type f -exec sh -c ' for file do for other_file do if [ \"$(md5sum \"$file\")\" == \"$(md5sum \"$other_file\")\" ]; then echo \"$file $other_file\" fi done done' sh {} +",
+        "blocked"
+      ],
+      "observations": [
+        "$file) == $(md5sum: -c: line 1: unexpected EOF while looking for matching `''\n$file) == $(md5sum: -c: line 2: syntax error: unexpected end of file\n"
+      ],
+      "rewards": [
+        0.67,
+        0
+      ],
+      "valid_action": [
+        false
+      ]
+    },
+    "summary": {
+      "max_reward": 0.67,
+      "max_reward_idx": 0,
+      "turns_taken": 2,
+      "turns_max": 10
+    }
+  },
+  "36": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_3.json",
+    "task_id": 36,
+    "query": "Make directories for each unique file path in \"/workspace/files.txt\"",
+    "turn_history": {
+      "actions": [
+        "for file in $(cat /workspace/files.txt); do mkdir -p \"$file\"; done",
+        "blocked"
+      ],
+      "observations": [
+        "mkdir: cannot create directory '/workspace/dir2/foo.txt': File exists\n"
+      ],
+      "rewards": [
+        0.67,
+        0
+      ],
+      "valid_action": [
+        false
+      ]
+    },
+    "summary": {
+      "max_reward": 0.67,
+      "max_reward_idx": 0,
+      "turns_taken": 2,
+      "turns_max": 10
+    }
+  },
+  "37": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_3.json",
+    "task_id": 37,
+    "query": "Print the total disk usage in bytes of all files listed in \"/workspace/files.txt\"",
+    "turn_history": {
+      "actions": [
+        "find /workspace/files.txt -type f -exec du -sh {} +",
+        "find /workspace/files.txt -type f -exec du -s {} +",
+        "blocked"
+      ],
+      "observations": [
+        "4.0K\t/workspace/files.txt\n",
+        "4\t/workspace/files.txt\n"
+      ],
+      "rewards": [
+        0.67,
+        0.67,
+        0
+      ],
+      "valid_action": [
+        true,
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 0.67,
+      "max_reward_idx": 0,
+      "turns_taken": 3,
+      "turns_max": 10
+    }
+  },
+  "38": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_3.json",
+    "task_id": 38,
+    "query": "Unhide all hidden files in the /workspace directory",
+    "turn_history": {
+      "actions": [
+        "ls -a /workspace",
+        "shopt -s dotglob ls",
+        "shopt -s dotglob ls -a",
+        "shopt -s dotglob ls",
+        "shopt -s dotglob ls -a",
+        "ls -la /workspace",
+        "shopt -s dotglob ls",
+        "ls -a",
+        "ls -la /workspace",
+        "shopt -s dotglob ls"
+      ],
+      "observations": [
+        ".\n..\n.hidden.txt\narchive.tar.gz\ndir1\ndir2\nfiles.txt\nnew.sh\nold2.txt\nrecent1.txt\nresults.txt\n",
+        "/bin/bash: line 1: shopt: ls: invalid shell option name\n",
+        "/bin/bash: line 1: shopt: ls: invalid shell option name\n/bin/bash: line 1: shopt: -a: invalid shell option name\n",
+        "/bin/bash: line 1: shopt: ls: invalid shell option name\n",
+        "/bin/bash: line 1: shopt: ls: invalid shell option name\n/bin/bash: line 1: shopt: -a: invalid shell option name\n",
+        "total 40\ndrwxr-xr-x 1 root root 4096 May 28 20:28 .\ndrwxr-xr-x 1 root root 4096 May 28 20:24 ..\n-rw-r--r-- 1 root root   28 May 28 20:24 .hidden.txt\n-rw-r--r-- 1 root root  153 May 28 20:28 archive.tar.gz\ndrwxr-xr-x 2 root root 4096 May 28 20:28 dir1\ndrwxr-xr-x 3 root root 4096 May 28 20:28 dir2\n-rw-r--r-- 1 root root   24 May 28 20:28 files.txt\n-rwxr-xr-x 1 root root   31 May 28 20:28 new.sh\n-rw-r--r-- 1 root root    0 May 28 20:28 old2.txt\n-rw-r--r-- 1 root root    0 May 28 20:28 recent1.txt\n-rw-r--r-- 1 root root   16 May 28 20:28 results.txt\n",
+        "/bin/bash: line 1: shopt: ls: invalid shell option name\n",
+        ".\n..\n.dockerenv\n.git\n.gitignore\nbackup\nbin\nboot\ndev\netc\nhome\nlib\nmedia\nopt\nproc\nroot\nrun\nsbin\nsetup_nl2b_fs_3.sh\nsrv\nsys\nusr\nvar\nworkspace\n",
+        "total 40\ndrwxr-xr-x 1 root root 4096 May 28 20:28 .\ndrwxr-xr-x 1 root root 4096 May 28 20:24 ..\n-rw-r--r-- 1 root root   28 May 28 20:24 .hidden.txt\n-rw-r--r-- 1 root root  153 May 28 20:28 archive.tar.gz\ndrwxr-xr-x 2 root root 4096 May 28 20:28 dir1\ndrwxr-xr-x 3 root root 4096 May 28 20:28 dir2\n-rw-r--r-- 1 root root   24 May 28 20:28 files.txt\n-rwxr-xr-x 1 root root   31 May 28 20:28 new.sh\n-rw-r--r-- 1 root root    0 May 28 20:28 old2.txt\n-rw-r--r-- 1 root root    0 May 28 20:28 recent1.txt\n-rw-r--r-- 1 root root   16 May 28 20:28 results.txt\n",
+        "/bin/bash: line 1: shopt: ls: invalid shell option name\n"
+      ],
+      "rewards": [
+        0.34,
+        0.34,
+        0.34,
+        0.34,
+        0.34,
+        0.34,
+        0.34,
+        0.34,
+        0.34,
+        0.34
+      ],
+      "valid_action": [
+        true,
+        false,
+        false,
+        false,
+        false,
+        true,
+        false,
+        true,
+        true,
+        false
+      ]
+    },
+    "summary": {
+      "max_reward": 0.34,
+      "max_reward_idx": 0,
+      "turns_taken": 10,
+      "turns_max": 10
+    }
+  },
+  "39": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_3.json",
+    "task_id": 39,
+    "query": "Count the number of differing lines in \"/workspace/dir1/long.txt\" and \"/workspace/dir1/terminate.txt\"",
+    "turn_history": {
+      "actions": [
+        "diff -c /workspace/dir1/long.txt /workspace/dir1/terminate.txt",
+        "blocked"
+      ],
+      "observations": [
+        "*** /workspace/dir1/long.txt\tSun May 28 20:28:27 2023\n--- /workspace/dir1/terminate.txt\tSun May 28 20:28:27 2023\n***************\n*** 3,5 ****\n--- 3,6 ----\n  The third line\n  The fourth line;\n  The fifth line\n+ TERMINATEThe sixth line--\n"
+      ],
+      "rewards": [
+        0.67,
+        0
+      ],
+      "valid_action": [
+        false
+      ]
+    },
+    "summary": {
+      "max_reward": 0.67,
+      "max_reward_idx": 0,
+      "turns_taken": 2,
+      "turns_max": 10
+    }
+  },
+  "40": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_3.json",
+    "task_id": 40,
+    "query": "Count the number of differing lines in \"/workspace/dir1/terminate.txt\" and \"/workspace/dir1/long.txt\" with 0 lines of unified context",
+    "turn_history": {
+      "actions": [
+        "comm -13 /workspace/dir1/terminate.txt /workspace/dir1/long.txt | wc -l",
+        "blocked"
+      ],
+      "observations": [
+        "comm: file 1 is not in sorted order\ncomm: input is not in sorted order\n0\n"
+      ],
+      "rewards": [
+        0.67,
+        0
+      ],
+      "valid_action": [
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 0.67,
+      "max_reward_idx": 0,
+      "turns_taken": 2,
+      "turns_max": 10
+    }
+  },
+  "41": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_3.json",
+    "task_id": 41,
+    "query": "Counts lines in file /workspace/dir1/a.txt ignoring empty lines and lines with spaces only.",
+    "turn_history": {
+      "actions": [
+        "wc -l /workspace/dir1/a.txt | grep -v '^$' | grep -v ' '",
+        "blocked"
+      ],
+      "observations": [
+        ""
+      ],
+      "rewards": [
+        0.67,
+        0
+      ],
+      "valid_action": [
+        false
+      ]
+    },
+    "summary": {
+      "max_reward": 0.67,
+      "max_reward_idx": 0,
+      "turns_taken": 2,
+      "turns_max": 10
+    }
+  },
+  "42": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_3.json",
+    "task_id": 42,
+    "query": "Create a symbolic link in directory \"~/newlinks\" for each file listed in \"/workspace/results.txt\"",
+    "turn_history": {
+      "actions": [
+        "for file in $(cat /workspace/results.txt); do ln -s \"$file\" ~/newlinks done",
+        "for file in $(cat /workspace/results.txt); do ln -s \"$file\" ~/newlinks done",
+        "for file in $(cat /workspace/results.txt); do ln -s \"$file\" ~/newlinks done",
+        "for file in $(cat /workspace/results.txt); do ln -s \"$file\" ~/newlinks done",
+        "for file in $(cat /workspace/results.txt); do ln -s \"$file\" ~/newlinks done",
+        "for file in $(cat /workspace/results.txt); do ln -s \"$file\" ~/newlinks/ done",
+        "for file in $(cat /workspace/results.txt); do ln -s \"$file\" ~/newlinks/$file done",
+        "for file in $(cat /workspace/results.txt); do ln -s \"$file\" ~/newlinks/${file%.*} done",
+        "for file in $(cat /workspace/results.txt); do ln -s \"$file\" ~/newlinks/${file##*/} done",
+        "for file in $(cat /workspace/results.txt); do ln -s \"$file\" ~/newlinks/${file%/*} done"
+      ],
+      "observations": [
+        "/bin/bash: -c: line 2: syntax error: unexpected end of file\n",
+        "/bin/bash: -c: line 2: syntax error: unexpected end of file\n",
+        "/bin/bash: -c: line 2: syntax error: unexpected end of file\n",
+        "/bin/bash: -c: line 2: syntax error: unexpected end of file\n",
+        "/bin/bash: -c: line 2: syntax error: unexpected end of file\n",
+        "/bin/bash: -c: line 2: syntax error: unexpected end of file\n",
+        "/bin/bash: -c: line 2: syntax error: unexpected end of file\n",
+        "/bin/bash: -c: line 2: syntax error: unexpected end of file\n",
+        "/bin/bash: -c: line 2: syntax error: unexpected end of file\n",
+        "/bin/bash: -c: line 2: syntax error: unexpected end of file\n"
+      ],
+      "rewards": [
+        0.67,
+        0.39,
+        0.39,
+        0.39,
+        0.39,
+        0.39,
+        0.39,
+        0.39,
+        0.39,
+        0.39
+      ],
+      "valid_action": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "summary": {
+      "max_reward": 0.67,
+      "max_reward_idx": 0,
+      "turns_taken": 10,
+      "turns_max": 10
+    }
+  },
+  "43": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_3.json",
+    "task_id": 43,
+    "query": "Delete all hidden files under /workspace",
+    "turn_history": {
+      "actions": [
+        "rm -rf /workspace/*.",
+        "rm -rf /workspace/*.[!.]*",
+        "find /workspace -type f -name '*.' -delete",
+        "rm -rf /workspace/*.[!.]* --no-preserve-root 2>/dev/null",
+        "rm -rf /workspace/*.[!.]* --no-preserve-root 2>/dev/null",
+        "rm -rf /workspace/*.[!.]* --no-preserve-root 2>/dev/null",
+        "find /workspace -type f -name '*.' -delete",
+        "rm -rf /workspace/*.[!.]* --no-preserve-root",
+        "rm -rf /workspace/*.[!.]* --no-preserve-root 2>/dev/null",
+        "rm -rf /workspace/*.[!.]* --no-preserve-root 2>/dev/null"
+      ],
+      "observations": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "rewards": [
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67
+      ],
+      "valid_action": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 0.67,
+      "max_reward_idx": 0,
+      "turns_taken": 10,
+      "turns_max": 10
+    }
+  },
+  "44": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_3.json",
+    "task_id": 44,
+    "query": "Determine if /workspace/dir2/mysql/ exists on a mounted file system.",
+    "turn_history": {
+      "actions": [
+        "if [ -d /workspace/dir2/mysql ]; then echo \"/workspace/dir2/mysql exists on a mounted file system.\" else echo \"/workspace/dir2/mysql does not exist on a mounted file system.\" fi",
+        "blocked"
+      ],
+      "observations": [
+        "exists: -c: line 2: syntax error: unexpected end of file\n"
+      ],
+      "rewards": [
+        0.67,
+        0
+      ],
+      "valid_action": [
+        false
+      ]
+    },
+    "summary": {
+      "max_reward": 0.67,
+      "max_reward_idx": 0,
+      "turns_taken": 2,
+      "turns_max": 10
+    }
+  },
+  "45": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_3.json",
+    "task_id": 45,
+    "query": "Display a dump of \"/workspace/dir1/long.txt\" as floating point values of double size",
+    "turn_history": {
+      "actions": [
+        "bash cat /workspace/dir1/long.txt | head -n 10 | awk '{print $2}' | bc -l",
+        "blocked"
+      ],
+      "observations": [
+        "/bin/bash: line 1: bc: command not found\n/usr/bin/cat: /usr/bin/cat: cannot execute binary file\n"
+      ],
+      "rewards": [
+        0.67,
+        0
+      ],
+      "valid_action": [
+        false
+      ]
+    },
+    "summary": {
+      "max_reward": 0.67,
+      "max_reward_idx": 0,
+      "turns_taken": 2,
+      "turns_max": 10
+    }
+  },
+  "46": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_3.json",
+    "task_id": 46,
+    "query": "Display differences between list of files in /workspace/dir1 and /workspace/dir2.",
+    "turn_history": {
+      "actions": [
+        "diff -r /workspace/dir1 /workspace/dir2",
+        "blocked"
+      ],
+      "observations": [
+        "Only in /workspace/dir1: .hidden1.txt\nOnly in /workspace/dir1: a.txt\nOnly in /workspace/dir1: all.txt\nOnly in /workspace/dir2: csvfile1.csv\nOnly in /workspace/dir1: file.c\nOnly in /workspace/dir1: file.txt\nOnly in /workspace/dir2: foo.txt\nOnly in /workspace/dir1: hello.c\nOnly in /workspace/dir1: long.txt\nOnly in /workspace/dir2: mysql\nOnly in /workspace/dir1: new1.sh\nOnly in /workspace/dir1: readonly.txt\nOnly in /workspace/dir1: script1.sh\nOnly in /workspace/dir1: sum.c\nOnly in /workspace/dir1: terminate.txt\n"
+      ],
+      "rewards": [
+        0.74,
+        0
+      ],
+      "valid_action": [
+        false
+      ]
+    },
+    "summary": {
+      "max_reward": 0.74,
+      "max_reward_idx": 0,
+      "turns_taken": 2,
+      "turns_max": 10
+    }
+  },
+  "47": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_3.json",
+    "task_id": 47,
+    "query": "Display the file size of file '/workspace/dir1/sum.c' in bytes",
+    "turn_history": {
+      "actions": [
+        "ls -l /workspace/dir1/sum.c",
+        "blocked"
+      ],
+      "observations": [
+        "-rw-r--r-- 1 root root 185 May 28 20:28 /workspace/dir1/sum.c\n"
+      ],
+      "rewards": [
+        0.73,
+        0
+      ],
+      "valid_action": [
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 0.73,
+      "max_reward_idx": 0,
+      "turns_taken": 2,
+      "turns_max": 10
+    }
+  },
+  "48": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_3.json",
+    "task_id": 48,
+    "query": "Display the last slash-separated part of each filename path in /workspace/dir1/file.txt",
+    "turn_history": {
+      "actions": [
+        "bash grep -po '[^/]+$' /workspace/dir1/file.txt",
+        "blocked"
+      ],
+      "observations": [
+        "/usr/bin/grep: /usr/bin/grep: cannot execute binary file\n"
+      ],
+      "rewards": [
+        0.67,
+        0
+      ],
+      "valid_action": [
+        false
+      ]
+    },
+    "summary": {
+      "max_reward": 0.67,
+      "max_reward_idx": 0,
+      "turns_taken": 2,
+      "turns_max": 10
+    }
+  },
+  "49": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_3.json",
+    "task_id": 49,
+    "query": "Display the sizes and filepaths of all files/directories in /workspace directory sorted in descending order of size",
+    "turn_history": {
+      "actions": [
+        "find /workspace -type f -printf '%s\\t%s\\n' | sort -nr",
+        "find /workspace -type f -printf '%s\\t%s\\n' | sort -nr | tail -n +2",
+        "find /workspace -type f -printf '%s\\t%s\\n' | sort -nr | head -n 2",
+        "find /workspace -type f -printf '%s\\t%s\\n' | sort -nr | tail -n +2 | head -n 2",
+        "find /workspace -type f -printf '%s\\t%s\\n' | sort -nr | tail -n +2 | head -n 1",
+        "find /workspace -type f -printf '%s\\t%s\\n' | sort -nr | tail -n +2 | head -n 1 | cut -d' ' -f 1",
+        "find /workspace -type f -printf '%s\\t%s\\n' | sort -nr | tail -n +2 | head -n 1 | cut -d' ' -f 1 | xargs ls -l",
+        "blocked"
+      ],
+      "observations": [
+        "4096\t4096\n2048\t2048\n185\t185\n153\t153\n127\t127\n104\t104\n89\t89\n78\t78\n72\t72\n37\t37\n31\t31\n31\t31\n28\t28\n25\t25\n25\t25\n24\t24\n22\t22\n16\t16\n7\t7\n7\t7\n0\t0\n0\t0\n0\t0\n0\t0\n",
+        "2048\t2048\n185\t185\n153\t153\n127\t127\n104\t104\n89\t89\n78\t78\n72\t72\n37\t37\n31\t31\n31\t31\n28\t28\n25\t25\n25\t25\n24\t24\n22\t22\n16\t16\n7\t7\n7\t7\n0\t0\n0\t0\n0\t0\n0\t0\n",
+        "4096\t4096\n2048\t2048\n",
+        "2048\t2048\n185\t185\n",
+        "2048\t2048\n",
+        "2048\t2048\n",
+        "ls: cannot access '2048': No such file or directory\nls: cannot access '2048': No such file or directory\n"
+      ],
+      "rewards": [
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0
+      ],
+      "valid_action": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false
+      ]
+    },
+    "summary": {
+      "max_reward": 0.67,
+      "max_reward_idx": 0,
+      "turns_taken": 8,
+      "turns_max": 10
+    }
+  },
+  "50": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_3.json",
+    "task_id": 50,
+    "query": "Print percentage of the space used on the /workspace directory.",
+    "turn_history": {
+      "actions": [
+        "df -h /workspace | awk '{print $5/$(df -h /workspace | awk '{print $5}')*100}'",
+        "blocked"
+      ],
+      "observations": [
+        "awk: line 1: syntax error at or near awk\nawk: line 2: missing } near end of file\n"
+      ],
+      "rewards": [
+        0.67,
+        0
+      ],
+      "valid_action": [
+        false
+      ]
+    },
+    "summary": {
+      "max_reward": 0.67,
+      "max_reward_idx": 0,
+      "turns_taken": 2,
+      "turns_max": 10
+    }
+  },
+  "51": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_3.json",
+    "task_id": 51,
+    "query": "Print the contents of \"/workspace/dir1/long.txt\" in reverse order",
+    "turn_history": {
+      "actions": [
+        "cat /workspace/dir1/long.txt | tac",
+        "cat /workspace/dir1/long.txt | tac | head -n -1",
+        "cat /workspace/dir1/long.txt | rev",
+        "cat /workspace/dir1/long.txt | tac",
+        "cat /workspace/dir1/long.txt | rev | head -n -1",
+        "cat /workspace/dir1/long.txt | tail -r",
+        "blocked"
+      ],
+      "observations": [
+        "tac: failed to create temporary file in '/tmp': No such file or directory\n",
+        "tac: failed to create temporary file in '/tmp': No such file or directory\n",
+        "enil tsrif ehT\nenil dnoces ehT\nenil driht ehT\n;enil htruof ehT\nenil htfif ehT\n",
+        "tac: failed to create temporary file in '/tmp': No such file or directory\n",
+        "enil tsrif ehT\nenil dnoces ehT\nenil driht ehT\n;enil htruof ehT\n",
+        "tail: invalid option -- 'r'\nTry 'tail --help' for more information.\n"
+      ],
+      "rewards": [
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0
+      ],
+      "valid_action": [
+        false,
+        true,
+        true,
+        false,
+        true,
+        false
+      ]
+    },
+    "summary": {
+      "max_reward": 0.67,
+      "max_reward_idx": 0,
+      "turns_taken": 7,
+      "turns_max": 10
+    }
+  },
+  "52": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_3.json",
+    "task_id": 52,
+    "query": "Create an empty file \"Icon\" with a carriage return character in the end of its name.",
+    "turn_history": {
+      "actions": [
+        "touch icon\\r",
+        "touch icon\\r",
+        "touch icon.",
+        "touch icon\\r",
+        "touch icon.",
+        "touch icon.\\r",
+        "touch icon.\\r",
+        "touch icon. echo \"\" > icon.",
+        "touch icon. echo \"\" > icon. echo \"\" >> icon.",
+        "touch icon. echo \"\" > icon. echo \"\" >> icon. echo \"\" >> icon."
+      ],
+      "observations": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "rewards": [
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67
+      ],
+      "valid_action": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 0.67,
+      "max_reward_idx": 0,
+      "turns_taken": 10,
+      "turns_max": 10
+    }
+  },
+  "53": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_3.json",
+    "task_id": 53,
+    "query": "Create a symbolc link in the /workspace/dir1 to root folder",
+    "turn_history": {
+      "actions": [
+        "ln -s / /workspace/dir1",
+        "ln -s / /workspace/dir1/.",
+        "ln -s / /workspace/dir1/..",
+        "ln -s / /workspace/dir1/..",
+        "ln -s / /workspace/dir1/.",
+        "ln -s / /workspace/dir1/root",
+        "blocked"
+      ],
+      "observations": [
+        "ln: failed to create symbolic link '/workspace/dir1/': No such file or directory\n",
+        "ln: failed to create symbolic link '/workspace/dir1/./': No such file or directory\n",
+        "ln: failed to create symbolic link '/workspace/dir1/../': No such file or directory\n",
+        "ln: failed to create symbolic link '/workspace/dir1/../': No such file or directory\n",
+        "ln: failed to create symbolic link '/workspace/dir1/./': No such file or directory\n",
+        ""
+      ],
+      "rewards": [
+        0.39,
+        0.39,
+        0.39,
+        0.39,
+        0.39,
+        0.72,
+        0
+      ],
+      "valid_action": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 0.72,
+      "max_reward_idx": 5,
+      "turns_taken": 7,
+      "turns_max": 10
+    }
+  },
+  "54": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_3.json",
+    "task_id": 54,
+    "query": "Display permissions, user, group, and full path for each file in the /workspace directory tree",
+    "turn_history": {
+      "actions": [
+        "ls -l /workspace",
+        "blocked"
+      ],
+      "observations": [
+        "total 24\n-rw-r--r-- 1 root root  153 May 28 20:38 archive.tar.gz\ndrwxr-xr-x 2 root root 4096 May 28 20:41 dir1\ndrwxr-xr-x 3 root root 4096 May 28 20:28 dir2\n-rw-r--r-- 1 root root   24 May 28 20:38 files.txt\n-rwxr-xr-x 1 root root   31 May 28 20:38 new.sh\n-rw-r--r-- 1 root root    0 May 28 20:38 old2.txt\n-rw-r--r-- 1 root root    0 May 28 20:38 recent1.txt\n-rw-r--r-- 1 root root   16 May 28 20:38 results.txt\n"
+      ],
+      "rewards": [
+        0.8400000000000001,
+        0
+      ],
+      "valid_action": [
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 0.8400000000000001,
+      "max_reward_idx": 0,
+      "turns_taken": 2,
+      "turns_max": 10
+    }
+  },
+  "55": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_3.json",
+    "task_id": 55,
+    "query": "Search for 'hello' case insensitively in all files under /workspace directory tree and show the matched lines with their filenames",
+    "turn_history": {
+      "actions": [
+        "find /workspace -type f -exec grep -i hello {} +"
+      ],
+      "observations": [
+        "/workspace/dir2/foo.txt:Another hello world file\n/workspace/dir2/hello.txt:hello!\n/workspace/dir1/hello.c:\tprintf(\"Hello, World!\");\n/workspace/dir1/hello.txt:hello!\n"
+      ],
+      "rewards": [
+        1.0
+      ],
+      "valid_action": [
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 1.0,
+      "max_reward_idx": 0,
+      "turns_taken": 1,
+      "turns_max": 10
+    }
+  },
+  "56": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_3.json",
+    "task_id": 56,
+    "query": "Split the output of \"/workspace/archive.tar.gz\" into files of at most 10 MiB in size and use prefix \"output_prefix\"",
+    "turn_history": {
+      "actions": [
+        "tar -czvf - /workspace/archive.tar.gz | split -b 10m - output_prefix",
+        "tar -czvf - /workspace/archive.tar.gz | split -b 10m - output_prefix",
+        "tar -czvf - /workspace/archive.tar.gz | split -b 10m -c . output_prefix",
+        "blocked"
+      ],
+      "observations": [
+        "tar: Removing leading `/' from member names\n/workspace/archive.tar.gz\n",
+        "tar: Removing leading `/' from member names\n/workspace/archive.tar.gz\n",
+        "split: invalid option -- 'c'\nTry 'split --help' for more information.\ntar: Removing leading `/' from member names\n/workspace/archive.tar.gz\ntar: Child returned status 141\ntar: Error is not recoverable: exiting now\n"
+      ],
+      "rewards": [
+        0.39,
+        0.39,
+        0.39,
+        0
+      ],
+      "valid_action": [
+        true,
+        true,
+        false
+      ]
+    },
+    "summary": {
+      "max_reward": 0.39,
+      "max_reward_idx": 0,
+      "turns_taken": 4,
+      "turns_max": 10
+    }
+  },
+  "57": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_3.json",
+    "task_id": 57,
+    "query": "Unpack all *.gz archives in the /workspace directory tree",
+    "turn_history": {
+      "actions": [
+        "for file in /workspace/*.gz; do gunzip \"$file\" done",
+        "find /workspace -name '*.gz' -exec gunzip {} +"
+      ],
+      "observations": [
+        "/bin/bash: -c: line 2: syntax error: unexpected end of file\n",
+        ""
+      ],
+      "rewards": [
+        0.34,
+        1.0
+      ],
+      "valid_action": [
+        false,
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 1.0,
+      "max_reward_idx": 1,
+      "turns_taken": 2,
+      "turns_max": 10
+    }
+  },
+  "58": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_3.json",
+    "task_id": 58,
+    "query": "Uncompress \"/workspace/archive.tar.gz\" and extract the archive to \"/backup\"",
+    "turn_history": {
+      "actions": [
+        "tar -zxvf /workspace/archive.tar.gz -c /backup",
+        "tar -zxvf /workspace/archive.tar.gz -c /backup",
+        "tar -zxvf archive.tar.gz -c /backup",
+        "cd /workspace tar -zxvf archive.tar.gz -c /backup",
+        "blocked"
+      ],
+      "observations": [
+        "tar: You may not specify more than one '-Acdtrux', '--delete' or  '--test-label' option\nTry 'tar --help' or 'tar --usage' for more information.\n",
+        "tar: You may not specify more than one '-Acdtrux', '--delete' or  '--test-label' option\nTry 'tar --help' or 'tar --usage' for more information.\n",
+        "tar: You may not specify more than one '-Acdtrux', '--delete' or  '--test-label' option\nTry 'tar --help' or 'tar --usage' for more information.\n",
+        "/bin/bash: line 1: cd: too many arguments\n"
+      ],
+      "rewards": [
+        0.39,
+        0.39,
+        0.39,
+        0.39,
+        0
+      ],
+      "valid_action": [
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "summary": {
+      "max_reward": 0.39,
+      "max_reward_idx": 0,
+      "turns_taken": 5,
+      "turns_max": 10
+    }
+  },
+  "59": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_3.json",
+    "task_id": 59,
+    "query": "Create a symbolic link to \"/workspace/dir1/terminate.txt\" named \"/workspace/test\"",
+    "turn_history": {
+      "actions": [
+        "ln -s /workspace/dir1/terminate.txt /workspace/test"
+      ],
+      "observations": [
+        ""
+      ],
+      "rewards": [
+        1.0
+      ],
+      "valid_action": [
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 1.0,
+      "max_reward_idx": 0,
+      "turns_taken": 1,
+      "turns_max": 10
+    }
+  }
+}

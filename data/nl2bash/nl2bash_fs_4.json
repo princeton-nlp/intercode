@@ -1,0 +1,110 @@
+[
+    {
+        "query": "Retrieve only build number of current kernel, ie. #104",
+        "gold": "uname -v | grep -o '#[0-9]\\+'"
+    },
+    {
+        "query": "Print reverse lookup for adress 127.0.0.1",
+        "gold": "dig -x 127.0.0.1"
+    },
+    {
+        "query": "List file information of the full path of command \"c++\"",
+        "gold": "ls -ald `which c++`"
+    },
+    {
+        "query": "Extract host name part from \"http://www.google.com\"",
+        "gold": "echo \"http://www.google.com\" | cut -d'/' -f3"
+    },
+    {
+        "query": "List environment variables and their values, escaping all semicolons with a backslash.",
+        "gold": "env | sed 's/;/\\\\;/g'"
+    },
+    {
+        "query": "Displays a tree of all process alongside their command line arguments.",
+        "gold": "pstree -a"
+    },
+    {
+        "query": "Create intermediate directories \"dir\" and \"subdir\" as required and create \"subsubdir\"",
+        "gold": "mkdir -p dir/subdir/subsubdir"
+    },
+    {
+        "query": "Change to the directory of the executable \"python\"",
+        "gold": "cd `dirname $(which python)`"
+    },
+    {
+        "query": "Print numbers 1 through 10 separated by \":\"",
+        "gold": "yes | head -n10 | grep -n . | cut -d: -f1 | paste -sd:"
+    },
+    {
+        "query": "print all readline bindings",
+        "gold": "bind -P"
+    },
+    {
+        "query": "list names of bind functions containing \"p\"",
+        "gold": "bind -l | grep p"
+    },
+    {
+        "query": "List all files on smbfs mounts",
+        "gold": "mount -v | grep smbfs | awk '{print $3}' | xargs ls -ls"
+    },
+    {
+        "query": "Save first IP address of domain 'google.com' in 'address' variable and display it",
+        "gold": "address=$(dig +short google.com | grep -E '^[0-9.]+$' | head -n 1) && echo $address"
+    },
+    {
+        "query": "Remove all characters except \";\" and digits from the string \"  Hello world;876\t  \"",
+        "gold": "echo '  Hello world;876\t  ' | tr -cd ';0-9'"
+    },
+    {
+        "query": "Remove leading and trailing spaces or tabs from \"  Hello world!\t  \"",
+        "gold": "echo '  Hello world!\t  ' | sed -e 's/^[ \\t]*//' | sed -e 's/[ \\t]*$//'"
+    },
+    {
+        "query": "Remove the last 3 characters from \"987654321\"",
+        "gold": "echo 987654321 | rev | cut -c 4- | rev"
+    },
+    {
+        "query": "Print source of the file system containing current working directory.",
+        "gold": "df . | tail -1 | awk '{print $1}'"
+    },
+    {
+        "query": "List all variables (names only) with names containing \"H\".",
+        "gold": "env | awk -F= '{if($1 ~ /H/) print $1}'"
+    },
+    {
+        "query": "Print a list of unique users who are logged in",
+        "gold": "who | cut -d' ' -f1 | sort | uniq"
+    },
+    {
+        "query": "Ping hostname, grep for 192.168.11 and print the IP from the output",
+        "gold": "ping -c 1 hostname | grep 192.168.11 | grep 'bytes from' | awk '{print $4}' | sed 's/://g'"
+    },
+    {
+        "query": "Print a line of 99 '=' characters",
+        "gold": "seq -s= 100|tr -d '[:digit:]'"
+    },
+    {
+        "query": "Counts all business days in a current month.",
+        "gold": "cal -h | cut -c 4-17 | tail -n +3  | wc -w"
+    },
+    {
+        "query": "Count number of users logged in",
+        "gold": "who | awk -F' ' '{print $1}' | sort -u | wc -l"
+    },
+    {
+        "query": "Displays calendar of a previous, current and next month for December of 2120 year.",
+        "gold": "cal -3 12 2120"
+    },
+    {
+        "query": "Extract, sort and print only group names from /etc/group.",
+        "gold": "cut -d: -f1 /etc/group | sort"
+    },
+    {
+        "query": "Store system load average number in the 'proc_load_average' variable and print it.",
+        "gold": "proc_load_average=$(w | head -n 1 | awk '{print $NF}' | tr ',' '.') && echo $proc_load_average"
+    },
+    {
+        "query": "Calculate the sum of all the numbers from 1 to 10",
+        "gold": "seq 10 | jq -s 'add'"
+    }
+]

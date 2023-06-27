@@ -1,0 +1,20 @@
+# Folders
+bin
+boot
+dev
+etc
+home
+lib
+media
+opt
+proc
+root
+run
+sbin
+srv
+sys
+usr
+var
+
+# Files
+.dockerenv

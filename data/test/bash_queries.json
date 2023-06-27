@@ -1,0 +1,99 @@
+[
+    {
+      "query": "Count the number of files and directories in the entire testbed directory",
+      "gold": "find /testbed | wc -l"
+    },
+    {
+      "query": "Find all text files in the testbed directory and subdirectories and concatenate them into a single file",
+        "gold": "find /testbed -type f -name '*.txt' -exec cat {} ; > /testbed/concatenated_text_files.txt"
+    },
+    {
+      "query": "Find all directories in the testbed directory that have at least one Python script and list the number of Python scripts in each directory",
+      "gold": "find /testbed -type d -exec sh -c 'echo -n \"{}: \"; ls -1 {}/*.py 2>/dev/null | wc -l' \\;"
+    },
+    {
+      "query": "Sort the lines of textfile1.txt in reverse alphabetical order and save the result to a new file",
+      "gold": "sort -r /testbed/dir1/textfile1.txt > /testbed/dir1/textfile1_reverse_sorted.txt"
+    },
+    {
+        "query": "Search for all files containing the word 'error' and sort them by size",
+        "gold": "find testbed/ -type f -exec grep -l 'error' {} + | xargs du -b | sort -n"
+    },
+    {
+        "query": "Find all symbolic links in testbed/ that point to files which were modified in the last 7 days",
+        "gold": "find testbed/ -type l -lname '*testbed/*' -mtime -7 -ls"
+    },
+    {
+        "query": "Get the total size of all files in testbed/ and save it to a file",
+        "gold": "find testbed/ -type f -printf '%s\\n' | awk '{s+=$1} END {print s}' > total_size.txt"
+    },
+    {
+        "query": "Find all PNG files in testbed/ and convert them to JPEG with a quality of 90%",
+        "gold": "find testbed/ -name '*.png' -exec convert -quality 90 {} {}.jpg \\;"
+    },
+    {
+        "query": "List all files in the directory /testbed/dir1 and sort them by size in human-readable format",
+        "gold": "ls -lhS /testbed/dir1"
+    },
+    {
+        "query": "Count the number of lines in all text files under the directory /testbed/dir2",
+        "gold": "grep -rl . /testbed/dir2 | xargs wc -l"
+    },
+    {
+        "query": "Print the name and size of the 3 largest files in the directory /testbed/dir3",
+        "gold": "du -a /testbed/dir3 | sort -rn | head -n 3"
+    },
+    {
+        "query": "Find all empty directories in the directory /testbed and delete them",
+        "gold": "find /testbed -type d -empty -delete"
+    },
+    {
+        "query": "Rename all files with extension .txt under the directory /testbed to have a .md extension instead",
+        "gold": "find /testbed -type f -name '*.txt' -exec rename .txt .md {} +"
+    },
+    {
+        "query": "Find all files modified in the last 2 hours and compress them into a tarball named archive.tar.gz in the directory /testbed",
+        "gold": "find /testbed -type f -mmin -120 -print0 | xargs -0 tar -czf /testbed/archive.tar.gz"
+    },
+    {
+        "query": "List all subdirectories of /testbed that are not named subdir1",
+        "gold": "ls -d /testbed/*/ | grep -v /subdir1/"
+    },
+    {
+        "query": "Search for all files that contain the string 'text file' in their name or content under the directory /testbed",
+        "gold": "grep -r 'text file' /testbed"
+    },
+    {
+        "query": "Compute the MD5 hash of all files under the directory /testbed and store them in a file named hashes.txt in the same directory",
+        "gold": "find /testbed -type f -exec md5sum {} + > /testbed/hashes.txt"
+    },
+    {
+        "query": "Print the last 10 lines of the file /testbed/dir3/subdir1/subsubdir1/textfile3.txt",
+        "gold": "tail -n 10 /testbed/dir3/subdir1/subsubdir1/textfile3.txt"
+    },
+    {
+        "query": "Find all symbolic links under the directory /testbed and print their target path",
+        "gold": "find /testbed -type l -printf '%p -> %l\n'"
+    },
+    {
+        "query": "Print the line number and contents of all lines containing the string 'value3' in the file /testbed/dir1/subdir1/jsonfile1.json",
+        "gold": "grep -n 'value3' /testbed/dir1/subdir1/jsonfile1.json"
+    },
+    {
+        "query": "Find all files in the directory /testbed that have been modified in the last 24 hours and print their path",
+        "gold": "find /testbed -type f -mtime -1 -print"
+    },
+    {
+        "query": "Display the contents of jsonfile1.json in a prettified JSON format using a third-party tool 'jq'",
+        "gold": "cat /testbed/dir1/subdir1/jsonfile1.json | jq ."
+    },
+    {
+        "query": "Search for all the files in /testbed directory and its subdirectories that contain the word 'Hello' and replace it with 'Hi' in-place.",
+        "gold": "grep -rl \"Hello\" /testbed | xargs sed -i 's/Hello/Hi/g'"
+    },
+    {
+        "query": "Display the contents of textfile3.txt and textfile4.txt side by side, with line numbers and a separator between them.",
+        "gold": "paste -d \"\t\" - -s < /testbed/dir3/subdir1/subsubdir1/textfile3.txt < /testbed/dir1/subdir1/textfile4.txt"
+    }
+]
+  

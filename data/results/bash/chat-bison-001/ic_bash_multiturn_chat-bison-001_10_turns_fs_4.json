@@ -1,0 +1,924 @@
+{
+  "0": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_4.json",
+    "task_id": 0,
+    "query": "Retrieve only build number of current kernel, ie. #104",
+    "turn_history": {
+      "actions": [
+        "cat /proc/version | awk '{print $3}'",
+        "uname -r",
+        "echo $(uname -r | cut -d'-' -f 3)",
+        "echo $(uname -r | awk '{print $3}')",
+        "echo $(uname -r | awk '{print $nf}')",
+        "echo $(uname -r | cut -d'-' -f 3)",
+        "echo $(uname -r | awk '{print $3}')",
+        "echo $(uname -r | awk '{print $nf}')",
+        "echo $(uname -r | cut -d'-' -f 3)",
+        "echo $(uname -r | awk '{print $3}')"
+      ],
+      "observations": [
+        "5.15.49-linuxkit\n",
+        "5.15.49-linuxkit\n",
+        "\n",
+        "\n",
+        "5.15.49-linuxkit\n",
+        "\n",
+        "\n",
+        "5.15.49-linuxkit\n",
+        "\n",
+        "\n"
+      ],
+      "rewards": [
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67
+      ],
+      "valid_action": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 0.67,
+      "max_reward_idx": 0,
+      "turns_taken": 10,
+      "turns_max": 10
+    }
+  },
+  "1": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_4.json",
+    "task_id": 1,
+    "query": "Print reverse lookup for adress 127.0.0.1",
+    "turn_history": {
+      "actions": [
+        "bash host 127.0.0.1",
+        "bash nslookup 127.0.0.1",
+        "blocked"
+      ],
+      "observations": [
+        "/usr/bin/host: /usr/bin/host: cannot execute binary file\n",
+        "/usr/bin/nslookup: /usr/bin/nslookup: cannot execute binary file\n"
+      ],
+      "rewards": [
+        0.67,
+        0.67,
+        0
+      ],
+      "valid_action": [
+        false,
+        false
+      ]
+    },
+    "summary": {
+      "max_reward": 0.67,
+      "max_reward_idx": 0,
+      "turns_taken": 3,
+      "turns_max": 10
+    }
+  },
+  "2": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_4.json",
+    "task_id": 2,
+    "query": "List file information of the full path of command \"c++\"",
+    "turn_history": {
+      "actions": [
+        "bash type -a c++",
+        "blocked"
+      ],
+      "observations": [
+        "bash: type: No such file or directory\n"
+      ],
+      "rewards": [
+        0.67,
+        0
+      ],
+      "valid_action": [
+        false
+      ]
+    },
+    "summary": {
+      "max_reward": 0.67,
+      "max_reward_idx": 0,
+      "turns_taken": 2,
+      "turns_max": 10
+    }
+  },
+  "3": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_4.json",
+    "task_id": 3,
+    "query": "Extract host name part from \"http://www.google.com\"",
+    "turn_history": {
+      "actions": [
+        "blocked"
+      ],
+      "observations": [],
+      "rewards": [
+        0
+      ],
+      "valid_action": []
+    },
+    "summary": {
+      "max_reward": 0,
+      "max_reward_idx": 0,
+      "turns_taken": 1,
+      "turns_max": 10
+    }
+  },
+  "4": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_4.json",
+    "task_id": 4,
+    "query": "List environment variables and their values, escaping all semicolons with a backslash.",
+    "turn_history": {
+      "actions": [
+        "for var in \"${!}\"; do echo \"${var//;/\\\\;}\" done",
+        "blocked"
+      ],
+      "observations": [
+        "/bin/bash: -c: line 2: syntax error: unexpected end of file\n"
+      ],
+      "rewards": [
+        0.7000000000000001,
+        0
+      ],
+      "valid_action": [
+        false
+      ]
+    },
+    "summary": {
+      "max_reward": 0.7000000000000001,
+      "max_reward_idx": 0,
+      "turns_taken": 2,
+      "turns_max": 10
+    }
+  },
+  "5": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_4.json",
+    "task_id": 5,
+    "query": "Displays a tree of all process alongside their command line arguments.",
+    "turn_history": {
+      "actions": [
+        "pstree -p $(pgrep -x)",
+        "blocked"
+      ],
+      "observations": [
+        "pgrep: no matching criteria specified\nTry `pgrep --help' for more information.\nbash(1)\n"
+      ],
+      "rewards": [
+        0.73,
+        0
+      ],
+      "valid_action": [
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 0.73,
+      "max_reward_idx": 0,
+      "turns_taken": 2,
+      "turns_max": 10
+    }
+  },
+  "6": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_4.json",
+    "task_id": 6,
+    "query": "Create intermediate directories \"dir\" and \"subdir\" as required and create \"subsubdir\"",
+    "turn_history": {
+      "actions": [
+        "mkdir -p dir/subdir/subsubdir"
+      ],
+      "observations": [
+        ""
+      ],
+      "rewards": [
+        1.0
+      ],
+      "valid_action": [
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 1.0,
+      "max_reward_idx": 0,
+      "turns_taken": 1,
+      "turns_max": 10
+    }
+  },
+  "7": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_4.json",
+    "task_id": 7,
+    "query": "Change to the directory of the executable \"python\"",
+    "turn_history": {
+      "actions": [
+        "cd \"$(dirname $(which python))\"",
+        "blocked"
+      ],
+      "observations": [
+        "$(which: -c: line 1: unexpected EOF while looking for matching `)'\n$(which: -c: line 2: syntax error: unexpected end of file\n"
+      ],
+      "rewards": [
+        0.68,
+        0
+      ],
+      "valid_action": [
+        false
+      ]
+    },
+    "summary": {
+      "max_reward": 0.68,
+      "max_reward_idx": 0,
+      "turns_taken": 2,
+      "turns_max": 10
+    }
+  },
+  "8": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_4.json",
+    "task_id": 8,
+    "query": "Print numbers 1 through 10 separated by \":\"",
+    "turn_history": {
+      "actions": [
+        "for i in {1..10}; do echo $i; done"
+      ],
+      "observations": [
+        "1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n"
+      ],
+      "rewards": [
+        1.0
+      ],
+      "valid_action": [
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 1.0,
+      "max_reward_idx": 0,
+      "turns_taken": 1,
+      "turns_max": 10
+    }
+  },
+  "9": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_4.json",
+    "task_id": 9,
+    "query": "print all readline bindings",
+    "turn_history": {
+      "actions": [
+        "bind -p",
+        "bind -p | less",
+        "bind -p | sed 's/\\n/ /g'",
+        "bind -p | tr '\\n' ' '",
+        "bind -p | cut -d' ' -f 2-",
+        "bind -p | sed 's/\\n/ /g' | cut -d' ' -f 2-",
+        "bind -p | sed 's/\\n/ /g' | cut -d' ' -f 2- | sort",
+        "blocked"
+      ],
+      "observations": [
+        "Malformed command",
+        "Malformed command",
+        "Malformed command",
+        "Malformed command",
+        "/bin/bash: line 1: bind: warning: line editing not enabled\n\nabort\nabort\nabort\naccept-line\naccept-line\nalias-expand-line (not bound)\narrow-key-prefix (not bound)\nbackward-byte (not bound)\nbackward-char\nbackward-char\nbackward-char\nbackward-delete-char\nbackward-delete-char\nbackward-kill-line\nbackward-kill-word\nbackward-kill-word\nbackward-word\nbackward-word\nbackward-word\nbackward-word\nbackward-word\nbeginning-of-history\nbeginning-of-line\nbeginning-of-line\nbeginning-of-line\nbeginning-of-line\nbracketed-paste-begin\ncall-last-kbd-macro\ncapitalize-word\ncharacter-search\ncharacter-search-backward\nclear-display\nclear-screen\ncomplete\ncomplete\ncomplete-command\ncomplete-filename\ncomplete-hostname\ncomplete-into-braces\ncomplete-username\ncomplete-variable\ncopy-backward-word (not bound)\ncopy-forward-word (not bound)\ncopy-region-as-kill (not bound)\ndabbrev-expand (not bound)\ndelete-char\ndelete-char\ndelete-char-or-list (not bound)\ndelete-horizontal-space\ndigit-argument\ndigit-argument\ndigit-argument\ndigit-argument\ndigit-argument\ndigit-argument\ndigit-argument\ndigit-argument\ndigit-argument\ndigit-argument\ndigit-argument\ndisplay-shell-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndowncase-word\ndump-functions (not bound)\ndump-macros (not bound)\ndump-variables (not bound)\ndynamic-complete-history\nedit-and-execute-command\nemacs-editing-mode (not bound)\nend-kbd-macro\nend-of-history\nend-of-line\nend-of-line\nend-of-line\nend-of-line\nexchange-point-and-mark\nforward-backward-delete-char (not bound)\nforward-byte (not bound)\nforward-char\nforward-char\nforward-char\nforward-search-history\nforward-word\nforward-word\nforward-word\nforward-word\nforward-word\nglob-complete-word\nglob-expand-word\nglob-list-expansions\nhistory-and-alias-expand-line (not bound)\nhistory-expand-line\nhistory-search-backward (not bound)\nhistory-search-forward (not bound)\nhistory-substring-search-backward (not bound)\nhistory-substring-search-forward (not bound)\ninsert-comment\ninsert-completions\ninsert-last-argument\ninsert-last-argument\nkill-line\nkill-region (not bound)\nkill-whole-line (not bound)\nkill-word\nkill-word\nmagic-space (not bound)\nmenu-complete (not bound)\nmenu-complete-backward (not bound)\nnext-history\nnext-history\nnext-history\nnext-screen-line (not bound)\nnon-incremental-forward-search-history\nnon-incremental-forward-search-history-again (not bound)\nnon-incremental-reverse-search-history\nnon-incremental-reverse-search-history-again (not bound)\nold-menu-complete (not bound)\noperate-and-get-next\noverwrite-mode (not bound)\npossible-command-completions\npossible-completions\npossible-completions\npossible-filename-completions\npossible-hostname-completions\npossible-username-completions\npossible-variable-completions\nprevious-history\nprevious-history\nprevious-history\nprevious-screen-line (not bound)\nprint-last-kbd-macro (not bound)\nquoted-insert\nquoted-insert\nquoted-insert\nre-read-init-file\nredraw-current-line (not bound)\nreverse-search-history\nrevert-line\nrevert-line\n\": self-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nset-mark\n\": set-mark\nshell-backward-kill-word (not bound)\nshell-backward-word\nshell-expand-line\nshell-forward-word\nshell-kill-word\nshell-transpose-words\nskip-csi-sequence (not bound)\nstart-kbd-macro\ntab-insert (not bound)\ntilde-expand\ntranspose-chars\ntranspose-words\ntty-status (not bound)\nundo\nundo\nuniversal-argument (not bound)\nunix-filename-rubout (not bound)\nunix-line-discard\nunix-word-rubout\nupcase-word\nvi-append-eol (not bound)\nvi-append-mode (not bound)\nvi-arg-digit (not bound)\nvi-bWord (not bound)\nvi-back-to-indent (not bound)\nvi-backward-bigword (not bound)\nvi-backward-word (not bound)\nvi-bword (not bound)\nvi-change-case (not bound)\nvi-change-char (not bound)\nvi-change-to (not bound)\nvi-char-search (not bound)\nvi-column (not bound)\nvi-complete (not bound)\nvi-delete (not bound)\nvi-delete-to (not bound)\nvi-eWord (not bound)\nvi-editing-mode (not bound)\nvi-end-bigword (not bound)\nvi-end-word (not bound)\nvi-eof-maybe (not bound)\nvi-eword (not bound)\nvi-fWord (not bound)\nvi-fetch-history (not bound)\nvi-first-print (not bound)\nvi-forward-bigword (not bound)\nvi-forward-word (not bound)\nvi-fword (not bound)\nvi-goto-mark (not bound)\nvi-insert-beg (not bound)\nvi-insertion-mode (not bound)\nvi-match (not bound)\nvi-movement-mode (not bound)\nvi-next-word (not bound)\nvi-overstrike (not bound)\nvi-overstrike-delete (not bound)\nvi-prev-word (not bound)\nvi-put (not bound)\nvi-redo (not bound)\nvi-replace (not bound)\nvi-rubout (not bound)\nvi-search (not bound)\nvi-search-again (not bound)\nvi-set-mark (not bound)\nvi-subst (not bound)\nvi-tilde-expand (not bound)\nvi-unix-word-rubout (not bound)\nvi-yank-arg (not bound)\nvi-yank-pop (not bound)\nvi-yank-to (not bound)\nyank\nyank-last-arg\nyank-last-arg\nyank-nth-arg\nyank-pop\n",
+        "/bin/bash: line 1: bind: warning: line editing not enabled\n\nabort\nabort\nabort\naccept-line\naccept-line\nalias-expand-line (not bound)\narrow-key-prefix (not bound)\nbackward-byte (not bound)\nbackward-char\nbackward-char\nbackward-char\nbackward-delete-char\nbackward-delete-char\nbackward-kill-line\nbackward-kill-word\nbackward-kill-word\nbackward-word\nbackward-word\nbackward-word\nbackward-word\nbackward-word\nbeginning-of-history\nbeginning-of-line\nbeginning-of-line\nbeginning-of-line\nbeginning-of-line\nbracketed-paste-begin\ncall-last-kbd-macro\ncapitalize-word\ncharacter-search\ncharacter-search-backward\nclear-display\nclear-screen\ncomplete\ncomplete\ncomplete-command\ncomplete-filename\ncomplete-hostname\ncomplete-into-braces\ncomplete-username\ncomplete-variable\ncopy-backward-word (not bound)\ncopy-forward-word (not bound)\ncopy-region-as-kill (not bound)\ndabbrev-expand (not bound)\ndelete-char\ndelete-char\ndelete-char-or-list (not bound)\ndelete-horizontal-space\ndigit-argument\ndigit-argument\ndigit-argument\ndigit-argument\ndigit-argument\ndigit-argument\ndigit-argument\ndigit-argument\ndigit-argument\ndigit-argument\ndigit-argument\ndisplay-shell-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndowncase-word\ndump-functions (not bound)\ndump-macros (not bound)\ndump-variables (not bound)\ndynamic-complete-history\nedit-and-execute-command\nemacs-editing-mode (not bound)\nend-kbd-macro\nend-of-history\nend-of-line\nend-of-line\nend-of-line\nend-of-line\nexchange-point-and-mark\nforward-backward-delete-char (not bound)\nforward-byte (not bound)\nforward-char\nforward-char\nforward-char\nforward-search-history\nforward-word\nforward-word\nforward-word\nforward-word\nforward-word\nglob-complete-word\nglob-expand-word\nglob-list-expansions\nhistory-and-alias-expand-line (not bound)\nhistory-expand-line\nhistory-search-backward (not bound)\nhistory-search-forward (not bound)\nhistory-substring-search-backward (not bound)\nhistory-substring-search-forward (not bound)\ninsert-comment\ninsert-completions\ninsert-last-argument\ninsert-last-argument\nkill-line\nkill-region (not bound)\nkill-whole-line (not bound)\nkill-word\nkill-word\nmagic-space (not bound)\nmenu-complete (not bound)\nmenu-complete-backward (not bound)\nnext-history\nnext-history\nnext-history\nnext-screen-line (not bound)\nnon-incremental-forward-search-history\nnon-incremental-forward-search-history-again (not bound)\nnon-incremental-reverse-search-history\nnon-incremental-reverse-search-history-again (not bound)\nold-menu-complete (not bound)\noperate-and-get-next\noverwrite-mode (not bound)\npossible-command-completions\npossible-completions\npossible-completions\npossible-filename-completions\npossible-hostname-completions\npossible-username-completions\npossible-variable-completions\nprevious-history\nprevious-history\nprevious-history\nprevious-screen-line (not bound)\nprint-last-kbd-macro (not bound)\nquoted-insert\nquoted-insert\nquoted-insert\nre-read-init-file\nredraw-current-line (not bound)\nreverse-search-history\nrevert-line\nrevert-line\n\": self-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nset-mark\n\": set-mark\nshell-backward-kill-word (not bound)\nshell-backward-word\nshell-expand-line\nshell-forward-word\nshell-kill-word\nshell-transpose-words\nskip-csi-sequence (not bound)\nstart-kbd-macro\ntab-insert (not bound)\ntilde-expand\ntranspose-chars\ntranspose-words\ntty-status (not bound)\nundo\nundo\nuniversal-argument (not bound)\nunix-filename-rubout (not bound)\nunix-line-discard\nunix-word-rubout\nupcase-word\nvi-append-eol (not bound)\nvi-append-mode (not bound)\nvi-arg-digit (not bound)\nvi-bWord (not bound)\nvi-back-to-indent (not bound)\nvi-backward-bigword (not bound)\nvi-backward-word (not bound)\nvi-bword (not bound)\nvi-change-case (not bound)\nvi-change-char (not bound)\nvi-change-to (not bound)\nvi-char-search (not bound)\nvi-column (not bound)\nvi-complete (not bound)\nvi-delete (not bound)\nvi-delete-to (not bound)\nvi-eWord (not bound)\nvi-editing-mode (not bound)\nvi-end-bigword (not bound)\nvi-end-word (not bound)\nvi-eof-maybe (not bound)\nvi-eword (not bound)\nvi-fWord (not bound)\nvi-fetch-history (not bound)\nvi-first-print (not bound)\nvi-forward-bigword (not bound)\nvi-forward-word (not bound)\nvi-fword (not bound)\nvi-goto-mark (not bound)\nvi-insert-beg (not bound)\nvi-insertion-mode (not bound)\nvi-match (not bound)\nvi-movement-mode (not bound)\nvi-next-word (not bound)\nvi-overstrike (not bound)\nvi-overstrike-delete (not bound)\nvi-prev-word (not bound)\nvi-put (not bound)\nvi-redo (not bound)\nvi-replace (not bound)\nvi-rubout (not bound)\nvi-search (not bound)\nvi-search-again (not bound)\nvi-set-mark (not bound)\nvi-subst (not bound)\nvi-tilde-expand (not bound)\nvi-unix-word-rubout (not bound)\nvi-yank-arg (not bound)\nvi-yank-pop (not bound)\nvi-yank-to (not bound)\nyank\nyank-last-arg\nyank-last-arg\nyank-nth-arg\nyank-pop\n",
+        "/bin/bash: line 1: bind: warning: line editing not enabled\n\n\": self-insert\n\": set-mark\nabort\nabort\nabort\naccept-line\naccept-line\nalias-expand-line (not bound)\narrow-key-prefix (not bound)\nbackward-byte (not bound)\nbackward-char\nbackward-char\nbackward-char\nbackward-delete-char\nbackward-delete-char\nbackward-kill-line\nbackward-kill-word\nbackward-kill-word\nbackward-word\nbackward-word\nbackward-word\nbackward-word\nbackward-word\nbeginning-of-history\nbeginning-of-line\nbeginning-of-line\nbeginning-of-line\nbeginning-of-line\nbracketed-paste-begin\ncall-last-kbd-macro\ncapitalize-word\ncharacter-search\ncharacter-search-backward\nclear-display\nclear-screen\ncomplete\ncomplete\ncomplete-command\ncomplete-filename\ncomplete-hostname\ncomplete-into-braces\ncomplete-username\ncomplete-variable\ncopy-backward-word (not bound)\ncopy-forward-word (not bound)\ncopy-region-as-kill (not bound)\ndabbrev-expand (not bound)\ndelete-char\ndelete-char\ndelete-char-or-list (not bound)\ndelete-horizontal-space\ndigit-argument\ndigit-argument\ndigit-argument\ndigit-argument\ndigit-argument\ndigit-argument\ndigit-argument\ndigit-argument\ndigit-argument\ndigit-argument\ndigit-argument\ndisplay-shell-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndo-lowercase-version\ndowncase-word\ndump-functions (not bound)\ndump-macros (not bound)\ndump-variables (not bound)\ndynamic-complete-history\nedit-and-execute-command\nemacs-editing-mode (not bound)\nend-kbd-macro\nend-of-history\nend-of-line\nend-of-line\nend-of-line\nend-of-line\nexchange-point-and-mark\nforward-backward-delete-char (not bound)\nforward-byte (not bound)\nforward-char\nforward-char\nforward-char\nforward-search-history\nforward-word\nforward-word\nforward-word\nforward-word\nforward-word\nglob-complete-word\nglob-expand-word\nglob-list-expansions\nhistory-and-alias-expand-line (not bound)\nhistory-expand-line\nhistory-search-backward (not bound)\nhistory-search-forward (not bound)\nhistory-substring-search-backward (not bound)\nhistory-substring-search-forward (not bound)\ninsert-comment\ninsert-completions\ninsert-last-argument\ninsert-last-argument\nkill-line\nkill-region (not bound)\nkill-whole-line (not bound)\nkill-word\nkill-word\nmagic-space (not bound)\nmenu-complete (not bound)\nmenu-complete-backward (not bound)\nnext-history\nnext-history\nnext-history\nnext-screen-line (not bound)\nnon-incremental-forward-search-history\nnon-incremental-forward-search-history-again (not bound)\nnon-incremental-reverse-search-history\nnon-incremental-reverse-search-history-again (not bound)\nold-menu-complete (not bound)\noperate-and-get-next\noverwrite-mode (not bound)\npossible-command-completions\npossible-completions\npossible-completions\npossible-filename-completions\npossible-hostname-completions\npossible-username-completions\npossible-variable-completions\nprevious-history\nprevious-history\nprevious-history\nprevious-screen-line (not bound)\nprint-last-kbd-macro (not bound)\nquoted-insert\nquoted-insert\nquoted-insert\nre-read-init-file\nredraw-current-line (not bound)\nreverse-search-history\nrevert-line\nrevert-line\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nself-insert\nset-mark\nshell-backward-kill-word (not bound)\nshell-backward-word\nshell-expand-line\nshell-forward-word\nshell-kill-word\nshell-transpose-words\nskip-csi-sequence (not bound)\nstart-kbd-macro\ntab-insert (not bound)\ntilde-expand\ntranspose-chars\ntranspose-words\ntty-status (not bound)\nundo\nundo\nuniversal-argument (not bound)\nunix-filename-rubout (not bound)\nunix-line-discard\nunix-word-rubout\nupcase-word\nvi-append-eol (not bound)\nvi-append-mode (not bound)\nvi-arg-digit (not bound)\nvi-bWord (not bound)\nvi-back-to-indent (not bound)\nvi-backward-bigword (not bound)\nvi-backward-word (not bound)\nvi-bword (not bound)\nvi-change-case (not bound)\nvi-change-char (not bound)\nvi-change-to (not bound)\nvi-char-search (not bound)\nvi-column (not bound)\nvi-complete (not bound)\nvi-delete (not bound)\nvi-delete-to (not bound)\nvi-eWord (not bound)\nvi-editing-mode (not bound)\nvi-end-bigword (not bound)\nvi-end-word (not bound)\nvi-eof-maybe (not bound)\nvi-eword (not bound)\nvi-fWord (not bound)\nvi-fetch-history (not bound)\nvi-first-print (not bound)\nvi-forward-bigword (not bound)\nvi-forward-word (not bound)\nvi-fword (not bound)\nvi-goto-mark (not bound)\nvi-insert-beg (not bound)\nvi-insertion-mode (not bound)\nvi-match (not bound)\nvi-movement-mode (not bound)\nvi-next-word (not bound)\nvi-overstrike (not bound)\nvi-overstrike-delete (not bound)\nvi-prev-word (not bound)\nvi-put (not bound)\nvi-redo (not bound)\nvi-replace (not bound)\nvi-rubout (not bound)\nvi-search (not bound)\nvi-search-again (not bound)\nvi-set-mark (not bound)\nvi-subst (not bound)\nvi-tilde-expand (not bound)\nvi-unix-word-rubout (not bound)\nvi-yank-arg (not bound)\nvi-yank-pop (not bound)\nvi-yank-to (not bound)\nyank\nyank-last-arg\nyank-last-arg\nyank-nth-arg\nyank-pop\n"
+      ],
+      "rewards": [
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.73,
+        0.73,
+        0.73,
+        0
+      ],
+      "valid_action": [
+        false,
+        false,
+        false,
+        false,
+        true,
+        true,
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 0.73,
+      "max_reward_idx": 4,
+      "turns_taken": 8,
+      "turns_max": 10
+    }
+  },
+  "10": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_4.json",
+    "task_id": 10,
+    "query": "list names of bind functions containing \"p\"",
+    "turn_history": {
+      "actions": [
+        "bind -p | grep -e \"p\"",
+        "bind -p | grep -e \"p\" | awk '{print $1}'",
+        "bind -p | grep -e \"p\" | sed 's/.*bind '//' | sed 's/.*'//' | sed 's/\\n//g'",
+        "blocked"
+      ],
+      "observations": [
+        "/bin/bash: line 1: bind: warning: line editing not enabled\n\"\\C-j\": accept-line\n\"\\C-m\": accept-line\n# alias-expand-line (not bound)\n# arrow-key-prefix (not bound)\n\"\\M-[200~\": bracketed-paste-begin\n\"\\M-c\": capitalize-word\n\"\\M-\\C-l\": clear-display\n\"\\C-i\": complete\n\"\\M-\\M-\": complete\n\"\\M-!\": complete-command\n\"\\M-/\": complete-filename\n\"\\M-@\": complete-hostname\n\"\\M-{\": complete-into-braces\n\"\\M-~\": complete-username\n\"\\M-$\": complete-variable\n# copy-backward-word (not bound)\n# copy-forward-word (not bound)\n# copy-region-as-kill (not bound)\n# dabbrev-expand (not bound)\n\"\\M-\\\\\": delete-horizontal-space\n\"\\C-x\\C-v\": display-shell-version\n# dump-functions (not bound)\n# dump-macros (not bound)\n# dump-variables (not bound)\n\"\\M-\\C-i\": dynamic-complete-history\n\"\\C-x\\C-x\": exchange-point-and-mark\n\"\\M-g\": glob-complete-word\n\"\\C-x*\": glob-expand-word\n\"\\C-xg\": glob-list-expansions\n# history-and-alias-expand-line (not bound)\n\"\\M-^\": history-expand-line\n\"\\M-*\": insert-completions\n# magic-space (not bound)\n# menu-complete (not bound)\n# menu-complete-backward (not bound)\n\"\\M-p\": non-incremental-reverse-search-history\n# old-menu-complete (not bound)\n\"\\C-o\": operate-and-get-next\n\"\\C-x!\": possible-command-completions\n\"\\M-=\": possible-completions\n\"\\M-?\": possible-completions\n\"\\C-x/\": possible-filename-completions\n\"\\C-x@\": possible-hostname-completions\n\"\\C-x~\": possible-username-completions\n\"\\C-x$\": possible-variable-completions\n\"\\C-p\": previous-history\n\"\\M-OA\": previous-history\n\"\\M-[A\": previous-history\n# previous-screen-line (not bound)\n# print-last-kbd-macro (not bound)\n\"p\": self-insert\n\"\\M-\\C-e\": shell-expand-line\n\"\\M-\\C-t\": shell-transpose-words\n# skip-csi-sequence (not bound)\n\"\\M-&\": tilde-expand\n\"\\C-t\": transpose-chars\n\"\\M-t\": transpose-words\n\"\\M-u\": upcase-word\n# vi-append-eol (not bound)\n# vi-append-mode (not bound)\n# vi-complete (not bound)\n# vi-first-print (not bound)\n# vi-prev-word (not bound)\n# vi-put (not bound)\n# vi-replace (not bound)\n# vi-tilde-expand (not bound)\n# vi-yank-pop (not bound)\n\"\\M-y\": yank-pop\n",
+        "/bin/bash: line 1: bind: warning: line editing not enabled\n\"\\C-j\":\n\"\\C-m\":\n#\n#\n\"\\M-[200~\":\n\"\\M-c\":\n\"\\M-\\C-l\":\n\"\\C-i\":\n\"\\M-\\M-\":\n\"\\M-!\":\n\"\\M-/\":\n\"\\M-@\":\n\"\\M-{\":\n\"\\M-~\":\n\"\\M-$\":\n#\n#\n#\n#\n\"\\M-\\\\\":\n\"\\C-x\\C-v\":\n#\n#\n#\n\"\\M-\\C-i\":\n\"\\C-x\\C-x\":\n\"\\M-g\":\n\"\\C-x*\":\n\"\\C-xg\":\n#\n\"\\M-^\":\n\"\\M-*\":\n#\n#\n#\n\"\\M-p\":\n#\n\"\\C-o\":\n\"\\C-x!\":\n\"\\M-=\":\n\"\\M-?\":\n\"\\C-x/\":\n\"\\C-x@\":\n\"\\C-x~\":\n\"\\C-x$\":\n\"\\C-p\":\n\"\\M-OA\":\n\"\\M-[A\":\n#\n#\n\"p\":\n\"\\M-\\C-e\":\n\"\\M-\\C-t\":\n#\n\"\\M-&\":\n\"\\C-t\":\n\"\\M-t\":\n\"\\M-u\":\n#\n#\n#\n#\n#\n#\n#\n#\n#\n\"\\M-y\":\n",
+        "/bin/bash: line 1: bind: warning: line editing not enabled\nsed: -e expression #1, char 13: unknown option to `s'\n"
+      ],
+      "rewards": [
+        0.8500000000000001,
+        0.7200000000000001,
+        0.7100000000000001,
+        0
+      ],
+      "valid_action": [
+        true,
+        true,
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 0.8500000000000001,
+      "max_reward_idx": 0,
+      "turns_taken": 4,
+      "turns_max": 10
+    }
+  },
+  "11": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_4.json",
+    "task_id": 11,
+    "query": "List all files on smbfs mounts",
+    "turn_history": {
+      "actions": [
+        "mount | grep smbfs | awk '{print $5}'",
+        "find /mnt -type f -mountpoint /mnt/smbfs",
+        "blocked"
+      ],
+      "observations": [
+        "",
+        "find: unknown predicate `-mountpoint'\n"
+      ],
+      "rewards": [
+        0.67,
+        0.67,
+        0
+      ],
+      "valid_action": [
+        true,
+        false
+      ]
+    },
+    "summary": {
+      "max_reward": 0.67,
+      "max_reward_idx": 0,
+      "turns_taken": 3,
+      "turns_max": 10
+    }
+  },
+  "12": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_4.json",
+    "task_id": 12,
+    "query": "Save first IP address of domain 'google.com' in 'address' variable and display it",
+    "turn_history": {
+      "actions": [
+        "blocked"
+      ],
+      "observations": [],
+      "rewards": [
+        0
+      ],
+      "valid_action": []
+    },
+    "summary": {
+      "max_reward": 0,
+      "max_reward_idx": 0,
+      "turns_taken": 1,
+      "turns_max": 10
+    }
+  },
+  "13": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_4.json",
+    "task_id": 13,
+    "query": "Remove all characters except \";\" and digits from the string \"  Hello world;876\t  \"",
+    "turn_history": {
+      "actions": [
+        "echo ' hello world;876 ' | sed 's/[^;0-9]//g'"
+      ],
+      "observations": [
+        ";876\n"
+      ],
+      "rewards": [
+        1.0
+      ],
+      "valid_action": [
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 1.0,
+      "max_reward_idx": 0,
+      "turns_taken": 1,
+      "turns_max": 10
+    }
+  },
+  "14": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_4.json",
+    "task_id": 14,
+    "query": "Remove leading and trailing spaces or tabs from \"  Hello world!\t  \"",
+    "turn_history": {
+      "actions": [
+        "bash sed 's/^\\s*//;s/\\s*$//' \"hello world! \"",
+        "bash echo \"hello world! \" | sed 's/^\\s*//;s/\\s*$//'",
+        "blocked"
+      ],
+      "observations": [
+        "/usr/bin/sed: /usr/bin/sed: cannot execute binary file\n",
+        "/usr/bin/echo: /usr/bin/echo: cannot execute binary file\n"
+      ],
+      "rewards": [
+        0.67,
+        0.67,
+        0
+      ],
+      "valid_action": [
+        false,
+        false
+      ]
+    },
+    "summary": {
+      "max_reward": 0.67,
+      "max_reward_idx": 0,
+      "turns_taken": 3,
+      "turns_max": 10
+    }
+  },
+  "15": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_4.json",
+    "task_id": 15,
+    "query": "Remove the last 3 characters from \"987654321\"",
+    "turn_history": {
+      "actions": [
+        "echo ${987654321:0:-3}",
+        "echo ${987654321:0:-3}",
+        "echo ${987654321:0:-3}",
+        "echo ${987654321:0:-3}",
+        "echo ${987654321:0:-3}",
+        "echo ${987654321:0:-3:1}",
+        "echo ${987654321:0:-3:2}",
+        "echo ${987654321:0:-3:3}",
+        "echo ${987654321:0:-3:4}",
+        "echo ${987654321:0:-3:5}"
+      ],
+      "observations": [
+        "\n",
+        "\n",
+        "\n",
+        "\n",
+        "\n",
+        "\n",
+        "\n",
+        "\n",
+        "\n",
+        "\n"
+      ],
+      "rewards": [
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67
+      ],
+      "valid_action": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 0.67,
+      "max_reward_idx": 0,
+      "turns_taken": 10,
+      "turns_max": 10
+    }
+  },
+  "16": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_4.json",
+    "task_id": 16,
+    "query": "Print source of the file system containing current working directory.",
+    "turn_history": {
+      "actions": [
+        "blocked"
+      ],
+      "observations": [],
+      "rewards": [
+        0
+      ],
+      "valid_action": []
+    },
+    "summary": {
+      "max_reward": 0,
+      "max_reward_idx": 0,
+      "turns_taken": 1,
+      "turns_max": 10
+    }
+  },
+  "17": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_4.json",
+    "task_id": 17,
+    "query": "List all variables (names only) with names containing \"H\".",
+    "turn_history": {
+      "actions": [
+        "for var in $(echo $* | sed 's/[^a-za-z0-9_]//g'); do if [[ $var =~ ^h.* ]]; then echo $var fi done",
+        "for var in $(echo $* | sed 's/[^a-za-z0-9_]//g'); do if [[ $var =~ ^h.* ]]; then echo $var fi done",
+        "for var in \"${!h*}\"; do echo $var done",
+        "for var in \"${!h*}\"; do echo $var done",
+        "for var in $(typeset -p | grep -e '^h.*'); do echo $var done",
+        "for var in \"${!h*}\"; do echo $var done",
+        "for var in \"${!h*}\"; do echo $var done",
+        "for var in \"${!h*}\"; do echo $var done",
+        "for var in \"${!h*}\"; do echo $var done",
+        "for var in \"${!h*}\"; do echo $var done"
+      ],
+      "observations": [
+        "/bin/bash: -c: line 2: syntax error: unexpected end of file\n",
+        "/bin/bash: -c: line 2: syntax error: unexpected end of file\n",
+        "/bin/bash: -c: line 2: syntax error: unexpected end of file\n",
+        "/bin/bash: -c: line 2: syntax error: unexpected end of file\n",
+        "/bin/bash: -c: line 2: syntax error: unexpected end of file\n",
+        "/bin/bash: -c: line 2: syntax error: unexpected end of file\n",
+        "/bin/bash: -c: line 2: syntax error: unexpected end of file\n",
+        "/bin/bash: -c: line 2: syntax error: unexpected end of file\n",
+        "/bin/bash: -c: line 2: syntax error: unexpected end of file\n",
+        "/bin/bash: -c: line 2: syntax error: unexpected end of file\n"
+      ],
+      "rewards": [
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67
+      ],
+      "valid_action": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "summary": {
+      "max_reward": 0.67,
+      "max_reward_idx": 0,
+      "turns_taken": 10,
+      "turns_max": 10
+    }
+  },
+  "18": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_4.json",
+    "task_id": 18,
+    "query": "Print a list of unique users who are logged in",
+    "turn_history": {
+      "actions": [
+        "who | sort | uniq -d"
+      ],
+      "observations": [
+        ""
+      ],
+      "rewards": [
+        1.0
+      ],
+      "valid_action": [
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 1.0,
+      "max_reward_idx": 0,
+      "turns_taken": 1,
+      "turns_max": 10
+    }
+  },
+  "19": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_4.json",
+    "task_id": 19,
+    "query": "Ping hostname, grep for 192.168.11 and print the IP from the output",
+    "turn_history": {
+      "actions": [
+        "ping hostname | grep 192.168.11 | awk '{print $1}'"
+      ],
+      "observations": [
+        "ping: hostname: Name or service not known\n"
+      ],
+      "rewards": [
+        1.0
+      ],
+      "valid_action": [
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 1.0,
+      "max_reward_idx": 0,
+      "turns_taken": 1,
+      "turns_max": 10
+    }
+  },
+  "20": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_4.json",
+    "task_id": 20,
+    "query": "Print a line of 99 '=' characters",
+    "turn_history": {
+      "actions": [
+        "for i in {1..99}; do echo \"=\" done",
+        "echo -e \"=\"*99",
+        "echo -e \"=\"{1..99}",
+        "blocked"
+      ],
+      "observations": [
+        "/bin/bash: -c: line 2: syntax error: unexpected end of file\n",
+        "=*99\n",
+        "=1 =2 =3 =4 =5 =6 =7 =8 =9 =10 =11 =12 =13 =14 =15 =16 =17 =18 =19 =20 =21 =22 =23 =24 =25 =26 =27 =28 =29 =30 =31 =32 =33 =34 =35 =36 =37 =38 =39 =40 =41 =42 =43 =44 =45 =46 =47 =48 =49 =50 =51 =52 =53 =54 =55 =56 =57 =58 =59 =60 =61 =62 =63 =64 =65 =66 =67 =68 =69 =70 =71 =72 =73 =74 =75 =76 =77 =78 =79 =80 =81 =82 =83 =84 =85 =86 =87 =88 =89 =90 =91 =92 =93 =94 =95 =96 =97 =98 =99\n"
+      ],
+      "rewards": [
+        0.67,
+        0.67,
+        0.67,
+        0
+      ],
+      "valid_action": [
+        false,
+        true,
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 0.67,
+      "max_reward_idx": 0,
+      "turns_taken": 4,
+      "turns_max": 10
+    }
+  },
+  "21": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_4.json",
+    "task_id": 21,
+    "query": "Counts all business days in a current month.",
+    "turn_history": {
+      "actions": [
+        "#!/bin/bash # this script counts all business days in a current month. # get the current month and year. month=$(date +%m) year=$(date +%y) # get the first and last day of the month. first_day=$(date -d \"1 ${month} ${year}\" +%d) last_day=$(date -d \"31 ${month} ${year}\" +%d) # get the list of all days in the month. days=$(date -d \"1 ${month} ${year}\" +%d -d \"31 ${month} ${year}\" +%d | sort -u) # remove weekends and holidays from the list of days. days=$(echo $days | sed 's/\\(0[1-7]\\)/\\1/g' | sed 's/\\(1[0-2]\\)/\\1/g' | sed 's/\\(1[3-5]\\)/\\1/g') # count the number of days in the list. count=$(echo $days | wc -l) # print the number of business days in the month. echo $count",
+        "blocked"
+      ],
+      "observations": [
+        ""
+      ],
+      "rewards": [
+        0.67,
+        0
+      ],
+      "valid_action": [
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 0.67,
+      "max_reward_idx": 0,
+      "turns_taken": 2,
+      "turns_max": 10
+    }
+  },
+  "22": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_4.json",
+    "task_id": 22,
+    "query": "Count number of users logged in",
+    "turn_history": {
+      "actions": [
+        "who | wc -l"
+      ],
+      "observations": [
+        "0\n"
+      ],
+      "rewards": [
+        1.0
+      ],
+      "valid_action": [
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 1.0,
+      "max_reward_idx": 0,
+      "turns_taken": 1,
+      "turns_max": 10
+    }
+  },
+  "23": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_4.json",
+    "task_id": 23,
+    "query": "Displays calendar of a previous, current and next month for December of 2120 year.",
+    "turn_history": {
+      "actions": [
+        "cal -3 -1 -2",
+        "blocked"
+      ],
+      "observations": [
+        "cal: invalid option -- '2'\nUsage: cal [general options] [-jy] [[month] year]\n       cal [general options] [-j] [-m month] [year]\n       ncal -C [general options] [-jy] [[month] year]\n       ncal -C [general options] [-j] [-m month] [year]\n       ncal [general options] [-bhJjpwySM] [-H yyyy-mm-dd] [-s country_code] [-W number of days] [[month] year]\n       ncal [general options] [-Jeo] [year]\nGeneral options: [-31] [-A months] [-B months] [-d yyyy-mm]\n"
+      ],
+      "rewards": [
+        0.67,
+        0
+      ],
+      "valid_action": [
+        false
+      ]
+    },
+    "summary": {
+      "max_reward": 0.67,
+      "max_reward_idx": 0,
+      "turns_taken": 2,
+      "turns_max": 10
+    }
+  },
+  "24": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_4.json",
+    "task_id": 24,
+    "query": "Extract, sort and print only group names from /etc/group.",
+    "turn_history": {
+      "actions": [
+        "cat /etc/group | sort | uniq",
+        "grep -v '^:' /etc/group | sort | uniq",
+        "awk '{print $3}' /etc/group | sort | uniq",
+        "blocked"
+      ],
+      "observations": [
+        "_ssh:x:103:\nadm:x:4:\naudio:x:29:\nbackup:x:34:\nbin:x:2:\ncdrom:x:24:\ncrontab:x:101:\ndaemon:x:1:\ndialout:x:20:\ndip:x:30:\ndisk:x:6:\nfax:x:21:\nfloppy:x:25:\ngames:x:60:\ngnats:x:41:\nirc:x:39:\nkmem:x:15:\nlist:x:38:\nlp:x:7:\nmail:x:8:\nman:x:12:\nmessagebus:x:102:\nnews:x:9:\nnogroup:x:65534:\noperator:x:37:\nplugdev:x:46:\nproxy:x:13:\nroot:x:0:\nsasl:x:45:\nshadow:x:42:\nsrc:x:40:\nstaff:x:50:\nsudo:x:27:\nsys:x:3:\ntape:x:26:\ntty:x:5:\nusers:x:100:\nutmp:x:43:\nuucp:x:10:\nvideo:x:44:\nvoice:x:22:\nwww-data:x:33:\n",
+        "_ssh:x:103:\nadm:x:4:\naudio:x:29:\nbackup:x:34:\nbin:x:2:\ncdrom:x:24:\ncrontab:x:101:\ndaemon:x:1:\ndialout:x:20:\ndip:x:30:\ndisk:x:6:\nfax:x:21:\nfloppy:x:25:\ngames:x:60:\ngnats:x:41:\nirc:x:39:\nkmem:x:15:\nlist:x:38:\nlp:x:7:\nmail:x:8:\nman:x:12:\nmessagebus:x:102:\nnews:x:9:\nnogroup:x:65534:\noperator:x:37:\nplugdev:x:46:\nproxy:x:13:\nroot:x:0:\nsasl:x:45:\nshadow:x:42:\nsrc:x:40:\nstaff:x:50:\nsudo:x:27:\nsys:x:3:\ntape:x:26:\ntty:x:5:\nusers:x:100:\nutmp:x:43:\nuucp:x:10:\nvideo:x:44:\nvoice:x:22:\nwww-data:x:33:\n",
+        "\n"
+      ],
+      "rewards": [
+        0.88,
+        0.88,
+        0.67,
+        0
+      ],
+      "valid_action": [
+        true,
+        true,
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 0.88,
+      "max_reward_idx": 0,
+      "turns_taken": 4,
+      "turns_max": 10
+    }
+  },
+  "25": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_4.json",
+    "task_id": 25,
+    "query": "Store system load average number in the 'proc_load_average' variable and print it.",
+    "turn_history": {
+      "actions": [
+        "echo $(cat /proc/loadavg)",
+        "proc_load_average=$(cat /proc/loadavg) echo $proc_load_average",
+        "proc_load_average=$(cat /proc/loadavg) echo \"the system load average is $proc_load_average\"",
+        "proc_load_average=$(cat /proc/loadavg) echo \"the system load average is ${proc_load_average[0]} ${proc_load_average[1]} ${proc_load_average[2]}\"",
+        "proc_load_average=$(cat /proc/loadavg) echo \"the system load average is ${proc_load_average[0]} ${proc_load_average[1]} ${proc_load_average[2]}\"",
+        "proc_load_average=$(cat /proc/loadavg) echo \"the system load average is $(echo $proc_load_average | cut -d' ' -f 1) $(echo $proc_load_average | cut -d' ' -f 2) $(echo $proc_load_average | cut -d' ' -f 3)\"",
+        "proc_load_average=$(cat /proc/loadavg) echo \"the system load average is $(echo $proc_load_average | cut -d' ' -f 1) $(echo $proc_load_average | cut -d' ' -f 2) $(echo $proc_load_average | cut -d' ' -f 3)\"",
+        "proc_load_average=$(cat /proc/loadavg) echo \"the system load average is ${proc_load_average[0]} ${proc_load_average[1]} ${proc_load_average[2]}\"",
+        "proc_load_average=$(cat /proc/loadavg) echo \"the system load average is $(echo $proc_load_average | cut -d' ' -f 1)\"",
+        "proc_load_average=$(cat /proc/loadavg) echo \"the system load average is $(echo $proc_load_average | cut -d' ' -f 1)\""
+      ],
+      "observations": [
+        "0.04 0.04 0.02 6/606 1042\n",
+        "\n",
+        "the\n",
+        "the\n",
+        "the\n",
+        "the\n",
+        "the\n",
+        "the\n",
+        "the\n",
+        "the\n"
+      ],
+      "rewards": [
+        0.76,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67
+      ],
+      "valid_action": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 0.76,
+      "max_reward_idx": 0,
+      "turns_taken": 10,
+      "turns_max": 10
+    }
+  },
+  "26": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_4.json",
+    "task_id": 26,
+    "query": "Calculate the sum of all the numbers from 1 to 10",
+    "turn_history": {
+      "actions": [
+        "sum=$((1+2+3+4+5+6+7+8+9+10)) echo $sum",
+        "blocked"
+      ],
+      "observations": [
+        "\n"
+      ],
+      "rewards": [
+        0.67,
+        0
+      ],
+      "valid_action": [
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 0.67,
+      "max_reward_idx": 0,
+      "turns_taken": 2,
+      "turns_max": 10
+    }
+  }
+}

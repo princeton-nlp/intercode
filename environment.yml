@@ -1,0 +1,24 @@
+name: intercode
+dependencies:
+  - python=3.9
+  - pip
+  - pip:
+    - ansiconv
+    - config
+    - cryptography
+    - docker
+    - gnureadline
+    - gymnasium
+    - langchain
+    - mysql-connector-python
+    - nltk
+    - openai
+    - pandas
+    - pymysql
+    - pytest
+    - rich
+    - scikit-learn
+    - sqlalchemy
+    - tenacity
+    - sqlite3-to-mysql
+    - google-generativeai

@@ -1,0 +1,242 @@
+[
+    {
+        "query": "Calculate a list of duplicate md5 sum hashes for all the \".java\" files in the /testbed directory",
+        "gold": "md5sum /testbed/*.java | awk '{print $1}' | sort | uniq -d"
+    },
+    {
+        "query": "Calculate md5 sum of the md5 sum of all the sorted files under /testbed/dir2/subdir2",
+        "gold": "find /testbed/dir2/subdir2 -type f -print0 | sort -z | xargs -r0 md5sum | md5sum"
+    },
+    {
+        "query": "Calculate the md5 sum of the contents of the sorted list of files \"$FILES\"",
+        "gold": "cat $(echo $FILES | sort) | md5sum"
+    },
+    {
+        "query": "Calculate the md5 sum of the md5 sum of all the files sorted under /testbed/dir2/subdir2",
+        "gold": "find testbed/dir2/subdir2 -type f -print0 | sort -z | xargs -r0 md5sum | md5sum"
+    },
+    {
+        "query": "Calculate the md5 sum of the sorted list of md5 sums of all \".py\" files under /testbed/dir1/subdir1",
+        "gold": "find /testbed/dir1/subdir1 -type f -name *.py -exec md5sum {} + | awk '{print $1}' | sort | md5sum"
+    },
+    {
+        "query": "Calculate the md5sum of each \".py\" file under /testbed/dir1/subdir1, sort the output, and calculate the md5sum of that",
+        "gold": "find /testbed/dir1/subdir1 -type f -name \"*.py\" -exec md5sum {} + | awk '{print $1}' | sort | md5sum"
+    },
+    {
+        "query": "Calculate the total disk usage for each \".txt\" file on the /testbed directory and prepend the system host name to the output",
+        "gold": "find /testbed / -iname '*.txt' -exec du -s {} + | sed 's/^/$(hostname): /'"
+    },
+    {
+        "query": "Change directory to the directory containing the executable file of command \"python\"",
+        "gold": "cd $(which python | xargs dirname)"
+    },
+    {
+        "query": "Change permissions for all PHP files under the /testbed directory tree to 755 and print the number of files changed",
+        "gold": "find /testbed -name \"*.php\" -exec chmod 755 {} \\; -exec /bin/echo {} \\; | wc -l"
+    },
+    {
+        "query": "Check if current shell is running within a 'screen' process.",
+        "gold": "pstree --show-parents -p $$ | head -n 1 | sed 's/\\(.*\\)+.*/\\1/' | wc -l"
+    },
+    {
+        "query": "Check if the contents of file /testbed/dir3/subdir1/subsubdir1/textfile3.txt is a subset of file /testbed/dir2/subdir1/textfile2.txt",
+        "gold": "comm -23 <(sort /testbed/dir3/subdir1/subsubdir1/textfile3.txt | uniq) <(sort /testbed/dir2/subdir1/textfile2.txt | uniq) | head -1"
+    },
+    {
+        "query": "Compress in parallel regular files in the testbed directory tree that were last modified more than 7 days ago",
+        "gold": "find /testbed -type f  -mtime +7 | tee compressedP.list | xargs -I{} -P10 compress {} &"
+    },
+    {
+        "query": "Compress regular files in the testbed directory tree that were last modified more than 7 days ago",
+        "gold": "find /testbed -type f -mtime +7 | tee compressedP.list | xargs -0 gzip"
+    },
+    {
+        "query": "Compute the mean average of the word count of *.txt files in the /testbed directory",
+        "gold": "find /testbed -name '*.txt' -print0 | xargs -0 wc -w | awk 'END { print $1/(NR-1) }'"
+    },
+    {
+        "query": "Compute the mean average of the word count of *.txt files smaller than 2000 words in the /testbed directory",
+        "gold": "find /testbed  -name '*.txt' -print0 | xargs -0 wc -w | awk '$1 < 2000 {v += $1; c++} END {print v/c}'"
+    },
+    {
+        "query": "Copies all files with \"FooBar\" in the path under the '/testbed/dir1' directory to the '/testbed/dir3/subdir1/subsubdir1/tmp' directory.",
+        "gold": "find /testbed -name '*FooBar*' -print0 | xargs -0 -I{} cp -R {} /testbed/dir3/subdir1/subsubdir1/tmp"
+    },
+    {
+        "query": "Construction with additional '-exec true' to be used if both commands need to run regardless of their success or failure.",
+        "gold": "find /testbed -name \"*.txt\" \\( -exec echo {} \\; -o -exec true \\; \\) -exec grep banana {} \\;"
+    },
+    {
+        "query": "Convert the first 16 characters in \"/testbed/textfile7.txt\" to a single hexadecimal value",
+        "gold": "head /testbed/textfile7.txt -c16 | od -tx1 -w16 | head -n1 | cut -d' ' -f2- | tr -d ' '"
+    },
+    {
+        "query": "Copies all files under the /testbed folder like \"file.txt\" with \"FooBar\" in the path to the root of the current folder, preserving mode, ownership and timestamp attributes.",
+        "gold": "find /testbed -name \"file.txt\"| grep \"FooBar\" | xargs -i cp -p \"{}\" ."
+    },
+    {
+        "query": "Copy all files below the /testbed directory whose names contain \"FooBar\" to directory '/testbed/dir3/subdir1/subsubdir1/tmp'",
+        "gold": "find /testbed -name '*FooBar*' -print0 | xargs -0 -I{} cp -R {} /testbed/dir3/subdir1/subsubdir1/tmp"
+    },
+    {
+        "query": "Count all the lines of all '*.c' files in /testbed directory recursively",
+        "gold": "find /testbed -name \"*.c\" -print0 | xargs -0 cat | wc -l"
+    },
+    {
+        "query": "Count all the lines of all files with names ending with 'php' in current directory recursively",
+        "gold": "find -name '*php' | xargs cat | wc -l"
+    },
+    {
+        "query": "Count all the lines of all php files in the /testbed directory recursively",
+        "gold": "find /testbed/ -name '*.php' | xargs cat | wc -l"
+    },
+    {
+        "query": "Count all the lines of code in all php files in the /testbed directory recursively",
+        "gold": "find /testbed -name \"*.php\" -type f -exec grep -v -c '^$' {} + | awk '{ cnt += $0 } END { print cnt }'"
+    },
+    {
+        "query": "Count md5sum of all '*.py' files in /testbed folder with subfolders.",
+        "gold": "find /testbed -type f -name \"*.py\" -exec md5sum {} + | awk '{print $1}' | sort | md5sum"
+    },
+    {
+        "query": "Count the *.html files residing in the /testbed directory tree and containing string \"foo\"",
+        "gold": "find /testbed -name \"*.html\" | xargs grep -l foo | wc -l"
+    },
+    {
+        "query": "Count the number of files named 'job.history' under '/testbed' directory tree that match 'FAIL' in their contents",
+        "gold": "find /testbed -name job.history | xargs grep -l FAIL | wc -l"
+    },
+    {
+        "query": "Count the number of files/directories with '.php' extension under /testbed directory tree and change the permissions to 755",
+        "gold": "find /testbed -name \"*.php\" -exec chmod 755 {} \\; -exec /bin/echo {} \\; | wc -l"
+    },
+    {
+        "query": "Count the number of lines in all \".php\" files in the /testbed directory tree",
+        "gold": "find /testbed -name '*.php' -type f | xargs cat | wc -l"
+    },
+    {
+        "query": "Count the number of lines in all files in the /testbed directory tree that match pattern 'foo??'",
+        "gold": "find /testbed/ -name 'foo??' | sort | xargs wc -l"
+    },
+    {
+        "query": "Count the number of regular files in directory tree ${DIRECTORY} that contain a vowel in their names",
+        "gold": "find ${DIRECTORY} -type f -print | sed -e 's@^.*/@@' | grep '[aeiouyAEIOUY]' | wc -l"
+    },
+    {
+        "query": "Count the number of unique file extensions in the /testbed directory tree",
+        "gold": "find /testbed -type f | sed -e 's/.*\\.//' | sed -e 's/.*\\///' | sort | uniq -c | sort -rn"
+    },
+    {
+        "query": "Count the total number of lines in all \"*.gz\" files in the /testbed directory tree after decompression",
+        "gold": "find /testbed -type f -name '*.gz' | xargs zcat | wc -l"
+    },
+    {
+        "query": "Counts all files in the /testbed folder and subfolders.",
+        "gold": "find /testbed -type f -exec ls -l {} \\; | wc -l"
+    },
+    {
+        "query": "Count lines in each *.php file sorted by file in /testbed directory.",
+        "gold": "find /testbed -name '*.php' -type f | sort | xargs wc -l"
+    },
+    {
+        "query": "Counts lines in each *.php file in /testbed directory, sorted by number of lines, descending.",
+        "gold": "find /testbed -name '*.php' -type f | xargs wc -l | sort -nr"
+    },
+    {
+        "query": "Counts lines in each of *.php files in the /testbed folder and subfolders and prints total count.",
+        "gold": "find /testbed -name '*.php' | awk '{print $0}' |xargs wc -l"
+    },
+    {
+        "query": "Counts lines in each of *.php files in the /testbed folder with subfolders and prints total count as well.",
+        "gold": "find /testbed -name '*.php' | xargs wc -l | sort -r"
+    },
+    {
+        "query": "Counts number of occurences of all ip addresses in '/etc/networks' file, and prints all addresses with number of occurences in a descending order.",
+        "gold": "cat /etc/networks | sort | uniq -c | sort -nr | awk '{print $2 $1}'"
+    },
+    {
+        "query": "Counts sum of non-empty lines from all .php files in /testbed folder.",
+        "gold": "find /testbed -name \"*.php\" -type f -exec grep -v -c '^$' {} + | awk '{ cnt += $0 } END { print cnt }'"
+    },
+    {
+        "query": "Counts total lines in all *.php files in the /testbed directory recursively",
+        "gold": "find /testbed -name '*.php' -type f | xargs cat | wc -l"
+    },
+    {
+        "query": "Counts total number of only lines with alphanumeric symbols in all *.php files in the /testbed folder and subfolders.",
+        "gold": "find /testbed -name '*.php' | xargs cat | awk '/[a-zA-Z0-9]/ {i++} END{print i}'"
+    },
+    {
+        "query": "Counts total lines in PHP and JS files in /testbed.",
+        "gold": "find /testbed -name '*.js' -or -name '*.php' | xargs wc -l | grep 'total'  | awk '{print $1}'"
+    },
+    {
+        "query": "Create a table containing all information from /testbed/dir1/subdir1/textfile4.txt and /testbed/dir2/subdir2/textfile5.txt, merging lines where the first field of both files matches, and keeping the line that starts with \"Gene\" at the start of the file.",
+        "gold": "join -a1 -a2 <(sed s/^Gene/00ne/ /testbed/dir1/subdir1/textfile4.txt | sort) <(sed s/^Gene/00ne/ /testbed/dir2/subdir2/textfile5.txt | sort) | column -t | sed s/^00ne/Gene/"
+    },
+    {
+        "query": "Create an empty file \"abc.txt\" in each directory named \"dir1\" under testbed directory.",
+        "gold": "find /testbed -type d -name \"dir1\" -print |  sed 's/$/\\/abc.txt/g' | xargs touch"
+    },
+    {
+        "query": "Create archive \"/backup1.tar\" of all subdirectories of the /testbed directory without the prefix \"testbed\"",
+        "gold": "find /testbed -mindepth 1 -maxdepth 1 -type d | xargs tar czf /backup1.tar --transform 's,^testbed/,,'"
+    },
+    {
+        "query": "Create logs.tar.gz of all older than one day logs of Ubuntu",
+        "gold": "find /var/log/ -mtime +1 | xargs  tar -czvPf  /testbed/logs.tar.gz"
+    },
+    {
+        "query": "Delete and count files in \"/testbed/dir3/subdir1/subsubdir1/tmp\" that are older than 2 days",
+        "gold": "find /testbed/dir3/subdir1/subsubdir1/tmp -type f -mtime +2 -print0 | xargs -0 rm -f"
+    },
+    {
+        "query": "Display the 5 largest files in the /testbed directory and its sub-directories.",
+        "gold": "find /testbed -type f -exec ls -s {} \\; | sort -n -r | head -5"
+    },
+    {
+        "query": "Display the 5 smallest files in the /testbed directory and its sub-directories ignoring any empty files.",
+        "gold": "find /testbed -not -empty -type f -exec ls -s {} \\; | sort -n  | head -5"
+    },
+    {
+        "query": "Display the 5 smallest files in the /testbed directory and its sub-directories.",
+        "gold": "find /testbed -type f -exec ls -s {} \\; | sort -n  | head -5"
+    },
+    {
+        "query": "Display the biggest file sizes only in the /testbed directory",
+        "gold": "find /testbed -type f -exec du -Sh {} + | sort -rh | head -n 5"
+    },
+    {
+        "query": "Find .java files in the testbed directory tree that contain 'Hello', and print their names",
+        "gold": "find /testbed -name \"*.java\" -exec grep -Hin Hello {} + | cut -d \":\" -f 1 | xargs -I{} basename {}"
+    },
+    {
+        "query": "Print a list of all duplicate case insensitive filenames in the /testbed directory tree",
+        "gold": "find /testbed -type f | awk -F/ '{print $NF}' | sort -f | uniq -i -d"
+    },
+    {
+        "query": "Print all unique file paths under \"testbed/dir1\" compared to \"testbed/dir2\"",
+        "gold": "comm -23 <(find /testbed/dir1 | sed 's#/testbed/dir1/##' | sort) <(find /testbed/dir2 | sed 's#/testbed/dir2/##' | sort) | sed 's#^#/testbed/dir1/#'"
+    },
+    {
+        "query": "Recursively finds all files containing text 'Hello' and prints folder where they are placed.",
+        "gold": "grep -r Hello * | awk '{split($1, path, \":\"); print path[1]}' | xargs -I{} dirname {}"
+    },
+    {
+        "query": "Prints total number of lines of all *.java files in /testbed folder and subfolders.",
+        "gold": "find /testbed -name '*.java' -print0 |xargs -0 wc -l|grep 'total' |awk '{ print $1 }'"
+    },
+    {
+        "query": "Create a symbolc link in the /testbed/dir3/subdir1/subsubdir1/FooBar to root folder",
+        "gold": "ln /testbed/dir3/subdir1/subsubdir1/FooBar -s /"
+    },
+    {
+        "query": "search for all the files in the folder /testbed/dir1 which have sticky bit set and have the permissions 553",
+        "gold": "find /testbed/dir1 -perm 553"
+    },
+    {
+        "query": "search for php files in /testbed directory and search for \"world\" in all these files",
+        "gold": "find /testbed -name '*.php' -exec grep -iq \"world\" {} \\; -print"
+    }
+]

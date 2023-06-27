@@ -1,0 +1,1852 @@
+{
+  "0": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_1.json",
+    "task_id": 0,
+    "query": "Calculate a list of duplicate md5 sum hashes for all the \".java\" files in the /testbed directory",
+    "turn_history": {
+      "actions": [
+        "find /testbed -type f -name '*.java' -exec md5sum {} + | sort | uniq -d",
+        "blocked"
+      ],
+      "observations": [
+        ""
+      ],
+      "rewards": [
+        0.67,
+        0
+      ],
+      "valid_action": [
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 0.67,
+      "max_reward_idx": 0,
+      "turns_taken": 2,
+      "turns_max": 10
+    }
+  },
+  "1": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_1.json",
+    "task_id": 1,
+    "query": "Calculate md5 sum of the md5 sum of all the sorted files under /testbed/dir2/subdir2",
+    "turn_history": {
+      "actions": [
+        "find /testbed/dir2/subdir2 -type f -exec md5sum {} + | sort | md5sum",
+        "find /testbed/dir2/subdir2 -type f -exec md5sum {} + | sort | md5sum | md5sum",
+        "find /testbed/dir2/subdir2 -type f -exec md5sum {} + | sort | md5sum | md5sum | md5sum",
+        "find /testbed/dir2/subdir2 -type f -exec md5sum {} + | sort | md5sum | md5sum | md5sum | md5sum",
+        "find /testbed/dir2/subdir2 -type f -exec md5sum {} + | sort | md5sum",
+        "find /testbed/dir2/subdir2 -type f -exec md5sum {} + | sort | md5sum",
+        "find /testbed/dir2/subdir2 -type f -exec md5sum {} + | sort | md5sum | md5sum",
+        "find /testbed/dir2/subdir2 -type f -exec md5sum {} + | sort | md5sum",
+        "find /testbed/dir2/subdir2 -type f -exec md5sum {} + | sort | md5sum | md5sum",
+        "find /testbed/dir2/subdir2 -type f -exec md5sum {} + | sort | md5sum | md5sum"
+      ],
+      "observations": [
+        "414efca01c4c0d529526537d1070d41e  -\n",
+        "d2ec59c73713e1b40b3435686ea061b7  -\n",
+        "c9d436485306a394ab0d3af6d86b8348  -\n",
+        "421a375bfaf4f228e05c43bb3d2e5ed3  -\n",
+        "414efca01c4c0d529526537d1070d41e  -\n",
+        "414efca01c4c0d529526537d1070d41e  -\n",
+        "d2ec59c73713e1b40b3435686ea061b7  -\n",
+        "414efca01c4c0d529526537d1070d41e  -\n",
+        "d2ec59c73713e1b40b3435686ea061b7  -\n",
+        "d2ec59c73713e1b40b3435686ea061b7  -\n"
+      ],
+      "rewards": [
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67
+      ],
+      "valid_action": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 0.67,
+      "max_reward_idx": 0,
+      "turns_taken": 10,
+      "turns_max": 10
+    }
+  },
+  "2": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_1.json",
+    "task_id": 2,
+    "query": "Calculate the md5 sum of the contents of the sorted list of files \"$FILES\"",
+    "turn_history": {
+      "actions": [
+        "md5sum $(sort -u \"$files\")"
+      ],
+      "observations": [
+        "d41d8cd98f00b204e9800998ecf8427e  -\n"
+      ],
+      "rewards": [
+        1.0
+      ],
+      "valid_action": [
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 1.0,
+      "max_reward_idx": 0,
+      "turns_taken": 1,
+      "turns_max": 10
+    }
+  },
+  "3": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_1.json",
+    "task_id": 3,
+    "query": "Calculate the md5 sum of the md5 sum of all the files sorted under /testbed/dir2/subdir2",
+    "turn_history": {
+      "actions": [
+        "find /testbed/dir2/subdir2 -type f -exec md5sum {} + | sort | md5sum",
+        "find /testbed/dir2/subdir2 -type f -exec md5sum {} + | sort | md5sum | md5sum",
+        "md5sum $(find /testbed/dir2/subdir2 -type f) | sort | md5sum",
+        "find /testbed/dir2/subdir2 -type f -exec md5sum {} + | sort | md5sum | md5sum | md5sum",
+        "md5sum $(find /testbed/dir2/subdir2 -type f | sort) | md5sum",
+        "md5sum $(find /testbed/dir2/subdir2 -type f | sort | uniq -c) | sort -nr | tail -1",
+        "find /testbed/dir2/subdir2 -type f -exec md5sum {} + | sort | md5sum",
+        "md5sum $(find /testbed/dir2/subdir2 -type f | sort | uniq -c) | sort -nr | tail -1",
+        "find /testbed/dir2/subdir2 -type f -exec md5sum {} + | sort | md5sum | md5sum",
+        "md5sum $(find /testbed/dir2/subdir2 -type f | sort | uniq -c) | sort -nr | tail -1"
+      ],
+      "observations": [
+        "414efca01c4c0d529526537d1070d41e  -\n",
+        "d2ec59c73713e1b40b3435686ea061b7  -\n",
+        "414efca01c4c0d529526537d1070d41e  -\n",
+        "c9d436485306a394ab0d3af6d86b8348  -\n",
+        "c9b48292048e937331fa825621eb0068  -\n",
+        "md5sum: 1: No such file or directory\nmd5sum: 1: No such file or directory\nmd5sum: 1: No such file or directory\n0d1e201ac67b5a979c52f42eb8dd3702  /testbed/dir2/subdir2/pythonscript2.py\n",
+        "414efca01c4c0d529526537d1070d41e  -\n",
+        "md5sum: 1: No such file or directory\nmd5sum: 1: No such file or directory\nmd5sum: 1: No such file or directory\n0d1e201ac67b5a979c52f42eb8dd3702  /testbed/dir2/subdir2/pythonscript2.py\n",
+        "d2ec59c73713e1b40b3435686ea061b7  -\n",
+        "md5sum: 1: No such file or directory\nmd5sum: 1: No such file or directory\nmd5sum: 1: No such file or directory\n0d1e201ac67b5a979c52f42eb8dd3702  /testbed/dir2/subdir2/pythonscript2.py\n"
+      ],
+      "rewards": [
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67
+      ],
+      "valid_action": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 0.67,
+      "max_reward_idx": 0,
+      "turns_taken": 10,
+      "turns_max": 10
+    }
+  },
+  "4": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_1.json",
+    "task_id": 4,
+    "query": "Calculate the md5 sum of the sorted list of md5 sums of all \".py\" files under /testbed/dir1/subdir1",
+    "turn_history": {
+      "actions": [
+        "find /testbed/dir1/subdir1 -name '*.py' -exec md5sum {} + | sort | uniq -c | sort -nr | tail -1",
+        "blocked"
+      ],
+      "observations": [
+        "      1 7f913e21eb0ecb91b39943f2016dc7a3  /testbed/dir1/subdir1/subsubdir1/pythonscript1.py\n"
+      ],
+      "rewards": [
+        0.67,
+        0
+      ],
+      "valid_action": [
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 0.67,
+      "max_reward_idx": 0,
+      "turns_taken": 2,
+      "turns_max": 10
+    }
+  },
+  "5": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_1.json",
+    "task_id": 5,
+    "query": "Calculate the md5sum of each \".py\" file under /testbed/dir1/subdir1, sort the output, and calculate the md5sum of that",
+    "turn_history": {
+      "actions": [
+        "find /testbed/dir1/subdir1 -type f -name '*.py' -exec md5sum {} + | sort | md5sum",
+        "blocked"
+      ],
+      "observations": [
+        "df3b03a223a32744829fe026fa679cbb  -\n"
+      ],
+      "rewards": [
+        0.67,
+        0
+      ],
+      "valid_action": [
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 0.67,
+      "max_reward_idx": 0,
+      "turns_taken": 2,
+      "turns_max": 10
+    }
+  },
+  "6": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_1.json",
+    "task_id": 6,
+    "query": "Calculate the total disk usage for each \".txt\" file on the /testbed directory and prepend the system host name to the output",
+    "turn_history": {
+      "actions": [
+        "```BASH for file in /testbed/*.txt; do   du -sh \"$file\" | awk '{print $1}' | sed 's/\\s//g' done | sort -nr | head -n 10 | sed 's/\\n//g' | sed 's/\\t//g' | sed 's/ /, /g' | sed 's/\\r//g' | sed 's/\\0//g' | sed 's/\\x0B//g' | sed 's/\\x0C//g' | sed 's/\\x0D//g' | sed 's/\\x1B//g' | sed 's/\\x1C//g' | sed 's/\\x1D//g' | sed 's/\\x1E//g' | sed 's/\\x1F//g' | sed 's/\\x85//g' | sed 's/\\x9B//g' | sed 's/\\xAD//g' | sed 's/\\xAE//g' | sed 's/\\xAF//g' | sed 's/\\xB0//g' | sed 's/\\xB1//g' | sed 's/\\xB2//g' | sed 's/\\xB3//g' | sed 's/\\xB4//g' | sed 's/\\xB5//g' | sed 's/\\xB6//g' | sed 's/\\xB7//g' | sed 's/\\xB8//g' | sed 's/\\xB9//g' | sed 's/\\xBA//g' | sed 's/\\xBB//g' | sed 's/\\xBC//g' | sed 's/\\xBD//g' | sed 's/\\xBE//g' | sed 's/\\xBF//g' | sed 's/\\xC0//g' | sed 's/\\xC1//g' | sed 's/\\xC2//g' | sed 's/\\xC3//g' | sed 's/\\xC4//g' | sed 's/\\xC5//g' | sed 's/\\xC6//g' | sed 's/\\xC7//g' | sed 's/\\xC8//g' | sed 's/\\xC9//g' | sed 's/\\xCA//g' | sed 's/\\xCB//g' | sed 's/\\xCC//g' | sed 's/\\xCD//g' | sed 's/\\xCE//g' | sed 's/\\xCF//g' | sed 's/\\xD0//g' | sed 's/\\xD1//g' | sed 's/\\xD2//g' | sed 's/\\xD3//g' | sed 's/\\xD4//g' | sed 's/\\xD5//g' | sed 's/\\xD6//g' | sed 's/\\xD7//g' | sed 's/\\xD8//g' | sed 's/\\xD9//g' | sed 's/\\xDA//g' | sed 's/\\xDB//g' | sed 's/\\xDC//g' | sed 's/\\xDD//g' | sed 's/\\xDE//g' | sed 's/\\xDF//g' | sed 's/\\xE0//g' | sed 's/\\xE1//g' | sed 's/\\xE2//g' | sed 's/\\xE3//g' | sed 's/\\xE4//g' | sed 's/\\xE5//g' | sed 's/\\xE6//g' | sed 's/\\xE7//g' | sed 's/\\xE8//g' | sed 's/\\xE9//g' | sed 's/\\xEA//g' | sed 's/",
+        "blocked"
+      ],
+      "observations": [
+        "Format your BASH command as follows:\n```BASH\nYour BASH code here\n```\n"
+      ],
+      "rewards": [
+        0,
+        0
+      ],
+      "valid_action": [
+        false
+      ]
+    },
+    "summary": {
+      "max_reward": 0,
+      "max_reward_idx": 0,
+      "turns_taken": 2,
+      "turns_max": 10
+    }
+  },
+  "7": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_1.json",
+    "task_id": 7,
+    "query": "Change directory to the directory containing the executable file of command \"python\"",
+    "turn_history": {
+      "actions": [
+        "cd \"$(which python)\"",
+        "blocked"
+      ],
+      "observations": [
+        "python): -c: line 1: unexpected EOF while looking for matching `)'\npython): -c: line 2: syntax error: unexpected end of file\n"
+      ],
+      "rewards": [
+        0.68,
+        0
+      ],
+      "valid_action": [
+        false
+      ]
+    },
+    "summary": {
+      "max_reward": 0.68,
+      "max_reward_idx": 0,
+      "turns_taken": 2,
+      "turns_max": 10
+    }
+  },
+  "8": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_1.json",
+    "task_id": 8,
+    "query": "Change permissions for all PHP files under the /testbed directory tree to 755 and print the number of files changed",
+    "turn_history": {
+      "actions": [
+        "find /testbed -type f -name \"*.php\" -exec chmod 755 {} +",
+        "blocked"
+      ],
+      "observations": [
+        ""
+      ],
+      "rewards": [
+        0.67,
+        0
+      ],
+      "valid_action": [
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 0.67,
+      "max_reward_idx": 0,
+      "turns_taken": 2,
+      "turns_max": 10
+    }
+  },
+  "9": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_1.json",
+    "task_id": 9,
+    "query": "Check if current shell is running within a 'screen' process.",
+    "turn_history": {
+      "actions": [
+        "[[ -n \"$(ps -ef | grep -c screen)\" ]]",
+        "blocked"
+      ],
+      "observations": [
+        "-ef: -c: line 1: unexpected EOF while looking for matching `)'\n-ef: -c: line 2: unexpected argument to conditional unary operator\n-ef: -c: line 2: syntax error: unexpected end of file\n"
+      ],
+      "rewards": [
+        0.67,
+        0
+      ],
+      "valid_action": [
+        false
+      ]
+    },
+    "summary": {
+      "max_reward": 0.67,
+      "max_reward_idx": 0,
+      "turns_taken": 2,
+      "turns_max": 10
+    }
+  },
+  "10": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_1.json",
+    "task_id": 10,
+    "query": "Check if the contents of file /testbed/dir3/subdir1/subsubdir1/textfile3.txt is a subset of file /testbed/dir2/subdir1/textfile2.txt",
+    "turn_history": {
+      "actions": [
+        "diff -q /testbed/dir3/subdir1/subsubdir1/textfile3.txt /testbed/dir2/subdir1/textfile2.txt",
+        "grep -q -x /testbed/dir3/subdir1/subsubdir1/textfile3.txt /testbed/dir2/subdir1/textfile2.txt",
+        "blocked"
+      ],
+      "observations": [
+        "Files /testbed/dir3/subdir1/subsubdir1/textfile3.txt and /testbed/dir2/subdir1/textfile2.txt differ\n",
+        ""
+      ],
+      "rewards": [
+        0.67,
+        0.67,
+        0
+      ],
+      "valid_action": [
+        false,
+        false
+      ]
+    },
+    "summary": {
+      "max_reward": 0.67,
+      "max_reward_idx": 0,
+      "turns_taken": 3,
+      "turns_max": 10
+    }
+  },
+  "13": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_1.json",
+    "task_id": 13,
+    "query": "Compute the mean average of the word count of *.txt files in the /testbed directory",
+    "turn_history": {
+      "actions": [
+        "find /testbed -name '*.txt' -exec sh -c ' for file do word_count=$(wc -l < \"$file\") done echo $((word_count / $(wc -l < <(find /testbed -name '*.txt' -print))))' sh {} +",
+        "blocked"
+      ],
+      "observations": [
+        "sh: 1: Syntax error: redirection unexpected\n"
+      ],
+      "rewards": [
+        0.67,
+        0
+      ],
+      "valid_action": [
+        false
+      ]
+    },
+    "summary": {
+      "max_reward": 0.67,
+      "max_reward_idx": 0,
+      "turns_taken": 2,
+      "turns_max": 10
+    }
+  },
+  "14": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_1.json",
+    "task_id": 14,
+    "query": "Compute the mean average of the word count of *.txt files smaller than 2000 words in the /testbed directory",
+    "turn_history": {
+      "actions": [
+        "find /testbed -type f -name '*.txt' -size -c 0 -exec wc -l {} + | sort -nr | tail -1 | awk '{print $1 / nr}'",
+        "blocked"
+      ],
+      "observations": [
+        "find: Invalid argument `-c' to -size\n"
+      ],
+      "rewards": [
+        0.67,
+        0
+      ],
+      "valid_action": [
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 0.67,
+      "max_reward_idx": 0,
+      "turns_taken": 2,
+      "turns_max": 10
+    }
+  },
+  "15": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_1.json",
+    "task_id": 15,
+    "query": "Copies all files with \"FooBar\" in the path under the '/testbed/dir1' directory to the '/testbed/dir3/subdir1/subsubdir1/tmp' directory.",
+    "turn_history": {
+      "actions": [
+        "find /testbed/dir1 -name '*foobar*' -type f -exec cp -t /testbed/dir3/subdir1/subsubdir1/tmp {} +",
+        "find /testbed/dir1 -name '*foobar*' -type f -exec cp -t /testbed/dir3/subdir1/subsubdir1/tmp {} +",
+        "find /testbed/dir1 -name '*foobar*' -type f -exec cp -t /testbed/dir3/subdir1/subsubdir1/tmp {} +",
+        "find /testbed/dir1 -name '*foobar*' -type f -exec cp -t /testbed/dir3/subdir1/subsubdir1/tmp {} +",
+        "find /testbed/dir1 -name '*foobar*' -type f -exec cp -t /testbed/dir3/subdir1/subsubdir1/tmp {} +",
+        "find /testbed/dir1 -name '*foobar*' -type f -exec cp -t /testbed/dir3/subdir1/subsubdir1/tmp {} +",
+        "find /testbed/dir1 -name '*foobar*' -type f -exec cp -t /testbed/dir3/subdir1/subsubdir1/tmp {} +",
+        "find /testbed/dir1 -name '*foobar*' -type f -exec cp -t /testbed/dir3/subdir1/subsubdir1/tmp {} +",
+        "find /testbed/dir1 -name '*foobar*' -type f -exec cp -t /testbed/dir3/subdir1/subsubdir1/tmp {} +",
+        "find /testbed/dir1 -name '*foobar*' -type f -exec cp -t /testbed/dir3/subdir1/subsubdir1/tmp {} +"
+      ],
+      "observations": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "rewards": [
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67
+      ],
+      "valid_action": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 0.67,
+      "max_reward_idx": 0,
+      "turns_taken": 10,
+      "turns_max": 10
+    }
+  },
+  "16": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_1.json",
+    "task_id": 16,
+    "query": "Construction with additional '-exec true' to be used if both commands need to run regardless of their success or failure.",
+    "turn_history": {
+      "actions": [
+        "command1 && command2 || true",
+        "blocked"
+      ],
+      "observations": [
+        "/bin/bash: line 1: command1: command not found\n"
+      ],
+      "rewards": [
+        0.67,
+        0
+      ],
+      "valid_action": [
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 0.67,
+      "max_reward_idx": 0,
+      "turns_taken": 2,
+      "turns_max": 10
+    }
+  },
+  "17": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_1.json",
+    "task_id": 17,
+    "query": "Convert the first 16 characters in \"/testbed/textfile7.txt\" to a single hexadecimal value",
+    "turn_history": {
+      "actions": [
+        "head -c 16 /testbed/textfile7.txt | xxd -p -r",
+        "blocked"
+      ],
+      "observations": [
+        "/bin/bash: line 1: xxd: command not found\n"
+      ],
+      "rewards": [
+        0.67,
+        0
+      ],
+      "valid_action": [
+        false
+      ]
+    },
+    "summary": {
+      "max_reward": 0.67,
+      "max_reward_idx": 0,
+      "turns_taken": 2,
+      "turns_max": 10
+    }
+  },
+  "18": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_1.json",
+    "task_id": 18,
+    "query": "Copies all files under the /testbed folder like \"file.txt\" with \"FooBar\" in the path to the root of the current folder, preserving mode, ownership and timestamp attributes.",
+    "turn_history": {
+      "actions": [
+        "rsync -a /testbed/* foobar",
+        "blocked"
+      ],
+      "observations": [
+        "/bin/bash: line 1: rsync: command not found\n"
+      ],
+      "rewards": [
+        0.39,
+        0
+      ],
+      "valid_action": [
+        false
+      ]
+    },
+    "summary": {
+      "max_reward": 0.39,
+      "max_reward_idx": 0,
+      "turns_taken": 2,
+      "turns_max": 10
+    }
+  },
+  "19": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_1.json",
+    "task_id": 19,
+    "query": "Copy all files below the /testbed directory whose names contain \"FooBar\" to directory '/testbed/dir3/subdir1/subsubdir1/tmp'",
+    "turn_history": {
+      "actions": [
+        "find /testbed -name '*foobar*' -type f -exec cp -t /testbed/dir3/subdir1/subsubdir1/tmp {} +",
+        "blocked"
+      ],
+      "observations": [
+        ""
+      ],
+      "rewards": [
+        0.67,
+        0
+      ],
+      "valid_action": [
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 0.67,
+      "max_reward_idx": 0,
+      "turns_taken": 2,
+      "turns_max": 10
+    }
+  },
+  "20": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_1.json",
+    "task_id": 20,
+    "query": "Count all the lines of all '*.c' files in /testbed directory recursively",
+    "turn_history": {
+      "actions": [
+        "find /testbed -name '*.c' -type f -exec wc -l {} +",
+        "blocked"
+      ],
+      "observations": [
+        "5 /testbed/hello.c\n"
+      ],
+      "rewards": [
+        0.67,
+        0
+      ],
+      "valid_action": [
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 0.67,
+      "max_reward_idx": 0,
+      "turns_taken": 2,
+      "turns_max": 10
+    }
+  },
+  "21": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_1.json",
+    "task_id": 21,
+    "query": "Count all the lines of all files with names ending with 'php' in current directory recursively",
+    "turn_history": {
+      "actions": [
+        "find . -name '*.php' -type f -exec wc -l {} +",
+        "blocked"
+      ],
+      "observations": [
+        " 1 ./testbed/hello.php\n 1 ./testbed/dir1/info.php\n 2 total\n"
+      ],
+      "rewards": [
+        0.67,
+        0
+      ],
+      "valid_action": [
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 0.67,
+      "max_reward_idx": 0,
+      "turns_taken": 2,
+      "turns_max": 10
+    }
+  },
+  "22": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_1.json",
+    "task_id": 22,
+    "query": "Count all the lines of all php files in the /testbed directory recursively",
+    "turn_history": {
+      "actions": [
+        "find /testbed -name '*.php' -type f -exec wc -l {} +",
+        "blocked"
+      ],
+      "observations": [
+        " 1 /testbed/hello.php\n 1 /testbed/dir1/info.php\n 2 total\n"
+      ],
+      "rewards": [
+        0.67,
+        0
+      ],
+      "valid_action": [
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 0.67,
+      "max_reward_idx": 0,
+      "turns_taken": 2,
+      "turns_max": 10
+    }
+  },
+  "23": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_1.json",
+    "task_id": 23,
+    "query": "Count all the lines of code in all php files in the /testbed directory recursively",
+    "turn_history": {
+      "actions": [
+        "find /testbed -type f -name \"*.php\" -exec wc -l {} +",
+        "blocked"
+      ],
+      "observations": [
+        " 1 /testbed/hello.php\n 1 /testbed/dir1/info.php\n 2 total\n"
+      ],
+      "rewards": [
+        0.67,
+        0
+      ],
+      "valid_action": [
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 0.67,
+      "max_reward_idx": 0,
+      "turns_taken": 2,
+      "turns_max": 10
+    }
+  },
+  "24": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_1.json",
+    "task_id": 24,
+    "query": "Count md5sum of all '*.py' files in /testbed folder with subfolders.",
+    "turn_history": {
+      "actions": [
+        "find /testbed -type f -name \"*.py\" -exec md5sum {} + | sort | uniq -c",
+        "find /testbed -type f -name \"*.py\" -exec md5sum {} + | sort | uniq -c | sort -nr",
+        "find /testbed -type f -name \"*.py\" -exec md5sum {} + | sort | uniq -c | sort -nr | head -n 1",
+        "blocked"
+      ],
+      "observations": [
+        "      1 01f2fbf4546437338b5ec31ecedb70e8  /testbed/dir3/subdir1/pythonscript3.py\n      1 0d1e201ac67b5a979c52f42eb8dd3702  /testbed/dir2/subdir2/pythonscript2.py\n      1 7f913e21eb0ecb91b39943f2016dc7a3  /testbed/dir1/subdir1/subsubdir1/pythonscript1.py\n      1 d033b9c133f546e229de4b7022546aad  /testbed/dir1/subdir1/pythonscript4.py\n",
+        "      1 d033b9c133f546e229de4b7022546aad  /testbed/dir1/subdir1/pythonscript4.py\n      1 7f913e21eb0ecb91b39943f2016dc7a3  /testbed/dir1/subdir1/subsubdir1/pythonscript1.py\n      1 0d1e201ac67b5a979c52f42eb8dd3702  /testbed/dir2/subdir2/pythonscript2.py\n      1 01f2fbf4546437338b5ec31ecedb70e8  /testbed/dir3/subdir1/pythonscript3.py\n",
+        "      1 d033b9c133f546e229de4b7022546aad  /testbed/dir1/subdir1/pythonscript4.py\n"
+      ],
+      "rewards": [
+        0.67,
+        0.67,
+        0.67,
+        0
+      ],
+      "valid_action": [
+        true,
+        true,
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 0.67,
+      "max_reward_idx": 0,
+      "turns_taken": 4,
+      "turns_max": 10
+    }
+  },
+  "25": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_1.json",
+    "task_id": 25,
+    "query": "Count the *.html files residing in the /testbed directory tree and containing string \"foo\"",
+    "turn_history": {
+      "actions": [
+        "find /testbed -name '*.html' -exec grep -c foo {} +"
+      ],
+      "observations": [
+        "0\n"
+      ],
+      "rewards": [
+        1.0
+      ],
+      "valid_action": [
+        false
+      ]
+    },
+    "summary": {
+      "max_reward": 1.0,
+      "max_reward_idx": 0,
+      "turns_taken": 1,
+      "turns_max": 10
+    }
+  },
+  "26": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_1.json",
+    "task_id": 26,
+    "query": "Count the number of files named 'job.history' under '/testbed' directory tree that match 'FAIL' in their contents",
+    "turn_history": {
+      "actions": [
+        "find /testbed -name job.history -type f -exec grep -c fail {} +",
+        "find /testbed -name job.history -type f -exec grep -c fail {} + | sort -n | tail -1",
+        "find /testbed -name job.history -type f -exec grep -c fail {} + | sort -n | tail -1",
+        "find /testbed -name job.history -type f -exec grep -c fail {} + | wc -l"
+      ],
+      "observations": [
+        "",
+        "",
+        "",
+        "0\n"
+      ],
+      "rewards": [
+        0.67,
+        0.67,
+        0.67,
+        1.0
+      ],
+      "valid_action": [
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 1.0,
+      "max_reward_idx": 3,
+      "turns_taken": 4,
+      "turns_max": 10
+    }
+  },
+  "27": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_1.json",
+    "task_id": 27,
+    "query": "Count the number of files/directories with '.php' extension under /testbed directory tree and change the permissions to 755",
+    "turn_history": {
+      "actions": [
+        "find /testbed -type f -name \"*.php\" -exec chmod 755 {} +",
+        "blocked"
+      ],
+      "observations": [
+        ""
+      ],
+      "rewards": [
+        0.67,
+        0
+      ],
+      "valid_action": [
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 0.67,
+      "max_reward_idx": 0,
+      "turns_taken": 2,
+      "turns_max": 10
+    }
+  },
+  "28": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_1.json",
+    "task_id": 28,
+    "query": "Count the number of lines in all \".php\" files in the /testbed directory tree",
+    "turn_history": {
+      "actions": [
+        "find /testbed -name '*.php' -type f | wc -l"
+      ],
+      "observations": [
+        "2\n"
+      ],
+      "rewards": [
+        1.0
+      ],
+      "valid_action": [
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 1.0,
+      "max_reward_idx": 0,
+      "turns_taken": 1,
+      "turns_max": 10
+    }
+  },
+  "29": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_1.json",
+    "task_id": 29,
+    "query": "Count the number of lines in all files in the /testbed directory tree that match pattern 'foo??'",
+    "turn_history": {
+      "actions": [
+        "find /testbed -name '*foo??' -type f -exec wc -l {} +",
+        "blocked"
+      ],
+      "observations": [
+        ""
+      ],
+      "rewards": [
+        0.67,
+        0
+      ],
+      "valid_action": [
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 0.67,
+      "max_reward_idx": 0,
+      "turns_taken": 2,
+      "turns_max": 10
+    }
+  },
+  "30": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_1.json",
+    "task_id": 30,
+    "query": "Count the number of regular files in directory tree ${DIRECTORY} that contain a vowel in their names",
+    "turn_history": {
+      "actions": [
+        "find ${directory} -type f -name '*[aeiou]*' | wc -l",
+        "find ${directory} -type f -exec sh -c ' for file do if [[ $(echo $file | grep -c '[aeiou]') -gt 0 ]]; then echo $file fi done' sh {} + | wc -l",
+        "blocked"
+      ],
+      "observations": [
+        "16168\n",
+        "sh: 1: Syntax error: end of file unexpected (expecting \"fi\")\nsh: 1: Syntax error: end of file unexpected (expecting \"fi\")\nsh: 1: Syntax error: end of file unexpected (expecting \"fi\")\nsh: 1: Syntax error: end of file unexpected (expecting \"fi\")\nsh: 1: Syntax error: end of file unexpected (expecting \"fi\")\nsh: 1: Syntax error: end of file unexpected (expecting \"fi\")\nsh: 1: Syntax error: end of file unexpected (expecting \"fi\")\n0\n"
+      ],
+      "rewards": [
+        0.67,
+        0.67,
+        0
+      ],
+      "valid_action": [
+        true,
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 0.67,
+      "max_reward_idx": 0,
+      "turns_taken": 3,
+      "turns_max": 10
+    }
+  },
+  "31": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_1.json",
+    "task_id": 31,
+    "query": "Count the number of unique file extensions in the /testbed directory tree",
+    "turn_history": {
+      "actions": [
+        "find /testbed -type f -exec sh -c ' for file do extension=${file##*/} [[ -n \"$extension\" ]] && echo \"$extension\" done' sh {} + | sort | uniq -c",
+        "blocked"
+      ],
+      "observations": [
+        "sh: 1: Syntax error: end of file unexpected (expecting \"done\")\n"
+      ],
+      "rewards": [
+        0.6900000000000001,
+        0
+      ],
+      "valid_action": [
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 0.6900000000000001,
+      "max_reward_idx": 0,
+      "turns_taken": 2,
+      "turns_max": 10
+    }
+  },
+  "32": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_1.json",
+    "task_id": 32,
+    "query": "Count the total number of lines in all \"*.gz\" files in the /testbed directory tree after decompression",
+    "turn_history": {
+      "actions": [
+        "find /testbed -name \"*.gz\" -exec gzip -d {} + | wc -l",
+        "blocked"
+      ],
+      "observations": [
+        "0\n"
+      ],
+      "rewards": [
+        0.67,
+        0
+      ],
+      "valid_action": [
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 0.67,
+      "max_reward_idx": 0,
+      "turns_taken": 2,
+      "turns_max": 10
+    }
+  },
+  "33": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_1.json",
+    "task_id": 33,
+    "query": "Counts all files in the /testbed folder and subfolders.",
+    "turn_history": {
+      "actions": [
+        "find /testbed -type f -print0 | wc -l",
+        "blocked"
+      ],
+      "observations": [
+        "0\n"
+      ],
+      "rewards": [
+        0.67,
+        0
+      ],
+      "valid_action": [
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 0.67,
+      "max_reward_idx": 0,
+      "turns_taken": 2,
+      "turns_max": 10
+    }
+  },
+  "34": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_1.json",
+    "task_id": 34,
+    "query": "Count lines in each *.php file sorted by file in /testbed directory.",
+    "turn_history": {
+      "actions": [
+        "find /testbed -name '*.php' -type f | xargs wc -l | sort -nr"
+      ],
+      "observations": [
+        " 2 total\n 1 /testbed/hello.php\n 1 /testbed/dir1/info.php\n"
+      ],
+      "rewards": [
+        1.0
+      ],
+      "valid_action": [
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 1.0,
+      "max_reward_idx": 0,
+      "turns_taken": 1,
+      "turns_max": 10
+    }
+  },
+  "35": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_1.json",
+    "task_id": 35,
+    "query": "Counts lines in each *.php file in /testbed directory, sorted by number of lines, descending.",
+    "turn_history": {
+      "actions": [
+        "find /testbed -name '*.php' -type f | xargs wc -l | sort -nr"
+      ],
+      "observations": [
+        " 2 total\n 1 /testbed/hello.php\n 1 /testbed/dir1/info.php\n"
+      ],
+      "rewards": [
+        1.0
+      ],
+      "valid_action": [
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 1.0,
+      "max_reward_idx": 0,
+      "turns_taken": 1,
+      "turns_max": 10
+    }
+  },
+  "36": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_1.json",
+    "task_id": 36,
+    "query": "Counts lines in each of *.php files in the /testbed folder and subfolders and prints total count.",
+    "turn_history": {
+      "actions": [
+        "find /testbed -name '*.php' -type f -exec wc -l {} + | sort -n | tail -1",
+        "blocked"
+      ],
+      "observations": [
+        " 2 total\n"
+      ],
+      "rewards": [
+        0.74,
+        0
+      ],
+      "valid_action": [
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 0.74,
+      "max_reward_idx": 0,
+      "turns_taken": 2,
+      "turns_max": 10
+    }
+  },
+  "37": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_1.json",
+    "task_id": 37,
+    "query": "Counts lines in each of *.php files in the /testbed folder with subfolders and prints total count as well.",
+    "turn_history": {
+      "actions": [
+        "find /testbed -type f -name \"*.php\" -exec wc -l {} + | sort -nr | tail -1",
+        "blocked"
+      ],
+      "observations": [
+        " 1 /testbed/dir1/info.php\n"
+      ],
+      "rewards": [
+        0.9400000000000001,
+        0
+      ],
+      "valid_action": [
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 0.9400000000000001,
+      "max_reward_idx": 0,
+      "turns_taken": 2,
+      "turns_max": 10
+    }
+  },
+  "38": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_1.json",
+    "task_id": 38,
+    "query": "Counts number of occurences of all ip addresses in '/etc/networks' file, and prints all addresses with number of occurences in a descending order.",
+    "turn_history": {
+      "actions": [
+        "blocked"
+      ],
+      "observations": [],
+      "rewards": [
+        0
+      ],
+      "valid_action": []
+    },
+    "summary": {
+      "max_reward": 0,
+      "max_reward_idx": 0,
+      "turns_taken": 1,
+      "turns_max": 10
+    }
+  },
+  "39": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_1.json",
+    "task_id": 39,
+    "query": "Counts sum of non-empty lines from all .php files in /testbed folder.",
+    "turn_history": {
+      "actions": [
+        "find /testbed -name '*.php' -type f -exec cat {} + | wc -l | awk '{print $1}'",
+        "blocked"
+      ],
+      "observations": [
+        "2\n"
+      ],
+      "rewards": [
+        0.67,
+        0
+      ],
+      "valid_action": [
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 0.67,
+      "max_reward_idx": 0,
+      "turns_taken": 2,
+      "turns_max": 10
+    }
+  },
+  "40": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_1.json",
+    "task_id": 40,
+    "query": "Counts total lines in all *.php files in the /testbed directory recursively",
+    "turn_history": {
+      "actions": [
+        "find /testbed -name '*.php' -type f -exec wc -l {} +",
+        "blocked"
+      ],
+      "observations": [
+        " 1 /testbed/hello.php\n 1 /testbed/dir1/info.php\n 2 total\n"
+      ],
+      "rewards": [
+        0.67,
+        0
+      ],
+      "valid_action": [
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 0.67,
+      "max_reward_idx": 0,
+      "turns_taken": 2,
+      "turns_max": 10
+    }
+  },
+  "41": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_1.json",
+    "task_id": 41,
+    "query": "Counts total number of only lines with alphanumeric symbols in all *.php files in the /testbed folder and subfolders.",
+    "turn_history": {
+      "actions": [
+        "find /testbed -type f -name \"*.php\" -exec grep -c \"[^a-za-z0-9]\" {} +",
+        "blocked"
+      ],
+      "observations": [
+        "/testbed/hello.php:1\n/testbed/dir1/info.php:1\n"
+      ],
+      "rewards": [
+        0.67,
+        0
+      ],
+      "valid_action": [
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 0.67,
+      "max_reward_idx": 0,
+      "turns_taken": 2,
+      "turns_max": 10
+    }
+  },
+  "42": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_1.json",
+    "task_id": 42,
+    "query": "Counts total lines in PHP and JS files in /testbed.",
+    "turn_history": {
+      "actions": [
+        "find /testbed -type f -name \"*.php\" -o -name \"*.js\" | wc -l"
+      ],
+      "observations": [
+        "2\n"
+      ],
+      "rewards": [
+        1.0
+      ],
+      "valid_action": [
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 1.0,
+      "max_reward_idx": 0,
+      "turns_taken": 1,
+      "turns_max": 10
+    }
+  },
+  "43": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_1.json",
+    "task_id": 43,
+    "query": "Create a table containing all information from /testbed/dir1/subdir1/textfile4.txt and /testbed/dir2/subdir2/textfile5.txt, merging lines where the first field of both files matches, and keeping the line that starts with \"Gene\" at the start of the file.",
+    "turn_history": {
+      "actions": [
+        "cat /testbed/dir1/subdir1/textfile4.txt | sed '1d' | sort | uniq -c | sort -nr | head -n 1 | cat /testbed/dir2/subdir2/textfile5.txt | sed '1d' | sort | uniq -c | sort -nr | head -n 1 | sort | uniq -c | sort -nr | awk '{print $1, $2}' | sort -nr | head -n 1",
+        "blocked"
+      ],
+      "observations": [
+        ""
+      ],
+      "rewards": [
+        0.67,
+        0
+      ],
+      "valid_action": [
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 0.67,
+      "max_reward_idx": 0,
+      "turns_taken": 2,
+      "turns_max": 10
+    }
+  },
+  "44": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_1.json",
+    "task_id": 44,
+    "query": "Create an empty file \"abc.txt\" in each directory named \"dir1\" under testbed directory.",
+    "turn_history": {
+      "actions": [
+        "for dir in testbed/*/dir1; do touch \"$dir/abc.txt\" done",
+        "blocked"
+      ],
+      "observations": [
+        "/bin/bash: -c: line 2: syntax error: unexpected end of file\n"
+      ],
+      "rewards": [
+        0.39,
+        0
+      ],
+      "valid_action": [
+        false
+      ]
+    },
+    "summary": {
+      "max_reward": 0.39,
+      "max_reward_idx": 0,
+      "turns_taken": 2,
+      "turns_max": 10
+    }
+  },
+  "45": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_1.json",
+    "task_id": 45,
+    "query": "Create archive \"/backup1.tar\" of all subdirectories of the /testbed directory without the prefix \"testbed\"",
+    "turn_history": {
+      "actions": [
+        "tar czf /backup1.tar /testbed/*/*",
+        "tar czf /backup1.tar /testbed/**/*(?!testbed)",
+        "tar czf /backup1.tar /testbed/*(?!testbed)",
+        "tar czf /backup1.tar /testbed/*/(?!testbed)",
+        "tar czf /backup1.tar /testbed/**/*(?!testbed)",
+        "tar czf /backup1.tar /testbed/*(?!testbed)",
+        "tar czf /backup1.tar /testbed/**/*(?!testbed)",
+        "tar czf /backup1.tar /testbed/*(?!testbed)",
+        "tar czf /backup1.tar /testbed/**/*(?!testbed)",
+        "tar czf /backup1.tar /testbed/*(?!testbed)"
+      ],
+      "observations": [
+        "tar: Removing leading `/' from member names\ntar: Removing leading `/' from hard link targets\n",
+        "/bin/bash: -c: line 1: syntax error near unexpected token `('\n/bin/bash: -c: line 1: `tar czf /backup1.tar /testbed/**/*(?!testbed)'\n",
+        "/bin/bash: -c: line 1: syntax error near unexpected token `('\n/bin/bash: -c: line 1: `tar czf /backup1.tar /testbed/*(?!testbed)'\n",
+        "/bin/bash: -c: line 1: syntax error near unexpected token `('\n/bin/bash: -c: line 1: `tar czf /backup1.tar /testbed/*/(?!testbed)'\n",
+        "/bin/bash: -c: line 1: syntax error near unexpected token `('\n/bin/bash: -c: line 1: `tar czf /backup1.tar /testbed/**/*(?!testbed)'\n",
+        "/bin/bash: -c: line 1: syntax error near unexpected token `('\n/bin/bash: -c: line 1: `tar czf /backup1.tar /testbed/*(?!testbed)'\n",
+        "/bin/bash: -c: line 1: syntax error near unexpected token `('\n/bin/bash: -c: line 1: `tar czf /backup1.tar /testbed/**/*(?!testbed)'\n",
+        "/bin/bash: -c: line 1: syntax error near unexpected token `('\n/bin/bash: -c: line 1: `tar czf /backup1.tar /testbed/*(?!testbed)'\n",
+        "/bin/bash: -c: line 1: syntax error near unexpected token `('\n/bin/bash: -c: line 1: `tar czf /backup1.tar /testbed/**/*(?!testbed)'\n",
+        "/bin/bash: -c: line 1: syntax error near unexpected token `('\n/bin/bash: -c: line 1: `tar czf /backup1.tar /testbed/*(?!testbed)'\n"
+      ],
+      "rewards": [
+        0.67,
+        0.37,
+        0.37,
+        0.37,
+        0.37,
+        0.37,
+        0.37,
+        0.37,
+        0.37,
+        0.37
+      ],
+      "valid_action": [
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "summary": {
+      "max_reward": 0.67,
+      "max_reward_idx": 0,
+      "turns_taken": 10,
+      "turns_max": 10
+    }
+  },
+  "46": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_1.json",
+    "task_id": 46,
+    "query": "Create logs.tar.gz of all older than one day logs of Ubuntu",
+    "turn_history": {
+      "actions": [
+        "find /var/log -type f -mtime +1 -exec tar cvzf logs.tar.gz {} +",
+        "find /var/log -type f -mtime +1 -exec tar cvzf logs.tar.gz {} +",
+        "find /var/log -type f -mtime +1 -exec tar cvzf logs.tar.gz {} +",
+        "find /var/log -type f -mtime +1 -exec tar cvzf logs.tar.gz {} +",
+        "find /var/log -type f -mtime +1 -exec tar cvzf logs.tar.gz {} +",
+        "find /var/log -type f -mtime +1 -exec tar cvzf logs.tar.gz {} +",
+        "find /var/log -type f -mtime +1 -exec tar cvzf logs.tar.gz {} +",
+        "find /var/log -type f -mtime +1 -exec tar cvzf logs.tar.gz {} +",
+        "find /var/log -type f -mtime +1 -exec tar cvzf logs.tar.gz {} +",
+        "find /var/log -type f -mtime +1 -exec tar cvzf logs.tar.gz {} +"
+      ],
+      "observations": [
+        "tar: Removing leading `/' from member names\n/var/log/alternatives.log\ntar: Removing leading `/' from hard link targets\n/var/log/wtmp\n/var/log/faillog\n/var/log/apt/eipp.log.xz\n/var/log/apt/history.log\n/var/log/apt/term.log\n/var/log/btmp\n/var/log/dpkg.log\n/var/log/lastlog\n/var/log/bootstrap.log\n/var/log/fontconfig.log\n",
+        "tar: Removing leading `/' from member names\ntar: Removing leading `/' from hard link targets\n/var/log/alternatives.log\n/var/log/wtmp\n/var/log/faillog\n/var/log/apt/eipp.log.xz\n/var/log/apt/history.log\n/var/log/apt/term.log\n/var/log/btmp\n/var/log/dpkg.log\n/var/log/lastlog\n/var/log/bootstrap.log\n/var/log/fontconfig.log\n",
+        "tar: Removing leading `/' from member names\n/var/log/alternatives.log\ntar: Removing leading `/' from hard link targets\n/var/log/wtmp\n/var/log/faillog\n/var/log/apt/eipp.log.xz\n/var/log/apt/history.log\n/var/log/apt/term.log\n/var/log/btmp\n/var/log/dpkg.log\n/var/log/lastlog\n/var/log/bootstrap.log\n/var/log/fontconfig.log\n",
+        "tar: Removing leading `/' from member names\ntar: Removing leading `/' from hard link targets\n/var/log/alternatives.log\n/var/log/wtmp\n/var/log/faillog\n/var/log/apt/eipp.log.xz\n/var/log/apt/history.log\n/var/log/apt/term.log\n/var/log/btmp\n/var/log/dpkg.log\n/var/log/lastlog\n/var/log/bootstrap.log\n/var/log/fontconfig.log\n",
+        "tar: Removing leading `/' from member names\n/var/log/alternatives.log\n/var/log/wtmp\n/var/log/faillog\n/var/log/apt/eipp.log.xz\n/var/log/apt/history.log\ntar: Removing leading `/' from hard link targets\n/var/log/apt/term.log\n/var/log/btmp\n/var/log/dpkg.log\n/var/log/lastlog\n/var/log/bootstrap.log\n/var/log/fontconfig.log\n",
+        "tar: Removing leading `/' from member names\ntar: Removing leading `/' from hard link targets\n/var/log/alternatives.log\n/var/log/wtmp\n/var/log/faillog\n/var/log/apt/eipp.log.xz\n/var/log/apt/history.log\n/var/log/apt/term.log\n/var/log/btmp\n/var/log/dpkg.log\n/var/log/lastlog\n/var/log/bootstrap.log\n/var/log/fontconfig.log\n",
+        "tar: Removing leading `/' from member names\ntar: Removing leading `/' from hard link targets\n/var/log/alternatives.log\n/var/log/wtmp\n/var/log/faillog\n/var/log/apt/eipp.log.xz\n/var/log/apt/history.log\n/var/log/apt/term.log\n/var/log/btmp\n/var/log/dpkg.log\n/var/log/lastlog\n/var/log/bootstrap.log\n/var/log/fontconfig.log\n",
+        "tar: Removing leading `/' from member names\ntar: Removing leading `/' from hard link targets\n/var/log/alternatives.log\n/var/log/wtmp\n/var/log/faillog\n/var/log/apt/eipp.log.xz\n/var/log/apt/history.log\n/var/log/apt/term.log\n/var/log/btmp\n/var/log/dpkg.log\n/var/log/lastlog\n/var/log/bootstrap.log\n/var/log/fontconfig.log\n",
+        "tar: Removing leading `/' from member names\n/var/log/alternatives.log\ntar: Removing leading `/' from hard link targets\n/var/log/wtmp\n/var/log/faillog\n/var/log/apt/eipp.log.xz\n/var/log/apt/history.log\n/var/log/apt/term.log\n/var/log/btmp\n/var/log/dpkg.log\n/var/log/lastlog\n/var/log/bootstrap.log\n/var/log/fontconfig.log\n",
+        "tar: Removing leading `/' from member names\ntar: Removing leading `/' from hard link targets\n/var/log/alternatives.log\n/var/log/wtmp\n/var/log/faillog\n/var/log/apt/eipp.log.xz\n/var/log/apt/history.log\n/var/log/apt/term.log\n/var/log/btmp\n/var/log/dpkg.log\n/var/log/lastlog\n/var/log/bootstrap.log\n/var/log/fontconfig.log\n"
+      ],
+      "rewards": [
+        0.66,
+        0.66,
+        0.66,
+        0.66,
+        0.66,
+        0.66,
+        0.66,
+        0.66,
+        0.66,
+        0.66
+      ],
+      "valid_action": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 0.66,
+      "max_reward_idx": 0,
+      "turns_taken": 10,
+      "turns_max": 10
+    }
+  },
+  "47": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_1.json",
+    "task_id": 47,
+    "query": "Delete and count files in \"/testbed/dir3/subdir1/subsubdir1/tmp\" that are older than 2 days",
+    "turn_history": {
+      "actions": [
+        "find /testbed/dir3/subdir1/subsubdir1/tmp -type f -mtime +2 -delete | wc -l",
+        "blocked"
+      ],
+      "observations": [
+        "0\n"
+      ],
+      "rewards": [
+        0.67,
+        0
+      ],
+      "valid_action": [
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 0.67,
+      "max_reward_idx": 0,
+      "turns_taken": 2,
+      "turns_max": 10
+    }
+  },
+  "48": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_1.json",
+    "task_id": 48,
+    "query": "Display the 5 largest files in the /testbed directory and its sub-directories.",
+    "turn_history": {
+      "actions": [
+        "find /testbed -type f -size +50m -ls",
+        "blocked"
+      ],
+      "observations": [
+        "find: invalid -size type `m'\n"
+      ],
+      "rewards": [
+        0.67,
+        0
+      ],
+      "valid_action": [
+        false
+      ]
+    },
+    "summary": {
+      "max_reward": 0.67,
+      "max_reward_idx": 0,
+      "turns_taken": 2,
+      "turns_max": 10
+    }
+  },
+  "49": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_1.json",
+    "task_id": 49,
+    "query": "Display the 5 smallest files in the /testbed directory and its sub-directories ignoring any empty files.",
+    "turn_history": {
+      "actions": [
+        "find /testbed -type f -size -5c | sort -n | head -5",
+        "find /testbed -type f -size -5c -exec sh -c ' for file do if [ -s \"$file\" ]; then echo \"$file\" fi done' sh {} +",
+        "blocked"
+      ],
+      "observations": [
+        "/testbed/recent.txt\n",
+        "sh: 1: Syntax error: end of file unexpected (expecting \"fi\")\n"
+      ],
+      "rewards": [
+        0.76,
+        0.67,
+        0
+      ],
+      "valid_action": [
+        true,
+        false
+      ]
+    },
+    "summary": {
+      "max_reward": 0.76,
+      "max_reward_idx": 0,
+      "turns_taken": 3,
+      "turns_max": 10
+    }
+  },
+  "50": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_1.json",
+    "task_id": 50,
+    "query": "Display the 5 smallest files in the /testbed directory and its sub-directories.",
+    "turn_history": {
+      "actions": [
+        "find /testbed -type f -size -5c | sort -n | head -5",
+        "find /testbed -type f -size -5c | sort -n | head -5 | xargs ls -l",
+        "blocked"
+      ],
+      "observations": [
+        "/testbed/recent.txt\n",
+        "-rw-r--r-- 1 root root 0 May 31  2023 /testbed/recent.txt\n"
+      ],
+      "rewards": [
+        0.8500000000000001,
+        0.74,
+        0
+      ],
+      "valid_action": [
+        true,
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 0.8500000000000001,
+      "max_reward_idx": 0,
+      "turns_taken": 3,
+      "turns_max": 10
+    }
+  },
+  "51": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_1.json",
+    "task_id": 51,
+    "query": "Display the biggest file sizes only in the /testbed directory",
+    "turn_history": {
+      "actions": [
+        "ls -l /testbed | sort -n | tail -1",
+        "ls -l /testbed | awk '{print $5}' | sort -n | tail -1",
+        "find /testbed -type f -size +1048576 | sort -n | tail -1",
+        "find /testbed -type f -size +1048576 -exec ls -l {} + | sort -n | tail -1",
+        "find /testbed -type f -size +1048576 -printf '%s\\n' | sort -n | tail -1",
+        "find /testbed -type f -size +1048576 -printf '%s\\n' | sort -n | tail -1",
+        "find /testbed -type f -size +1048576 -printf '%s\\n' | sort -n | tail -1",
+        "find /testbed -type f -size +1048576 -printf '%s\\n' | sort -n | tail -1",
+        "find /testbed -type f -size +1048576 -printf '%s\\n' | sort -n | tail -1",
+        "find /testbed -type f -size +1048576 -printf '%s\\n' | sort -n | tail -1"
+      ],
+      "observations": [
+        "total 52\n",
+        "4096\n",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "rewards": [
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67,
+        0.67
+      ],
+      "valid_action": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 0.67,
+      "max_reward_idx": 0,
+      "turns_taken": 10,
+      "turns_max": 10
+    }
+  },
+  "52": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_1.json",
+    "task_id": 52,
+    "query": "Find .java files in the testbed directory tree that contain 'Hello', and print their names",
+    "turn_history": {
+      "actions": [
+        "find . -name '*.java' -exec grep -q 'hello' {} +",
+        "blocked"
+      ],
+      "observations": [
+        ""
+      ],
+      "rewards": [
+        0.67,
+        0
+      ],
+      "valid_action": [
+        false
+      ]
+    },
+    "summary": {
+      "max_reward": 0.67,
+      "max_reward_idx": 0,
+      "turns_taken": 2,
+      "turns_max": 10
+    }
+  },
+  "53": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_1.json",
+    "task_id": 53,
+    "query": "Print a list of all duplicate case insensitive filenames in the /testbed directory tree",
+    "turn_history": {
+      "actions": [
+        "find /testbed -type f -exec sh -c ' for file do for file2 do if [ \"$(file -i \"$file\")\" == \"$(file -i \"$file2\")\" ]; then echo \"$file $file2\" fi done done' sh {} +",
+        "blocked"
+      ],
+      "observations": [
+        "-i: -c: line 1: unexpected EOF while looking for matching `''\n-i: -c: line 2: syntax error: unexpected end of file\n"
+      ],
+      "rewards": [
+        0.7000000000000001,
+        0
+      ],
+      "valid_action": [
+        false
+      ]
+    },
+    "summary": {
+      "max_reward": 0.7000000000000001,
+      "max_reward_idx": 0,
+      "turns_taken": 2,
+      "turns_max": 10
+    }
+  },
+  "54": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_1.json",
+    "task_id": 54,
+    "query": "Print all unique file paths under \"testbed/dir1\" compared to \"testbed/dir2\"",
+    "turn_history": {
+      "actions": [
+        "find testbed/dir1 -type f -exec sh -c ' for file do if [ ! -f testbed/dir2/$file ]; then echo $file fi done' sh {} +",
+        "blocked"
+      ],
+      "observations": [
+        "sh: 1: Syntax error: end of file unexpected (expecting \"fi\")\n"
+      ],
+      "rewards": [
+        0.68,
+        0
+      ],
+      "valid_action": [
+        false
+      ]
+    },
+    "summary": {
+      "max_reward": 0.68,
+      "max_reward_idx": 0,
+      "turns_taken": 2,
+      "turns_max": 10
+    }
+  },
+  "55": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_1.json",
+    "task_id": 55,
+    "query": "Recursively finds all files containing text 'Hello' and prints folder where they are placed.",
+    "turn_history": {
+      "actions": [
+        "find . -name '*.txt' -exec grep -q 'hello' {} + | xargs -i{} echo {}",
+        "blocked"
+      ],
+      "observations": [
+        ""
+      ],
+      "rewards": [
+        0.67,
+        0
+      ],
+      "valid_action": [
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 0.67,
+      "max_reward_idx": 0,
+      "turns_taken": 2,
+      "turns_max": 10
+    }
+  },
+  "56": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_1.json",
+    "task_id": 56,
+    "query": "Prints total number of lines of all *.java files in /testbed folder and subfolders.",
+    "turn_history": {
+      "actions": [
+        "find /testbed -name '*.java' -type f -exec wc -l {} +",
+        "blocked"
+      ],
+      "observations": [
+        "  1 /testbed/NewClass.java\n  1 /testbed/dir2/subdir1/javafile1.java\n  1 /testbed/dir1/AnotherHello.java\n  1 /testbed/Hello1.java\n  1 /testbed/Hello.java\n  5 total\n"
+      ],
+      "rewards": [
+        0.67,
+        0
+      ],
+      "valid_action": [
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 0.67,
+      "max_reward_idx": 0,
+      "turns_taken": 2,
+      "turns_max": 10
+    }
+  },
+  "57": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_1.json",
+    "task_id": 57,
+    "query": "Create a symbolc link in the /testbed/dir3/subdir1/subsubdir1/FooBar to root folder",
+    "turn_history": {
+      "actions": [
+        "ln -s /testbed/dir3/subdir1/subsubdir1/foobar .",
+        "ln -s /testbed/dir3/subdir1/subsubdir1/foobar ..",
+        "cd / ln -s /testbed/dir3/subdir1/subsubdir1/foobar foobar",
+        "blocked"
+      ],
+      "observations": [
+        "",
+        "ln: failed to create symbolic link '../foobar': File exists\n",
+        "/bin/bash: line 1: cd: too many arguments\n"
+      ],
+      "rewards": [
+        0.67,
+        0.34,
+        0.34,
+        0
+      ],
+      "valid_action": [
+        true,
+        false,
+        false
+      ]
+    },
+    "summary": {
+      "max_reward": 0.67,
+      "max_reward_idx": 0,
+      "turns_taken": 4,
+      "turns_max": 10
+    }
+  },
+  "58": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_1.json",
+    "task_id": 58,
+    "query": "search for all the files in the folder /testbed/dir1 which have sticky bit set and have the permissions 553",
+    "turn_history": {
+      "actions": [
+        "find /testbed/dir1 -type f -perm -o+t -perm -o+r -perm -o+w"
+      ],
+      "observations": [
+        ""
+      ],
+      "rewards": [
+        1.0
+      ],
+      "valid_action": [
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 1.0,
+      "max_reward_idx": 0,
+      "turns_taken": 1,
+      "turns_max": 10
+    }
+  },
+  "59": {
+    "environment": "ic_bash",
+    "dataset": "./data/nl2bash/nl2bash_fs_1.json",
+    "task_id": 59,
+    "query": "search for php files in /testbed directory and search for \"world\" in all these files",
+    "turn_history": {
+      "actions": [
+        "find /testbed -name \"*.php\" -exec grep -i world {} +",
+        "blocked"
+      ],
+      "observations": [
+        "/testbed/hello.php:<?php echo \"Hello, world!\"; ?>\n"
+      ],
+      "rewards": [
+        0.93,
+        0
+      ],
+      "valid_action": [
+        true
+      ]
+    },
+    "summary": {
+      "max_reward": 0.93,
+      "max_reward_idx": 0,
+      "turns_taken": 2,
+      "turns_max": 10
+    }
+  }
+}

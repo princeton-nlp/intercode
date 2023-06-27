@@ -1,0 +1,10 @@
+version: "3.9"
+services:
+  env-sql:
+    command: --lower_case_table_names=1
+    build:
+      context: ../
+      dockerfile: ./docker/sql.Dockerfile
+    container_name: docker-env-sql_ic_ctr
+    ports:
+      - "3307:3306"

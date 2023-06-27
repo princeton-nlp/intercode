@@ -1,0 +1,214 @@
+[
+    {
+        "query": "Recursively finds all files with any cased text \"Hello\" in the '/system/folder1' folder, and precedes found string with its number in file.",
+        "gold": "grep -inr \"Hello\" /system/folder1"
+    },
+    {
+        "query": "Recursively finds all files with whole word \"foo\" in the '/system', and precedes found string with its number in file.",
+        "gold": "grep -rnw /system -e \"foo\""
+    },
+    {
+        "query": "Recursively list contents of the '/system' directory in a tree-like format",
+        "gold": "tree /system"
+    },
+    {
+        "query": "Recursively print all files and directories in the '/system/folder2' directory tree including hidden files",
+        "gold": "tree -a /system/folder2"
+    },
+    {
+        "query": "Recursively prints all folders in the '/system' folder that contain files like \"*.out\".",
+        "gold": "find /system -name \"*.out\" -print0 | xargs -0 -n1 /system | sort --unique"
+    },
+    {
+        "query": "Recursively remove all \"*.txt\" files in the '/system' folder and answer \"y\" to any prompt",
+        "gold": "yes y | rm -r /system/*.txt"
+    },
+    {
+        "query": "Recursively removes all empty folders from the /system/folder3/temp folder.",
+        "gold": "find /system/folder3/temp -depth -type d -exec rmdir {} \\;"
+    },
+    {
+        "query": "Recursively removes all empty folders under /system/folder3/temp, printing info message on each operation, and suppressing error messages if folder is not empty.",
+        "gold": "find /system/folder3/temp -type d -empty -exec rmdir -vp --ignore-fail-on-non-empty {} +"
+    },
+    {
+        "query": "Recursively removes all files in the /system/folder1 folder but '*txt' files.",
+        "gold": "find /system/folder1 -type f -not -name '*txt' | xargs rm"
+    },
+    {
+        "query": "Recursively rename all files under /system/folder1 replacing 'special' with 'regular' - all file/diretory names may not include spaces, and directory names containing such files may not contain the word 'special' in their name.",
+        "gold": "find /system/folder1 -type f -exec rename 's/special/regular/' '{}' \\;"
+    },
+    {
+        "query": "Recursively search for \"foo\" in the '/system' folder and write the output to the console followed by the number of matched lines",
+        "gold": "grep -r \"foo\" /system | tee >(wc -l)"
+    },
+    {
+        "query": "Recursively search for all regular files below directory \"/system/folder3/\", and output the name of each, without any containing directories.",
+        "gold": "find /system/folder3/ -type f -exec basename {} \\;"
+    },
+    {
+        "query": "Recursively unzip files to stdout in \"/system/folder2.tar.gz\" and search for \"special\"",
+        "gold": "zcat -r /system/folder2.tar.gz | grep \"special\""
+    },
+    {
+        "query": "Remove \"\\r\" at the end of each line in \"system/folder3/temp/temp1/text1.txt\" and display the result as printable characters or backslash escapes",
+        "gold": "cat /system/folder3/temp/temp1/text1.txt | sed 's/\\r$//' | od -c"
+    },
+    {
+        "query": "Remove all *.doc files from the /system/folder1 tree",
+        "gold": "find /system/folder1 -name '*.doc' -exec rm \"{}\" \\;"
+    },
+    {
+        "query": "Remove all *.log files from the /system/folder1 tree",
+        "gold": "find /system/folder1 -name '*.log' -print0 | xargs -0 rm"
+    },
+    {
+        "query": "Remove all *.txt files in '/system' directory but not in it's subdirectories",
+        "gold": "find /system -maxdepth 1 -name '*.txt' -maxdepth 1 | xargs rm"
+    },
+    {
+        "query": "Remove all *.sql files in the '/system/folder3/backup_dbg' directory that were last modified more than 25 days ago",
+        "gold": "find /system/folder3/backup_dbg/*.sql -mtime +25 -exec rm -f {} \\;"
+    },
+    {
+        "query": "Remove all *.txt files under the /system/folder1 directory modified more than 5 minutes ago",
+        "gold": "find /system/folder1 -maxdepth 1 -mmin +5 -type f -name \"*.txt\" -delete"
+    },
+    {
+        "query": "Remove all *.txt files, except \"keep.txt\", under /system/folder1 directory modified more than 5 minutes ago",
+        "gold": "find /system/folder1 -maxdepth 1 -mmin +5 -type f -name \"*.txt\" ! -name \"keep.txt\" -delete"
+    },
+    {
+        "query": "Remove all .sh files in the '/system/folder1' tree whose names begin with \"new\"",
+        "gold": "find /system/folder1 -name 'new*.sh' -exec rm -f '{}' \\;"
+    },
+    {
+        "query": "Remove all a.out, *.o, and core files under the '/system' directory",
+        "gold": "find /system \\( -name a.out -o -name '*.o' -o -name 'core' \\) -exec rm {} \\;"
+    },
+    {
+        "query": "Remove all but 5 last comma-separated fields from each line in '/system/folder1/data.csv'",
+        "gold": "cat /system/folder1/data.csv | rev | cut -d, -f-5 | rev"
+    },
+    {
+        "query": "Remove all directories called \"temp\" from the /system directory tree",
+        "gold": "find /system -name \"temp\" -type f -delete"
+    },
+    {
+        "query": "Remove all empty files in /system/folder3/temp and below",
+        "gold": "find /system/folder3/temp -type f -empty -print | xargs rm -f"
+    },
+    {
+        "query": "Remove all files 'a.out' and *.o in the /system directory tree that were modified more than 7 days ago",
+        "gold": "find /system \\( -name a.out -o -name '*.o' \\) -mtime +7 -exec rm {} \\;"
+    },
+    {
+        "query": "Remove all files and directories under '/system/folder3/temp' directory tree that match with one of the name patterns '.DS_Store', '._.DS_Store' , '._*', '.TemporaryItems' or '.apdisk'",
+        "gold": "find /system/folder3/temp \\( -name '.DS_Store' -or -name '._.DS_Store' -or -name '._*' -or -name '.TemporaryItems' -or -name '.apdisk' \\) -exec rm -rf {} \\;"
+    },
+    {
+        "query": "Remove empty directories from directory tree /system",
+        "gold": "find /system -type d -empty -exec rm -r {} \\;"
+    },
+    {
+        "query": "Remove everything within parentheses and substitute all non digit characters with a space from \"1/2 [3] (27/03/2012 19:32:54) word word word word 4/5\" and format the output as a table",
+        "gold": "echo '1/2 [3] (27/03/2012 19:32:54) word word word word 4/5' | sed -e 's/(.*)//' -e 's/[^0-9]/ /g' | column -t"
+    },
+    {
+        "query": "Remove files text2, text3, text4 in directory /system/folder1",
+        "gold": "find /system/folder1  -name 'text[2-4]' -exec rm {}  \\;"
+    },
+    {
+        "query": "Remove files from the /system directory that are owned by nobody",
+        "gold": "find /system -nouser -exec rm {} +"
+    },
+    {
+        "query": "Remove files that are greater than 1KB in size under /system directory",
+        "gold": "find /system -type f -size +1k -exec rm {} +"
+    },
+    {
+        "query": "Remove junk files modified more than 31 days ago recursively from \"/system\"",
+        "gold": "find /system -type f -mtime +31 -exec rm -f {} \\;"
+    },
+    {
+        "query": "Remove newline characters from \"/system/folder3/temp/temp1/text1.txt\"",
+        "gold": "paste -sd \"\" /system/folder3/temp/temp1/text1.txt"
+    },
+    {
+        "query": "Remove regular files in the /system directory tree",
+        "gold": "find /system -type f -print0 | xargs -0 -n1 echo rm | sh -x"
+    },
+    {
+        "query": "Print summary of new/missing files, and which files differ between /system/folder1 and /system/folder2, sorted alphabetically.",
+        "gold": "diff -qr /system/folder1 /system/folder1 | sort"
+    },
+    {
+        "query": "Print amount of space available on the file system containing path to the /system directory in megabytes.",
+        "gold": "df /system -B MB | tail -1 | awk {'print $4'} | grep  .[0-9]*"
+    },
+    {
+        "query": "Recursively find the latest modified file in the /system directory",
+        "gold": "find /system -type f | xargs ls -ltr | tail -n 1"
+    },
+    {
+        "query": "Display the number of sub-directories for all directories under /system directory tree, sort them according to the decreasing order of the number and show only the first 10 of them",
+        "gold": "find /system -type d -ls | awk '{print $4 - 2, $NF}' | sort -rn | head"
+    },
+    {
+        "query": "archive all files in /system/folder1 directory modified in the last 60 days to \"/mytarfile.tgz\"",
+        "gold": "tar czvf mytarfile.tgz `find /system/folder1 -mtime -60`"
+    },
+    {
+        "query": "Create a symbolc link in the /system/folder1 to root folder",
+        "gold": "ln /system/folder1 -s /"
+    },
+    {
+        "query": "Remove files in the /system directory tree modified more than 31 days ago recursively",
+        "gold": "find /system -type f -mtime +31 -print0 | xargs -0 -r rm -f"
+    },
+    {
+        "query": "Write the current date and time followed by \" 1\" to the console and append to \"/system/folder3/temp/empty.txt\"",
+        "gold": "echo $(date) \"1\" | tee -a /system/folder3/temp/empty.txt"
+    },
+    {
+        "query": "Concatenate all .txt files residing in the /system tree into a single file \"/system/folder3/temp/empty.txt\"",
+        "gold": "find /system -name \"*.txt\" -exec cat {} \\; > /system/folder3/temp/empty.txt"
+    },
+    {
+        "query": "compresses all the files in the /system folder with default depth to /backup",
+        "gold": "find /system -depth -print | cpio -dump /backup"
+    },
+    {
+        "query": "Copy all files in the /system directory except those containing 'text' to '/system/folder3/backup_dbg/backup'.",
+        "gold": "find /system -maxdepth 1 -type f -name '*text*' -exec cp {} /system/folder3/backup_dbg/backup \\;"
+    },
+    {
+        "query": "Rename \"/system/folder3/temp/temp1\" to \"/system/folder3/temp/temp1_old\" and backup to \"/system/folder3/temp/temp1_old.old\" if \"/system/folder3/temp/temp1_old\" exists",
+        "gold": "mv /system/folder3/temp/temp1 /system/folder3/temp/temp1_old -b -S .old"
+    },
+    {
+        "query": "Dump \"/system/text1.txt\" as ASCII characters",
+        "gold": "od -t c /system/text1.txt"
+    },
+    {
+        "query": "create a compressed archive of /system/folder1 \"compress_folder1.tar.gz\" with verbose output",
+        "gold": "tar -zcvf compress_folder1.tar.gz /system/folder1"
+    },
+    {
+        "query": "download content from \"http://example.com/textfile.txt\" and output to 'textfile.txt' in /system",
+        "gold": "curl http://example.com/textfile.txt -o /system/textfile.txt"
+    },
+    {
+        "query": "Search in /system downwards all files whose size is 10 bytes ( Characters ) .",
+        "gold": "find /system -size 10c -print"
+    },
+    {
+        "query": "Calculate the md5sum of each \".txt\" file under \"/system\", sort the output, and calculate the md5sum of that",
+        "gold": "find /system -type f -name '*.txt' -exec md5sum {} + | awk '{print $1}' | sort | md5sum"
+    },
+    {
+        "query": "Search for the system host name in \"/etc/hosts\" and print the IP address in the first awk field",
+        "gold": "more /etc/hosts | grep `hostname` | awk '{print $1}'"
+    }
+]

@@ -1,0 +1,242 @@
+[
+    {
+        "query": "find files in /workspace directory which are modified 30 days ago",
+        "gold": "find /workspace -daystart -type f -mtime -30"
+    },
+    {
+        "query": "find files in the /workspace directory with pattern` *.c  that larger than 1 Kilobytes",
+        "gold": "find /workspace -name '*.c' -size +1k -print"
+    },
+    {
+        "query": "find files in the /workspace directory and sub-directories, that changed within last hour",
+        "gold": "find /workspace -cmin -60"
+    },
+    {
+        "query": "find files in the /workspace directory and sub-directories, that were accessed within last hour",
+        "gold": "find /workspace -amin -60"
+    },
+    {
+        "query": "list all the drectories present in the /workspace directory and do not search in the sub directories.",
+        "gold": "find /workspace -maxdepth 1 -type d"
+    },
+    {
+        "query": "list all the files in the /workspace directory which are of size 0 bytes.",
+        "gold": "find /workspace -empty"
+    },
+    {
+        "query": "list all zero-length files under the /workspace directory",
+        "gold": "find /workspace -empty -exec ls {} \\;"
+    },
+    {
+        "query": "locate and remove large files (> 1 KB) in /workspace",
+        "gold": "find /workspace -type f -size +1k -delete"
+    },
+    {
+        "query": "long list al the files in the /workspace directory which have only read permission to the group",
+        "gold": "find /workspace -perm 400 -type f -exec ls -l {} \\;"
+    },
+    {
+        "query": "long list al the files in the /workspace directory which have all the permissions",
+        "gold": "find /workspace -perm 777 -type f -exec ls -l {} \\;"
+    },
+    {
+        "query": "long list the details of all the shell scripts in /workspace directory",
+        "gold": "find /workspace -name \"*.sh\" -exec ls -ld {} \\;"
+    },
+    {
+        "query": "move all files in the /workspace folder to / and do not move the files in the sub folder",
+        "gold": "find /workspace -maxdepth 1 -type f -exec mv -t / {} +"
+    },
+    {
+        "query": "move files in /workspace accessed more than one day ago to directory /",
+        "gold": "find /workspace -atime +1 -type f -exec mv {} / \\;"
+    },
+    {
+        "query": "print all filenames of files under /workspace/dir1 dir containing 'hello', case-insensitive",
+        "gold": "find /workspace/dir1 -type f -exec grep -il 'hello' {} \\;"
+    },
+    {
+        "query": "print disk usage of files or folders in /workspace",
+        "gold": "du -sh /workspace"
+    },
+    {
+        "query": "print the last word in /workspace/dir1/long.txt",
+        "gold": "tac /workspace/dir1/long.txt | awk 'NF{print $NF; exit}'"
+    },
+    {
+        "query": "print top 3 largest files and /workspace",
+        "gold": "du -a /workspace | sort -nr | head -3"
+    },
+    {
+        "query": "prints first line of \"/workspace/dir1/long.txt\"",
+        "gold": "head -n1 /workspace/dir1/long.txt"
+    },
+    {
+        "query": "prints the last non-empty line of \"/workspace/dir1/a.txt\"",
+        "gold": "tac /workspace/dir1/a.txt | grep -m 1 '.'"
+    },
+    {
+        "query": "prune all the files in the /workspace directory",
+        "gold": "find /workspace -prune"
+    },
+    {
+        "query": "search for all the files in the  /workspace directory which have size greater than 1KB (approx) and less than 32KB(approx).",
+        "gold": "find /workspace -size +1000c -size -32000c -print"
+    },
+    {
+        "query": "search for all the files in the  /workspace folder and sort them in the order of their depth and display the file names",
+        "gold": "find  /workspace -type d -printf '%d\\t%P\\n' | sort -r -nk1 | cut -f2-"
+    },
+    {
+        "query": "search for all the files in the /workspace folder which are bigger than 1KB and display them biggest file",
+        "gold": "find /workspace -size +1k -exec ls -ls {} \\+ | sort -n | tail -1"
+    },
+    {
+        "query": "search for text files in the  /workspace folder which do not have write access to others",
+        "gold": "find  /workspace -type f \\( -iname \"*.txt\" -not -perm -o=w \\)"
+    },
+    {
+        "query": "search for the directory \"mysql\" in the entire file system",
+        "gold": "find  /workspace -name mysql -type d"
+    },
+    {
+        "query": "Print a list of all duplicate case insensitive filenames in the /workspace directory tree",
+        "gold": "find /workspace -type f | awk -F/ '{print $NF}' | sort -f | uniq -i -d"
+    },
+    {
+        "query": "search for the file foo in  the /workspace folder and display a long listing of it in sorted order of modification date",
+        "gold": "find /workspace -name foo | xargs ls -tl"
+    },
+    {
+        "query": "search for the word \"hello\" in all the regular/normal files in the  /workspace folder and display the matched file name",
+        "gold": "find  /workspace -type f | xargs grep -l \"hello\""
+    },
+    {
+        "query": "Calculate the md5 sum of all files in the /workspace directory with the filename printed first",
+        "gold": "ls -p | grep -v /workspace | xargs md5sum | awk '{print $2,$1}'"
+    },
+    {
+        "query": "Calculate the md5 sum of the contents of all files sorted in directory tree \"/workspace\"",
+        "gold": "find /workspace -type f | sort -u | xargs cat | md5sum"
+    },
+    {
+        "query": "Change directory to the alphabetically last path under the /workspace directory",
+        "gold": "cd $(find /workspace -type d -print0 | sort -z | tr '\\0' '\\n' | tail -1)"
+    },
+    {
+        "query": "Count the number of unique 3 to 6 character file extensions are in the /workspace directory tree",
+        "gold": "find /workspace -type f -name \"*.*\" | grep -o -E \"\\.[^\\.]+$\" | grep -o -E \"[[:alpha:]]{3,6}\" | awk '{print tolower($0)}' | sort | uniq -c | sort -rn"
+    },
+    {
+        "query": "Create a copy of the /workspace directory structure in the /usr directory,",
+        "gold": "find /workspace -type d -print|sed 's@^@/usr/@'|xargs mkdir -p"
+    },
+    {
+        "query": "Display a long listing of the oldest file under '/workspace' directory tree",
+        "gold": "find /workspace -printf \"%T@ %p\\n\" | sort -n | head -1 | cut -d\" \" -f2- | xargs ls -al"
+    },
+    {
+        "query": "Find the largest 2 directories under /workspace directory",
+        "gold": "find /workspace -type d -print0 | xargs -0 du | sort -n | tail -2 | cut -f2 | xargs -I{} du -sh {}"
+    },
+    {
+        "query": "List all files with their paths that have identical content in /workspace directory",
+        "gold": "find /workspace -type f | xargs md5sum | sort | uniq -Dw32"
+    },
+    {
+        "query": "Make directories for each unique file path in \"/workspace/files.txt\"",
+        "gold": "cat /workspace/files.txt |xargs -I {} dirname \"{}\"| sort -u | xargs -I{} mkdir -p \"{}\""
+    },
+    {
+        "query": "Print the total disk usage in bytes of all files listed in \"/workspace/files.txt\"",
+        "gold": "cat /workspace/files.txt | xargs du -c | tail -1 | awk '{print $1}'"
+    },
+    {
+        "query": "Unhide all hidden files in the /workspace directory",
+        "gold": "find /workspace -maxdepth 1 -type f -name '.*' -exec sh -c 'mv \"$0\" \"${0%/\\.*}/${0##*/.}\"' {} \\;"
+    },
+    {
+        "query": "Count the number of differing lines in \"/workspace/dir1/long.txt\" and \"/workspace/dir1/terminate.txt\"",
+        "gold": "diff /workspace/dir1/long.txt /workspace/dir1/terminate.txt | grep ^[\\>\\<] | wc -l"
+    },
+    {
+        "query": "Count the number of differing lines in \"/workspace/dir1/terminate.txt\" and \"/workspace/dir1/long.txt\" with 0 lines of unified context",
+        "gold": "diff -U 0 /workspace/dir1/terminate.txt /workspace/dir1/long.txt | grep -v ^@ | wc -l"
+    },
+    {
+        "query": "Counts lines in file /workspace/dir1/a.txt ignoring empty lines and lines with spaces only.",
+        "gold": "awk '!/^[[:space:]]*$/{++x} END{print x}' /workspace/dir1/a.txt"
+    },
+    {
+        "query": "Create a symbolic link in directory \"~/newlinks\" for each file listed in \"/workspace/results.txt\"",
+        "gold": "cat /workspace/results.txt | xargs -I{} ln -s {} ~/newlinks"
+    },
+    {
+        "query": "Delete all hidden files under /workspace",
+        "gold": "find /workspace -type f -name '.*' -delete"
+    },
+    {
+        "query": "Determine if /workspace/dir2/mysql/ exists on a mounted file system.",
+        "gold": "df /workspace/dir2/mysql/"
+    },
+    {
+        "query": "Display a dump of \"/workspace/dir1/long.txt\" as floating point values of double size",
+        "gold": "od -t fD /workspace/dir1/long.txt"
+    },
+    {
+        "query": "Display differences between list of files in /workspace/dir1 and /workspace/dir2.",
+        "gold": "diff <(ls /workspace/dir1) <(ls /workspace/dir2)"
+    },
+    {
+        "query": "Display the file size of file '/workspace/dir1/sum.c' in bytes",
+        "gold": "du -sb /workspace/dir1/sum.c | cut -f1"
+    },
+    {
+        "query": "Display the last slash-separated part of each filename path in /workspace/dir1/file.txt",
+        "gold": "rev /workspace/dir1/file.txt | cut -d/ -f1 | rev"
+    },
+    {
+        "query": "Display the sizes and filepaths of all files/directories in /workspace directory sorted in descending order of size",
+        "gold": "du /workspace -a -h --max-depth=1 | sort -hr"
+    },
+    {
+        "query": "Print percentage of the space used on the /workspace directory.",
+        "gold": "df -k /workspace | tail -1 | awk '{print $5}'"
+    },
+    {
+        "query": "Print the contents of \"/workspace/dir1/long.txt\" in reverse order",
+        "gold": "nl /workspace/dir1/long.txt | sort -nr | cut -b8-"
+    },
+    {
+        "query": "Create an empty file \"Icon\" with a carriage return character in the end of its name.",
+        "gold": "echo $'Icon\\r' | xargs touch"
+    },
+    {
+        "query": "Create a symbolc link in the /workspace/dir1 to root folder",
+        "gold": "ln /workspace/dir1 -s /"
+    },
+    {
+        "query": "Display permissions, user, group, and full path for each file in the /workspace directory tree",
+        "gold": "tree /workspace -p -u -g -f"
+    },
+    {
+        "query": "Search for 'hello' case insensitively in all files under /workspace directory tree and show the matched lines with their filenames",
+        "gold": "find /workspace -type f -print0  | xargs -0 grep -iH \"hello\""
+    },
+    {
+        "query": "Split the output of \"/workspace/archive.tar.gz\" into files of at most 10 MiB in size and use prefix \"output_prefix\"",
+        "gold": "tar -xf /workspace/archive.tar.gz | split -b 10M -d - /output_prefix"
+    },
+    {
+        "query": "Unpack all *.gz archives in the /workspace directory tree",
+        "gold": "find /workspace -name '*.gz' -print0 | xargs -0 gunzip"
+    },
+    {
+        "query": "Uncompress \"/workspace/archive.tar.gz\" and extract the archive to \"/backup\"",
+        "gold": "gzip -dc /workspace/archive.tar.gz | tar -xf - -C /backup"
+    },
+    {
+        "query": "Create a symbolic link to \"/workspace/dir1/terminate.txt\" named \"/workspace/test\"",
+        "gold": "ln /workspace/dir1/terminate.txt /workspace/test"
+    }
+]
