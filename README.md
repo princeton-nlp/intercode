@@ -72,7 +72,7 @@ Contact person: [John Yang](https://john-b-yang.github.io/)
 If you find this repository helpful, feel free to cite our [publication](https://arxiv.org/abs/2306.14898)
 ```
 @inproceedings{yang2023intercode,
-  title = {WebShop: Towards Scalable Real-World Web Interaction with Grounded Language Agents},
+  title = {InterCode: Standardizing and Benchmarking Interactive Coding with Execution Feedback},
   author = {Yang, John and Prabhakar, Akshara and Narasimhan, Karthik and Yao, Shunyu},
   booktitle = {ArXiv},
   year = {2023},
