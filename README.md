@@ -23,36 +23,58 @@ For an overview of InterCode, building interactive code tasks with InterCode, an
 
 <img src="assets/preview.png">
 
-## 🛠️ Installation
-You can install InterCode as a pypi package or by building from source.
+## 🚀 Quick Start
+You can install InterCode as a PyPI package or by building from source.
 
 > **Note**
 > InterCode requires the following installations to run:
 > * `python` >= 3.8
-> * `anaconda`/`miniconda`: Learn more [here](https://docs.conda.io/en/latest/miniconda.html) to install.
 > * `docker`: Learn more [here](https://docs.docker.com/get-docker/) to install.
 
-1. Install via pip ([pypi package](https://pypi.org/project/intercode-bench/)):
+### 🐍 PyPI Package
+1. Install the ([pypi package](https://pypi.org/project/intercode-bench/)):
 ```bash
 pip install intercode-bench
 ```
+2. Copy + Paste the following code for interacting with the InterCode Bash environment into a python file (i.e. `run_bash.py`)
+```python
+from intercode.assets import bash_build_docker, bash_image_name, bash_test_data
+from intercode.envs import BashEnv
 
-2. Build from source:
+if __name__ == '__main__':
+    bash_build_docker()
+    env = BashEnv(bash_image_name, data_path=bash_test_data, traj_dir="logs/", verbose=True)
+
+    try:
+        for idx in range(3):
+            env.reset()
+            obs, done = env.observation, False
+            while not done:
+                action = input('> ')
+                obs, reward, done, info = env.step(action)
+    except KeyboardInterrupt:
+        print("Keyboard interrupt detected")
+    finally:
+        env.close()
+```
+3. Run the file (i.e. `python run_bash.py`)
+
+If InterCode was installed successfully, the InterCode Bash environment should be started successfully and a CLI interpreter should appear, allowing you to enter `bash` commands
+to interact with the task setting. Similar starter code for the InterCode SQL environment is available on the PyPI [page](https://pypi.org/project/intercode-bench/).
+
+### 💽 Build from Source
+1. Clone this repository, create a virtual environment, and install necessary dependencies
 ```bash
 git clone https://github.com/princeton-nlp/intercode.git
 cd intercode
 conda env create -f environment.yml
 conda activate intercode
 ```
-
-## 🚀 Quick Start
-To confirm that the above installation worked.
-* Clone this repository
-* Run `./setup.sh`
-* Run `python run_sql.py` 
+2. Run `setup.sh` to create the docker images for the InterCode Bash, SQL, and CTF environments
+3. Run `python run_sql.py` 
 
 If InterCode was installed successfully, the InterCode SQL environment should be started successfully and a CLI interpreter should appear, allowing you to enter `SQL` commands
-to interact with the task setting.
+to interact with the task environment. You can also run `run_bash.py` and `run_ctf.py` to explore the Bash and CTF task environments.
 
 ## 🔎 Learn More
 If you'd like to...
