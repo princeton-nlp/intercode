@@ -29,7 +29,7 @@ You can install InterCode as a PyPI package or by building from source.
 > **Note**
 > InterCode requires the following installations to run:
 > * `python` >= 3.8
-> * `docker`: Learn more [here](https://docs.docker.com/get-docker/) to install.
+> * `docker`: Learn more [here](https://docs.docker.com/get-docker/) to install. Before running the below code, make sure the Docker daemon/application is running locally.
 
 ### 🐍 PyPI Package
 1. Install the ([pypi package](https://pypi.org/project/intercode-bench/)):
@@ -38,6 +38,7 @@ pip install intercode-bench
 ```
 2. Copy + Paste the following code for interacting with the InterCode Bash environment into a python file (i.e. `run_bash.py`)
 ```python
+import readline
 from intercode.assets import bash_build_docker, bash_image_name, bash_test_data
 from intercode.envs import BashEnv
 
@@ -59,8 +60,7 @@ if __name__ == '__main__':
 ```
 3. Run the file (i.e. `python run_bash.py`)
 
-If InterCode was installed successfully, the InterCode Bash environment should be started successfully and a CLI interpreter should appear, allowing you to enter `bash` commands
-to interact with the task setting. Similar starter code for the InterCode SQL environment is available on the PyPI [page](https://pypi.org/project/intercode-bench/).
+If InterCode was installed successfully, the InterCode Bash environment should be started successfully and a CLI interpreter should appear, allowing you to enter `bash` commands to interact with the task setting. You can `^c` at any to time to exit the environment. Similar starter code for the InterCode SQL environment is available on the PyPI [page](https://pypi.org/project/intercode-bench/).
 
 ### 💽 Build from Source
 1. Clone this repository, create a virtual environment, and install necessary dependencies
@@ -73,8 +73,7 @@ conda activate intercode
 2. Run `setup.sh` to create the docker images for the InterCode Bash, SQL, and CTF environments
 3. Run `python run_sql.py` 
 
-If InterCode was installed successfully, the InterCode SQL environment should be started successfully and a CLI interpreter should appear, allowing you to enter `SQL` commands
-to interact with the task environment. You can also run `run_bash.py` and `run_ctf.py` to explore the Bash and CTF task environments.
+If InterCode was installed successfully, the InterCode SQL environment should be started successfully and a CLI interpreter should appear, allowing you to enter `SQL` commands to interact with the task environment. You can `^c` at any to time to exit the environment. You can also run `run_bash.py` and `run_ctf.py` to explore the Bash and CTF task environments.
 
 ## 🔎 Learn More
 If you'd like to...
