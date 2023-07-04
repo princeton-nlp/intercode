@@ -1,5 +1,5 @@
-# 🤖💻 InterCode
-Build interactive code environments for training, testing, and augmenting code and decision making agents
+# 🔄 InterCode
+Build interactive code environments for interactive code agents.
 
 <p>
     <a href="https://badge.fury.io/py/intercode-bench">
@@ -90,7 +90,7 @@ We would love to hear from the broader NLP and Machine Learning community, and w
 Contact person: [John Yang](https://john-b-yang.github.io/)
 
 ## ✍️ Citation
-If you find this repository helpful, feel free to cite our [publication](https://arxiv.org/abs/2306.14898)
+If you find this repository helpful, feel free to cite our [publication](https://arxiv.org/abs/2306.14898).
 ```
 @inproceedings{yang2023intercode,
   title = {InterCode: Standardizing and Benchmarking Interactive Coding with Execution Feedback},
@@ -102,4 +102,4 @@ If you find this repository helpful, feel free to cite our [publication](https:/
 ```
 
 ## 🪪 License
-Check `LICENSE.md`
+MIT. Check `LICENSE.md`.
