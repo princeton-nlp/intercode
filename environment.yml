@@ -9,7 +9,6 @@ dependencies:
     - docker
     - gnureadline
     - gymnasium
-    - langchain
     - mysql-connector-python
     - nltk
     - openai
