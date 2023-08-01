@@ -191,17 +191,17 @@ Thought 1: I can first create a `hello.txt` file in the `testbed/` directory
 Action 1: touch testbed/hello.txt
 Observation 1:
 Thought 2: I should check that the file was created successfully.
-Action 2: ls testbed/
+Action 2: execute[ls testbed/]
 Observation 2: dir1/
 dir2/
 dir3/
 hello.txt
 files.txt
 Thought 3: I can now add the "Hello world" text to the hello.txt file
-Action 3: echo Hello world > hello.txt
+Action 3: execute[echo Hello world > hello.txt]
 Observation 3:
 Thought 4: I should check that the text was written successfully to the hello.txt file.
-Action 4: cat testbed/hello.txt
+Action 4: execute[cat testbed/hello.txt]
 Observation 4: Hello world
 Thought 5: The hello.txt file has been created successfully in the testbed/ directory, and it contains
 the Hello World text. I can submit.
