@@ -5,7 +5,7 @@
 # - (SQL)  ./data/test/sql_queries.csv
 # - (Bash) ./data/nl2bash/nl2bash.json
 # - (Bash) ./data/test/bash_queries.json
-# - (Bash) ./data/nl2cmd.json
+# - (Bash) ./data/test/nl2cmd.json
 
 # Environments
 # - sql, bash

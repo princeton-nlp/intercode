@@ -47,7 +47,7 @@ class IntercodeEnv(ABC, gym.Env):
         
         # Load dataset
         self.tool_mode = True
-        if "data_path" in self.kwargs:
+        if "data_path" in self.kwargs and self.kwargs["data_path"] is not None:
             self.data_path = self.kwargs["data_path"]
             self.data_loader = IntercodeDataLoader(self.data_path)
             self.logger.info(f"Loaded dataset from {self.data_path}")
@@ -57,7 +57,7 @@ class IntercodeEnv(ABC, gym.Env):
         
         # Verify that preprocess function matches specifications
         self.preprocess = None
-        if "preprocess" in self.kwargs:
+        if "preprocess" in self.kwargs and self.kwargs["preprocess"] is not None:
             self.logger.info("Verifying preprocess function...")
             preprocess = self.kwargs["preprocess"]
             assert(isinstance(preprocess, type(lambda x: x)))
@@ -74,7 +74,7 @@ class IntercodeEnv(ABC, gym.Env):
         # Establish connection with execution container
         self.image_name = image_name
         self.container_name = f"{self.image_name}_ic_ctr"
-        self.container = get_container(self.container_name, self.image_name)
+        self.container = get_container(self.container_name, self.image_name, **kwargs)
         
         self.logger.info("Environment Initialized")
         if not self.tool_mode:

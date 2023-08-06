@@ -71,14 +71,14 @@ conda env create -f environment.yml
 conda activate intercode
 ```
 2. Run `setup.sh` to create the docker images for the InterCode Bash, SQL, and CTF environments
-3. Run `python run_sql.py` 
+3. Run `python run_demo.py sql`
 
-If InterCode was installed successfully, the InterCode SQL environment should be started successfully and a CLI interpreter should appear, allowing you to enter `SQL` commands to interact with the task environment. You can `^c` at any to time to exit the environment. You can also run `run_bash.py` and `run_ctf.py` to explore the Bash and CTF task environments.
+If InterCode was installed successfully, the InterCode SQL environment should be started successfully and a CLI interpreter should appear, allowing you to enter `SQL` commands to interact with the task environment. You can `^c` at any to time to exit the environment. You can also run `python run_demo.py [bash|sql]` or `python run_ctf.py` for the Bash, Python, and CTF environments respectively.
 
 ## 🔎 Learn More
 If you'd like to...
 * Get a more in depth, but still brief overview of InterCode, see [here](https://github.com/princeton-nlp/intercode/wiki/1.-Environment-%F0%9F%97%BA%EF%B8%8F)
-* Access the InterCode Bash and SQL environments, see [here](https://github.com/princeton-nlp/intercode/wiki/2.-Usage-%F0%9F%8E%AE)
+* Access the InterCode Bash, SQL, and Python environments, see [here](https://github.com/princeton-nlp/intercode/wiki/2.-Usage-%F0%9F%8E%AE)
 * Build an interactive code task with InterCode, see [here](https://github.com/princeton-nlp/intercode/wiki/3.-Interface--%F0%9F%9B%A0%EF%B8%8F)
 * Run language and code agents on InterCode based environments, see [here](https://github.com/princeton-nlp/intercode/wiki/4.-Experiments-%F0%9F%A7%AA)
 
