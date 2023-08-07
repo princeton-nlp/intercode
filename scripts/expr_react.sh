@@ -9,7 +9,7 @@ python -m experiments.eval_react \
 
 # SQL Call
 # python -m experiments.eval_react \
-#     --data_path ./data/sql/spider/dev_spider.json \
+#     --data_path ./data/sql/spider/ic_spider_dev.json \
 #     --env sql \
 #     --image_name docker-env-sql \
 #     --log_dir logs/experiments \

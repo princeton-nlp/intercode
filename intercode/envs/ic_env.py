@@ -75,6 +75,7 @@ class IntercodeEnv(ABC, gym.Env):
         self.image_name = image_name
         self.container_name = f"{self.image_name}_ic_ctr"
         self.container = get_container(self.container_name, self.image_name, **kwargs)
+        self.logger.info(f"Connected to `{self.container_name}` container")
         
         self.logger.info("Environment Initialized")
         if not self.tool_mode:

@@ -12,8 +12,8 @@ Example Usage:
 python transform_spider.py --data_path ~/Desktop/spider --split dev
 """
 parser = argparse.ArgumentParser(description='Script to transform Spider SQL data to Intercode compatible format')
-parser.add_argument('--data_path', type=str, help='path to spider data folder')
-parser.add_argument('--split', choices=["train", "dev"], help='which data split to create data json file for')
+parser.add_argument('data_path', type=str, help='path to spider data folder')
+parser.add_argument('--split', choices=["train", "dev"], default="dev", help='which data split to create data json file for')
 args = parser.parse_args()
 
 cut_spaces = lambda val: " ".join(val.split())
@@ -77,5 +77,5 @@ if __name__ == '__main__':
     print(f'Skipped {skipped} pairs')
     random.Random(33).shuffle(transform_spider)
 
-    with open(f"{args.split}_spider.json", "w") as fp:
+    with open(f"ic_spider_{args.split}.json", "w") as fp:
         json.dump(transform_spider, fp, indent=2)
