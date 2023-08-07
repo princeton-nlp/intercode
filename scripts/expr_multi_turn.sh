@@ -1,9 +1,9 @@
 # !bin/bash
 
 # Data Paths
-# - (SQL)  ./data/spider/dev_spider.json
+# - (SQL)  ./data/sql/spider/dev_spider.json
 # - (SQL)  ./data/test/sql_queries.csv
-# - (Bash) ./data/nl2bash/nl2bash.json
+# - (Bash) ./data/bash/nl2bash/nl2bash.json
 # - (Bash) ./data/test/bash_queries.json
 # - (Bash) ./data/test/nl2cmd.json
 
@@ -21,7 +21,7 @@
 
 # Bash Call
 # python -m experiments.eval_n_turn \
-#     --data_path ./data/nl2bash/nl2bash_fs_1.json \
+#     --data_path ./data/bash/nl2bash/nl2bash_fs_1.json \
 #     --dialogue_limit 7 \
 #     --env bash \
 #     --image_name intercode-nl2bash \
@@ -33,7 +33,7 @@
 
 # SQL Call
 python -m experiments.eval_n_turn \
-    --data_path ./data/spider/dev_spider.json \
+    --data_path ./data/sql/spider/dev_spider.json \
     --dialogue_limit 5 \
     --env sql \
     --image_name docker-env-sql \

@@ -8,7 +8,7 @@ def test_sql_reward_correctness():
         db = record["extra"]["db"]
         return f"use {db}"
 
-    data_path = "./data/spider/dev_spider.json"
+    data_path = "./data/sql/spider/dev_spider.json"
     image_name = "docker-env-sql"
     env = SqlEnv(image_name, data_path=data_path, preprocess=preprocess)
     total, errors = 0, []

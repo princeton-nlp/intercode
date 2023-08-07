@@ -4,7 +4,7 @@
 * [Link](https://drive.google.com/uc?export=download&id=1TqleXec_OykOYFREKKtschzY29dUcVAQ) to Spider Dataset
 
 ## Set Up
-To create the `data/spider/dev_spider.json` file, do the following:
+To create the `data/sql/spider/dev_spider.json` file, do the following:
 1. Download Spider dataset from the above link
 2. Run the below script with the local path to the Spider dataset as an argument
 ```sh

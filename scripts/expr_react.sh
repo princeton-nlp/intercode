@@ -1,6 +1,6 @@
 # Bash Call
 python -m experiments.eval_react \
-    --data_path ./data/nl2bash/nl2bash_fs_1.json \
+    --data_path ./data/bash/nl2bash/nl2bash_fs_1.json \
     --env bash \
     --image_name intercode-nl2bash \
     --log_dir logs/experiments \
@@ -9,7 +9,7 @@ python -m experiments.eval_react \
 
 # SQL Call
 # python -m experiments.eval_react \
-#     --data_path ./data/spider/dev_spider.json \
+#     --data_path ./data/sql/spider/dev_spider.json \
 #     --env sql \
 #     --image_name docker-env-sql \
 #     --log_dir logs/experiments \
