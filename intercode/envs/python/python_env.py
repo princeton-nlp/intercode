@@ -2,14 +2,11 @@ import ast
 import re
 import rpyc
 
-from multiprocessing import Process
-from subprocess import Popen, PIPE
-
 from typing import Dict, Tuple
 
 from intercode.envs.ic_env import (
     IntercodeEnv,
-    ACTION_EXEC, AGENT_OBS, EVAL_OBS
+    ACTION_EXEC, AGENT_OBS, EVAL_OBS, REWARD
 )
 
 HOST_PORT = 3006
@@ -41,41 +38,12 @@ class PythonEnv(IntercodeEnv):
             self.info[ACTION_EXEC] = False
     
     def get_reward(self) -> Tuple[float, Dict]:
-        self.info = {}
-
-        # Get function from `submit` action
-        # TODO: Assert that function name is given upon `submit` action
-        last_action = self.trajectory[-1][0]
-        func_name = last_action.split(" ")[1]
-
-        # Get gold function name, assign to submitted function
-        func_name_ref = re.match(r'def (\w+)\(', self.gold).group(1)
-        self.conn.root.execute(f"{func_name_ref} = {func_name}")
-
-        # Run tests against submitted function
-        results_pred = []
-        self.conn.root.execute(self.record["extra"]["test_setup_code"])
-        for test in self.record["extra"]["tests"]:
-            results_pred.append({
-                "test": test,
-                "result": self.conn.root.execute(test)
-            })
-
-        # Load gold + run tests
-        results_gold = []
-        self.conn.root.execute(RESET_KEYWORD)
-        self.conn.root.execute(self.record["extra"]["test_setup_code"])
-        self.conn.root.execute(self.gold)
-        for test in self.record["extra"]["tests"]:
-            results_gold.append({
-                "test": test,
-                "result": self.conn.root.execute(test)
-            })
-        
-        self.info["submitted_function"] = func_name
-        self.info[AGENT_OBS] = results_pred
-        self.info[EVAL_OBS] = results_gold
-        return 0.0, self.info
+        MAP_DATASET_TO_REWARD = {
+            "ic_apps": self.get_reward_apps,
+            "ic_mbpp": self.get_reward_mbpp,
+        }
+        dataset = self.data_path.split("/")[-1].split(".")[0]
+        return MAP_DATASET_TO_REWARD[dataset]()
     
     def close(self):
         self.logger.info("Beginning environment shutdown...")
@@ -108,3 +76,53 @@ class PythonEnv(IntercodeEnv):
             return f"print({command})"
         else:
             return command
+    
+    ##############################
+    ### MARK: Reward functions ###
+    ##############################
+    def get_reward_apps(self):
+        self.info = {}
+        return 0.0, self.info
+
+    def get_reward_mbpp(self):
+        self.info = {}
+
+        # Get function from `submit` action
+        # TODO: Assert that function name is given upon `submit` action
+        last_action = self.trajectory[-1][0]
+        func_name = last_action.split(" ")[1]
+
+        # Get gold function name, assign to submitted function
+        func_name_ref = re.match(r'def (\w+)\(', self.gold).group(1)
+        self.conn.root.execute(f"{func_name_ref} = {func_name}")
+
+        # Run tests against submitted function
+        results_pred = {}
+        self.conn.root.execute(self.record["extra"]["test_setup_code"])
+        for test in self.record["extra"]["tests"]:
+            results_pred[test] = self.conn.root.execute(test)
+
+        # Load gold + run tests
+        results_gold = {}
+        self.conn.root.execute(RESET_KEYWORD)
+        self.conn.root.execute(self.record["extra"]["test_setup_code"])
+        self.conn.root.execute(self.gold)
+        for test in self.record["extra"]["tests"]:
+            results_gold[test] = self.conn.root.execute(test)
+        
+        self.info["submitted_function"] = func_name
+        self.info[AGENT_OBS] = results_pred
+        self.info[EVAL_OBS] = results_gold
+
+        # Compute reward
+        correct = 0
+        for test, output in results_pred.items():
+            output_gold = results_gold[test]
+            if output == output_gold:
+                correct += 1
+        self.info[REWARD] = float(correct) / len(results_pred)
+        self.reward = self.info[REWARD]
+
+        self.logger.info(f"Info: {self.info}")
+        self.logger.info(f"Reward: {self.reward}")
+        return 0.0, self.info

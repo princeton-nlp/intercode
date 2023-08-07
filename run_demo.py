@@ -39,8 +39,6 @@ def main(demo: str):
 
             while not done:
                 action = policy.forward(query, obs, env.get_available_actions())
-                if action == "exit":
-                    raise KeyboardInterrupt
                 obs, reward, done, info = env.step(action)
     except KeyboardInterrupt:
         print("Exiting InterCode environment...")
