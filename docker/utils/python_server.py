@@ -36,8 +36,7 @@ class MyService(rpyc.Service):
 
             return {
                 "output": output,
-                "error": error,
-                "globals": self.globals,
+                "error": error
             }
         except Exception as e:
             return {"error": f"Error: {e}"}

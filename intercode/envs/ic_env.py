@@ -93,8 +93,10 @@ class IntercodeEnv(ABC, gym.Env):
             done (`bool`) - whether task is over
             info (`dict`) - additional information (e.g. debugging information)
         """
-        self.logger.info(f"Action: {action}")
-        if action == "submit":
+        if action == "skip":
+            return "skipped", 0, True, {}
+        if action.startswith("submit"):
+            self.trajectory.append((action, None))
             reward, info = 0, {}
             if not self.tool_mode:
                 reward, info = self.get_reward()
@@ -104,6 +106,7 @@ class IntercodeEnv(ABC, gym.Env):
             return self.observation, reward, True, info
 
         self.exec_action(action)
+        self.logger.info(f"Action: {action}")
         self.logger.info(f"Observation: {self.observation}")
         self.trajectory.append((action, self.observation))
         return self.observation, 0, False, self.info

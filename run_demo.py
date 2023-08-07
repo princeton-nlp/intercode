@@ -1,6 +1,5 @@
 import argparse
 import readline
-import signal
 
 from intercode.envs import (
     BashEnv, PythonEnv, SqlEnv
@@ -11,7 +10,7 @@ from typing import Dict
 
 MAP_DEMO_TO_IMAGE_DATA = {
     "bash": {"env": BashEnv, "image_name": "intercode-bash", "data_path": "./data/test/bash_queries.json"},
-    "python": {"env": PythonEnv, "image_name": "intercode-python"},
+    "python": {"env": PythonEnv, "image_name": "intercode-python", "data_path": "./data/python/mbpp/ic_mbpp.json"},
     "sql": {"env": SqlEnv, "image_name": "docker-env-sql", "data_path": "./data/test/sql_queries.csv"}
 }
 
@@ -44,7 +43,8 @@ def main(demo: str):
                     raise KeyboardInterrupt
                 obs, reward, done, info = env.step(action)
     except KeyboardInterrupt:
-        print("Keyboard interrupt detected")
+        print("Exiting InterCode environment...")
+    finally:
         env.close()
 
 

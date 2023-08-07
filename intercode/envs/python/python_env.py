@@ -1,5 +1,5 @@
 import ast
-import docker
+import re
 import rpyc
 
 from multiprocessing import Process
@@ -7,7 +7,10 @@ from subprocess import Popen, PIPE
 
 from typing import Dict, Tuple
 
-from intercode.envs.ic_env import IntercodeEnv, ACTION_EXEC
+from intercode.envs.ic_env import (
+    IntercodeEnv,
+    ACTION_EXEC, AGENT_OBS, EVAL_OBS
+)
 
 HOST_PORT = 3006
 RESET_KEYWORD = "RESET_CONTAINER_SPECIAL_KEYWORD"
@@ -26,15 +29,53 @@ class PythonEnv(IntercodeEnv):
     
     def exec_action(self, action: str) -> None:
         try:
-            action = self.wrap_with_print(action)
+            if action.strip().startswith("def "):
+                function_definition = self.input_multiline_function()
+                action = action + "\n" + function_definition
+            else:
+                action = self.wrap_with_print(action)
             self.observation = self.conn.root.execute(action)
-            self.info[ACTION_EXEC] = False
+            self.info[ACTION_EXEC] = 'error' in self.observation and len(self.observation['error']) > 0
         except Exception as err:
             self.observation = f"Error executing action: {err}"
-            self.info[ACTION_EXEC] = True
+            self.info[ACTION_EXEC] = False
     
     def get_reward(self) -> Tuple[float, Dict]:
-        return 0.0, {}
+        self.info = {}
+
+        # Get function from `submit` action
+        # TODO: Assert that function name is given upon `submit` action
+        last_action = self.trajectory[-1][0]
+        func_name = last_action.split(" ")[1]
+
+        # Get gold function name, assign to submitted function
+        func_name_ref = re.match(r'def (\w+)\(', self.gold).group(1)
+        self.conn.root.execute(f"{func_name_ref} = {func_name}")
+
+        # Run tests against submitted function
+        results_pred = []
+        self.conn.root.execute(self.record["extra"]["test_setup_code"])
+        for test in self.record["extra"]["tests"]:
+            results_pred.append({
+                "test": test,
+                "result": self.conn.root.execute(test)
+            })
+
+        # Load gold + run tests
+        results_gold = []
+        self.conn.root.execute(RESET_KEYWORD)
+        self.conn.root.execute(self.record["extra"]["test_setup_code"])
+        self.conn.root.execute(self.gold)
+        for test in self.record["extra"]["tests"]:
+            results_gold.append({
+                "test": test,
+                "result": self.conn.root.execute(test)
+            })
+        
+        self.info["submitted_function"] = func_name
+        self.info[AGENT_OBS] = results_pred
+        self.info[EVAL_OBS] = results_gold
+        return 0.0, self.info
     
     def close(self):
         self.logger.info("Beginning environment shutdown...")
@@ -44,6 +85,15 @@ class PythonEnv(IntercodeEnv):
     ############################
     ### MARK: Helper methods ###
     ############################
+    def input_multiline_function(self):
+        lines = []
+        while True:
+            line = input(". ")
+            if len(line) == 0:
+                break
+            lines.append(line)
+        return "\n".join(lines)
+    
     def wrap_with_print(self, command):
         # Parse the command as an AST (Abstract Syntax Tree)
         parsed_command = ast.parse(command.strip())
