@@ -61,7 +61,7 @@ class IntercodeEnv(ABC, gym.Env):
             self.logger.info("Verifying preprocess function...")
             preprocess = self.kwargs["preprocess"]
             assert(isinstance(preprocess, type(lambda x: x)))
-            assert(preprocess.__annotations__["return"] == str)
+            assert(preprocess.__annotations__["return"] == List)
             assert("record" in preprocess.__annotations__)
             assert(preprocess.__annotations__["record"] == Dict)
             self.preprocess = preprocess
@@ -142,9 +142,11 @@ class IntercodeEnv(ABC, gym.Env):
 
         # Run preprocess function if provided
         if self.preprocess is not None:
-            self.exec_action(self.preprocess(self.record))
-            if not self.info[ACTION_EXEC]:
-                raise RuntimeError(f"Preprocess command failed to execute successfully: {self.preprocess(self.record)}")
+            preprocess_cmds = self.preprocess(self.record)
+            for cmd in preprocess_cmds:
+                self.exec_action(cmd)
+                if not self.info[ACTION_EXEC]:
+                    raise RuntimeError(f"Preprocess command failed to execute successfully: {self.preprocess(self.record)}")
         
         return self.observation, self.info
 

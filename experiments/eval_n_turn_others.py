@@ -3,7 +3,7 @@ from intercode.envs import (
     BashEnv, SqlEnv, ACTION_EXEC
 )
 from tqdm import tqdm
-from typing import Dict
+from typing import Dict, List
 from experiments.policies import (
     PalmChatPolicy, PalmCompletionPolicy, HFChatPolicy
 )
@@ -28,9 +28,9 @@ SETTING_MAP = {
     "bash": "Bourne Shell"
 }
 
-def preprocess_sql(record: Dict) -> str:
-    db = record["extra"]["db"]
-    return f"use {db}"
+def preprocess_sql(record: Dict) -> List:
+    db = record["db"]
+    return [f"use {db}"]
 
 class ExperimentWrapper():
     def __init__(self, args):
@@ -142,8 +142,8 @@ class ExperimentWrapper():
                         "turns_max": self.args.max_turns,
                     }
                 }
-                if "extra" in record and "hardness" in record["extra"]:
-                    log_episode["hardness"] = record["extra"]["hardness"]
+                if "hardness" in record:
+                    log_episode["hardness"] = record["hardness"]
                 self.log_data[idx] = log_episode
 
                 if self.args.verbose:
