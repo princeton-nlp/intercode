@@ -5,7 +5,7 @@
 
 ## Set Up
 To recreate the `ic_spider_dev.json` file, do the following:
-1. Download Spider dataset from the above link
+1. Download Spider dataset from the Spider landing page.
 2. Run the below script with the local path to the Spider dataset as an argument
 ```sh
 python transform/transform_spider.py <Path to Spider dataset>
