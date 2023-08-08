@@ -87,7 +87,7 @@ def handicap_bash(record: Dict) -> str:
 def handicap_sql(record: Dict) -> str:
     # Custom handicap for spider dev dataset
     handicap = "MySQL tables, with their properties\n"
-    tables = record["extra"]["db_tables"]
+    tables = record["db_tables"]
     for name, columns in tables.items():
         handicap += f'- {name}: {str(columns)}\n'
     return handicap

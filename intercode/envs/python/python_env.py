@@ -98,16 +98,16 @@ class PythonEnv(IntercodeEnv):
 
         # Run tests against submitted function
         results_pred = {}
-        self.conn.root.execute(self.record["extra"]["test_setup_code"])
-        for test in self.record["extra"]["tests"]:
+        self.conn.root.execute(self.record["test_setup_code"])
+        for test in self.record["tests"]:
             results_pred[test] = self.conn.root.execute(test)
 
         # Load gold + run tests
         results_gold = {}
         self.conn.root.execute(RESET_KEYWORD)
-        self.conn.root.execute(self.record["extra"]["test_setup_code"])
+        self.conn.root.execute(self.record["test_setup_code"])
         self.conn.root.execute(self.gold)
-        for test in self.record["extra"]["tests"]:
+        for test in self.record["tests"]:
             results_gold[test] = self.conn.root.execute(test)
         
         self.info["submitted_function"] = func_name
@@ -125,4 +125,4 @@ class PythonEnv(IntercodeEnv):
 
         self.logger.info(f"Info: {self.info}")
         self.logger.info(f"Reward: {self.reward}")
-        return 0.0, self.info
+        return self.reward, self.info

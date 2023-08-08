@@ -1,4 +1,4 @@
-import os
+import math, os
 import numpy as np
 import pandas as pd
 
@@ -15,17 +15,11 @@ class IntercodeDataLoader():
         """Get query, gold pair (+ extra data) at index (or random index if None)"""
         if index is None:
             index = np.random.randint(0, len(self.data))
+        record = self.data.iloc[index].to_dict()
         record = {
-            "query": self.data.iloc[index]["query"],
-            "gold": self.data.iloc[index]["gold"],
+            key: value for key, value in record.items()
+            if not (isinstance(value, float) and math.isnan(value))
         }
-        if len(self.data.iloc[index]) > 2:
-            columns = self.data.columns.tolist()
-            extras = {}
-            for i in range(len(columns)):
-                if columns[i] not in ["query", "gold"]:
-                    extras[columns[i]] = self.data.iloc[index,i]
-            record["extra"] = extras
         return record
 
     def _load_data(self):
