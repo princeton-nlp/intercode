@@ -22,4 +22,4 @@ The `bash`, `python`, and `sql` folders contain corresponding datasets that have
 
 The `results` directory has model-specific folders, each of which contains experiment results for the model run with different strategies (i.e. Try Again, ReAct, Plan & Solve). Each json file contains a list of trajectories, where each trajectory corresponds to information from a single task episode.
 
-In case any of the data files are corrupted or altered during local use, w provide this [link](https://drive.google.com/drive/folders/1iquZDwvcvJoaPnmhwYr8zu58rzmEpF9T?usp=drive_link) that contains all the original datasets presented in this section.
+In case any of the data files are corrupted or altered during local use, we provide this [link](https://drive.google.com/drive/folders/1iquZDwvcvJoaPnmhwYr8zu58rzmEpF9T?usp=drive_link) that contains all the original datasets presented in this section.

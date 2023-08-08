@@ -24,3 +24,5 @@ To create the `ic_bird_dbs.sql` database, the `transform.py` script performs the
 2. Iterates through the mapping to create a single `ic_bird_dbs.sql` file that is the procedure for creating all databases + tables in a MySQL compatible format.
 
 The `ic_bird.json` and `ic_bird_dbs.sql` currently reflect the task instances and tables for the `debit_card_specializing`, `superhero`, and `toxicology` databases. Upon resolving minor SQLlite to MySQL conversion issues, we plan on migrating more of the BIRD-SQL dataset to be InterCode compatible.
+
+Note that the transformation procedure can also be applied to the `train` dataset (linked [here](https://bird-bench.oss-cn-beijing.aliyuncs.com/train.zip)) with a manual adjustment of modifying any `dev` references in the `transform.py` script to `train`.

@@ -2,32 +2,40 @@ import argparse
 import readline
 
 from intercode.envs import (
-    BashEnv, PythonEnv, SqlEnv
+    BashEnv, PythonEnv, SqlEnv, CTFEnv
 )
 from experiments.policies import HumanPolicy
-from typing import Dict
+from typing import Dict, List
 
 
-MAP_DEMO_TO_IMAGE_DATA = {
+def preprocess_ctf(record: Dict) -> List:
+    cmds = [f"cd /ctf/{record['task_id']}"]
+    print(record)
+    if "setup" in record:
+        cmds.append(record["setup"])
+    print(f"Passed in commands: {cmds}")
+    return cmds
+
+def preprocess_sql(record: Dict) -> List:
+    db = record["db"]
+    return [f"use {db}"]
+
+DEMO_MAP = {
     "bash": {"env": BashEnv, "image_name": "intercode-nl2bash", "data_path": "./data/bash/nl2bash/nl2bash_fs_1.json"},
     "python": {"env": PythonEnv, "image_name": "intercode-python", "data_path": "./data/python/mbpp/ic_mbpp.json"},
-    "sql": {"env": SqlEnv, "image_name": "docker-env-sql", "data_path": "./data/sql/bird/ic_bird.json"}
+    "sql": {"env": SqlEnv, "image_name": "docker-env-sql", "data_path": "./data/sql/bird/ic_bird.json", "preprocess": preprocess_sql},
+    "ctf": {"env": CTFEnv, "image_name": "intercode-ctf", "data_path": "./data/ctf/ic_ctf.json", "preprocess": preprocess_ctf}
 }
 
 
-def preprocess_sql(record: Dict) -> str:
-    db = record["extra"]["db"]
-    return f"use {db}"
-
-
 def main(demo: str):
-    if demo not in MAP_DEMO_TO_IMAGE_DATA:
+    if demo not in DEMO_MAP:
         raise ValueError(f"Demo {demo} not supported (Specify one of [bash, python, sql])")
-    image_name = MAP_DEMO_TO_IMAGE_DATA[demo]["image_name"]
-    data_path = MAP_DEMO_TO_IMAGE_DATA[demo]["data_path"] if "data_path" in MAP_DEMO_TO_IMAGE_DATA[demo] else None
-    preprocess = preprocess_sql if demo == 'sql' else None
+    image_name = DEMO_MAP[demo]["image_name"]
+    data_path = DEMO_MAP[demo]["data_path"] if "data_path" in DEMO_MAP[demo] else None
+    preprocess = DEMO_MAP[demo]["preprocess"] if "preprocess" in DEMO_MAP[demo] else None
 
-    env = MAP_DEMO_TO_IMAGE_DATA[demo]["env"](image_name, data_path=data_path, verbose=True, preprocess=preprocess)
+    env = DEMO_MAP[demo]["env"](image_name, data_path=data_path, verbose=True, preprocess=preprocess)
     
     try:
         for _ in range(3):
