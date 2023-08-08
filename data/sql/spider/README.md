@@ -37,7 +37,7 @@ The new dataset is a list of dictionaries, where each dictionary corresponds to 
 There are **1034** rows in the final dataset.
 
 ## SQL Conversion
-We release a unified MySQL version of the Spider 1.0 dev dataset [here](spider_dev.sql).
+We release a unified MySQL version of the Spider 1.0 dev dataset [here](ic_spider_dbs.sql).
 To recreate, do the following:
 1. Install MySQL following [this](https://dev.mysql.com/doc/refman/8.0/en/installing.html)
 2. Before conversion, some existing mismatches in primary and foreign key data types were resolved

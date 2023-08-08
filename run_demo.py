@@ -9,9 +9,9 @@ from typing import Dict
 
 
 MAP_DEMO_TO_IMAGE_DATA = {
-    "bash": {"env": BashEnv, "image_name": "intercode-bash", "data_path": "./data/test/bash_queries.json"},
+    "bash": {"env": BashEnv, "image_name": "intercode-nl2bash", "data_path": "./data/bash/nl2bash/nl2bash_fs_1.json"},
     "python": {"env": PythonEnv, "image_name": "intercode-python", "data_path": "./data/python/mbpp/ic_mbpp.json"},
-    "sql": {"env": SqlEnv, "image_name": "docker-env-sql", "data_path": "./data/test/sql_queries.csv"}
+    "sql": {"env": SqlEnv, "image_name": "docker-env-sql", "data_path": "./data/sql/bird/ic_bird.json"}
 }
 
 
