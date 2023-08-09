@@ -8,6 +8,7 @@ RUN apt-get update && \
 
 # Load in per-task assets
 COPY ../data/ctf/task_assets/. /ctf/
+RUN find /ctf/ -type d -name solution -prune -exec rm -rf {} \;
 
 # Commit custom file system to determine diffs
 COPY ../docker/docker.gitignore /

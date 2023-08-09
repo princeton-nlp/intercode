@@ -10,10 +10,8 @@ from typing import Dict, List
 
 def preprocess_ctf(record: Dict) -> List:
     cmds = [f"cd /ctf/{record['task_id']}"]
-    print(record)
     if "setup" in record:
         cmds.append(record["setup"])
-    print(f"Passed in commands: {cmds}")
     return cmds
 
 def preprocess_sql(record: Dict) -> List:

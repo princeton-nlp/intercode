@@ -21,6 +21,9 @@ class CTFEnv(BashEnv):
         self.reward = 1 if flag == self.gold else 0
         self.info[AGENT_OBS] = flag
         self.info[REWARD] = self.reward
+
+        self.logger.info(f"Info: {self.info}")
+        self.logger.info(f"Reward: {self.reward}")
         return self.reward, self.info
     
     def close(self):
