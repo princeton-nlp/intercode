@@ -20,17 +20,19 @@ class PythonEnv(IntercodeEnv):
         kwargs['ports'] = {f"{HOST_PORT}/tcp": HOST_PORT}
         super(PythonEnv, self).__init__(image_name, **kwargs)
         self.conn = rpyc.connect("localhost", HOST_PORT)
+        self.is_agent = kwargs.get("is_agent", False)
     
     def reset_container(self) -> None:
         self.conn.root.execute(RESET_KEYWORD)
     
     def exec_action(self, action: str) -> None:
         try:
-            if action.strip().startswith("def "):
+            if not self.is_agent and action.strip().startswith("def "):
                 function_definition = self.input_multiline_function()
                 action = action + "\n" + function_definition
             else:
                 action = self.wrap_with_print(action)
+            self.logger.info(f"Command run: {action}")
             self.observation = self.conn.root.execute(action)
             self.info[ACTION_EXEC] = 'error' in self.observation and len(self.observation['error']) > 0
         except Exception as err:
@@ -70,9 +72,10 @@ class PythonEnv(IntercodeEnv):
         has_assignment = any(isinstance(node, ast.Assign) for node in ast.walk(parsed_command))
         has_print = any(isinstance(node, ast.Call) and isinstance(node.func, ast.Name) and node.func.id == 'print' for node in ast.walk(parsed_command))
         has_import = any(isinstance(node, ast.Import) for node in ast.walk(parsed_command))
+        is_assert = command.strip().startswith("assert")
 
         # Wrap the command with "print" if it's not an assignment and does not have a "print" statement
-        if not any([has_assignment, has_print, has_import]):
+        if not any([has_assignment, has_print, has_import, is_assert]):
             return f"print({command})"
         else:
             return command
