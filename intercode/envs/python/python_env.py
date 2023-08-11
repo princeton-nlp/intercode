@@ -27,9 +27,10 @@ class PythonEnv(IntercodeEnv):
     
     def exec_action(self, action: str) -> None:
         try:
-            if not self.is_agent and action.strip().startswith("def "):
-                function_definition = self.input_multiline_function()
-                action = action + "\n" + function_definition
+            if action.strip().startswith("def "):
+                if not self.is_agent:
+                    function_definition = self.input_multiline_function()
+                    action = action + "\n" + function_definition
             else:
                 action = self.wrap_with_print(action)
             self.logger.info(f"Command run: {action}")
@@ -96,7 +97,7 @@ class PythonEnv(IntercodeEnv):
         func_name = last_action.split(" ")[1]
 
         # Get gold function name, assign to submitted function
-        func_name_ref = re.match(r'def (\w+)\(', self.gold).group(1)
+        func_name_ref = re.search(r'def (\w+)\(', self.gold).group(1)
         self.conn.root.execute(f"{func_name_ref} = {func_name}")
 
         # Run tests against submitted function

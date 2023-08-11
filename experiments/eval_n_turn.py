@@ -1,6 +1,6 @@
-import argparse, json, os
+import argparse, json, os, re
 from intercode.envs import (
-    BashEnv, SqlEnv, ACTION_EXEC
+    BashEnv, PythonEnv, SqlEnv, ACTION_EXEC, AGENT_OBS
 )
 from tqdm import tqdm
 from typing import Dict, List
@@ -12,20 +12,21 @@ from experiments.utils import HANDICAP_MAP
 parser = argparse.ArgumentParser(description='N-turn evaluation for Intercode environment')
 parser.add_argument('--data_path', type=str, help='path to dataset to evaluate on')
 parser.add_argument('--dialogue_limit', type=int, help='maximum number of turns in the policy\'s dialogue to keep')
-parser.add_argument('--env', choices=['sql', 'bash'], help='Intercode environment to run eval on')
+parser.add_argument('--env', choices=['sql', 'bash', 'python'], help='Intercode environment to run eval on')
 parser.add_argument('--handicap', action='store_true', help='enable handicap')
 parser.add_argument('--image_name', type=str, help='name of docker image to build environment with')
 parser.add_argument('--log_dir', type=str, help='folder to save experiment run log file to')
 parser.add_argument('--max_turns', type=int, help='max number of interaction turns')
 parser.add_argument('--policy', choices=['chat', 'complete'], help="policy to use for evaluation")
-parser.add_argument('--template', choices=['v1', 'v2', 'game', 'game_sql'], help="template to use for prompting strategy")
+parser.add_argument('--template', choices=['v1', 'v2', 'game', 'game_sql', 'function'], help="template to use for prompting strategy")
 parser.add_argument('--verbose', action='store_true', help="print out logs")
 parser.add_argument('--model', type=str, help="model to use for policy")
 args = parser.parse_args()
 
 SETTING_MAP = {
     "sql": "MySQL Database",
-    "bash": "Bourne Shell"
+    "bash": "Bourne Shell",
+    "python": "Python 3 Interpreter"
 }
 
 def preprocess_sql(record: Dict) -> List:
@@ -44,6 +45,9 @@ class ExperimentWrapper():
         elif args.env == 'bash':
             self.env = BashEnv(image_name=args.image_name,
                 data_path=args.data_path)
+        elif args.env == 'python':
+            self.env = PythonEnv(image_name=args.image_name,
+                data_path=args.data_path, is_agent=True)
         else:
             raise ValueError(f'Environment {args.env} not recognized')
         
@@ -105,9 +109,29 @@ class ExperimentWrapper():
                         observation = self.policy.template.get_retry_msg()
                         valid_action = False
                     else:
-                        observation, _, _, info = self.env.step(action)
-                        valid_action = info[ACTION_EXEC]
-                        _, reward, done, info = self.env.step("submit")
+                        if isinstance(self.env, PythonEnv):
+                            if action.startswith("def"):
+                                func_name = re.match(r'def (\w+)\(', action).group(1)
+                                action = action.replace("     ", "\n    ") + "\n"
+                                observation, reward, _, info = self.env.step(action)
+                                _, reward, _, info = self.env.step("submit " + func_name)
+
+                                SHOW_FAILED_CASE = False
+                                if reward != 1:
+                                    if SHOW_FAILED_CASE:
+                                        for k, v in info[AGENT_OBS].items():
+                                            if len(v['error']) > 0:
+                                                observation = f"Failed Test Case: {k}\nPlease try again."
+                                                break
+                                    else:
+                                        if any([len(v['error']) > 0 for k, v in info[AGENT_OBS].items()]):
+                                            observation = "Test case did not pass. Please try again."
+                            else:
+                                observation, reward, _, info = self.env.step(action)
+                        else:
+                            observation, _, _, info = self.env.step(action)
+                            valid_action = info[ACTION_EXEC]
+                            _, reward, done, info = self.env.step("submit")
                     
                     if self.args.verbose:
                         print(f"- Turn {turn}")

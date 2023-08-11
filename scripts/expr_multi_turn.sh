@@ -31,15 +31,28 @@
 #     --verbose
 
 # SQL Call
+# python -m experiments.eval_n_turn \
+#     --data_path ./data/sql/spider/ic_spider_dev.json \
+#     --dialogue_limit 5 \
+#     --env sql \
+#     --image_name docker-env-sql \
+#     --log_dir logs/experiments \
+#     --max_turns 10 \
+#     --policy chat \
+#     --template game_sql \
+#     --model gpt-3.5-turbo
+#     --handicap 
+#     --verbose 
+
+# Python call
 python -m experiments.eval_n_turn \
-    --data_path ./data/sql/spider/ic_spider_dev.json \
+    --data_path ./data/python/mbpp/ic_mbpp.json \
     --dialogue_limit 5 \
-    --env sql \
-    --image_name docker-env-sql \
+    --env python \
+    --image_name intercode-python \
     --log_dir logs/experiments \
     --max_turns 10 \
     --policy chat \
-    --template game_sql \
-    --model gpt-3.5-turbo
-    # --handicap 
-    # --verbose 
+    --template function \
+    --model gpt-3.5-turbo \
+    --verbose
