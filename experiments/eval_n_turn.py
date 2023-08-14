@@ -8,6 +8,7 @@ from experiments.policies import (
     CompletionGPTPolicy, ChatGPTPolicy, PalmChatPolicy, PalmCompletionPolicy
 )
 from experiments.utils import HANDICAP_MAP
+from rich import print
 
 parser = argparse.ArgumentParser(description='N-turn evaluation for Intercode environment')
 parser.add_argument('--data_path', type=str, help='path to dataset to evaluate on')
@@ -112,17 +113,24 @@ class ExperimentWrapper():
                         if isinstance(self.env, PythonEnv):
                             if action.startswith("def"):
                                 func_name = re.match(r'def (\w+)\(', action).group(1)
-                                action = action.replace("     ", "\n    ") + "\n"
+                                replace_spaces = lambda match: '\n' + ' ' * (len(match.group(0)) - 1)
+                                action = re.sub(r' {5,}', replace_spaces, action)
                                 observation, reward, _, info = self.env.step(action)
                                 _, reward, _, info = self.env.step("submit " + func_name)
 
-                                SHOW_FAILED_CASE = False
+                                SHOW_FAILED_CASE = 0
                                 if reward != 1:
-                                    if SHOW_FAILED_CASE:
+                                    if SHOW_FAILED_CASE == 1:
                                         for k, v in info[AGENT_OBS].items():
                                             if len(v['error']) > 0:
                                                 observation = f"Failed Test Case: {k}\nPlease try again."
                                                 break
+                                    if SHOW_FAILED_CASE == 2:
+                                        fails = 0
+                                        for k, v in info[AGENT_OBS].items():
+                                            if len(v['error']) > 0:
+                                                fails += 1
+                                        observation = f"Failed {fails}/{len(info[AGENT_OBS])} Test Cases. Please try again."
                                     else:
                                         if any([len(v['error']) > 0 for k, v in info[AGENT_OBS].items()]):
                                             observation = "Test case did not pass. Please try again."
@@ -158,7 +166,6 @@ class ExperimentWrapper():
                     "task_id": idx,
                     "query": self.env.query,
                     "turn_history": turn_history,
-                    # "info": info,
                     "summary": {
                         "max_reward": max_reward,
                         "max_reward_idx": turn_history["rewards"].index(max_reward),

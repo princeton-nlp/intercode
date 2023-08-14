@@ -76,10 +76,13 @@ def ctf_parser(action: str):
         return action, False
     return action, True
 
+def python_parser(action: str):
+    return action, True
+
 ACTION_PARSER_MAP = {
     "sql": sql_parser,
     "bash": bash_parser,
-    "python": lambda x: x,
+    "python": python_parser,
     "ctf": ctf_parser
 }
 ACTION_PARSER_MAP_REACT = {"sql": sql_parser_react, "bash": bash_parser_react}
