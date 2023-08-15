@@ -7,7 +7,7 @@ from experiments.policies import ChatGPTPolicy
 
 
 parser = argparse.ArgumentParser(description='GPT evaluation for CTF environment')
-parser.add_argument('--data_path', type=str, default="./data/ctf/ctf_test.json", help='path to bash queries json file')
+parser.add_argument('--data_path', type=str, default="./data/ctf/ic_ctf.json", help='path to bash queries json file')
 parser.add_argument('--max_turns', type=int, default=15, help='max number of interaction turns')
 parser.add_argument('--dialogue_limit', type=int, help='maximum number of turns in the policy\'s dialogue to keep')
 parser.add_argument('--log_dir', type=str, default=os.getcwd(), help="path to log directory")

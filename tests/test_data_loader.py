@@ -26,7 +26,7 @@ def test_get():
     record = data_loader.get(0)
     assert(record["query"] == "Find the first name of students who have both cat and dog pets .")
     assert(record["gold"].startswith("select t1.fname from Student as t1 join  Has_Pet as t2 on t1.stuid"))
-    assert(record["extra"]["db"] == "pets_1")
+    assert(record["db"] == "pets_1")
 
     data_path = "./data/test/bash_queries.json"
     data_loader = IntercodeDataLoader(data_path)

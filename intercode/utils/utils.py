@@ -23,7 +23,7 @@ class timeout:
         signal.alarm(0)
 
 
-def get_container(ctr_name: str, image_name: str) -> Container:
+def get_container(ctr_name: str, image_name: str, **kwargs) -> Container:
     """
     Reset docker container with given name, or create new container with given name if it does not exist
 
@@ -38,15 +38,21 @@ def get_container(ctr_name: str, image_name: str) -> Container:
         container = client.containers.get(ctr_name)
         if container.status != "running":
             container.start()
-            time.sleep(START_UP_DELAY)
     else:
+        # Only keep relevant kwargs
+        for key in kwargs.copy().keys():
+            if key not in ["command", "environment", "ports", "volumes"]:
+                del kwargs[key]
+                
         # Create + return new container from custom image
         image = client.images.get(image_name)
         container = client.containers.run(
             image=image,
             name=ctr_name,
             detach=True,
-            tty=True)
+            tty=True,
+            **kwargs)
+    time.sleep(START_UP_DELAY)
     
     # Check if container was created successfully
     if not container:

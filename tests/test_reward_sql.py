@@ -1,14 +1,14 @@
 import time
 from rich import print
-from typing import Dict
+from typing import Dict, List
 from intercode.envs import SqlEnv, AGENT_OBS
 
 def test_sql_reward_correctness():
-    def preprocess(record: Dict) -> str:
-        db = record["extra"]["db"]
-        return f"use {db}"
+    def preprocess(record: Dict) -> List:
+        db = record["db"]
+        return [f"use {db}"]
 
-    data_path = "./data/spider/dev_spider.json"
+    data_path = "./data/sql/spider/ic_spider_dev.json"
     image_name = "docker-env-sql"
     env = SqlEnv(image_name, data_path=data_path, preprocess=preprocess)
     total, errors = 0, []

@@ -4,7 +4,7 @@ from intercode.envs import (
 )
 import simplejson as json
 from tqdm import tqdm
-from typing import Dict
+from typing import Dict, List
 from experiments.utils import TemplatePlanSolve, ACTION_PARSER_MAP
 
 parser = argparse.ArgumentParser(description='Plan & Solve evaluation for Intercode environment')
@@ -24,9 +24,9 @@ SETTING_MAP = {
     "bash": "Bourne Shell"
 }
 
-def preprocess_sql(record: Dict) -> str:
-    db = record["extra"]["db"]
-    return f"use {db}"
+def preprocess_sql(record: Dict) -> List:
+    db = record["db"]
+    return [f"use {db}"]
 
 # Set OpenAPI key from environment or config file
 api_key = os.environ.get("OPENAI_API_KEY")
@@ -195,8 +195,8 @@ class ExperimentWrapper():
                         "max_reward_idx": max_reward_idx,
                     }
                 }
-                if "extra" in record and "hardness" in record["extra"]:
-                    log_episode["hardness"] = record["extra"]["hardness"]
+                if "hardness" in record:
+                    log_episode["hardness"] = record["hardness"]
                 self.log_data[idx] = log_episode
 
                 if self.args.verbose:

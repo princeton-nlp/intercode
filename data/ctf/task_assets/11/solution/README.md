@@ -1,0 +1,2 @@
+# 11 Solution
+Run the given executable `ltdis.sh` on the binary `static`, which generates two files. You can then perform a `cat <output> | grep picoCTF` on either file to show the gold flag in standard output.

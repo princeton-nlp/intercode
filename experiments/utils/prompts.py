@@ -248,6 +248,7 @@ display this information for the `workspace` directory
 
 DEMO_MAP_PLAN = {"SQL": DEMO_SQL_PLAN, "BASH": DEMO_BASH_PLAN}
 
+
 class PromptTemplate():
     def __init__(self, language: str, setting: str):
         self.language = language.upper()
@@ -271,6 +272,7 @@ Your response should be a {self.language} command. Format your {self.language} c
 Your {self.language} code here
 ```
 """
+
 
 # completion
 class TemplateV1(PromptTemplate):
@@ -371,6 +373,7 @@ Try something different to generate {self.language} command to get a reward of 1
 Do not generate any output or reward.
 """
 
+
 class TemplateSQLGame(TemplateV2):
     def get_init_msg(self):
         return f"""`{self.language}Env` is a multi-turn game that tests your ability to write
@@ -427,6 +430,7 @@ Once you have a good understanding of the tables, you should then write {self.la
 that would answer the natural language query using the tables you have access to.
 """
 
+
 class TemplateReAct(PromptTemplate):
     def get_init_msg(self):
         return f"""Interact with a {self.setting} system using {self.language} queries to answer a question.
@@ -442,6 +446,7 @@ Here are some examples.
 
     def get_query_msg(self, query):
         return f"""Question: {query}"""
+
 
 class TemplateCTF(PromptTemplate):
     def get_init_msg(self):
@@ -462,6 +467,7 @@ answer, only output the action you want."""
         if observation != "":
             return f"""Output: {observation}"""
         return "No output"
+
 
 class TemplatePlanSolve(PromptTemplate):
     def get_init_msg(self):
@@ -506,7 +512,8 @@ Your {self.language} code here
     
     def get_query_msg(self, query):
         return f"""Question: {query}"""
-    
+
+
 class TemplateV3(PromptTemplate):
     def get_init_msg(self):
         self.explore_msg = f"""
@@ -530,7 +537,8 @@ Print ONLY the {self.language} command. Do not generate any output or reward. Yo
 Reward: {reward}
 Try something different to generate {self.language} command to get a reward of 1.
 Do not generate any output or reward or explain your answer. Print ONLY the {self.language} command. Your {self.language} command:"""
-    
+
+
 class TemplateV4(PromptTemplate):
     def get_init_msg(self):
         self.explore_msg = f"""
@@ -555,8 +563,48 @@ Do NOT generate any output or reward or explain your answer. Print ONLY the {sel
 Reward: {reward}
 Try something different to generate {self.language} command to get a reward of 1.
 Do NOT generate any output or reward or explain your answer. Print ONLY the {self.language} command enclosed in ```."""
-        
-        
+
+
+class TemplateCodeFunction(TemplateV2):
+    def __init__(self, language: str, setting: str):
+        super().__init__(language, setting)
+        self.message_history = ""
+           
+    def get_init_msg(self):
+        return f"""## TASK DESCRIPTION
+You are a {self.language} code generator helping me answer a question using {self.language}.
+I will ask you a question, and your task is to interact with a {self.setting} using {self.language} commands to come up with the answer. Your goal is to write a {self.language} function for the query as per the context I describe that returns the correct answer. A {self.language} function is a function that starts with 'def <my_function>:' and ends with 'return'. 
+
+## RULES
+1. Do NOT ask questions 
+2. Do NOT provide any explanations
+3. Try to maximize your reward to 1 by interacting with the interpreter using {self.language} commands to build a {self.language} function that returns the correct answer.
+4. Only output valid {self.language} code. DO NOT output anything else.
+
+## OUTPUT DESCRIPTION
+For any valid {self.language} action, I will return the following:
+Output: <string>
+
+The output will contain the standard output from executing your {self.language} code and any errors encountered. You can mainly do this to debug your code and build your function or test your function against some test cases of your own.
+
+If you write your function, I will test your function against some test cases and return the following:
+Output: <string>
+Reward: [0, 1]
+
+Along with the output, you get the reward which is a decimal value between 0 and 1, which tells you how close your {self.language} function's result is to the correct answer. The closer the reward is to 1, the closer your {self.language} function is to the correct answer.
+"""
+
+    def get_obs_msg(self, observation, reward):
+            if isinstance(observation, str) and observation == "" or isinstance(observation, list) and len(observation) == 0:
+                observation = f"No output, write a {self.language} function to get an output."
+            return f"""{self.setting} Output: {observation}
+    Reward: {reward}
+    Here is the query again: \"{self.query}\"
+    Analyze the output and think about what cases might be failing {self.language} function to get a reward of 1.
+    Only output valid {self.language} code. DO NOT output anything else.
+"""
+
+
 PROMPT_MAP = {
     "v1": TemplateV1, # GPT, Palm completion
     "v2": TemplateV2, # GPT, Palm chat, Vicuna
@@ -565,5 +613,6 @@ PROMPT_MAP = {
     "game_sql": TemplateSQLGame,
     "react": TemplateReAct,
     "ctf": TemplateCTF,
-    "plan_solve": TemplatePlanSolve
+    "plan_solve": TemplatePlanSolve,
+    "function": TemplateCodeFunction
 }

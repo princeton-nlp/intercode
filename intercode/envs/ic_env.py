@@ -47,7 +47,7 @@ class IntercodeEnv(ABC, gym.Env):
         
         # Load dataset
         self.tool_mode = True
-        if "data_path" in self.kwargs:
+        if "data_path" in self.kwargs and self.kwargs["data_path"] is not None:
             self.data_path = self.kwargs["data_path"]
             self.data_loader = IntercodeDataLoader(self.data_path)
             self.logger.info(f"Loaded dataset from {self.data_path}")
@@ -57,11 +57,11 @@ class IntercodeEnv(ABC, gym.Env):
         
         # Verify that preprocess function matches specifications
         self.preprocess = None
-        if "preprocess" in self.kwargs:
+        if "preprocess" in self.kwargs and self.kwargs["preprocess"] is not None:
             self.logger.info("Verifying preprocess function...")
             preprocess = self.kwargs["preprocess"]
             assert(isinstance(preprocess, type(lambda x: x)))
-            assert(preprocess.__annotations__["return"] == str)
+            assert(preprocess.__annotations__["return"] == List)
             assert("record" in preprocess.__annotations__)
             assert(preprocess.__annotations__["record"] == Dict)
             self.preprocess = preprocess
@@ -74,7 +74,8 @@ class IntercodeEnv(ABC, gym.Env):
         # Establish connection with execution container
         self.image_name = image_name
         self.container_name = f"{self.image_name}_ic_ctr"
-        self.container = get_container(self.container_name, self.image_name)
+        self.container = get_container(self.container_name, self.image_name, **kwargs)
+        self.logger.info(f"Connected to `{self.container_name}` container")
         
         self.logger.info("Environment Initialized")
         if not self.tool_mode:
@@ -93,8 +94,10 @@ class IntercodeEnv(ABC, gym.Env):
             done (`bool`) - whether task is over
             info (`dict`) - additional information (e.g. debugging information)
         """
-        self.logger.info(f"Action: {action}")
-        if action == "submit":
+        if action == "skip":
+            return "skipped", 0, True, {}
+        if action.startswith("submit"):
+            self.trajectory.append((action, None))
             reward, info = 0, {}
             if not self.tool_mode:
                 reward, info = self.get_reward()
@@ -104,6 +107,7 @@ class IntercodeEnv(ABC, gym.Env):
             return self.observation, reward, True, info
 
         self.exec_action(action)
+        self.logger.info(f"Action: {action}")
         self.logger.info(f"Observation: {self.observation}")
         self.trajectory.append((action, self.observation))
         return self.observation, 0, False, self.info
@@ -138,9 +142,11 @@ class IntercodeEnv(ABC, gym.Env):
 
         # Run preprocess function if provided
         if self.preprocess is not None:
-            self.exec_action(self.preprocess(self.record))
-            if not self.info[ACTION_EXEC]:
-                raise RuntimeError(f"Preprocess command failed to execute successfully: {self.preprocess(self.record)}")
+            preprocess_cmds = self.preprocess(self.record)
+            for cmd in preprocess_cmds:
+                self.exec_action(cmd)
+                if not self.info[ACTION_EXEC]:
+                    raise RuntimeError(f"Preprocess command failed to execute successfully: {self.preprocess(self.record)}")
         
         return self.observation, self.info
 
