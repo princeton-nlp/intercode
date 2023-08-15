@@ -125,7 +125,7 @@ class ExperimentWrapper():
                                             if len(v['error']) > 0:
                                                 observation = f"Failed Test Case: {k}\nPlease try again."
                                                 break
-                                    if SHOW_FAILED_CASE == 2:
+                                    elif SHOW_FAILED_CASE == 2:
                                         fails = 0
                                         for k, v in info[AGENT_OBS].items():
                                             if len(v['error']) > 0:

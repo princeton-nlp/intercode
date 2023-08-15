@@ -13,6 +13,8 @@ Build interactive code environments for interactive code agents.
     </a>
 </p>
 
+Please refer to the [change log](https://github.com/princeton-nlp/intercode/blob/master/CHANGELOG.md) for information on the latest updates to the InterCode environment.
+
 ## 👋 Overview
 InterCode is a **lightweight, flexible, and easy-to-use framework** for designing interactive code environments. Following the popular [`gym`](https://gymnasium.farama.org/) interface definition, InterCode makes it easy to quickly define a code environment and deploy an agent to operate in code within the context of the environment.
 
@@ -70,15 +72,15 @@ cd intercode
 conda env create -f environment.yml
 conda activate intercode
 ```
-2. Run `setup.sh` to create the docker images for the InterCode Bash, SQL, and CTF environments
+2. Run `setup.sh` to create the docker images for the InterCode Bash, CTF, Python, and SQL environments
 3. Run `python run_demo.py sql`
 
-If InterCode was installed successfully, the InterCode SQL environment should be started successfully and a CLI interpreter should appear, allowing you to enter `SQL` commands to interact with the task environment. You can `^c` at any to time to exit the environment. You can also run `python run_demo.py [bash|sql]` or `python run_ctf.py` for the Bash, Python, and CTF environments respectively.
+If InterCode was installed successfully, the InterCode SQL environment should be started successfully and a CLI interpreter should appear, allowing you to enter `SQL` commands to interact with the task environment. You can `^c` at any to time to exit the environment. You can run `python run_demo.py [bash|ctf|python|sql]` to interact with any of the current four InterCode environments.
 
 ## 🔎 Learn More
 If you'd like to...
 * Get a more in depth, but still brief overview of InterCode, see [here](https://github.com/princeton-nlp/intercode/wiki/1.-Environment-%F0%9F%97%BA%EF%B8%8F)
-* Access the InterCode Bash, SQL, and Python environments, see [here](https://github.com/princeton-nlp/intercode/wiki/2.-Usage-%F0%9F%8E%AE)
+* Access the InterCode Bash, CTF, Python, or SQL environment, see [here](https://github.com/princeton-nlp/intercode/wiki/2.-Usage-%F0%9F%8E%AE)
 * Build an interactive code task with InterCode, see [here](https://github.com/princeton-nlp/intercode/wiki/3.-Interface--%F0%9F%9B%A0%EF%B8%8F)
 * Run language and code agents on InterCode based environments, see [here](https://github.com/princeton-nlp/intercode/wiki/4.-Experiments-%F0%9F%A7%AA)
 
