@@ -14,7 +14,8 @@ GIT_STATUS_SCRIPT = "git status --short;"
 
 IMAGE_TO_SETTINGS = {
     "intercode-bash": "/bin/sh",
-    "intercode-nl2bash": "/bin/bash"
+    "intercode-nl2bash": "/bin/bash",
+    "intercode-ctf": "/bin/bash",
 }
 
 class BashEnv(IntercodeEnv):
@@ -32,7 +33,7 @@ class BashEnv(IntercodeEnv):
         self.workdir = "/"
         exit_code, output = self.container.exec_run(self.clean_cmd(GIT_RESET_SCRIPT))
         if exit_code != 0:
-            raise RuntimeError(f"Failed to reset `{self.ctr_name_agent}` container successfully: {output}")
+            raise RuntimeError(f"Failed to reset `{self.container_name}` container successfully: {output}")
     
     def exec_action(self, action: str) -> None:
         """Executes action in bash shell"""

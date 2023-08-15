@@ -1,11 +1,10 @@
 # !bin/bash
 
 # Data Paths
-# - (SQL)  ./data/spider/dev_spider.json
+# - (SQL)  ./data/sql/spider/ic_spider_dev.json
 # - (SQL)  ./data/test/sql_queries.csv
-# - (Bash) ./data/nl2bash/nl2bash.json
+# - (Bash) ./data/bash/nl2bash/nl2bash.json
 # - (Bash) ./data/test/bash_queries.json
-# - (Bash) ./data/nl2cmd.json
 
 # Environments
 # - sql, bash
@@ -21,7 +20,7 @@
 
 # Bash Call
 # python -m experiments.eval_n_turn \
-#     --data_path ./data/nl2bash/nl2bash_fs_1.json \
+#     --data_path ./data/bash/nl2bash/nl2bash_fs_1.json \
 #     --dialogue_limit 7 \
 #     --env bash \
 #     --image_name intercode-nl2bash \
@@ -32,15 +31,28 @@
 #     --verbose
 
 # SQL Call
+# python -m experiments.eval_n_turn \
+#     --data_path ./data/sql/spider/ic_spider_dev.json \
+#     --dialogue_limit 5 \
+#     --env sql \
+#     --image_name docker-env-sql \
+#     --log_dir logs/experiments \
+#     --max_turns 10 \
+#     --policy chat \
+#     --template game_sql \
+#     --model gpt-3.5-turbo
+#     --handicap 
+#     --verbose 
+
+# Python call
 python -m experiments.eval_n_turn \
-    --data_path ./data/spider/dev_spider.json \
+    --data_path ./data/python/mbpp/ic_mbpp.json \
     --dialogue_limit 5 \
-    --env sql \
-    --image_name docker-env-sql \
+    --env python \
+    --image_name intercode-python \
     --log_dir logs/experiments \
     --max_turns 10 \
     --policy chat \
-    --template game_sql \
-    --model gpt-3.5-turbo
-    # --handicap 
-    # --verbose 
+    --template function \
+    --model gpt-3.5-turbo \
+    --verbose

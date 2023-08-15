@@ -1,6 +1,6 @@
 # Bash Call
 python -m experiments.eval_plan_solve \
-    --data_path ./data/nl2bash/nl2bash_fs_1.json \
+    --data_path ./data/bash/nl2bash/nl2bash_fs_1.json \
     --env bash \
     --image_name intercode-nl2bash \
     --log_dir logs/experiments \
@@ -12,7 +12,7 @@ python -m experiments.eval_plan_solve \
 # * Include --refine and --refine_turns for plan & solve + refine
 # * Include --proportion and --seed to randomize order of task instances
 # python -m experiments.eval_plan_solve \
-#     --data_path ./data/spider/dev_spider.json \
+#     --data_path ./data/sql/spider/ic_spider_dev.json \
 #     --env sql \
 #     --image_name docker-env-sql \
 #     --log_dir logs/experiments \

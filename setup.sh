@@ -14,9 +14,4 @@ echo "Setting up docker image for python..."
 docker build -t intercode-python -f docker/python.Dockerfile .
 
 echo "Setting up docker images for ctf..."
-CTF_DOCKERFILES_DIR="data/ctf"
-for DOCKERFILE in $(find "$CTF_DOCKERFILES_DIR" -type f -name "*.Dockerfile"); do
-    # Get the image name from the directory name
-    IMAGE_NAME=$(basename "$DOCKERFILE" .Dockerfile)
-    docker build -t ctf_"$IMAGE_NAME" -f $DOCKERFILE .
-done
+docker build -t intercode-ctf -f docker/ctf.Dockerfile .

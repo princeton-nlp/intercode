@@ -76,7 +76,15 @@ def ctf_parser(action: str):
         return action, False
     return action, True
 
-ACTION_PARSER_MAP = {"sql": sql_parser, "bash": bash_parser, "ctf": ctf_parser}
+def python_parser(action: str):
+    return action, True
+
+ACTION_PARSER_MAP = {
+    "sql": sql_parser,
+    "bash": bash_parser,
+    "python": python_parser,
+    "ctf": ctf_parser
+}
 ACTION_PARSER_MAP_REACT = {"sql": sql_parser_react, "bash": bash_parser_react}
 
 # MARK: Handicaps
@@ -87,7 +95,7 @@ def handicap_bash(record: Dict) -> str:
 def handicap_sql(record: Dict) -> str:
     # Custom handicap for spider dev dataset
     handicap = "MySQL tables, with their properties\n"
-    tables = record["extra"]["db_tables"]
+    tables = record["db_tables"]
     for name, columns in tables.items():
         handicap += f'- {name}: {str(columns)}\n'
     return handicap

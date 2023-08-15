@@ -1,0 +1,1 @@
+https://exiftool.org/Image-ExifTool-12.64.tar.gz

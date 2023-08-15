@@ -2,15 +2,15 @@ import time
 
 from mysql.connector import MySQLConnection
 from mysql.connector.cursor import MySQLCursor
-from typing import Dict
+from typing import Dict, List
 
 from intercode.envs.sql.sql_env import (
     SqlEnv
 )
 
-def preprocess(record: Dict) -> str:
-    db = record["extra"]["db"]
-    return f"use {db}"
+def preprocess(record: Dict) -> List:
+    db = record["db"]
+    return [f"use {db}"]
 
 data_path = "./data/test/sql_queries.csv"
 image_name = "docker-env-sql"

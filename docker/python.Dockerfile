@@ -1,13 +1,14 @@
-FROM alpine:latest
+# Dockerfile
+FROM python:3.9-slim
 
-ENV PYTHONUNBUFFERED=1
-RUN apk add --update --no-cache python3 && ln -sf python3 /usr/bin/python
-RUN python3 -m ensurepip
-RUN pip3 install --no-cache --upgrade pip setuptools
+# Set working directory
+WORKDIR /
 
-USER root
-RUN touch /entrypoint.sh
-RUN echo "/usr/bin/python" > /entrypoint.sh
-RUN chmod u+x /entrypoint.sh
+# Install dependencies
+RUN pip install rpyc
 
-CMD /entrypoint.sh
+# Other setup for your container if needed
+COPY ../docker/utils/python_server.py /
+
+# Run the server
+CMD ["python", "python_server.py"]
