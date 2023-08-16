@@ -20,7 +20,7 @@ Since its initial release, I am pleased to announce that InterCode has been exte
     * CTF environment has been integrated into the `run_demo.py` script. Try it out with `python run_demo.py ctf`
     * The CTF dataset will continually we increased in quantity as we source and create more problems.
 
-- John 
+✍🏻 John 
 
 ## [1.0.0] - 7/11/2023
 

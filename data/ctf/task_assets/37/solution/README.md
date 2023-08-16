@@ -1,0 +1,2 @@
+# 37 Solution
+`unzip` the `files.zip` file, which gives the `files` directory. From here, you can find the `uber-secret.txt` file under the `.secret` hidden folder, which contains the solution flag in plaintext.

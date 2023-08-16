@@ -1,0 +1,2 @@
+# 34 Solution
+Similar to the solution for task instance with `task_id = 32`. However, instead of running through a list of potential passwords in the `level5.py`, the potential passwords should be retrieved from `dictionary.txt` first, then tried. The provided `solution.py` file does this in a single step.

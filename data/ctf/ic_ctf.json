@@ -90,7 +90,187 @@
   {
     "task_id": 15,
     "query": "crackme.py",
-    "gold": "picoCTF{1|\/|_4_p34|\|ut_f3bc410e}",
-    "source": "https://play.picoctf.org/practice/challenge/175",
+    "gold": "picoCTF{1|\/|_4_p34|\\|ut_f3bc410e}",
+    "source": "https://play.picoctf.org/practice/challenge/175"
+  },
+  {
+    "task_id": 16,
+    "query": "Kishor Balan tipped us off that the following code may need inspection: https://jupiter.challenges.picoctf.org/problem/44924/",
+    "gold": "picoCTF{tru3_d3t3ct1ve_0r_ju5t_lucky?f10be399}",
+    "source": "https://play.picoctf.org/practice/challenge/18"
+  },
+  {
+    "task_id": 17,
+    "query": "If I told you a word started with 0x70 in hexadecimal, what would it start with in ASCII?",
+    "gold": "picoCTF{p}",
+    "source": "https://play.picoctf.org/practice/challenge/22"
+  },
+  {
+    "task_id": 18,
+    "query": "What is 0x3D (base 16) in decimal (base 10)?",
+    "gold": "picoCTF{61}",
+    "source": "https://play.picoctf.org/practice/challenge/58"
+  },
+  {
+    "task_id": 19,
+    "query": "Can you convert the number 42 (base 10) to binary (base 2)?",
+    "gold": "picoCTF{101010}",
+    "source": "https://play.picoctf.org/practice/challenge/86"
+  },
+  {
+    "task_id": 20,
+    "query": "Using netcat (nc) is going to be pretty important. Can you connect to 2019shell1.picoctf.com at port 4158 to get the flag?",
+    "gold": "picoCTF{nEtCat_Mast3ry_d0c64587}",
+    "source": "https://play.picoctf.org/practice/challenge/34"
+  },
+  {
+    "task_id": 21,
+    "query": "Can you find the flag in the given file without running it?",
+    "gold": "picoCTF{5tRIng5_1T_d66c7bb7}",
+    "source": "https://play.picoctf.org/practice/challenge/37"
+  },
+  {
+    "task_id": 22,
+    "query": "What does this bDNhcm5fdGgzX3IwcDM1 mean? I think it has something to do with bases.",
+    "gold": "picoCTF{l3arn_th3_r0p35}",
+    "source": "https://play.picoctf.org/practice/challenge/67"
+  },
+  {
+    "task_id": 23,
+    "query": "Can you find the flag in file? This would be really tedious to look through manually, something tells me there is a better way.",
+    "gold": "picoCTF{grep_is_good_to_find_things_f77e0797}",
+    "source": "https://play.picoctf.org/practice/challenge/85"
+  },
+  {
+    "task_id": 24,
+    "query": "Run the Python script code.py in the same directory as codebook.txt.",
+    "gold": "picoCTF{c0d3b00k_455157_d9aa2df2}",
+    "source": "https://play.picoctf.org/practice/challenge/238"
+  },
+  {
+    "task_id": 25,
+    "query": "Run the Python script and convert the given number from decimal to binary to get the flag.",
+    "gold": "picoCTF{4ll_y0ur_b4535_722f6b39}",
+    "source": "https://play.picoctf.org/practice/challenge/239"
+  },
+  {
+    "task_id": 26,
+    "query": "Fix the syntax error in this Python script to print the flag.",
+    "gold": "picoCTF{1nd3nt1ty_cr1515_09ee727a}",
+    "source": "https://play.picoctf.org/practice/challenge/240"
+  },
+  {
+    "task_id": 27,
+    "query": "Fix the syntax error in the Python script to print the flag.",
+    "gold": "picoCTF{3qu4l1ty_n0t_4551gnm3nt_4863e11b}",
+    "source": "https://play.picoctf.org/practice/challenge/241"
+  },
+  {
+    "task_id": 28,
+    "query": "Our flag printing service has started glitching! $ nc saturn.picoctf.net 55826",
+    "gold": "picoCTF{gl17ch_m3_n07_9c42a45d}",
+    "source": "https://play.picoctf.org/practice/challenge/242"
+  },
+  {
+    "task_id": 29,
+    "query": "If you want to hash with the best, beat this test! nc saturn.picoctf.net 50363",
+    "gold": "picoCTF{4ppl1c4710n_r3c31v3d_3eb82b73}",
+    "source": "https://play.picoctf.org/practice/challenge/243"
+  },
+  {
+    "task_id": 30,
+    "query": "Can you crack the password to get the flag?",
+    "gold": "picoCTF{545h_r1ng1ng_fa343060}",
+    "source": "https://play.picoctf.org/practice/challenge/245"
+  },
+  {
+    "task_id": 31,
+    "query": "Can you crack the password to get the flag?",
+    "gold": "picoCTF{tr45h_51ng1ng_489dea9a}",
+    "source": "https://play.picoctf.org/practice/challenge/246"
+  },
+  {
+    "task_id": 32,
+    "query": "Can you crack the password to get the flag? There are 7 potential passwords with 1 being correct. You can find these by examining the password checker script.",
+    "gold": "picoCTF{m45h_fl1ng1ng_cd6ed2eb}",
+    "source": "https://play.picoctf.org/practice/challenge/247"
+  },
+  {
+    "task_id": 33,
+    "query": "Can you crack the password to get the flag? There are 100 potential passwords with only 1 being correct. You can find these by examining the password checker script.",
+    "gold": "picoCTF{fl45h_5pr1ng1ng_d770d48c}",
+    "source": "https://play.picoctf.org/practice/challenge/248"
+  },
+  {
+    "task_id": 34,
+    "query": "Can you crack the password to get the flag?",
+    "gold": "picoCTF{h45h_sl1ng1ng_40f26f81}",
+    "source": "https://play.picoctf.org/practice/challenge/249"
+  },
+  {
+    "task_id": 35,
+    "query": "Download the script (https://artifacts.picoctf.net/c/34/runme.py) with the wget command and run it with python3 to get the flag.",
+    "gold": "picoCTF{run_s4n1ty_run}",
+    "source": "https://play.picoctf.org/practice/challenge/250"
+  },
+  {
+    "task_id": 36,
+    "query": "Find the flag in the Python script!",
+    "gold": "picoCTF{7h3_r04d_l355_7r4v3l3d_8e47d128}",
+    "source": "https://play.picoctf.org/practice/challenge/251"
+  },
+  {
+    "task_id": 37,
+    "query": "Unzip this archive and find the file named 'uber-secret.txt'",
+    "gold": "picoCTF{f1nd_15_f457_ab443fd1}",
+    "source": "https://play.picoctf.org/practice/challenge/320"
+  },
+  {
+    "task_id": 38,
+    "query": "Unzip this archive and find the flag.",
+    "gold": "picoCTF{gr3p_15_m4g1c_ef8790dc}",
+    "source": "https://play.picoctf.org/practice/challenge/322"
+  },
+  {
+    "task_id": 39,
+    "query": "To get truly 1337, you must understand different data encodings, such as hexadecimal or binary. Can you get the flag from this program to prove you are on the way to becoming 1337? Connect with nc jupiter.challenges.picoctf.org 15130.",
+    "gold": "picoCTF{learning_about_converting_values_02167de8}",
+    "source": "https://play.picoctf.org/practice/challenge/35"
+  },
+  {
+    "task_id": 40,
+    "query": "Convert the following string of ASCII numbers into a readable string: 0x70 0x69 0x63 0x6f 0x43 0x54 0x46 0x7b 0x34 0x35 0x63 0x31 0x31 0x5f 0x6e 0x30 0x5f 0x71 0x75 0x33 0x35 0x37 0x31 0x30 0x6e 0x35 0x5f 0x31 0x6c 0x6c 0x5f 0x74 0x33 0x31 0x31 0x5f 0x79 0x33 0x5f 0x6e 0x30 0x5f 0x6c 0x31 0x33 0x35 0x5f 0x34 0x34 0x35 0x64 0x34 0x31 0x38 0x30 0x7d",
+    "gold": "picoCTF{45c11_n0_qu35710n5_1ll_t311_y3_n0_l135_445d4180}",
+    "source": "https://play.picoctf.org/practice/challenge/390"
+  },
+  {
+    "task_id": 41,
+    "query": "Sometimes you need to handle process data outside of a file. Can you find a way to keep the output from this program and search for the flag? Connect to jupiter.challenges.picoctf.org 14291.",
+    "gold": "picoCTF{digital_plumb3r_ea8bfec7}",
+    "source": "https://play.picoctf.org/practice/challenge/48"
+  },
+  {
+    "task_id": 42,
+    "query": "",
+    "gold": "",
+    "source": ""
+  },
+  {
+    "task_id": 43,
+    "query": "",
+    "gold": "",
+    "source": ""
+  },
+  {
+    "task_id": 44,
+    "query": "",
+    "gold": "",
+    "source": ""
+  },
+  {
+    "task_id": 45,
+    "query": "",
+    "gold": "",
+    "source": ""
   }
 ]
