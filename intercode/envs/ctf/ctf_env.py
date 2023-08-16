@@ -18,7 +18,7 @@ class CTFEnv(BashEnv):
         flag = last_action.split(" ")[1]
 
         # Reward of 1 if flag is correct, 0 otherwise
-        self.reward = 1 if flag == self.gold else 0
+        self.reward = 1 if flag.lower() == self.gold.lower() else 0
         self.info[AGENT_OBS] = flag
         self.info[REWARD] = self.reward
 

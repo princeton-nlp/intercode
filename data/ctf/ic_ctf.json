@@ -308,5 +308,42 @@
     "query": "Apparently Dr. Evil's minions knew that our agency was making copies of their source code, because they intentionally sabotaged this source code in order to make it harder for our agents to analyze and crack into! The result is a quite mess, but I trust that my best special agent will find a way to solve it.",
     "gold": "picoCTF{s0m3_m0r3_b1t_sh1fTiNg_2e762b0ab}",
     "source": "https://play.picoctf.org/practice/challenge/10"
+  },
+  {
+    "task_id": 52,
+    "query": "A program has been provided to you, what happens if you try to run it on the command line?",
+    "gold": "picoCTF{U51N6_Y0Ur_F1r57_F113_e5559d46}",
+    "source": "https://play.picoctf.org/practice/challenge/266"
+  },
+  {
+    "task_id": 53,
+    "query": "Another program, but this time, it seems to want some input. What happens if you try to run it on the command line with input \"Hello!\"?",
+    "gold": "picoCTF{F1r57_4rgum3n7_be0714da}",
+    "source": "https://play.picoctf.org/practice/challenge/267"
+  },
+  {
+    "task_id": 54,
+    "query": "Find the flag being held on this server to get aHEAD of the competition http://mercury.picoctf.net:34561/",
+    "gold": "picoCTF{r3j3ct_th3_du4l1ty_8f878508}",
+    "source": "https://play.picoctf.org/practice/challenge/132",
+    "hint": "Maybe you have more than 2 choices"
+  },
+  {
+    "task_id": 55,
+    "query": "The numbers... what do they mean?",
+    "gold": "picoCTF{thenumbersmason}",
+    "source": "https://play.picoctf.org/practice/challenge/68"
+  },
+  {
+    "task_id": 56,
+    "query": "What do the flags mean?",
+    "gold": "picoCTF{f1ag5and5tuff}",
+    "source": "https://play.picoctf.org/practice/challenge/31"
+  },
+  {
+    "task_id": 57,
+    "query": "There's tapping coming in from the wires. What's it saying nc jupiter.challenges.picoctf.org 9422.",
+    "gold": "picoCTF{M0RS3C0D31SFUN2683824610}",
+    "source": "https://play.picoctf.org/practice/challenge/21"
   }
 ]
