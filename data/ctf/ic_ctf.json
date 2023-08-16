@@ -251,26 +251,62 @@
   },
   {
     "task_id": 42,
-    "query": "",
-    "gold": "",
-    "source": ""
+    "query": "There's a flag shop selling stuff, can you buy a flag? Connect with nc jupiter.challenges.picoctf.org 44566. Source code given in store.c",
+    "gold": "picoCTF{m0n3y_bag5_68d16363}",
+    "source": "https://play.picoctf.org/practice/challenge/49"
   },
   {
     "task_id": 43,
-    "query": "",
-    "gold": "",
-    "source": ""
+    "query": "Best Stuff - Cheap Stuff, Buy Buy Buy... The shop is open for business at nc mercury.picoctf.net 10337. Source code given in source",
+    "gold": "picoCTF{b4d_brogrammer_3da34a8f}",
+    "source": "https://play.picoctf.org/practice/challenge/134"
   },
   {
     "task_id": 44,
-    "query": "",
-    "gold": "",
-    "source": ""
+    "query": "Your mission is to enter Dr. Evil's laboratory and retrieve the blueprints for his Doomsday Project. The laboratory is protected by a series of locked vault doors. Each door is controlled by a computer and requires a password to open. Unfortunately, our undercover agents have not been able to obtain the secret passwords for the vault doors, but one of our junior agents obtained the source code for each vault's computer! You will need to read the source code for each level to figure out what the password is for that vault door. As a warmup, we have created a replica vault in our training facility. The source code for the training vault is here",
+    "gold": "picoCTF{w4rm1ng_Up_w1tH_jAv4_be8d9806f18}",
+    "source": "https://play.picoctf.org/practice/challenge/7"
   },
   {
     "task_id": 45,
-    "query": "",
-    "gold": "",
-    "source": ""
+    "query": "This vault uses some complicated arrays! I hope you can make sense of it, special agent.",
+    "gold": "picoCTF{d35cr4mbl3_tH3_cH4r4cT3r5_75092e}",
+    "source": "https://play.picoctf.org/practice/challenge/12"
+  },
+  {
+    "task_id": 46,
+    "query": "This vault uses for-loops and byte arrays. The source code for this vault is here:",
+    "gold": "picoCTF{jU5t_a_s1mpl3_an4gr4m_4_u_79958f}",
+    "source": "https://play.picoctf.org/practice/challenge/60"
+  },
+  {
+    "task_id": 47,
+    "query": "This vault uses ASCII encoding for the password.",
+    "gold": "picoCTF{jU5t_4_bUnCh_0f_bYt3s_8f4a6cbf3b}",
+    "source": "https://play.picoctf.org/practice/challenge/71"
+  },
+  {
+    "task_id": 48,
+    "query": "This vault door uses a different change of base as well as URL encoding!",
+    "gold": "picoCTF{c0nv3rt1ng_fr0m_ba5e_64_e3152bf4}",
+    "source": "https://play.picoctf.org/practice/challenge/77"
+  },
+  {
+    "task_id": 49,
+    "query": "This vault uses an XOR encryption scheme.",
+    "gold": "picoCTF{n0t_mUcH_h4rD3r_tH4n_x0r_948b888}",
+    "source": "https://play.picoctf.org/practice/challenge/45"
+  },
+  {
+    "task_id": 50,
+    "query": "This vault uses bit shifts to convert a password string into an array of integers. Hurry, agent, we are running out of time to stop Dr. Evil's nefarious plans!",
+    "gold": "picoCTF{A_b1t_0f_b1t_sh1fTiNg_dc80e28124}",
+    "source": "https://play.picoctf.org/practice/challenge/65"
+  },
+  {
+    "task_id": 51,
+    "query": "Apparently Dr. Evil's minions knew that our agency was making copies of their source code, because they intentionally sabotaged this source code in order to make it harder for our agents to analyze and crack into! The result is a quite mess, but I trust that my best special agent will find a way to solve it.",
+    "gold": "picoCTF{s0m3_m0r3_b1t_sh1fTiNg_2e762b0ab}",
+    "source": "https://play.picoctf.org/practice/challenge/10"
   }
 ]

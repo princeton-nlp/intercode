@@ -1,0 +1,2 @@
+# 48 Solution
+Similar to task 44, the password is stored in the `checkPassword` function. However, instead of plaintext, the password is encoded with `base64`. There are several conversion strategies available to revert the encoding back to the original password. One strategy is presented in `solution.py`

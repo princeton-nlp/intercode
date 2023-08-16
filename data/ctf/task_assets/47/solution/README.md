@@ -1,0 +1,2 @@
+# 47 Solution
+Similar to task 44, the password is stored in the `checkPassword` function. However, instead of plaintext, the password is stored as a set of modifications to a byte array. Similar to task 46, it is possible to reverse the steps performed manually or via a script, as shown in `solution.py`
