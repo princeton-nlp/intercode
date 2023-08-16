@@ -113,8 +113,6 @@ class ExperimentWrapper():
                         if isinstance(self.env, PythonEnv):
                             if action.startswith("def"):
                                 func_name = re.match(r'def (\w+)\(', action).group(1)
-                                replace_spaces = lambda match: '\n' + ' ' * (len(match.group(0)) - 1)
-                                action = re.sub(r' {5,}', replace_spaces, action)
                                 observation, reward, _, info = self.env.step(action)
                                 _, reward, _, info = self.env.step("submit " + func_name)
 

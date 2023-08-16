@@ -21,7 +21,7 @@ InterCode is a **lightweight, flexible, and easy-to-use framework** for designin
 For an overview of InterCode, building interactive code tasks with InterCode, and evaluating agents on InterCode environments, please check out our [wiki](https://github.com/princeton-nlp/intercode/wiki), [website](https://intercode-benchmark.github.io/), and the original paper:
 
 **[InterCode: Standardizing and Benchmarking Interactive Coding with Execution Feedback](https://arxiv.org/abs/2306.14898)**    
-[John Yang*](https://john-b-yang.github.io/), [Akshara Prabhakar*](https://aksh555.github.io/), [Karthik Narasimhan](https://www.cs.princeton.edu/~karthikn/), [Shunyu Yao](https://ysymyth.github.io/)
+[John Yang](https://john-b-yang.github.io/), [Akshara Prabhakar](https://aksh555.github.io/), [Karthik Narasimhan](https://www.cs.princeton.edu/~karthikn/), [Shunyu Yao](https://ysymyth.github.io/)
 
 <img src="assets/preview.png">
 

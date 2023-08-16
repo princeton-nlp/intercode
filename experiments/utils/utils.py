@@ -77,6 +77,9 @@ def ctf_parser(action: str):
     return action, True
 
 def python_parser(action: str):
+    if action.startswith("def"):
+        replace_spaces = lambda match: '\n' + ' ' * (len(match.group(0)) - 1)
+        action = re.sub(r' {5,}', replace_spaces, action)
     return action, True
 
 ACTION_PARSER_MAP = {
