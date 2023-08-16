@@ -1,25 +1,25 @@
 import argparse, json, os, re
 from intercode.envs import (
-    BashEnv, PythonEnv, SqlEnv, ACTION_EXEC, AGENT_OBS
+    BashEnv, CTFEnv, PythonEnv, SqlEnv, ACTION_EXEC, AGENT_OBS
 )
 from tqdm import tqdm
 from typing import Dict, List
 from experiments.policies import (
     CompletionGPTPolicy, ChatGPTPolicy, PalmChatPolicy, PalmCompletionPolicy
 )
-from experiments.utils import HANDICAP_MAP
+from experiments.utils import HANDICAP_MAP, PROMPT_MAP
 from rich import print
 
 parser = argparse.ArgumentParser(description='N-turn evaluation for Intercode environment')
 parser.add_argument('--data_path', type=str, help='path to dataset to evaluate on')
 parser.add_argument('--dialogue_limit', type=int, help='maximum number of turns in the policy\'s dialogue to keep')
-parser.add_argument('--env', choices=['sql', 'bash', 'python'], help='Intercode environment to run eval on')
+parser.add_argument('--env', choices=['sql', 'bash', 'python', 'ctf'], help='Intercode environment to run eval on')
 parser.add_argument('--handicap', action='store_true', help='enable handicap')
 parser.add_argument('--image_name', type=str, help='name of docker image to build environment with')
 parser.add_argument('--log_dir', type=str, help='folder to save experiment run log file to')
 parser.add_argument('--max_turns', type=int, help='max number of interaction turns')
 parser.add_argument('--policy', choices=['chat', 'complete'], help="policy to use for evaluation")
-parser.add_argument('--template', choices=['v1', 'v2', 'game', 'game_sql', 'function'], help="template to use for prompting strategy")
+parser.add_argument('--template', type=str, help="template to use for prompting strategy")
 parser.add_argument('--verbose', action='store_true', help="print out logs")
 parser.add_argument('--model', type=str, help="model to use for policy")
 args = parser.parse_args()
@@ -27,8 +27,15 @@ args = parser.parse_args()
 SETTING_MAP = {
     "sql": "MySQL Database",
     "bash": "Bourne Shell",
-    "python": "Python 3 Interpreter"
+    "python": "Python 3 Interpreter",
+    "ctf": "Capture the Flag"
 }
+
+def preprocess_ctf(record: Dict) -> List:
+    cmds = [f"cd /ctf/{record['task_id']}"]
+    if "setup" in record:
+        cmds.append(record["setup"])
+    return cmds
 
 def preprocess_sql(record: Dict) -> List:
     db = record["db"]
@@ -49,6 +56,9 @@ class ExperimentWrapper():
         elif args.env == 'python':
             self.env = PythonEnv(image_name=args.image_name,
                 data_path=args.data_path, is_agent=True)
+        elif args.env == 'ctf':
+            self.env = CTFEnv(image_name=args.image_name,
+                data_path=args.data_path, preprocess=preprocess_ctf)
         else:
             raise ValueError(f'Environment {args.env} not recognized')
         
@@ -60,12 +70,15 @@ class ExperimentWrapper():
         self.log_data = {}
 
         # Initialize Policy
+        if args.template not in PROMPT_MAP:
+            raise ValueError(f"Prompt {args.template} not recognized; Options: {PROMPT_MAP.keys()}")
         self.policy = None
         if args.policy == 'chat':
             self.policy = ChatGPTPolicy(language=args.env, setting=SETTING_MAP[args.env],
                 template=args.template, dialogue_limit=args.dialogue_limit, model=args.model)
         elif args.policy == 'complete':
-            self.policy = CompletionGPTPolicy(language=args.env, setting=SETTING_MAP[args.env], template=args.template, dialogue_limit=args.dialogue_limit, model=args.model)
+            self.policy = CompletionGPTPolicy(language=args.env, setting=SETTING_MAP[args.env],
+                template=args.template, dialogue_limit=args.dialogue_limit, model=args.model)
         else:
             raise ValueError(f'Policy {args.policy} not recognized')
         
@@ -135,9 +148,10 @@ class ExperimentWrapper():
                             else:
                                 observation, reward, _, info = self.env.step(action)
                         else:
-                            observation, _, _, info = self.env.step(action)
+                            observation, _, done, info = self.env.step(action)
                             valid_action = info[ACTION_EXEC]
-                            _, reward, done, info = self.env.step("submit")
+                            if not isinstance(self.env, CTFEnv):
+                                _, reward, done, info = self.env.step("submit")
                     
                     if self.args.verbose:
                         print(f"- Turn {turn}")

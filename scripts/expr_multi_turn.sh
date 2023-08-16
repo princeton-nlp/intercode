@@ -45,14 +45,27 @@
 #     --verbose 
 
 # Python call
+# python -m experiments.eval_n_turn \
+#     --data_path ./data/python/mbpp/ic_mbpp.json \
+#     --dialogue_limit 5 \
+#     --env python \
+#     --image_name intercode-python \
+#     --log_dir logs/experiments \
+#     --max_turns 10 \
+#     --policy chat \
+#     --template function \
+#     --model gpt-3.5-turbo \
+#     --verbose
+
+# CTF call
 python -m experiments.eval_n_turn \
-    --data_path ./data/python/mbpp/ic_mbpp.json \
+    --data_path ./data/ctf/ic_ctf.json \
     --dialogue_limit 5 \
-    --env python \
-    --image_name intercode-python \
+    --env ctf \
+    --image_name intercode-ctf \
     --log_dir logs/experiments \
-    --max_turns 10 \
+    --max_turns 7 \
     --policy chat \
-    --template function \
+    --template ctf \
     --model gpt-3.5-turbo \
     --verbose
