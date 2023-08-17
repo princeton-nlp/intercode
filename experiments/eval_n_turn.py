@@ -148,10 +148,17 @@ class ExperimentWrapper():
                             else:
                                 observation, reward, _, info = self.env.step(action)
                         else:
-                            observation, _, done, info = self.env.step(action)
-                            valid_action = info[ACTION_EXEC]
+                            if action != "skip":
+                                observation, reward, done, info = self.env.step(action)
+                                valid_action = info[ACTION_EXEC]
+                            else:
+                                observation, reward, done, info = "skipped", 0, True, {}
+                                valid_action = True
                             if not isinstance(self.env, CTFEnv):
                                 _, reward, done, info = self.env.step("submit")
+                            else:
+                                if done and reward != 1 and action.lower() != "skip":
+                                    observation = "Submitted flag is incorrect. Keep trying!"
                     
                     if self.args.verbose:
                         print(f"- Turn {turn}")
@@ -168,7 +175,7 @@ class ExperimentWrapper():
                     turn_history["valid_action"].append(valid_action)
 
                     # End episode upon perfect reward
-                    if reward == 1:
+                    if reward == 1 or action.lower() == "skip":
                         break
                 
                 max_reward = max(turn_history["rewards"])

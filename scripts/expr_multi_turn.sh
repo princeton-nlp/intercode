@@ -64,8 +64,8 @@ python -m experiments.eval_n_turn \
     --env ctf \
     --image_name intercode-ctf \
     --log_dir logs/experiments \
-    --max_turns 7 \
+    --max_turns 10 \
     --policy chat \
     --template ctf \
-    --model gpt-3.5-turbo \
+    --model gpt-4 \
     --verbose

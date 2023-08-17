@@ -72,8 +72,9 @@ def sql_parser_react(action: str):
     return action, False
 
 def ctf_parser(action: str):
-    if not action.startswith("submit") or not action.startswith("cmd"):
-        return action, False
+    action = action.strip()
+    if action.startswith("Action:"):
+        action = action[len("Action:"):].strip()
     return action, True
 
 def python_parser(action: str):

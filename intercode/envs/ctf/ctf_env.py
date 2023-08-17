@@ -30,3 +30,12 @@ class CTFEnv(BashEnv):
         self.logger.info("Beginning environment shutdown...")
         self.container.stop()
         self.logger.info("Agent container stopped")
+    
+    def clean_cmd(self, action: str) -> str:
+        if any([action.strip().startswith(x) for x in ["python3 -c", "python -c"]]):
+            return action
+        def clean_command(command):
+            # Escape single quotes and enclose the command in single quotes
+            cleaned_command = "/bin/bash -c '" + command.replace("'", "'\\''") + "'"
+            return cleaned_command
+        return clean_command(action.strip())
