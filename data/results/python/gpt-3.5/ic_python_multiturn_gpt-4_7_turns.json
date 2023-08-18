@@ -1,0 +1,4344 @@
+{
+  "0": {
+    "environment": "ic_python",
+    "dataset": "./data/python/mbpp/ic_mbpp.json",
+    "task_id": 0,
+    "query": "Write a function to find the minimum cost path to reach (m, n) from (0, 0) for the given cost matrix cost[][] and a position (m, n) in cost[][].",
+    "turn_history": {
+      "actions": [
+        "def min_cost_path(cost, m, n):\n    dp = [[0 for x in range(m+1)] for x in range(n+1)]\n      dp[0][0] = cost[0][0]\n      for i in range(1, m+1):\n        dp[i][0] = dp[i-1][0] + cost[i][0]\n      for j in range(1, n+1):\n        dp[0][j] = dp[0][j-1] + cost[0][j]\n      for i in range(1, m+1):\n        for j in range(1, n+1):\n            dp[i][j] = min(dp[i-1][j-1], dp[i-1][j], dp[i][j-1]) + cost[i][j]\n      return dp[m][n]",
+        "def min_cost_path(cost, m, n):\n    dp = [[0 for x in range(n+1)] for x in range(m+1)]\n    dp[0][0] = cost[0][0]\n    for i in range(1, m+1):\n        dp[i][0] = dp[i-1][0] + cost[i][0]\n    for j in range(1, n+1):\n        dp[0][j] = dp[0][j-1] + cost[0][j]\n    for i in range(1, m+1):\n        for j in range(1, n+1):\n            dp[i][j] = min(dp[i-1][j-1], dp[i-1][j], dp[i][j-1]) + cost[i][j]\n    return dp[m][n]"
+      ],
+      "observations": [
+        "Test case did not pass. Please try again.",
+        "{'output': '', 'error': ''}"
+      ],
+      "rewards": [
+        0.0,
+        1.0
+      ],
+      "valid_action": [
+        null,
+        null
+      ]
+    },
+    "summary": {
+      "max_reward": 1.0,
+      "max_reward_idx": 1,
+      "turns_taken": 2,
+      "turns_max": 7
+    }
+  },
+  "1": {
+    "environment": "ic_python",
+    "dataset": "./data/python/mbpp/ic_mbpp.json",
+    "task_id": 1,
+    "query": "Write a function to find the similar elements from the given two tuple lists.",
+    "turn_history": {
+      "actions": [
+        "def find_similar_elements(list1, list2):\n    return [item for item in list1 if item in list2]",
+        "def find_similar_elements(list1, list2):\n    return list(set(list1) & set(list2))",
+        "def find_similar_elements(list1, list2):\n    return [item for item in list1 for sub_item in list2 if item == sub_item]",
+        "def find_similar_elements(list1, list2):\n    return [item for item in list1 if item in list2]",
+        "def find_similar_elements(list1, list2):\n    return list(set(list1) & set(list2))",
+        "def find_similar_elements(list1, list2):\n    return [item for item in list1 if item in list2]",
+        "def find_similar_elements(list1, list2):\n    return list(set(list1).intersection(list2))"
+      ],
+      "observations": [
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again."
+      ],
+      "rewards": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "valid_action": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    "summary": {
+      "max_reward": 0.0,
+      "max_reward_idx": 0,
+      "turns_taken": 7,
+      "turns_max": 7
+    }
+  },
+  "2": {
+    "environment": "ic_python",
+    "dataset": "./data/python/mbpp/ic_mbpp.json",
+    "task_id": 2,
+    "query": "Write a python function to identify non-prime numbers.",
+    "turn_history": {
+      "actions": [
+        "def is_not_prime(n):\n    if n <= 1:\n        return True\n    if n <= 3:\n        return False\n    if n % 2 == 0 or n % 3 == 0:\n        return True\n    i = 5\n    while i * i <= n:\n        if n % i == 0 or n % (i + 2) == 0:\n            return True\n        i += 6\n    return False"
+      ],
+      "observations": [
+        "{'output': '', 'error': ''}"
+      ],
+      "rewards": [
+        1.0
+      ],
+      "valid_action": [
+        null
+      ]
+    },
+    "summary": {
+      "max_reward": 1.0,
+      "max_reward_idx": 0,
+      "turns_taken": 1,
+      "turns_max": 7
+    }
+  },
+  "3": {
+    "environment": "ic_python",
+    "dataset": "./data/python/mbpp/ic_mbpp.json",
+    "task_id": 3,
+    "query": "Write a function to find the largest integers from a given list of numbers using heap queue algorithm.",
+    "turn_history": {
+      "actions": [
+        "def find_largest_numbers(numbers, n):\n    import heapq\n    return heapq.nlargest(n, numbers)"
+      ],
+      "observations": [
+        "{'output': '', 'error': ''}"
+      ],
+      "rewards": [
+        1.0
+      ],
+      "valid_action": [
+        null
+      ]
+    },
+    "summary": {
+      "max_reward": 1.0,
+      "max_reward_idx": 0,
+      "turns_taken": 1,
+      "turns_max": 7
+    }
+  },
+  "4": {
+    "environment": "ic_python",
+    "dataset": "./data/python/mbpp/ic_mbpp.json",
+    "task_id": 4,
+    "query": "Write a function to find the number of ways to fill it with 2 x 1 dominoes for the given 3 x n board.",
+    "turn_history": {
+      "actions": [
+        "def num_ways(n):\n    A = [0 for _ in range(n+1)]\n    B = [0 for _ in range(n+1)]\n    A[0] = 1\n    A[1] = 0\n    B[0] = 0\n    B[1] = 1\n    for i in range(2, n+1):\n        A[i] = A[i-2] + 2*B[i-1]\n        B[i] = A[i-1] + B[i-2]\n    return A[n]"
+      ],
+      "observations": [
+        "{'output': '', 'error': ''}"
+      ],
+      "rewards": [
+        1.0
+      ],
+      "valid_action": [
+        null
+      ]
+    },
+    "summary": {
+      "max_reward": 1.0,
+      "max_reward_idx": 0,
+      "turns_taken": 1,
+      "turns_max": 7
+    }
+  },
+  "5": {
+    "environment": "ic_python",
+    "dataset": "./data/python/mbpp/ic_mbpp.json",
+    "task_id": 5,
+    "query": "Write a python function to check whether the two numbers differ at one bit position only or not.",
+    "turn_history": {
+      "actions": [
+        "def differ_at_one_bit(n1, n2):\n    xor = n1 ^ n2\n    return (xor & (xor - 1)) == 0"
+      ],
+      "observations": [
+        "{'output': '', 'error': ''}"
+      ],
+      "rewards": [
+        1.0
+      ],
+      "valid_action": [
+        null
+      ]
+    },
+    "summary": {
+      "max_reward": 1.0,
+      "max_reward_idx": 0,
+      "turns_taken": 1,
+      "turns_max": 7
+    }
+  },
+  "6": {
+    "environment": "ic_python",
+    "dataset": "./data/python/mbpp/ic_mbpp.json",
+    "task_id": 6,
+    "query": "Write a function to find all words which are at least 4 characters long in a string by using regex.",
+    "turn_history": {
+      "actions": [
+        "import re  def find_words(string):     return re.findall(r'\\b\\w{4,}\\b', string)",
+        "import re  def find_words(string):     return re.findall(r'\\b\\w{4,}\\b', string)",
+        "import re  def find_words(string):     return re.findall(r'\\b\\w{4,}\\b', string)",
+        "import re  def find_words(string):     return re.findall(r'\\b\\w{4,}\\b', string)",
+        "import re  def find_words(string):     return re.findall(r'\\b\\w{4,}\\b', string)",
+        "import re  def find_words(string):     return re.findall(r'\\b\\w{4,}\\b', string)",
+        "import re  def find_words(string):     return re.findall(r'\\b\\w{4,}\\b', string)"
+      ],
+      "observations": [
+        "Error executing action: invalid syntax (<unknown>, line 1)",
+        "Error executing action: invalid syntax (<unknown>, line 1)",
+        "Error executing action: invalid syntax (<unknown>, line 1)",
+        "Error executing action: invalid syntax (<unknown>, line 1)",
+        "Error executing action: invalid syntax (<unknown>, line 1)",
+        "Error executing action: invalid syntax (<unknown>, line 1)",
+        "Error executing action: invalid syntax (<unknown>, line 1)"
+      ],
+      "rewards": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "valid_action": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    "summary": {
+      "max_reward": 0,
+      "max_reward_idx": 0,
+      "turns_taken": 7,
+      "turns_max": 7
+    }
+  },
+  "7": {
+    "environment": "ic_python",
+    "dataset": "./data/python/mbpp/ic_mbpp.json",
+    "task_id": 7,
+    "query": "Write a function to find squares of individual elements in a list using lambda function.",
+    "turn_history": {
+      "actions": [
+        "def square_elements(lst):\n    return list(map(lambda x: x**2, lst))"
+      ],
+      "observations": [
+        "{'output': '', 'error': ''}"
+      ],
+      "rewards": [
+        1.0
+      ],
+      "valid_action": [
+        null
+      ]
+    },
+    "summary": {
+      "max_reward": 1.0,
+      "max_reward_idx": 0,
+      "turns_taken": 1,
+      "turns_max": 7
+    }
+  },
+  "8": {
+    "environment": "ic_python",
+    "dataset": "./data/python/mbpp/ic_mbpp.json",
+    "task_id": 8,
+    "query": "Write a python function to find the minimum number of rotations required to get the same string.",
+    "turn_history": {
+      "actions": [
+        "def min_rotations_to_same_string(s):\n    temp = s + s\n    for i in range(1, len(s)):\n        substring = temp[i:i+len(s)]\n        if s == substring:\n            return i\n    return len(s)"
+      ],
+      "observations": [
+        "{'output': '', 'error': ''}"
+      ],
+      "rewards": [
+        1.0
+      ],
+      "valid_action": [
+        null
+      ]
+    },
+    "summary": {
+      "max_reward": 1.0,
+      "max_reward_idx": 0,
+      "turns_taken": 1,
+      "turns_max": 7
+    }
+  },
+  "9": {
+    "environment": "ic_python",
+    "dataset": "./data/python/mbpp/ic_mbpp.json",
+    "task_id": 9,
+    "query": "Write a function to get the n smallest items from a dataset.",
+    "turn_history": {
+      "actions": [
+        "def n_smallest(n, data):\n    return sorted(data)[:n]",
+        "def n_smallest(n, data):\n    if not data or n <= 0:\n        return []\n    return sorted(data)[:n]",
+        "def n_smallest(n, data):\n    if not data or n <= 0:\n        return []\n    elif n > len(data):\n        return sorted(data)\n    else:\n        return sorted(data)[:n]",
+        "import heapq  def n_smallest(n, data):     if not data or n <= 0:         return []     return heapq.nsmallest(n, data)",
+        "import heapq  def n_smallest(n, data):     if not data or n <= 0:         return []     return heapq.nsmallest(n, data)",
+        "import heapq  def n_smallest(n, data):     if not data or n <= 0:         return []     return heapq.nsmallest(n, data)",
+        "import heapq  def n_smallest(n, data):     if not data or n <= 0:         return []     return heapq.nsmallest(n, data)"
+      ],
+      "observations": [
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Error executing action: invalid syntax (<unknown>, line 1)",
+        "Error executing action: invalid syntax (<unknown>, line 1)",
+        "Error executing action: invalid syntax (<unknown>, line 1)",
+        "Error executing action: invalid syntax (<unknown>, line 1)"
+      ],
+      "rewards": [
+        0.0,
+        0.0,
+        0.0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "valid_action": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    "summary": {
+      "max_reward": 0.0,
+      "max_reward_idx": 0,
+      "turns_taken": 7,
+      "turns_max": 7
+    }
+  },
+  "10": {
+    "environment": "ic_python",
+    "dataset": "./data/python/mbpp/ic_mbpp.json",
+    "task_id": 10,
+    "query": "Write a python function to remove first and last occurrence of a given character from the string.",
+    "turn_history": {
+      "actions": [
+        "def remove_char(s, c):\n    first = s.find(c)\n    last = s.rfind(c)\n    if first != -1 and last != -1:\n        s = s[:first] + s[first+1:last] + s[last+1:]\n    return s"
+      ],
+      "observations": [
+        "{'output': '', 'error': ''}"
+      ],
+      "rewards": [
+        1.0
+      ],
+      "valid_action": [
+        null
+      ]
+    },
+    "summary": {
+      "max_reward": 1.0,
+      "max_reward_idx": 0,
+      "turns_taken": 1,
+      "turns_max": 7
+    }
+  },
+  "11": {
+    "environment": "ic_python",
+    "dataset": "./data/python/mbpp/ic_mbpp.json",
+    "task_id": 11,
+    "query": "Write a function to sort a given matrix in ascending order according to the sum of its rows.",
+    "turn_history": {
+      "actions": [
+        "def sort_matrix(matrix):\n    matrix.sort(key=sum)\n    return matrix"
+      ],
+      "observations": [
+        "{'output': '', 'error': ''}"
+      ],
+      "rewards": [
+        1.0
+      ],
+      "valid_action": [
+        null
+      ]
+    },
+    "summary": {
+      "max_reward": 1.0,
+      "max_reward_idx": 0,
+      "turns_taken": 1,
+      "turns_max": 7
+    }
+  },
+  "12": {
+    "environment": "ic_python",
+    "dataset": "./data/python/mbpp/ic_mbpp.json",
+    "task_id": 12,
+    "query": "Write a function to count the most common words in a dictionary.",
+    "turn_history": {
+      "actions": [
+        "def count_most_common_words(dictionary):\n    from collections import Counter\n    words = []\n    for key in dictionary:\n        words.extend(dictionary[key].split())\n    counter = Counter(words)\n    most_common_words = counter.most_common(1)\n    return most_common_words[0] if most_common_words else None",
+        "def count_most_common_words(dictionary):\n    from collections import Counter\n    words = []\n    for key in dictionary:\n        words.extend(dictionary[key].split())\n    counter = Counter(words)\n    most_common_words = counter.most_common()\n    return most_common_words[0] if most_common_words else None",
+        "def count_most_common_words(dictionary):\n    from collections import Counter\n    words = []\n    for key in dictionary:\n        words.extend(dictionary[key].split())\n    counter = Counter(words)\n    most_common_words = counter.most_common()\n    return most_common_words[0][0] if most_common_words else None",
+        "def count_most_common_words(dictionary):\n    from collections import Counter\n    words = []\n    for key in dictionary:\n        words.extend(dictionary[key].split())\n    counter = Counter(words)\n    most_common_words = counter.most_common()\n    return most_common_words[0][0] if most_common_words else None, most_common_words[0][1] if most_common_words else None",
+        "def count_most_common_words(dictionary):\n    from collections import Counter\n    words = []\n    for key in dictionary:\n        words.extend(dictionary[key].split())\n    counter = Counter(words)\n    most_common_words = counter.most_common()\n    return most_common_words[0] if most_common_words else None",
+        "def count_most_common_words(dictionary):\n    from collections import Counter\n    words = []\n    for key in dictionary:\n        words.extend(dictionary[key].split())\n    counter = Counter(words)\n    most_common_words = counter.most_common(1)\n    return most_common_words[0] if most_common_words else None",
+        "def count_most_common_words(dictionary):\n    from collections import Counter\n    words = []\n    for key in dictionary:\n        words.extend(dictionary[key].split())\n    counter = Counter(words)\n    most_common_words = counter.most_common(1)\n    return most_common_words[0][0] if most_common_words else None"
+      ],
+      "observations": [
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again."
+      ],
+      "rewards": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "valid_action": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    "summary": {
+      "max_reward": 0.0,
+      "max_reward_idx": 0,
+      "turns_taken": 7,
+      "turns_max": 7
+    }
+  },
+  "13": {
+    "environment": "ic_python",
+    "dataset": "./data/python/mbpp/ic_mbpp.json",
+    "task_id": 13,
+    "query": "Write a python function to find the volume of a triangular prism.",
+    "turn_history": {
+      "actions": [
+        "def volume_of_triangular_prism(base, height, length):\n    volume = 0.5 * base * height * length\n    return volume"
+      ],
+      "observations": [
+        "{'output': '', 'error': ''}"
+      ],
+      "rewards": [
+        1.0
+      ],
+      "valid_action": [
+        null
+      ]
+    },
+    "summary": {
+      "max_reward": 1.0,
+      "max_reward_idx": 0,
+      "turns_taken": 1,
+      "turns_max": 7
+    }
+  },
+  "14": {
+    "environment": "ic_python",
+    "dataset": "./data/python/mbpp/ic_mbpp.json",
+    "task_id": 14,
+    "query": "Write a function to split a string at lowercase letters.",
+    "turn_history": {
+      "actions": [
+        "def split_at_lowercase(s):\n    import re\n    return re.split('([a-z])', s)",
+        "def split_at_lowercase(s):\n    import re\n    return re.split('(?=[a-z])', s)",
+        "def split_at_lowercase(s):\n    import re\n    return re.split('([a-z]+)', s)",
+        "def split_at_lowercase(s):\n    import re\n    return re.split('([a-z])', s)",
+        "def split_at_lowercase(s):\n    import re\n    return re.split('([a-z])', s)",
+        "def split_at_lowercase(s):\n    import re\n    return re.split('([a-z])', s)",
+        "def split_at_lowercase(s):\n    import re\n    return re.split('(?=[a-z])', s)"
+      ],
+      "observations": [
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again."
+      ],
+      "rewards": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "valid_action": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    "summary": {
+      "max_reward": 0.0,
+      "max_reward_idx": 0,
+      "turns_taken": 7,
+      "turns_max": 7
+    }
+  },
+  "15": {
+    "environment": "ic_python",
+    "dataset": "./data/python/mbpp/ic_mbpp.json",
+    "task_id": 15,
+    "query": "Write a function to find sequences of lowercase letters joined with an underscore.",
+    "turn_history": {
+      "actions": [
+        "def find_sequences(input_string):\n    import re\n    pattern = '[a-z]+_[a-z]+'\n    result = re.findall(pattern, input_string)\n    return result",
+        "def find_sequences(input_string):\n    import re\n    pattern = '[a-z]+_[a-z]+'\n    result = re.findall(pattern, input_string)\n    return result",
+        "def find_sequences(input_string):\n    import re\n    pattern = r'\\b[a-z]+_[a-z]+\\b'\n    result = re.findall(pattern, input_string)\n    return result",
+        "def find_sequences(input_string):\n    import re\n    pattern = r'\\b[a-z]+(_[a-z]+)*\\b'\n    result = re.findall(pattern, input_string)\n    return result",
+        "def find_sequences(input_string):\n    import re\n    pattern = r'\\b[a-z]+(_[a-z]+)+\\b'\n    result = re.findall(pattern, input_string)\n    return [match[0] for match in result]",
+        "def find_sequences(input_string):\n    import re\n    pattern = r'\\b[a-z]+(_[a-z]+)+\\b'\n    result = re.findall(pattern, input_string)\n    return result",
+        "def find_sequences(input_string):\n    import re\n    pattern = r'\\b[a-z]+(_[a-z]+)*\\b'\n    result = re.findall(pattern, input_string)\n    return result"
+      ],
+      "observations": [
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again."
+      ],
+      "rewards": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "valid_action": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    "summary": {
+      "max_reward": 0.0,
+      "max_reward_idx": 0,
+      "turns_taken": 7,
+      "turns_max": 7
+    }
+  },
+  "16": {
+    "environment": "ic_python",
+    "dataset": "./data/python/mbpp/ic_mbpp.json",
+    "task_id": 16,
+    "query": "Write a function to find the perimeter of a square.",
+    "turn_history": {
+      "actions": [
+        "def square_perimeter(side_length):\n    return 4 * side_length"
+      ],
+      "observations": [
+        "{'output': '', 'error': ''}"
+      ],
+      "rewards": [
+        1.0
+      ],
+      "valid_action": [
+        null
+      ]
+    },
+    "summary": {
+      "max_reward": 1.0,
+      "max_reward_idx": 0,
+      "turns_taken": 1,
+      "turns_max": 7
+    }
+  },
+  "17": {
+    "environment": "ic_python",
+    "dataset": "./data/python/mbpp/ic_mbpp.json",
+    "task_id": 17,
+    "query": "Write a function to remove characters from the first string which are present in the second string.",
+    "turn_history": {
+      "actions": [
+        "def remove_chars(str1, str2):\n    return ''.join(c for c in str1 if c not in str2)",
+        "def remove_chars(str1, str2):\n    for c in str2:\n        str1 = str1.replace(c, '')\n    return str1",
+        "def remove_chars(str1, str2):\n    return ''.join(c for c in str1 if c not in str2.lower())",
+        "def remove_chars(str1, str2):\n    return ''.join(c for c in str1 if c not in str2)",
+        "def remove_chars(str1, str2):\n    for c in str2:\n        str1 = str1.replace(c, '')\n    return str1",
+        "def remove_chars(str1, str2):\n    return ''.join(c for c in str1 if c not in str2)",
+        "def remove_chars(str1, str2):\n    return ''.join(c for c in str1 if c not in str2)"
+      ],
+      "observations": [
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again."
+      ],
+      "rewards": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "valid_action": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    "summary": {
+      "max_reward": 0.0,
+      "max_reward_idx": 0,
+      "turns_taken": 7,
+      "turns_max": 7
+    }
+  },
+  "18": {
+    "environment": "ic_python",
+    "dataset": "./data/python/mbpp/ic_mbpp.json",
+    "task_id": 18,
+    "query": "Write a function to find whether a given array of integers contains any duplicate element.",
+    "turn_history": {
+      "actions": [
+        "def contains_duplicate(arr):\n    return len(arr) != len(set(arr))"
+      ],
+      "observations": [
+        "{'output': '', 'error': ''}"
+      ],
+      "rewards": [
+        1.0
+      ],
+      "valid_action": [
+        null
+      ]
+    },
+    "summary": {
+      "max_reward": 1.0,
+      "max_reward_idx": 0,
+      "turns_taken": 1,
+      "turns_max": 7
+    }
+  },
+  "19": {
+    "environment": "ic_python",
+    "dataset": "./data/python/mbpp/ic_mbpp.json",
+    "task_id": 19,
+    "query": "Write a function to check if the given number is woodball or not.",
+    "turn_history": {
+      "actions": [
+        "def is_woodball(n):\n    if n < 1:\n        return False\n    n = str(n)\n    for i in range(len(n) - 1):\n        if abs(int(n[i]) - int(n[i + 1])) != 1:\n            return False\n    return True",
+        "def is_woodball(n):\n    if n < 10:\n        return False\n    n = str(n)\n    for i in range(len(n) - 1):\n        if abs(int(n[i]) - int(n[i + 1])) != 1:\n            return False\n    return True",
+        "def is_woodball(n):\n    if n < 0:\n        return False\n    n = str(n)\n    for i in range(len(n) - 1):\n        if abs(int(n[i]) - int(n[i + 1])) != 1:\n            return False\n    return True",
+        "def is_woodball(n):\n    n = str(n)\n    for i in range(len(n) - 1):\n        if abs(int(n[i]) - int(n[i + 1])) != 1:\n            return False\n    return True",
+        "def is_woodball(n):\n    n = str(n)\n    for i in range(len(n) - 1):\n        if abs(int(n[i]) - int(n[i + 1])) != 1:\n            return False\n    return True if len(n) > 1 else False",
+        "def is_woodball(n):\n    n = str(n)\n    for i in range(len(n) - 1):\n        if abs(int(n[i]) - int(n[i + 1])) != 1:\n            return False\n    return True if len(n) > 1 else False",
+        "def is_woodball(n):\n    n = str(n)\n    for i in range(len(n) - 1):\n        if abs(int(n[i]) - int(n[i + 1])) != 1:\n            return False\n    return True if len(n) > 1 else False"
+      ],
+      "observations": [
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again."
+      ],
+      "rewards": [
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5
+      ],
+      "valid_action": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    "summary": {
+      "max_reward": 0.5,
+      "max_reward_idx": 0,
+      "turns_taken": 7,
+      "turns_max": 7
+    }
+  },
+  "20": {
+    "environment": "ic_python",
+    "dataset": "./data/python/mbpp/ic_mbpp.json",
+    "task_id": 20,
+    "query": "Write a function to find m number of multiples of n.",
+    "turn_history": {
+      "actions": [
+        "def find_multiples(n, m):\n    multiples = [i * n for i in range(1, m + 1)]\n    return multiples",
+        "def find_multiples(n, m):\n    if isinstance(n, int) and isinstance(m, int) and m > 0 and n > 0:\n        multiples = [i * n for i in range(1, m + 1)]\n        return multiples\n    else:\n        return []",
+        "def find_multiples(n, m):\n    if isinstance(n, int) and isinstance(m, int) and m >= 0 and n > 0:\n        multiples = [i * n for i in range(1, m + 1)]\n        return multiples\n    else:\n        return []",
+        "def find_multiples(n, m):\n    if isinstance(n, int) and isinstance(m, int) and m >= 0 and n >= 0:\n        multiples = [i * n for i in range(1, m + 1)]\n        return multiples\n    else:\n        return []",
+        "def find_multiples(n, m):\n    if isinstance(n, int) and isinstance(m, int) and m > 0 and n > 0:\n        multiples = [i * n for i in range(1, m + 1)]\n        return multiples\n    else:\n        return []",
+        "def find_multiples(n, m):\n    if isinstance(n, int) and isinstance(m, int) and m > 0 and n > 0:\n        multiples = [i * n for i in range(m)]\n        return multiples\n    else:\n        return []",
+        "def find_multiples(n, m):\n    if isinstance(n, int) and isinstance(m, int) and m > 0 and n > 0:\n        multiples = [i * n for i in range(1, m + 1)]\n        return multiples\n    else:\n        return \"Invalid input\""
+      ],
+      "observations": [
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again."
+      ],
+      "rewards": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "valid_action": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    "summary": {
+      "max_reward": 0.0,
+      "max_reward_idx": 0,
+      "turns_taken": 7,
+      "turns_max": 7
+    }
+  },
+  "21": {
+    "environment": "ic_python",
+    "dataset": "./data/python/mbpp/ic_mbpp.json",
+    "task_id": 21,
+    "query": "Write a function to find the first duplicate element in a given array of integers.",
+    "turn_history": {
+      "actions": [
+        "def find_first_duplicate(arr):\n    num_set = set()\n    for num in arr:\n        if num in num_set:\n            return num\n        num_set.add(num)\n    return -1"
+      ],
+      "observations": [
+        "{'output': '', 'error': ''}"
+      ],
+      "rewards": [
+        1.0
+      ],
+      "valid_action": [
+        null
+      ]
+    },
+    "summary": {
+      "max_reward": 1.0,
+      "max_reward_idx": 0,
+      "turns_taken": 1,
+      "turns_max": 7
+    }
+  },
+  "22": {
+    "environment": "ic_python",
+    "dataset": "./data/python/mbpp/ic_mbpp.json",
+    "task_id": 22,
+    "query": "Write a python function to find the maximum sum of elements of list in a list of lists.",
+    "turn_history": {
+      "actions": [
+        "def max_sum_list_of_lists(lst):\n    return max(sum(sub_lst) for sub_lst in lst)"
+      ],
+      "observations": [
+        "{'output': '', 'error': ''}"
+      ],
+      "rewards": [
+        1.0
+      ],
+      "valid_action": [
+        null
+      ]
+    },
+    "summary": {
+      "max_reward": 1.0,
+      "max_reward_idx": 0,
+      "turns_taken": 1,
+      "turns_max": 7
+    }
+  },
+  "23": {
+    "environment": "ic_python",
+    "dataset": "./data/python/mbpp/ic_mbpp.json",
+    "task_id": 23,
+    "query": "Write a function to convert the given binary number to its decimal equivalent.",
+    "turn_history": {
+      "actions": [
+        "def binary_to_decimal(binary):\n    binary = str(binary)\n    decimal = 0\n    for digit in binary:\n        decimal = decimal*2 + int(digit)\n    return decimal"
+      ],
+      "observations": [
+        "{'output': '', 'error': ''}"
+      ],
+      "rewards": [
+        1.0
+      ],
+      "valid_action": [
+        null
+      ]
+    },
+    "summary": {
+      "max_reward": 1.0,
+      "max_reward_idx": 0,
+      "turns_taken": 1,
+      "turns_max": 7
+    }
+  },
+  "24": {
+    "environment": "ic_python",
+    "dataset": "./data/python/mbpp/ic_mbpp.json",
+    "task_id": 24,
+    "query": "Write a python function to find the product of non-repeated elements in a given array.",
+    "turn_history": {
+      "actions": [
+        "def product_of_non_repeated_elements(arr):\n    from collections import Counter\n    counter = Counter(arr)\n    product = 1\n    for key, value in counter.items():\n        if value == 1:\n            product *= key\n    return product",
+        "def product_of_non_repeated_elements(arr):\n    from collections import Counter\n    counter = Counter(arr)\n    product = 1\n    for key, value in counter.items():\n        if value == 1:\n            product *= key\n    return product if product != 1 else 0",
+        "def product_of_non_repeated_elements(arr):\n    from collections import Counter\n    counter = Counter(arr)\n    product = 1\n    for key, value in counter.items():\n        if value == 1:\n            product *= key\n    return product if product != 1 else \"No non-repeated elements\"",
+        "def product_of_non_repeated_elements(arr):\n    from collections import Counter\n    counter = Counter(arr)\n    product = 1\n    for key, value in counter.items():\n        if value == 1:\n            product *= key\n    return product if counter else 0",
+        "def product_of_non_repeated_elements(arr):\n    from collections import Counter\n    counter = Counter(arr)\n    product = 1\n    for key, value in counter.items():\n        if value == 1:\n            product *= key\n    return product if product != 1 else 0",
+        "def product_of_non_repeated_elements(arr):\n    from collections import Counter\n    counter = Counter(arr)\n    product = 1\n    for key, value in counter.items():\n        if value == 1:\n            product *= key\n    return product if counter else None",
+        "def product_of_non_repeated_elements(arr):\n    from collections import Counter\n    counter = Counter(arr)\n    product = 1\n    for key, value in counter.items():\n        if value == 1:\n            product *= key\n    return product if product != 1 else None"
+      ],
+      "observations": [
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again."
+      ],
+      "rewards": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "valid_action": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    "summary": {
+      "max_reward": 0.0,
+      "max_reward_idx": 0,
+      "turns_taken": 7,
+      "turns_max": 7
+    }
+  },
+  "25": {
+    "environment": "ic_python",
+    "dataset": "./data/python/mbpp/ic_mbpp.json",
+    "task_id": 25,
+    "query": "Write a function to check if the given tuple list has all k elements.",
+    "turn_history": {
+      "actions": [
+        "def check_tuple_list(tuple_list, k):\n    for tup in tuple_list:\n        if len(tup) != k:\n            return False\n    return True",
+        "def check_tuple_list(tuple_list, k):\n    return all(len(tup) == k for tup in tuple_list)",
+        "def check_tuple_list(tuple_list, k):\n    return all(isinstance(tup, tuple) and len(tup) == k for tup in tuple_list)",
+        "def check_tuple_list(tuple_list, k):\n    return all(isinstance(tup, tuple) and len(tup) == k for tup in tuple_list) if isinstance(tuple_list, list) else False",
+        "def check_tuple_list(tuple_list, k):\n    if not isinstance(tuple_list, list):\n        return False\n    for tup in tuple_list:\n        if not isinstance(tup, tuple) or len(tup) != k:\n            return False\n    return True",
+        "def check_tuple_list(tuple_list, k):\n    if not isinstance(tuple_list, list):\n        return False\n    for tup in tuple_list:\n        if not isinstance(tup, tuple):\n            return False\n        if len(tup) != k:\n            return False\n    return True",
+        "def check_tuple_list(tuple_list, k):\n    return all(isinstance(tup, tuple) and len(tup) == k for tup in tuple_list)"
+      ],
+      "observations": [
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again."
+      ],
+      "rewards": [
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5
+      ],
+      "valid_action": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    "summary": {
+      "max_reward": 0.5,
+      "max_reward_idx": 0,
+      "turns_taken": 7,
+      "turns_max": 7
+    }
+  },
+  "26": {
+    "environment": "ic_python",
+    "dataset": "./data/python/mbpp/ic_mbpp.json",
+    "task_id": 26,
+    "query": "Write a python function to remove all digits from a list of strings.",
+    "turn_history": {
+      "actions": [
+        "def remove_digits_from_list(lst):\n    new_lst = [''.join(filter(lambda x: not x.isdigit(), i)) for i in lst]\n    return new_lst"
+      ],
+      "observations": [
+        "{'output': '', 'error': ''}"
+      ],
+      "rewards": [
+        1.0
+      ],
+      "valid_action": [
+        null
+      ]
+    },
+    "summary": {
+      "max_reward": 1.0,
+      "max_reward_idx": 0,
+      "turns_taken": 1,
+      "turns_max": 7
+    }
+  },
+  "27": {
+    "environment": "ic_python",
+    "dataset": "./data/python/mbpp/ic_mbpp.json",
+    "task_id": 27,
+    "query": "Write a python function to find binomial co-efficient.",
+    "turn_history": {
+      "actions": [
+        "def binomial_coefficient(n, k):\n    if k==0 or k ==n:\n        return 1\n    if k>n-k:\n        k=n-k\n    res=1\n    for i in range(k):\n        res=res*(n-i)\n        res=res//(i+1)\n    return res"
+      ],
+      "observations": [
+        "{'output': '', 'error': ''}"
+      ],
+      "rewards": [
+        1.0
+      ],
+      "valid_action": [
+        null
+      ]
+    },
+    "summary": {
+      "max_reward": 1.0,
+      "max_reward_idx": 0,
+      "turns_taken": 1,
+      "turns_max": 7
+    }
+  },
+  "28": {
+    "environment": "ic_python",
+    "dataset": "./data/python/mbpp/ic_mbpp.json",
+    "task_id": 28,
+    "query": "Write a python function to find the element occurring odd number of times.",
+    "turn_history": {
+      "actions": [
+        "def find_odd_occurrence(arr):\n    res = 0\n    for element in arr:\n        res = res ^ element\n    return res",
+        "def find_odd_occurrence(arr):\n    for i in arr:\n        if arr.count(i) % 2 != 0:\n            return i\n    return None",
+        "def find_odd_occurrence(arr):\n    count_dict = {}\n    for i in arr:\n        if i in count_dict:\n            count_dict[i] += 1\n        else:\n            count_dict[i] = 1\n    for key, value in count_dict.items():\n        if value % 2 != 0:\n            return key\n    return None",
+        "def find_odd_occurrence(arr):\n    xor = 0\n    for element in arr:\n        xor = xor ^ element\n    return xor",
+        "def find_odd_occurrence(arr):\n    for i in arr:\n        if arr.count(i) % 2 != 0:\n            return i\n    return None",
+        "def find_odd_occurrence(arr):\n    count_dict = {}\n    for i in arr:\n        if i in count_dict:\n            count_dict[i] += 1\n        else:\n            count_dict[i] = 1\n    for key, value in count_dict.items():\n        if value % 2 != 0:\n            return key\n    return None",
+        "def find_odd_occurrence(arr):\n    xor = 0\n    for element in arr:\n        xor = xor ^ element\n    return xor"
+      ],
+      "observations": [
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again."
+      ],
+      "rewards": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "valid_action": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    "summary": {
+      "max_reward": 0.0,
+      "max_reward_idx": 0,
+      "turns_taken": 7,
+      "turns_max": 7
+    }
+  },
+  "29": {
+    "environment": "ic_python",
+    "dataset": "./data/python/mbpp/ic_mbpp.json",
+    "task_id": 29,
+    "query": "Write a python function to count all the substrings starting and ending with same characters.",
+    "turn_history": {
+      "actions": [
+        "def count_substrings(s):\n    count = [0]*256\n    for i in range(len(s)):\n        count[ord(s[i])] += 1\n    result = 0\n    for i in range(256):\n        result += (count[i]*(count[i] - 1))//2\n    return result",
+        "def count_substrings(s):\n    result = 0\n    n = len(s)\n    for i in range(n):\n        for j in range(i, n):\n            if (s[i] == s[j]):\n                result += 1\n    return result",
+        "def count_substrings(s):\n    count = [0]*256\n    for i in s:\n        count[ord(i)] += 1\n    result = 0\n    for i in count:\n        result += (i*(i + 1))//2\n    return result",
+        "def count_substrings(s):\n    count = [0]*256\n    for i in range(len(s)):\n        count[ord(s[i])] += 1\n    result = 0\n    for i in count:\n        result += (i*(i + 1))//2\n    return result",
+        "def count_substrings(s):\n    count = [0]*256\n    for i in range(len(s)):\n        count[ord(s[i])] += 1\n    result = 0\n    for i in count:\n        result += (i*(i + 1))//2\n    return result",
+        "def count_substrings(s):\n    count = [0]*256\n    for i in range(len(s)):\n        count[ord(s[i])] += 1\n    result = 0\n    for i in count:\n        result += (i*(i + 1))//2\n    return result",
+        "def count_substrings(s):\n    count = [0]*256\n    for i in range(len(s)):\n        count[ord(s[i])] += 1\n    result = 0\n    for i in count:\n        result += (i*(i + 1))//2\n    return result"
+      ],
+      "observations": [
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again."
+      ],
+      "rewards": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "valid_action": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    "summary": {
+      "max_reward": 0.0,
+      "max_reward_idx": 0,
+      "turns_taken": 7,
+      "turns_max": 7
+    }
+  },
+  "30": {
+    "environment": "ic_python",
+    "dataset": "./data/python/mbpp/ic_mbpp.json",
+    "task_id": 30,
+    "query": "Write a function to find the top k integers that occur most frequently from given lists of sorted and distinct integers using heap queue algorithm.",
+    "turn_history": {
+      "actions": [
+        "def top_k_frequent(nums, k):\n    import heapq\n    from collections import Counter\n     count = Counter(nums)\n    heap = []\n     for num, freq in count.items():\n        if len(heap) < k:\n            heapq.heappush(heap, (freq, num))\n        else:\n            if freq > heap[0][0]:\n                heapq.heappop(heap)\n                heapq.heappush(heap, (freq, num))\n     return [item[1] for item in heap]",
+        "def top_k_frequent(nums, k):\n    import heapq\n    from collections import Counter\n    count = Counter(nums)\n    heap = []\n    for num, freq in count.items():\n        if len(heap) < k:\n            heapq.heappush(heap, (freq, num))\n        else:\n            if freq > heap[0][0]:\n                heapq.heappop(heap)\n                heapq.heappush(heap, (freq, num))\n    return [item[1] for item in reversed(heapq.nlargest(k, heap))]",
+        "def top_k_frequent(nums, k):\n    import heapq\n    from collections import Counter\n    count = Counter(nums)\n    heap = [(-freq, num) for num, freq in count.items()]\n    heapq.heapify(heap)\n    return [heapq.heappop(heap)[1] for _ in range(k)]",
+        "def top_k_frequent(nums, k):\n    from collections import Counter\n    import heapq\n    count = Counter(nums)\n    return heapq.nlargest(k, count.keys(), key=count.get)",
+        "def top_k_frequent(nums, k):\n    from collections import Counter\n    import heapq\n    count = Counter(nums)\n    heap = [(-freq, num) for num, freq in count.items()]\n    heapq.heapify(heap)\n    return [heapq.heappop(heap)[1] for _ in range(k)]",
+        "def top_k_frequent(nums, k):\n    from collections import Counter\n    import heapq\n    count = Counter(nums)\n    heap = [(-freq, num) for num, freq in count.items()]\n    heapq.heapify(heap)\n    return sorted([heapq.heappop(heap)[1] for _ in range(k)])",
+        "def top_k_frequent(nums, k):\n    from collections import Counter\n    import heapq\n    count = Counter(nums)\n    heap = [(-freq, num) for num, freq in count.items()]\n    heapq.heapify(heap)\n    return sorted([heapq.heappop(heap)[1] for _ in range(k)], reverse=True)"
+      ],
+      "observations": [
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again."
+      ],
+      "rewards": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "valid_action": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    "summary": {
+      "max_reward": 0.0,
+      "max_reward_idx": 0,
+      "turns_taken": 7,
+      "turns_max": 7
+    }
+  },
+  "32": {
+    "environment": "ic_python",
+    "dataset": "./data/python/mbpp/ic_mbpp.json",
+    "task_id": 32,
+    "query": "Write a python function to convert a decimal number to binary number.",
+    "turn_history": {
+      "actions": [
+        "def decimal_to_binary(n):\n    return bin(n).replace(\"0b\", \"\")",
+        "def decimal_to_binary(n):\n    if n == 0:\n        return '0'\n    else:\n        return bin(n).replace(\"0b\", \"\")",
+        "def decimal_to_binary(n):\n    if n < 0:\n        return '-' + bin(abs(n)).replace(\"0b\", \"\")\n    elif n == 0:\n        return '0'\n    else:\n        return bin(n).replace(\"0b\", \"\")",
+        "def decimal_to_binary(n):\n    return format(n, 'b')",
+        "def decimal_to_binary(n):\n    return bin(n).replace(\"0b\", \"\")",
+        "def decimal_to_binary(n):\n    if n == 0:\n        return '0'\n    else:\n        return bin(n).replace(\"0b\", \"\")",
+        "def decimal_to_binary(n):\n    return \"{0:b}\".format(int(n))"
+      ],
+      "observations": [
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again."
+      ],
+      "rewards": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "valid_action": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    "summary": {
+      "max_reward": 0.0,
+      "max_reward_idx": 0,
+      "turns_taken": 7,
+      "turns_max": 7
+    }
+  },
+  "33": {
+    "environment": "ic_python",
+    "dataset": "./data/python/mbpp/ic_mbpp.json",
+    "task_id": 33,
+    "query": "Write a python function to find the missing number in a sorted array.",
+    "turn_history": {
+      "actions": [
+        "def find_missing_number(arr):\n    n = len(arr)\n    total = (n + 1)*(n + 2)/2\n    sum_of_arr = sum(arr)\n    return total - sum_of_arr",
+        "def find_missing_number(arr):\n    start = 0\n    end = len(arr) - 1\n    while start <= end:\n        mid = (start + end) // 2\n        if arr[mid] != mid:\n            if mid == 0 or arr[mid - 1] == mid - 1:\n                return mid\n            end = mid - 1\n        else:\n            start = mid + 1\n    return None",
+        "def find_missing_number(arr):\n    n = len(arr)\n    total = (n + 1)*(n + 2)//2\n    sum_of_arr = sum(arr)\n    return total - sum_of_arr",
+        "def find_missing_number(arr):\n    n = len(arr)\n    total = (n)*(n + 1)//2\n    sum_of_arr = sum(arr)\n    return total - sum_of_arr",
+        "def find_missing_number(arr):\n    start = 0\n    end = len(arr) - 1\n    while start <= end:\n        mid = (start + end) // 2\n        if arr[mid] != mid:\n            if mid == 0 or arr[mid - 1] == mid - 1:\n                return mid\n            end = mid - 1\n        else:\n            start = mid + 1\n    return None",
+        "def find_missing_number(arr):\n    n = len(arr)\n    total = ((n + 1)*(n + 2))//2\n    sum_of_arr = sum(arr)\n    return total - sum_of_arr",
+        "def find_missing_number(arr):\n    n = len(arr)\n    total = (n*(n + 1))//2\n    sum_of_arr = sum(arr)\n    return total - sum_of_arr"
+      ],
+      "observations": [
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again."
+      ],
+      "rewards": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "valid_action": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    "summary": {
+      "max_reward": 0.0,
+      "max_reward_idx": 0,
+      "turns_taken": 7,
+      "turns_max": 7
+    }
+  },
+  "34": {
+    "environment": "ic_python",
+    "dataset": "./data/python/mbpp/ic_mbpp.json",
+    "task_id": 34,
+    "query": "Write a function to find the n-th rectangular number.",
+    "turn_history": {
+      "actions": [
+        "def nth_rectangular_number(n):\n    return n * (n + 1)"
+      ],
+      "observations": [
+        "{'output': '', 'error': ''}"
+      ],
+      "rewards": [
+        1.0
+      ],
+      "valid_action": [
+        null
+      ]
+    },
+    "summary": {
+      "max_reward": 1.0,
+      "max_reward_idx": 0,
+      "turns_taken": 1,
+      "turns_max": 7
+    }
+  },
+  "35": {
+    "environment": "ic_python",
+    "dataset": "./data/python/mbpp/ic_mbpp.json",
+    "task_id": 35,
+    "query": "Write a python function to find the nth digit in the proper fraction of two given numbers.",
+    "turn_history": {
+      "actions": [
+        "def nth_digit_fraction(numerator, denominator, n):\n    fraction = str(numerator / denominator)\n    if n < len(fraction):\n        return int(fraction[n])\n    else:\n        return \"N is larger than the number of digits in the fraction\"",
+        "def nth_digit_fraction(numerator, denominator, n):\n    fraction = str(numerator / denominator).replace('.', '')\n    if n < len(fraction):\n        return int(fraction[n])\n    else:\n        return \"N is larger than the number of digits in the fraction\""
+      ],
+      "observations": [
+        "Test case did not pass. Please try again.",
+        "{'output': '', 'error': ''}"
+      ],
+      "rewards": [
+        0.3333333333333333,
+        1.0
+      ],
+      "valid_action": [
+        null,
+        null
+      ]
+    },
+    "summary": {
+      "max_reward": 1.0,
+      "max_reward_idx": 1,
+      "turns_taken": 2,
+      "turns_max": 7
+    }
+  },
+  "36": {
+    "environment": "ic_python",
+    "dataset": "./data/python/mbpp/ic_mbpp.json",
+    "task_id": 36,
+    "query": "Write a function to sort a given mixed list of integers and strings.",
+    "turn_history": {
+      "actions": [
+        "def sort_mixed_list(mixed_list):\n    mixed_list.sort(key=lambda x: (isinstance(x, str), x))\n    return mixed_list"
+      ],
+      "observations": [
+        "{'output': '', 'error': ''}"
+      ],
+      "rewards": [
+        1.0
+      ],
+      "valid_action": [
+        null
+      ]
+    },
+    "summary": {
+      "max_reward": 1.0,
+      "max_reward_idx": 0,
+      "turns_taken": 1,
+      "turns_max": 7
+    }
+  },
+  "37": {
+    "environment": "ic_python",
+    "dataset": "./data/python/mbpp/ic_mbpp.json",
+    "task_id": 37,
+    "query": "Write a function to find the division of first even and odd number of a given list.",
+    "turn_history": {
+      "actions": [
+        "def divide_even_odd(lst):\n    even = None\n    odd = None\n    for num in lst:\n        if num % 2 == 0 and even is None:\n            even = num\n        elif num % 2 != 0 and odd is None:\n            odd = num\n        if even is not None and odd is not None:\n            break\n    if even is not None and odd is not None:\n        return even / odd\n    else:\n        return None"
+      ],
+      "observations": [
+        "{'output': '', 'error': ''}"
+      ],
+      "rewards": [
+        1.0
+      ],
+      "valid_action": [
+        null
+      ]
+    },
+    "summary": {
+      "max_reward": 1.0,
+      "max_reward_idx": 0,
+      "turns_taken": 1,
+      "turns_max": 7
+    }
+  },
+  "38": {
+    "environment": "ic_python",
+    "dataset": "./data/python/mbpp/ic_mbpp.json",
+    "task_id": 38,
+    "query": "Write a function to check if the letters of a given string can be rearranged so that two characters that are adjacent to each other are different.",
+    "turn_history": {
+      "actions": [
+        "def can_rearrange(s):\n    count = [0]*26\n    for i in s:\n        count[ord(i)-ord('a')] += 1\n    count.sort()\n    if count[25] - 1 > sum(count[:25]):\n        return False\n    return True",
+        "def can_rearrange(s):\n    count = [0]*26\n    for i in s:\n        count[ord(i)-ord('a')] += 1\n    count.sort()\n    if count[25] - 1 > sum(count[:25]):\n        return False\n    return True",
+        "def can_rearrange(s):\n    from collections import Counter\n    counter = Counter(s)\n    max_count = max(counter.values())\n    if max_count > (len(s) + 1) // 2:\n        return False\n    return True",
+        "def can_rearrange(s):\n    from collections import Counter\n    counter = Counter(s)\n    max_count = max(counter.values())\n    if max_count > (len(s) + 1) // 2:\n        return False\n    return True",
+        "def can_rearrange(s):\n    from collections import Counter\n    counter = Counter(s)\n    max_count = max(counter.values())\n    if max_count > (len(s) + 1) // 2:\n        return False\n    return True",
+        "def can_rearrange(s):\n    from collections import Counter\n    counter = Counter(s)\n    max_count = max(counter.values())\n    if max_count > (len(s) + 1) // 2:\n        return False\n    return True",
+        "def can_rearrange(s):\n    from collections import Counter\n    counter = Counter(s)\n    max_count = max(counter.values())\n    if max_count > (len(s) + 1) // 2:\n        return False\n    return True"
+      ],
+      "observations": [
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again."
+      ],
+      "rewards": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "valid_action": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    "summary": {
+      "max_reward": 0.0,
+      "max_reward_idx": 0,
+      "turns_taken": 7,
+      "turns_max": 7
+    }
+  },
+  "39": {
+    "environment": "ic_python",
+    "dataset": "./data/python/mbpp/ic_mbpp.json",
+    "task_id": 39,
+    "query": "Write a function to find frequency of the elements in a given list of lists using collections module.",
+    "turn_history": {
+      "actions": [
+        "def find_frequency(list_of_lists):\n    from collections import Counter\n    flattened_list = [item for sublist in list_of_lists for item in sublist]\n    frequency = Counter(flattened_list)\n    return frequency"
+      ],
+      "observations": [
+        "{'output': '', 'error': ''}"
+      ],
+      "rewards": [
+        1.0
+      ],
+      "valid_action": [
+        null
+      ]
+    },
+    "summary": {
+      "max_reward": 1.0,
+      "max_reward_idx": 0,
+      "turns_taken": 1,
+      "turns_max": 7
+    }
+  },
+  "40": {
+    "environment": "ic_python",
+    "dataset": "./data/python/mbpp/ic_mbpp.json",
+    "task_id": 40,
+    "query": "Write a function to filter even numbers using lambda function.",
+    "turn_history": {
+      "actions": [
+        "def filter_even_numbers(numbers):\n    return list(filter(lambda x: x % 2 == 0, numbers))"
+      ],
+      "observations": [
+        "{'output': '', 'error': ''}"
+      ],
+      "rewards": [
+        1.0
+      ],
+      "valid_action": [
+        null
+      ]
+    },
+    "summary": {
+      "max_reward": 1.0,
+      "max_reward_idx": 0,
+      "turns_taken": 1,
+      "turns_max": 7
+    }
+  },
+  "41": {
+    "environment": "ic_python",
+    "dataset": "./data/python/mbpp/ic_mbpp.json",
+    "task_id": 41,
+    "query": "Write a python function to find the sum of repeated elements in a given array.",
+    "turn_history": {
+      "actions": [
+        "def sum_of_repeated_elements(arr):\n    repeated_elements = [item for item in set(arr) if arr.count(item) > 1]\n    return sum(repeated_elements)",
+        "def sum_of_repeated_elements(arr):\n    repeated_elements = [item for item in arr if arr.count(item) > 1]\n    return sum(set(repeated_elements))",
+        "def sum_of_repeated_elements(arr):\n    from collections import Counter\n    counter = Counter(arr)\n    return sum(k for k, v in counter.items() if v > 1)",
+        "def sum_of_repeated_elements(arr):\n    from collections import Counter\n    counter = Counter(arr)\n    return sum(k*v for k, v in counter.items() if v > 1)",
+        "def sum_of_repeated_elements(arr):\n    from collections import Counter\n    counter = Counter(arr)\n    return sum(k*(v-1) for k, v in counter.items() if v > 1)",
+        "def sum_of_repeated_elements(arr):\n    from collections import Counter\n    counter = Counter(arr)\n    return sum(k for k, v in counter.items() if v > 1)",
+        "def sum_of_repeated_elements(arr):\n    from collections import Counter\n    counter = Counter(arr)\n    return sum(k*v for k, v in counter.items() if v > 1)"
+      ],
+      "observations": [
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again."
+      ],
+      "rewards": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "valid_action": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    "summary": {
+      "max_reward": 0.0,
+      "max_reward_idx": 0,
+      "turns_taken": 7,
+      "turns_max": 7
+    }
+  },
+  "42": {
+    "environment": "ic_python",
+    "dataset": "./data/python/mbpp/ic_mbpp.json",
+    "task_id": 42,
+    "query": "Write a function to find sequences of lowercase letters joined with an underscore using regex.",
+    "turn_history": {
+      "actions": [
+        "def find_sequences(input_string):\n    import re\n    pattern = '[a-z]+(_[a-z]+)*'\n    result = re.findall(pattern, input_string)\n    return result",
+        "def find_sequences(input_string):\n    import re\n    pattern = r'\\b[a-z]+(_[a-z]+)+\\b'\n    result = re.findall(pattern, input_string)\n    return result",
+        "def find_sequences(input_string):\n    import re\n    pattern = r'\\b[a-z]+(_[a-z]+)*\\b'\n    result = re.findall(pattern, input_string)\n    return result",
+        "def find_sequences(input_string):\n    import re\n    pattern = r'\\b[a-z]+(_[a-z]+)+\\b'\n    result = [match.group() for match in re.finditer(pattern, input_string)]\n    return result",
+        "def find_sequences(input_string):\n    import re\n    pattern = r'\\b[a-z]+(_[a-z]+)*\\b'\n    result = [match.group() for match in re.finditer(pattern, input_string)]\n    return result",
+        "def find_sequences(input_string):\n    import re\n    pattern = r'\\b[a-z]+(_[a-z]+)+\\b'\n    result = re.findall(pattern, input_string)\n    return result",
+        "def find_sequences(input_string):\n    import re\n    pattern = r'\\b[a-z]+(_[a-z]+)*\\b'\n    result = re.findall(pattern, input_string)\n    return result"
+      ],
+      "observations": [
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again."
+      ],
+      "rewards": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "valid_action": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    "summary": {
+      "max_reward": 0.0,
+      "max_reward_idx": 0,
+      "turns_taken": 7,
+      "turns_max": 7
+    }
+  },
+  "43": {
+    "environment": "ic_python",
+    "dataset": "./data/python/mbpp/ic_mbpp.json",
+    "task_id": 43,
+    "query": "Write a function that matches a word at the beginning of a string.",
+    "turn_history": {
+      "actions": [
+        "def match_word_at_beginning(word, string):\n    return string.startswith(word)",
+        "def match_word_at_beginning(word, string):\n    import re\n    return bool(re.match(word, string))",
+        "def match_word_at_beginning(word, string):\n    import re\n    return bool(re.match(r'\\b' + word + r'\\b', string))",
+        "def match_word_at_beginning(word, string):\n    import re\n    return bool(re.match(r'^' + word + r'\\b', string))",
+        "def match_word_at_beginning(word, string):\n    return string.startswith(word + ' ') or string == word",
+        "def match_word_at_beginning(word, string):\n    return string.startswith(word) and (len(string) == len(word) or string[len(word)] == ' ')",
+        "import re  def match_word_at_beginning(word, string):     return bool(re.match(f'^{word}\\\\b', string))"
+      ],
+      "observations": [
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Error executing action: invalid syntax (<unknown>, line 1)"
+      ],
+      "rewards": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0
+      ],
+      "valid_action": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    "summary": {
+      "max_reward": 0.0,
+      "max_reward_idx": 0,
+      "turns_taken": 7,
+      "turns_max": 7
+    }
+  },
+  "44": {
+    "environment": "ic_python",
+    "dataset": "./data/python/mbpp/ic_mbpp.json",
+    "task_id": 44,
+    "query": "Write a function to find the gcd of the given array elements.",
+    "turn_history": {
+      "actions": [
+        "def gcd_array(arr):\n    from math import gcd\n    num1=arr[0]\n    num2=arr[1]\n    gcd_num = gcd(num1,num2)\n     for i in range(2,len(arr)):\n        gcd_num = gcd(gcd_num,arr[i])\n     return gcd_num",
+        "def gcd_array(arr):\n    from math import gcd\n    num1=arr[0]\n    num2=arr[1]\n    gcd_num = gcd(num1,num2)\n    for i in range(2,len(arr)):\n        gcd_num = gcd(gcd_num,arr[i])\n    return gcd_num",
+        "def gcd_array(arr):\n    from math import gcd\n    num1=arr[0]\n    num2=arr[1]\n    gcd_num = gcd(num1,num2)\n    for i in range(2,len(arr)):\n        gcd_num = gcd(gcd_num,arr[i])\n    return gcd_num",
+        "def gcd_array(arr):\n    from math import gcd\n    num1=arr[0]\n    num2=arr[1]\n    gcd_num = gcd(num1,num2)\n    for i in range(2,len(arr)):\n        gcd_num = gcd(gcd_num,arr[i])\n    return gcd_num",
+        "def gcd_array(arr):\n    from math import gcd\n    num1=arr[0]\n    num2=arr[1]\n    gcd_num = gcd(num1,num2)\n    for i in range(2,len(arr)):\n        gcd_num = gcd(gcd_num,arr[i])\n    return gcd_num",
+        "def gcd_array(arr):\n    from math import gcd\n    num1=arr[0]\n    num2=arr[1]\n    gcd_num = gcd(num1,num2)\n    for i in range(2,len(arr)):\n        gcd_num = gcd(gcd_num,arr[i])\n    return gcd_num",
+        "def gcd_array(arr):\n    from math import gcd\n    num1=arr[0]\n    num2=arr[1]\n    gcd_num = gcd(num1,num2)\n    for i in range(2,len(arr)):\n        gcd_num = gcd(gcd_num,arr[i])\n    return gcd_num"
+      ],
+      "observations": [
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again."
+      ],
+      "rewards": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "valid_action": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    "summary": {
+      "max_reward": 0.0,
+      "max_reward_idx": 0,
+      "turns_taken": 7,
+      "turns_max": 7
+    }
+  },
+  "45": {
+    "environment": "ic_python",
+    "dataset": "./data/python/mbpp/ic_mbpp.json",
+    "task_id": 45,
+    "query": "Write a python function to determine whether all the numbers are different from each other are not.",
+    "turn_history": {
+      "actions": [
+        "def are_all_numbers_different(numbers):\n    return len(numbers) == len(set(numbers))"
+      ],
+      "observations": [
+        "{'output': '', 'error': ''}"
+      ],
+      "rewards": [
+        1.0
+      ],
+      "valid_action": [
+        null
+      ]
+    },
+    "summary": {
+      "max_reward": 1.0,
+      "max_reward_idx": 0,
+      "turns_taken": 1,
+      "turns_max": 7
+    }
+  },
+  "46": {
+    "environment": "ic_python",
+    "dataset": "./data/python/mbpp/ic_mbpp.json",
+    "task_id": 46,
+    "query": "Write a python function to find the last digit when factorial of a divides factorial of b.",
+    "turn_history": {
+      "actions": [
+        "def last_digit_of_division_factorial(a, b):\n    if a > b:\n        return \"Invalid Input\"\n    else:\n        result = 1\n        for i in range(a+1, b+1):\n            result = (result * (i % 10)) % 10\n        return (1 if result == 0 else 10 - result)",
+        "def last_digit_of_division_factorial(a, b):\n    if a > b:\n        return \"Invalid Input\"\n    else:\n        if a == b:\n            return 1\n        else:\n            return 0",
+        "def last_digit_of_division_factorial(a, b):\n    if a > b:\n        return \"Invalid Input\"\n    else:\n        if a == b:\n            return 1\n        else:\n            if b >= 5:\n                return 0\n            else:\n                result = 1\n                for i in range(a+1, b+1):\n                    result *= i\n                return result % 10",
+        "def last_digit_of_division_factorial(a, b):\n    if a > b:\n        return \"Invalid Input\"\n    else:\n        if a == b:\n            return 1\n        else:\n            if b >= 5:\n                return 0\n            else:\n                result = 1\n                for i in range(a+1, b+1):\n                    result *= i\n                    result %= 10\n                return result",
+        "def last_digit_of_division_factorial(a, b):\n    if a > b:\n        return \"Invalid Input\"\n    else:\n        if a == b:\n            return 1\n        else:\n            if b >= 5:\n                return 0\n            else:\n                result = 1\n                for i in range(b, a, -1):\n                    result *= i\n                    result %= 10\n                    if result == 0:\n                        break\n                return result",
+        "def last_digit_of_division_factorial(a, b):\n    if a > b:\n        return \"Invalid Input\"\n    else:\n        if a == b:\n            return 1\n        else:\n            if b >= 5:\n                return 0\n            else:\n                result = 1\n                for i in range(b, a, -1):\n                    result *= i\n                    result %= 10\n                    if result == 0:\n                        break\n                return result if result != 0 else 1",
+        "def last_digit_of_division_factorial(a, b):\n    if a > b:\n        return \"Invalid Input\"\n    else:\n        if a == b:\n            return 1\n        else:\n            if b >= 5:\n                return 0\n            else:\n                result = 1\n                for i in range(b, a, -1):\n                    result *= i\n                    result %= 10\n                    if result == 0:\n                        break\n                return result if result != 0 else \"Invalid Input\""
+      ],
+      "observations": [
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again."
+      ],
+      "rewards": [
+        0.0,
+        0.16666666666666666,
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5
+      ],
+      "valid_action": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    "summary": {
+      "max_reward": 0.5,
+      "max_reward_idx": 2,
+      "turns_taken": 7,
+      "turns_max": 7
+    }
+  },
+  "47": {
+    "environment": "ic_python",
+    "dataset": "./data/python/mbpp/ic_mbpp.json",
+    "task_id": 47,
+    "query": "Write a python function to set all odd bits of a given number.",
+    "turn_history": {
+      "actions": [
+        "def set_odd_bits(n):\n    for i in range(1, 32, 2):\n        n |= (1 << i)\n    return n",
+        "def set_odd_bits(n):\n    for i in range(1, 64, 2):\n        n |= (1 << i)\n    return n",
+        "def set_odd_bits(n):\n    return n | 0xAAAAAAAAAAAAAAAA",
+        "def set_odd_bits(n):\n    return n | 0x5555555555555555",
+        "def set_odd_bits(n):\n    return n | 0xAAAAAAAA",
+        "def set_odd_bits(n):\n    return n | 0xAAAAAAAAAAAAAAAA",
+        "def set_odd_bits(n):\n    return n | 0x55555555"
+      ],
+      "observations": [
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again."
+      ],
+      "rewards": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "valid_action": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    "summary": {
+      "max_reward": 0.0,
+      "max_reward_idx": 0,
+      "turns_taken": 7,
+      "turns_max": 7
+    }
+  },
+  "48": {
+    "environment": "ic_python",
+    "dataset": "./data/python/mbpp/ic_mbpp.json",
+    "task_id": 48,
+    "query": "Write a function to extract every first or specified element from a given two-dimensional list.",
+    "turn_history": {
+      "actions": [
+        "def extract_elements(two_d_list, index=0):\n    return [sub_list[index] for sub_list in two_d_list if len(sub_list) > index]"
+      ],
+      "observations": [
+        "{'output': '', 'error': ''}"
+      ],
+      "rewards": [
+        1.0
+      ],
+      "valid_action": [
+        null
+      ]
+    },
+    "summary": {
+      "max_reward": 1.0,
+      "max_reward_idx": 0,
+      "turns_taken": 1,
+      "turns_max": 7
+    }
+  },
+  "49": {
+    "environment": "ic_python",
+    "dataset": "./data/python/mbpp/ic_mbpp.json",
+    "task_id": 49,
+    "query": "Write a function to find the list with minimum length using lambda function.",
+    "turn_history": {
+      "actions": [
+        "def min_length_list(lists):\n    return min(lists, key=lambda x: len(x))",
+        "def min_length_list(lists):\n    if not lists:\n        return None\n    return min(lists, key=lambda x: len(x))",
+        "def min_length_list(lists):\n    if not lists or not all(isinstance(i, list) for i in lists):\n        return None\n    return min(lists, key=lambda x: len(x))",
+        "def min_length_list(lists):\n    if not lists or not all(isinstance(i, list) for i in lists):\n        return None\n    return min(lists, key=lambda x: len(x)) if lists else None",
+        "def min_length_list(lists):\n    return min(lists, key=lambda x: len(x)) if lists else None",
+        "def min_length_list(lists):\n    if not lists or not all(isinstance(i, list) for i in lists):\n        return None\n    return min(lists, key=lambda x: len(x)) if lists else None",
+        "def min_length_list(lists):\n    if not lists or not all(isinstance(i, list) for i in lists):\n        return None\n    return min(lists, key=lambda x: len(x)) if lists else []"
+      ],
+      "observations": [
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again."
+      ],
+      "rewards": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "valid_action": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    "summary": {
+      "max_reward": 0.0,
+      "max_reward_idx": 0,
+      "turns_taken": 7,
+      "turns_max": 7
+    }
+  },
+  "50": {
+    "environment": "ic_python",
+    "dataset": "./data/python/mbpp/ic_mbpp.json",
+    "task_id": 50,
+    "query": "Write a function to print check if the triangle is equilateral or not.",
+    "turn_history": {
+      "actions": [
+        "def is_equilateral(a, b, c):\n    if a == b == c:\n        return True\n    else:\n        return False"
+      ],
+      "observations": [
+        "{'output': '', 'error': ''}"
+      ],
+      "rewards": [
+        1.0
+      ],
+      "valid_action": [
+        null
+      ]
+    },
+    "summary": {
+      "max_reward": 1.0,
+      "max_reward_idx": 0,
+      "turns_taken": 1,
+      "turns_max": 7
+    }
+  },
+  "51": {
+    "environment": "ic_python",
+    "dataset": "./data/python/mbpp/ic_mbpp.json",
+    "task_id": 51,
+    "query": "Write a function to caluclate area of a parallelogram.",
+    "turn_history": {
+      "actions": [
+        "def area_of_parallelogram(base, height):\n    return base * height"
+      ],
+      "observations": [
+        "{'output': '', 'error': ''}"
+      ],
+      "rewards": [
+        1.0
+      ],
+      "valid_action": [
+        null
+      ]
+    },
+    "summary": {
+      "max_reward": 1.0,
+      "max_reward_idx": 0,
+      "turns_taken": 1,
+      "turns_max": 7
+    }
+  },
+  "52": {
+    "environment": "ic_python",
+    "dataset": "./data/python/mbpp/ic_mbpp.json",
+    "task_id": 52,
+    "query": "Write a python function to check whether the first and last characters of a given string are equal or not.",
+    "turn_history": {
+      "actions": [
+        "def check_first_last_char_equal(s):\n    if len(s) == 0:\n        return False\n    return s[0] == s[-1]",
+        "def check_first_last_char_equal(s):\n    if len(s) < 2:\n        return False\n    return s[0] == s[-1]",
+        "def check_first_last_char_equal(s):\n    if len(s) == 0:\n        return None\n    return s[0] == s[-1]",
+        "def check_first_last_char_equal(s):\n    if len(s) == 0:\n        return False\n    return s[0] == s[-1]",
+        "def check_first_last_char_equal(s):\n    if len(s) < 2:\n        return False\n    return s[0] == s[-1]",
+        "def check_first_last_char_equal(s):\n    if len(s) == 0:\n        return True\n    return s[0] == s[-1]",
+        "def check_first_last_char_equal(s):\n    if len(s) == 0:\n        return False\n    return s[0] == s[-1]"
+      ],
+      "observations": [
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again."
+      ],
+      "rewards": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "valid_action": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    "summary": {
+      "max_reward": 0.0,
+      "max_reward_idx": 0,
+      "turns_taken": 7,
+      "turns_max": 7
+    }
+  },
+  "53": {
+    "environment": "ic_python",
+    "dataset": "./data/python/mbpp/ic_mbpp.json",
+    "task_id": 53,
+    "query": "Write a function to sort the given array by using counting sort.",
+    "turn_history": {
+      "actions": [
+        "def counting_sort(arr):\n    max_val = max(arr)\n    count = [0] * (max_val + 1)\n    for num in arr:\n        count[num] += 1\n    sorted_arr = []\n    for i, freq in enumerate(count):\n        sorted_arr.extend([i] * freq)\n    return sorted_arr"
+      ],
+      "observations": [
+        "{'output': '', 'error': ''}"
+      ],
+      "rewards": [
+        1.0
+      ],
+      "valid_action": [
+        null
+      ]
+    },
+    "summary": {
+      "max_reward": 1.0,
+      "max_reward_idx": 0,
+      "turns_taken": 1,
+      "turns_max": 7
+    }
+  },
+  "54": {
+    "environment": "ic_python",
+    "dataset": "./data/python/mbpp/ic_mbpp.json",
+    "task_id": 54,
+    "query": "Write a function to find t-nth term of geometric series.",
+    "turn_history": {
+      "actions": [
+        "def nth_term_of_geometric_series(a, r, n):\n    return a * (r ** (n - 1))",
+        "def nth_term_of_geometric_series(a, r, n):\n    if n < 1 or not isinstance(n, int):\n        return \"Invalid input\"\n    return a * (r ** (n - 1))",
+        "def nth_term_of_geometric_series(a, r, n):\n    if isinstance(a, (int, float)) and isinstance(r, (int, float)) and isinstance(n, int) and n > 0:\n        return a * (r ** (n - 1))\n    else:\n        return \"Invalid input\"",
+        "def nth_term_of_geometric_series(a, r, n):\n    return a * (r ** (n - 1))",
+        "def nth_term_of_geometric_series(a, r, n):\n    return a * (r ** (n - 1)) if n > 0 else \"Invalid input\"",
+        "def nth_term_of_geometric_series(a, r, n):\n    if n > 0:\n        return a * (r ** (n - 1))\n    else:\n        return \"Invalid input\"",
+        "def nth_term_of_geometric_series(a, r, n):\n    if isinstance(n, int) and n > 0:\n        return a * (r ** (n - 1))\n    else:\n        return \"Invalid input\""
+      ],
+      "observations": [
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again."
+      ],
+      "rewards": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "valid_action": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    "summary": {
+      "max_reward": 0.0,
+      "max_reward_idx": 0,
+      "turns_taken": 7,
+      "turns_max": 7
+    }
+  },
+  "55": {
+    "environment": "ic_python",
+    "dataset": "./data/python/mbpp/ic_mbpp.json",
+    "task_id": 55,
+    "query": "Write a python function to check if a given number is one less than twice its reverse.",
+    "turn_history": {
+      "actions": [
+        "def is_one_less_than_twice_reverse(n):\n    reverse_n = int(str(n)[::-1])\n    return n == 2*reverse_n - 1",
+        "def is_one_less_than_twice_reverse(n):\n    reverse_n = int(str(n)[::-1])\n    return n == 2*reverse_n - 1  # Testing the function print(is_one_less_than_twice_reverse(12)) # Expected output: True print(is_one_less_than_twice_reverse(21)) # Expected output: False print(is_one_less_than_twice_reverse(13)) # Expected output: False print(is_one_less_than_twice_reverse(31)) # Expected output: True print(is_one_less_than_twice_reverse(0))  # Expected output: False",
+        "def is_one_less_than_twice_reverse(n):\n    reverse_n = int(str(n)[::-1])\n    if n == 0 and reverse_n == 0:\n        return False\n    else:\n        return n == 2*reverse_n - 1",
+        "def is_one_less_than_twice_reverse(n):\n    reverse_n = int(str(n)[::-1])\n    if n == 0:\n        return False\n    else:\n        return n == 2*reverse_n - 1",
+        "def is_one_less_than_twice_reverse(n):\n    reverse_n = int(str(n)[::-1])\n    return n == 2*reverse_n - 1",
+        "def is_one_less_than_twice_reverse(n):\n    reverse_n = int(str(n)[::-1])\n    return n == 2*reverse_n - 1 if n > 0 else False",
+        "def is_one_less_than_twice_reverse(n):\n    reverse_n = int(str(n)[::-1])\n    return n == 2*reverse_n - 1 if n >= 0 else False"
+      ],
+      "observations": [
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again."
+      ],
+      "rewards": [
+        0.0,
+        0.6666666666666666,
+        0.6666666666666666,
+        0.6666666666666666,
+        0.6666666666666666,
+        0.6666666666666666,
+        0.6666666666666666
+      ],
+      "valid_action": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    "summary": {
+      "max_reward": 0.6666666666666666,
+      "max_reward_idx": 1,
+      "turns_taken": 7,
+      "turns_max": 7
+    }
+  },
+  "56": {
+    "environment": "ic_python",
+    "dataset": "./data/python/mbpp/ic_mbpp.json",
+    "task_id": 56,
+    "query": "Write a python function to find the largest number that can be formed with the given digits.",
+    "turn_history": {
+      "actions": [
+        "def largest_number(digits):\n    digits = [str(i) for i in digits]\n    digits.sort(reverse=True)\n    return int(''.join(digits))",
+        "def largest_number(digits):\n    digits = [str(i) for i in digits]\n    digits.sort(reverse=True)\n    return int(''.join(digits)) if digits[0]!='0' else 0",
+        "def largest_number(digits):\n    digits = sorted([str(i) for i in digits], reverse=True)\n    return int(''.join(digits)) if digits[0]!='0' else 0",
+        "def largest_number(digits):\n    digits = sorted([str(i) for i in digits], reverse=True)\n    return int(''.join(digits))",
+        "def largest_number(digits):\n    digits = sorted(digits, reverse=True)\n    return int(''.join(map(str, digits)))",
+        "def largest_number(digits):\n    digits = [str(i) for i in digits]\n    digits.sort(reverse=True)\n    return int(''.join(digits))",
+        "def largest_number(digits):\n    digits = sorted([str(i) for i in digits], reverse=True)\n    return int(''.join(digits))"
+      ],
+      "observations": [
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again."
+      ],
+      "rewards": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "valid_action": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    "summary": {
+      "max_reward": 0.0,
+      "max_reward_idx": 0,
+      "turns_taken": 7,
+      "turns_max": 7
+    }
+  },
+  "57": {
+    "environment": "ic_python",
+    "dataset": "./data/python/mbpp/ic_mbpp.json",
+    "task_id": 57,
+    "query": "Write a python function to check whether the given two integers have opposite sign or not.",
+    "turn_history": {
+      "actions": [
+        "def check_opposite_signs(a, b):\n    return (a ^ b) < 0"
+      ],
+      "observations": [
+        "{'output': '', 'error': ''}"
+      ],
+      "rewards": [
+        1.0
+      ],
+      "valid_action": [
+        null
+      ]
+    },
+    "summary": {
+      "max_reward": 1.0,
+      "max_reward_idx": 0,
+      "turns_taken": 1,
+      "turns_max": 7
+    }
+  },
+  "58": {
+    "environment": "ic_python",
+    "dataset": "./data/python/mbpp/ic_mbpp.json",
+    "task_id": 58,
+    "query": "Write a function to find the nth octagonal number.",
+    "turn_history": {
+      "actions": [
+        "def nth_octagonal_number(n):\n    return n * (3*n - 2)"
+      ],
+      "observations": [
+        "{'output': '', 'error': ''}"
+      ],
+      "rewards": [
+        1.0
+      ],
+      "valid_action": [
+        null
+      ]
+    },
+    "summary": {
+      "max_reward": 1.0,
+      "max_reward_idx": 0,
+      "turns_taken": 1,
+      "turns_max": 7
+    }
+  },
+  "59": {
+    "environment": "ic_python",
+    "dataset": "./data/python/mbpp/ic_mbpp.json",
+    "task_id": 59,
+    "query": "Write a function to find the maximum length of the subsequence with difference between adjacent elements for the given array.",
+    "turn_history": {
+      "actions": [
+        "def max_length_subsequence(arr):\n    n = len(arr)\n    if n <= 1:\n        return n\n    dp = [1]*n\n    for i in range(1, n):\n        for j in range(i):\n            if abs(arr[i] - arr[j]) == 1:\n                dp[i] = max(dp[i], dp[j] + 1)\n    return max(dp)",
+        "def max_length_subsequence(arr):\n    n = len(arr)\n    if n <= 1:\n        return n\n    dp = [1]*n\n    for i in range(1, n):\n        for j in range(i):\n            if abs(arr[i] - arr[j]) <= 1:\n                dp[i] = max(dp[i], dp[j] + 1)\n    return max(dp)",
+        "def max_length_subsequence(arr):\n    n = len(arr)\n    if n <= 1:\n        return n\n    dp = [1]*n\n    for i in range(1, n):\n        for j in range(i):\n            if abs(arr[i] - arr[j]) == 1:\n                dp[i] = max(dp[i], dp[j] + 1)\n    return max(dp)",
+        "def max_length_subsequence(arr):\n    n = len(arr)\n    if n <= 1:\n        return n\n    dp = [1]*n\n    for i in range(1, n):\n        for j in range(i):\n            if abs(arr[i] - arr[j]) == 1 and dp[j] + 1 > dp[i]:\n                dp[i] = dp[j] + 1\n    return max(dp)",
+        "def max_length_subsequence(arr):\n    n = len(arr)\n    if n <= 1:\n        return n\n    dp = [1]*n\n    for i in range(1, n):\n        for j in range(i):\n            if abs(arr[i] - arr[j]) <= 1 and dp[j] + 1 > dp[i]:\n                dp[i] = dp[j] + 1\n    return max(dp)",
+        "def max_length_subsequence(arr):\n    n = len(arr)\n    if n <= 1:\n        return n\n    dp = [1]*n\n    for i in range(1, n):\n        for j in range(i):\n            if abs(arr[i] - arr[j]) == 1:\n                dp[i] = max(dp[i], dp[j] + 1)\n    return max(dp)",
+        "def max_length_subsequence(arr):\n    n = len(arr)\n    if n <= 1:\n        return n\n    dp = [1]*n\n    for i in range(1, n):\n        for j in range(i):\n            if abs(arr[i] - arr[j]) == 1 and dp[j] + 1 > dp[i]:\n                dp[i] = dp[j] + 1\n    return max(dp)"
+      ],
+      "observations": [
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again."
+      ],
+      "rewards": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "valid_action": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    "summary": {
+      "max_reward": 0.0,
+      "max_reward_idx": 0,
+      "turns_taken": 7,
+      "turns_max": 7
+    }
+  },
+  "60": {
+    "environment": "ic_python",
+    "dataset": "./data/python/mbpp/ic_mbpp.json",
+    "task_id": 60,
+    "query": "Write a python function to count number of substrings with the sum of digits equal to their length.",
+    "turn_history": {
+      "actions": [
+        "def count_substrings(s):\n    count = 0\n    for i in range(len(s)):\n        for j in range(i+1, len(s)+1):\n            substring = s[i:j]\n            if substring.isdigit() and sum(int(digit) for digit in substring) == len(substring):\n                count += 1\n    return count",
+        "def count_substrings(s):\n    count = 0\n    for i in range(len(s)):\n        for j in range(i+1, len(s)+1):\n            substring = s[i:j]\n            if substring.isdigit() and sum(int(digit) for digit in substring) == len(substring):\n                count += 1\n    return count",
+        "def count_substrings(s):\n    count = 0\n    for i in range(len(s)):\n        for j in range(i+1, len(s)+1):\n            substring = s[i:j]\n            if substring.isdigit() and sum(int(digit) for digit in substring) == len(substring):\n                count += 1\n    return count",
+        "def count_substrings(s):\n    count = 0\n    for i in range(len(s)):\n        for j in range(i+1, len(s)+1):\n            substring = s[i:j]\n            if substring.isdigit() and sum(int(digit) for digit in substring) == len(substring):\n                count += 1\n    return count",
+        "def count_substrings(s):\n    count = 0\n    for i in range(len(s)):\n        for j in range(i+1, len(s)+1):\n            substring = s[i:j]\n            if substring.isdigit() and sum(int(digit) for digit in substring) == len(substring):\n                count += 1\n    return count",
+        "def count_substrings(s):\n    count = 0\n    for i in range(len(s)):\n        for j in range(i+1, len(s)+1):\n            substring = s[i:j]\n            if substring.isdigit() and sum(int(digit) for digit in substring) == len(substring):\n                count += 1\n    return count",
+        "def count_substrings(s):\n    count = 0\n    for i in range(len(s)):\n        for j in range(i+1, len(s)+1):\n            substring = s[i:j]\n            if substring.isdigit() and sum(int(digit) for digit in substring) == len(substring):\n                count += 1\n    return count"
+      ],
+      "observations": [
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again."
+      ],
+      "rewards": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "valid_action": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    "summary": {
+      "max_reward": 0.0,
+      "max_reward_idx": 0,
+      "turns_taken": 7,
+      "turns_max": 7
+    }
+  },
+  "61": {
+    "environment": "ic_python",
+    "dataset": "./data/python/mbpp/ic_mbpp.json",
+    "task_id": 61,
+    "query": "Write a python function to find smallest number in a list.",
+    "turn_history": {
+      "actions": [
+        "def find_smallest_number(lst):\n    return min(lst)"
+      ],
+      "observations": [
+        "{'output': '', 'error': ''}"
+      ],
+      "rewards": [
+        1.0
+      ],
+      "valid_action": [
+        null
+      ]
+    },
+    "summary": {
+      "max_reward": 1.0,
+      "max_reward_idx": 0,
+      "turns_taken": 1,
+      "turns_max": 7
+    }
+  },
+  "62": {
+    "environment": "ic_python",
+    "dataset": "./data/python/mbpp/ic_mbpp.json",
+    "task_id": 62,
+    "query": "Write a function to find the maximum difference between available pairs in the given tuple list.",
+    "turn_history": {
+      "actions": [
+        "def max_difference(tuple_list):\n    flat_list = [item for sublist in tuple_list for item in sublist]\n    return max(flat_list) - min(flat_list)",
+        "def max_difference(tuple_list):\n    max_diff = 0\n    for i in tuple_list:\n        diff = abs(i[0] - i[1])\n        if diff > max_diff:\n            max_diff = diff\n    return max_diff"
+      ],
+      "observations": [
+        "Test case did not pass. Please try again.",
+        "{'output': '', 'error': ''}"
+      ],
+      "rewards": [
+        0.3333333333333333,
+        1.0
+      ],
+      "valid_action": [
+        null,
+        null
+      ]
+    },
+    "summary": {
+      "max_reward": 1.0,
+      "max_reward_idx": 1,
+      "turns_taken": 2,
+      "turns_max": 7
+    }
+  },
+  "63": {
+    "environment": "ic_python",
+    "dataset": "./data/python/mbpp/ic_mbpp.json",
+    "task_id": 63,
+    "query": "Write a function to sort a list of tuples using lambda.",
+    "turn_history": {
+      "actions": [
+        "def sort_tuples(tuples_list):\n    sorted_list = sorted(tuples_list, key = lambda x: x)\n    return sorted_list",
+        "def sort_tuples(tuples_list):\n    sorted_list = sorted(tuples_list, key = lambda x: (x[0], x[1]))\n    return sorted_list",
+        "def sort_tuples(tuples_list):\n    sorted_list = sorted(tuples_list, key = lambda x: x[0])\n    return sorted_list",
+        "def sort_tuples(tuples_list):\n    sorted_list = sorted(tuples_list, key = lambda x: x)\n    return sorted_list",
+        "def sort_tuples(tuples_list):\n    sorted_list = sorted(tuples_list, key = lambda x: (x[0], x[1]))\n    return sorted_list",
+        "def sort_tuples(tuples_list):\n    sorted_list = sorted(tuples_list, key = lambda x: x[0])\n    return sorted_list",
+        "def sort_tuples(tuples_list):\n    sorted_list = sorted(tuples_list, key = lambda x: x)\n    return sorted_list"
+      ],
+      "observations": [
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again."
+      ],
+      "rewards": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "valid_action": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    "summary": {
+      "max_reward": 0.0,
+      "max_reward_idx": 0,
+      "turns_taken": 7,
+      "turns_max": 7
+    }
+  },
+  "64": {
+    "environment": "ic_python",
+    "dataset": "./data/python/mbpp/ic_mbpp.json",
+    "task_id": 64,
+    "query": "Write a function of recursion list sum.",
+    "turn_history": {
+      "actions": [
+        "def recursive_list_sum(data_list):\n    total = 0\n    for element in data_list:\n        if type(element) == type([]):\n            total = total + recursive_list_sum(element)\n        else:\n            total = total + element\n    return total"
+      ],
+      "observations": [
+        "{'output': '', 'error': ''}"
+      ],
+      "rewards": [
+        1.0
+      ],
+      "valid_action": [
+        null
+      ]
+    },
+    "summary": {
+      "max_reward": 1.0,
+      "max_reward_idx": 0,
+      "turns_taken": 1,
+      "turns_max": 7
+    }
+  },
+  "65": {
+    "environment": "ic_python",
+    "dataset": "./data/python/mbpp/ic_mbpp.json",
+    "task_id": 65,
+    "query": "Write a python function to count positive numbers in a list.",
+    "turn_history": {
+      "actions": [
+        "def count_positive_numbers(lst):\n    return len([num for num in lst if num > 0])"
+      ],
+      "observations": [
+        "{'output': '', 'error': ''}"
+      ],
+      "rewards": [
+        1.0
+      ],
+      "valid_action": [
+        null
+      ]
+    },
+    "summary": {
+      "max_reward": 1.0,
+      "max_reward_idx": 0,
+      "turns_taken": 1,
+      "turns_max": 7
+    }
+  },
+  "66": {
+    "environment": "ic_python",
+    "dataset": "./data/python/mbpp/ic_mbpp.json",
+    "task_id": 66,
+    "query": "Write a function to find the number of ways to partition a set of bell numbers.",
+    "turn_history": {
+      "actions": [
+        "def bell_number(n):\n    bell = [[0 for i in range(n+1)] for j in range(n+1)]\n    bell[0][0] = 1\n    for i in range(1, n+1):\n        bell[i][0] = bell[i-1][i-1]\n        for j in range(1, i+1):\n            bell[i][j] = bell[i-1][j-1] + bell[i][j-1]\n    return bell[n][0]"
+      ],
+      "observations": [
+        "{'output': '', 'error': ''}"
+      ],
+      "rewards": [
+        1.0
+      ],
+      "valid_action": [
+        null
+      ]
+    },
+    "summary": {
+      "max_reward": 1.0,
+      "max_reward_idx": 0,
+      "turns_taken": 1,
+      "turns_max": 7
+    }
+  },
+  "67": {
+    "environment": "ic_python",
+    "dataset": "./data/python/mbpp/ic_mbpp.json",
+    "task_id": 67,
+    "query": "Write a python function to check whether the given array is monotonic or not.",
+    "turn_history": {
+      "actions": [
+        "def is_monotonic(array):\n    if len(array) < 2:\n        return True\n    is_increasing = array[1] >= array[0]\n    for i in range(2, len(array)):\n        if (array[i] > array[i-1]) != is_increasing:\n            return False\n    return True",
+        "def is_monotonic(array):\n    if len(array) < 2:\n        return True\n    is_increasing = array[1] >= array[0]\n    for i in range(2, len(array)):\n        if (array[i] >= array[i-1]) != is_increasing:\n            return False\n    return True",
+        "def is_monotonic(array):\n    if len(array) < 2:\n        return True\n    if array[0] < array[1]:\n        return all(array[i] <= array[i + 1] for i in range(len(array) - 1))\n    else:\n        return all(array[i] >= array[i + 1] for i in range(len(array) - 1))"
+      ],
+      "observations": [
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "{'output': '', 'error': ''}"
+      ],
+      "rewards": [
+        0.6666666666666666,
+        0.6666666666666666,
+        1.0
+      ],
+      "valid_action": [
+        null,
+        null,
+        null
+      ]
+    },
+    "summary": {
+      "max_reward": 1.0,
+      "max_reward_idx": 2,
+      "turns_taken": 3,
+      "turns_max": 7
+    }
+  },
+  "68": {
+    "environment": "ic_python",
+    "dataset": "./data/python/mbpp/ic_mbpp.json",
+    "task_id": 68,
+    "query": "Write a function to check whether a list contains the given sublist or not.",
+    "turn_history": {
+      "actions": [
+        "def is_sublist(lst, sub_lst):\n    len_sub_lst = len(sub_lst)\n    for i in range(len(lst)):\n        if lst[i:i+len_sub_lst] == sub_lst:\n            return True\n    return False"
+      ],
+      "observations": [
+        "{'output': '', 'error': ''}"
+      ],
+      "rewards": [
+        1.0
+      ],
+      "valid_action": [
+        null
+      ]
+    },
+    "summary": {
+      "max_reward": 1.0,
+      "max_reward_idx": 0,
+      "turns_taken": 1,
+      "turns_max": 7
+    }
+  },
+  "69": {
+    "environment": "ic_python",
+    "dataset": "./data/python/mbpp/ic_mbpp.json",
+    "task_id": 69,
+    "query": "Write a function to find whether all the given tuples have equal length or not.",
+    "turn_history": {
+      "actions": [
+        "def check_tuple_lengths(tuples):\n    if not tuples:\n        return True\n    length = len(tuples[0])\n    for tup in tuples:\n        if len(tup) != length:\n            return False\n    return True",
+        "def check_tuple_lengths(tuples):\n    if not tuples:\n        return True\n    length = len(tuples[0])\n    for tup in tuples[1:]:\n        if len(tup) != length:\n            return False\n    return True",
+        "def check_tuple_lengths(tuples):\n    if not tuples:\n        return True\n    length = len(tuples[0])\n    return all(len(tup) == length for tup in tuples)",
+        "def check_tuple_lengths(*tuples):\n    if not tuples:\n        return True\n    length = len(tuples[0])\n    return all(len(tup) == length for tup in tuples)",
+        "def check_tuple_lengths(*tuples):\n    if not tuples:\n        return True\n    length = len(tuples[0])\n    return all(len(tup) == length for tup in tuples)",
+        "def check_tuple_lengths(*tuples):\n    if not tuples:\n        return True\n    length = len(tuples[0])\n    return all(len(tup) == length for tup in tuples)",
+        "def check_tuple_lengths(*tuples):\n    if not tuples:\n        return True\n    length = len(tuples[0])\n    return all(len(tup) == length for tup in tuples)"
+      ],
+      "observations": [
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again."
+      ],
+      "rewards": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "valid_action": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    "summary": {
+      "max_reward": 0.0,
+      "max_reward_idx": 0,
+      "turns_taken": 7,
+      "turns_max": 7
+    }
+  },
+  "70": {
+    "environment": "ic_python",
+    "dataset": "./data/python/mbpp/ic_mbpp.json",
+    "task_id": 70,
+    "query": "Write a function to sort a list of elements using comb sort.",
+    "turn_history": {
+      "actions": [
+        "def comb_sort(input_list):\n    def swap(input_list, index1, index2):\n        temp = input_list[index1]\n        input_list[index1] = input_list[index2]\n        input_list[index2] = temp\n     gap = len(input_list)\n    shrink = 1.3\n    sorted = False\n     while not sorted:\n        gap = int(gap / shrink)\n         if gap <= 1:\n            gap = 1\n            sorted = True\n         i = 0\n        while i + gap < len(input_list):\n            if input_list[i] > input_list[i + gap]:\n                swap(input_list, i, i + gap)\n                sorted = False\n            i = i + 1\n     return input_list",
+        "def comb_sort(input_list):\n    def swap(input_list, index1, index2):\n        temp = input_list[index1]\n        input_list[index1] = input_list[index2]\n        input_list[index2] = temp\n     gap = len(input_list)\n    shrink = 1.3\n    sorted = False\n     while not sorted:\n        gap = int(gap / shrink)\n        if gap <= 1:\n            gap = 1\n            sorted = True\n         i = 0\n        while i + gap < len(input_list):\n            if input_list[i] > input_list[i + gap]:\n                swap(input_list, i, i + gap)\n                sorted = False\n            i = i + 1\n     return input_list"
+      ],
+      "observations": [
+        "Test case did not pass. Please try again.",
+        "{'error': 'Error: unindent does not match any outer indentation level (<string>, line 6)'}"
+      ],
+      "rewards": [
+        0.0,
+        1.0
+      ],
+      "valid_action": [
+        null,
+        null
+      ]
+    },
+    "summary": {
+      "max_reward": 1.0,
+      "max_reward_idx": 1,
+      "turns_taken": 2,
+      "turns_max": 7
+    }
+  },
+  "71": {
+    "environment": "ic_python",
+    "dataset": "./data/python/mbpp/ic_mbpp.json",
+    "task_id": 71,
+    "query": "Write a python function to check whether the given number can be represented as difference of two squares or not.",
+    "turn_history": {
+      "actions": [
+        "def is_difference_of_squares(n):\n    for i in range(1, int(n**0.5)+1):\n        j = (n + i*i)**0.5\n        if j - int(j) == 0:\n            return True\n    return False"
+      ],
+      "observations": [
+        "{'output': '', 'error': ''}"
+      ],
+      "rewards": [
+        1.0
+      ],
+      "valid_action": [
+        null
+      ]
+    },
+    "summary": {
+      "max_reward": 1.0,
+      "max_reward_idx": 0,
+      "turns_taken": 1,
+      "turns_max": 7
+    }
+  },
+  "72": {
+    "environment": "ic_python",
+    "dataset": "./data/python/mbpp/ic_mbpp.json",
+    "task_id": 72,
+    "query": "Write a function to split the given string with multiple delimiters by using regex.",
+    "turn_history": {
+      "actions": [
+        "import re  def split_string(s, delimiters):     regexPattern = '|'.join(map(re.escape, delimiters))     return re.split(regexPattern, s)",
+        "import re  def split_string(s, delimiters):     regexPattern = '|'.join(map(re.escape, delimiters))     return re.split(regexPattern, s)",
+        "import re  def split_string(s, delimiters):     regexPattern = '|'.join(map(re.escape, delimiters))     return re.split(regexPattern, s)",
+        "import re  def split_string(s, delimiters):     regexPattern = '|'.join(map(re.escape, delimiters))     return re.split(regexPattern, s)",
+        "import re  def split_string(s, delimiters):     regexPattern = '|'.join(map(re.escape, delimiters))     return re.split(regexPattern, s)",
+        "import re  def split_string(s, delimiters):     regexPattern = '|'.join(map(re.escape, delimiters))     return re.split(regexPattern, s)",
+        "import re  def split_string(s, delimiters):     regexPattern = '|'.join(map(re.escape, delimiters))     return re.split(regexPattern, s)"
+      ],
+      "observations": [
+        "Error executing action: invalid syntax (<unknown>, line 1)",
+        "Error executing action: invalid syntax (<unknown>, line 1)",
+        "Error executing action: invalid syntax (<unknown>, line 1)",
+        "Error executing action: invalid syntax (<unknown>, line 1)",
+        "Error executing action: invalid syntax (<unknown>, line 1)",
+        "Error executing action: invalid syntax (<unknown>, line 1)",
+        "Error executing action: invalid syntax (<unknown>, line 1)"
+      ],
+      "rewards": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "valid_action": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    "summary": {
+      "max_reward": 0,
+      "max_reward_idx": 0,
+      "turns_taken": 7,
+      "turns_max": 7
+    }
+  },
+  "73": {
+    "environment": "ic_python",
+    "dataset": "./data/python/mbpp/ic_mbpp.json",
+    "task_id": 73,
+    "query": "Write a function to check whether it follows the sequence given in the patterns array.",
+    "turn_history": {
+      "actions": [
+        "def is_following_patterns(strings, patterns):\n    if len(strings) != len(patterns):\n        return False\n    str_pattern_dict = {}\n    pattern_str_dict = {}\n    for i in range(len(strings)):\n        if strings[i] in str_pattern_dict:\n            if str_pattern_dict[strings[i]] != patterns[i]:\n                return False\n        else:\n            str_pattern_dict[strings[i]] = patterns[i]\n        if patterns[i] in pattern_str_dict:\n            if pattern_str_dict[patterns[i]] != strings[i]:\n                return False\n        else:\n            pattern_str_dict[patterns[i]] = strings[i]\n    return True"
+      ],
+      "observations": [
+        "{'output': '', 'error': ''}"
+      ],
+      "rewards": [
+        1.0
+      ],
+      "valid_action": [
+        null
+      ]
+    },
+    "summary": {
+      "max_reward": 1.0,
+      "max_reward_idx": 0,
+      "turns_taken": 1,
+      "turns_max": 7
+    }
+  },
+  "74": {
+    "environment": "ic_python",
+    "dataset": "./data/python/mbpp/ic_mbpp.json",
+    "task_id": 74,
+    "query": "Write a function to find tuples which have all elements divisible by k from the given list of tuples.",
+    "turn_history": {
+      "actions": [
+        "def find_divisible_tuples(tuples_list, k):\n    result = []\n    for tup in tuples_list:\n        if all(i % k == 0 for i in tup):\n            result.append(tup)\n    return result",
+        "def find_divisible_tuples(tuples_list, k):\n    result = []\n    for tup in tuples_list:\n        if all(i % k == 0 for i in tup):\n            result.append(tup)\n    return result",
+        "def find_divisible_tuples(tuples_list, k):\n    result = []\n    for tup in tuples_list:\n        if all(i % k == 0 for i in tup):\n            result.append(tup)\n    return result",
+        "def find_divisible_tuples(tuples_list, k):\n    result = []\n    for tup in tuples_list:\n        if all(i % k == 0 for i in tup):\n            result.append(tup)\n    return result",
+        "def find_divisible_tuples(tuples_list, k):\n    result = []\n    for tup in tuples_list:\n        if all(i % k == 0 for i in tup):\n            result.append(tup)\n    return result",
+        "def find_divisible_tuples(tuples_list, k):\n    result = []\n    for tup in tuples_list:\n        if all(i % k == 0 for i in tup):\n            result.append(tup)\n    return result",
+        "def find_divisible_tuples(tuples_list, k):\n    result = []\n    for tup in tuples_list:\n        if all(i % k == 0 for i in tup):\n            result.append(tup)\n    return result"
+      ],
+      "observations": [
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again."
+      ],
+      "rewards": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "valid_action": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    "summary": {
+      "max_reward": 0.0,
+      "max_reward_idx": 0,
+      "turns_taken": 7,
+      "turns_max": 7
+    }
+  },
+  "75": {
+    "environment": "ic_python",
+    "dataset": "./data/python/mbpp/ic_mbpp.json",
+    "task_id": 75,
+    "query": "Write a python function to count the number of squares in a rectangle.",
+    "turn_history": {
+      "actions": [
+        "def count_squares_in_rectangle(length, breadth):\n    squares = 0\n    for i in range(1, min(length, breadth) + 1):\n        squares += (length - i + 1) * (breadth - i + 1)\n    return squares"
+      ],
+      "observations": [
+        "{'output': '', 'error': ''}"
+      ],
+      "rewards": [
+        1.0
+      ],
+      "valid_action": [
+        null
+      ]
+    },
+    "summary": {
+      "max_reward": 1.0,
+      "max_reward_idx": 0,
+      "turns_taken": 1,
+      "turns_max": 7
+    }
+  },
+  "76": {
+    "environment": "ic_python",
+    "dataset": "./data/python/mbpp/ic_mbpp.json",
+    "task_id": 76,
+    "query": "Write a python function to find the difference between sum of even and odd digits.",
+    "turn_history": {
+      "actions": [
+        "def diff_even_odd(n):\n    even_sum = 0\n    odd_sum = 0\n    while(n > 0):\n        digit = n % 10\n        if digit % 2 == 0:\n            even_sum += digit\n        else:\n            odd_sum += digit\n        n = n // 10\n    return abs(even_sum - odd_sum)",
+        "def diff_even_odd(n):\n    even_sum = 0\n    odd_sum = 0\n    while(n > 0):\n        digit = n % 10\n        if digit % 2 == 0:\n            even_sum += digit\n        else:\n            odd_sum += digit\n        n = n // 10\n    return even_sum - odd_sum",
+        "def diff_even_odd(n):\n    n = str(n)\n    even_sum = sum(int(i) for i in n if int(i)%2 == 0)\n    odd_sum = sum(int(i) for i in n if int(i)%2 != 0)\n    return abs(even_sum - odd_sum)",
+        "def diff_even_odd(n):\n    n = str(n)\n    even_sum = sum(int(i) for i in n if int(i)%2 == 0)\n    odd_sum = sum(int(i) for i in n if int(i)%2 != 0)\n    return even_sum - odd_sum",
+        "def diff_even_odd(n):\n    n = str(n)\n    even_sum = 0\n    odd_sum = 0\n    for i in n:\n        if int(i)%2 == 0:\n            even_sum += int(i)\n        else:\n            odd_sum += int(i)\n    return even_sum - odd_sum",
+        "def diff_even_odd(n):\n    n = str(n)\n    even_sum = 0\n    odd_sum = 0\n    for i in n:\n        if int(i)%2 == 0:\n            even_sum += int(i)\n        else:\n            odd_sum += int(i)\n    return abs(even_sum - odd_sum)",
+        "def diff_even_odd(n):\n    n = str(n)\n    even_sum = 0\n    odd_sum = 0\n    for i in n:\n        if int(i)%2 == 0:\n            even_sum += int(i)\n        else:\n            odd_sum += int(i)\n    return odd_sum - even_sum"
+      ],
+      "observations": [
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again."
+      ],
+      "rewards": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "valid_action": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    "summary": {
+      "max_reward": 0.0,
+      "max_reward_idx": 0,
+      "turns_taken": 7,
+      "turns_max": 7
+    }
+  },
+  "77": {
+    "environment": "ic_python",
+    "dataset": "./data/python/mbpp/ic_mbpp.json",
+    "task_id": 77,
+    "query": "Write a python function to find number of integers with odd number of set bits.",
+    "turn_history": {
+      "actions": [
+        "def count_odd_set_bits(n):\n    count = 0\n    for i in range(1, n+1):\n        if bin(i).count('1') % 2 != 0:\n            count += 1\n    return count"
+      ],
+      "observations": [
+        "{'output': '', 'error': ''}"
+      ],
+      "rewards": [
+        1.0
+      ],
+      "valid_action": [
+        null
+      ]
+    },
+    "summary": {
+      "max_reward": 1.0,
+      "max_reward_idx": 0,
+      "turns_taken": 1,
+      "turns_max": 7
+    }
+  },
+  "78": {
+    "environment": "ic_python",
+    "dataset": "./data/python/mbpp/ic_mbpp.json",
+    "task_id": 78,
+    "query": "Write a python function to check whether the length of the word is odd or not.",
+    "turn_history": {
+      "actions": [
+        "def is_length_odd(word):\n    return len(word) % 2 != 0"
+      ],
+      "observations": [
+        "{'output': '', 'error': ''}"
+      ],
+      "rewards": [
+        1.0
+      ],
+      "valid_action": [
+        null
+      ]
+    },
+    "summary": {
+      "max_reward": 1.0,
+      "max_reward_idx": 0,
+      "turns_taken": 1,
+      "turns_max": 7
+    }
+  },
+  "79": {
+    "environment": "ic_python",
+    "dataset": "./data/python/mbpp/ic_mbpp.json",
+    "task_id": 79,
+    "query": "Write a function to find the nth tetrahedral number.",
+    "turn_history": {
+      "actions": [
+        "def nth_tetrahedral(n):\n    return (n * (n + 1) * (n + 2)) // 6"
+      ],
+      "observations": [
+        "{'output': '', 'error': ''}"
+      ],
+      "rewards": [
+        1.0
+      ],
+      "valid_action": [
+        null
+      ]
+    },
+    "summary": {
+      "max_reward": 1.0,
+      "max_reward_idx": 0,
+      "turns_taken": 1,
+      "turns_max": 7
+    }
+  },
+  "80": {
+    "environment": "ic_python",
+    "dataset": "./data/python/mbpp/ic_mbpp.json",
+    "task_id": 80,
+    "query": "Write a function to zip the two given tuples.",
+    "turn_history": {
+      "actions": [
+        "def zip_tuples(tuple1, tuple2):\n    return list(zip(tuple1, tuple2))",
+        "def zip_tuples(tuple1, tuple2):\n    return tuple(zip(tuple1, tuple2))",
+        "def zip_tuples(tuple1, tuple2):\n    return zip(tuple1, tuple2)",
+        "def zip_tuples(tuple1, tuple2):\n    return list(zip(tuple1, tuple2))",
+        "def zip_tuples(tuple1, tuple2):\n    return tuple(zip(tuple1, tuple2))",
+        "def zip_tuples(t1, t2):\n    return tuple(zip(t1, t2))",
+        "def zip_tuples(t1, t2):\n    return list(zip(t1, t2))"
+      ],
+      "observations": [
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again."
+      ],
+      "rewards": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "valid_action": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    "summary": {
+      "max_reward": 0.0,
+      "max_reward_idx": 0,
+      "turns_taken": 7,
+      "turns_max": 7
+    }
+  },
+  "81": {
+    "environment": "ic_python",
+    "dataset": "./data/python/mbpp/ic_mbpp.json",
+    "task_id": 81,
+    "query": "Write a function to find the volume of a sphere.",
+    "turn_history": {
+      "actions": [
+        "def volume_of_sphere(radius):\n    import math\n    volume = (4/3) * math.pi * (radius**3)\n    return volume"
+      ],
+      "observations": [
+        "{'output': '', 'error': ''}"
+      ],
+      "rewards": [
+        1.0
+      ],
+      "valid_action": [
+        null
+      ]
+    },
+    "summary": {
+      "max_reward": 1.0,
+      "max_reward_idx": 0,
+      "turns_taken": 1,
+      "turns_max": 7
+    }
+  },
+  "82": {
+    "environment": "ic_python",
+    "dataset": "./data/python/mbpp/ic_mbpp.json",
+    "task_id": 82,
+    "query": "Write a python function to find the character made by adding all the characters of the given string.",
+    "turn_history": {
+      "actions": [
+        "def add_characters(string):\n    total = 0\n    for char in string:\n        total += ord(char)\n    return chr(total % 256)",
+        "def add_characters(string):\n    total = 0\n    for char in string:\n        total += ord(char)\n    return chr(total % 256) if string else None",
+        "def add_characters(string):\n    if not string:\n        return None\n    total = 0\n    for char in string:\n        total += ord(char)\n    return chr(total % 256)",
+        "def add_characters(string):\n    if not string:\n        return None\n    total = 0\n    for char in string:\n        total += ord(char)\n    return chr(total % 128)",
+        "def add_characters(string):\n    if not string:\n        return None\n    total = 0\n    for char in string:\n        total += ord(char)\n    return chr(total % 127)",
+        "def add_characters(string):\n    if not string:\n        return None\n    total = 0\n    for char in string:\n        total += ord(char)\n    return chr(total % 256)",
+        "def add_characters(string):\n    if not string:\n        return None\n    total = 0\n    for char in string:\n        total += ord(char)\n    return chr(total % 128)"
+      ],
+      "observations": [
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again."
+      ],
+      "rewards": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "valid_action": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    "summary": {
+      "max_reward": 0.0,
+      "max_reward_idx": 0,
+      "turns_taken": 7,
+      "turns_max": 7
+    }
+  },
+  "83": {
+    "environment": "ic_python",
+    "dataset": "./data/python/mbpp/ic_mbpp.json",
+    "task_id": 83,
+    "query": "Write a function to find the n-th number in newman conway sequence.",
+    "turn_history": {
+      "actions": [
+        "def newman_conway(n):\n    if n == 1 or n == 2:\n        return 1\n    else:\n        p = [0, 1, 1]\n        for i in range(3, n + 1):\n            p.append(p[p[i - 1]] + p[i - p[i - 1]])\n        return p[n]"
+      ],
+      "observations": [
+        "{'output': '', 'error': ''}"
+      ],
+      "rewards": [
+        1.0
+      ],
+      "valid_action": [
+        null
+      ]
+    },
+    "summary": {
+      "max_reward": 1.0,
+      "max_reward_idx": 0,
+      "turns_taken": 1,
+      "turns_max": 7
+    }
+  },
+  "84": {
+    "environment": "ic_python",
+    "dataset": "./data/python/mbpp/ic_mbpp.json",
+    "task_id": 84,
+    "query": "Write a function to find the surface area of a sphere.",
+    "turn_history": {
+      "actions": [
+        "def sphere_surface_area(radius):\n    import math\n    return 4 * math.pi * radius**2"
+      ],
+      "observations": [
+        "{'output': '', 'error': ''}"
+      ],
+      "rewards": [
+        1.0
+      ],
+      "valid_action": [
+        null
+      ]
+    },
+    "summary": {
+      "max_reward": 1.0,
+      "max_reward_idx": 0,
+      "turns_taken": 1,
+      "turns_max": 7
+    }
+  },
+  "85": {
+    "environment": "ic_python",
+    "dataset": "./data/python/mbpp/ic_mbpp.json",
+    "task_id": 85,
+    "query": "Write a function to find nth centered hexagonal number.",
+    "turn_history": {
+      "actions": [
+        "def centered_hexagonal(n):\n    return 3*n*(n-1)+1"
+      ],
+      "observations": [
+        "{'output': '', 'error': ''}"
+      ],
+      "rewards": [
+        1.0
+      ],
+      "valid_action": [
+        null
+      ]
+    },
+    "summary": {
+      "max_reward": 1.0,
+      "max_reward_idx": 0,
+      "turns_taken": 1,
+      "turns_max": 7
+    }
+  },
+  "86": {
+    "environment": "ic_python",
+    "dataset": "./data/python/mbpp/ic_mbpp.json",
+    "task_id": 86,
+    "query": "Write a function to merge three dictionaries into a single expression.",
+    "turn_history": {
+      "actions": [
+        "def merge_dictionaries(dict1, dict2, dict3):\n    merged_dict = {**dict1, **dict2, **dict3}\n    return merged_dict",
+        "def merge_dictionaries(dict1, dict2, dict3):\n    merged_dict = dict1.copy()\n    merged_dict.update(dict2)\n    merged_dict.update(dict3)\n    return merged_dict",
+        "def merge_dictionaries(dict1, dict2, dict3):\n    merged_dict = {}\n    for d in (dict1, dict2, dict3):\n        merged_dict.update(d)\n    return merged_dict",
+        "def merge_dictionaries(dict1, dict2, dict3):\n    return {**dict1, **dict2, **dict3}",
+        "def merge_dictionaries(dict1, dict2, dict3):\n    merged_dict = dict1.copy()\n    merged_dict.update(dict2)\n    merged_dict.update(dict3)\n    return merged_dict",
+        "def merge_dictionaries(dict1, dict2, dict3):\n    merged_dict = {}\n    for d in (dict1, dict2, dict3):\n        merged_dict.update(d)\n    return merged_dict",
+        "def merge_dictionaries(dict1, dict2, dict3):\n    merged_dict = {**dict1, **dict2, **dict3}\n    return merged_dict"
+      ],
+      "observations": [
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again."
+      ],
+      "rewards": [
+        0.3333333333333333,
+        0.3333333333333333,
+        0.3333333333333333,
+        0.3333333333333333,
+        0.3333333333333333,
+        0.3333333333333333,
+        0.3333333333333333
+      ],
+      "valid_action": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    "summary": {
+      "max_reward": 0.3333333333333333,
+      "max_reward_idx": 0,
+      "turns_taken": 7,
+      "turns_max": 7
+    }
+  },
+  "87": {
+    "environment": "ic_python",
+    "dataset": "./data/python/mbpp/ic_mbpp.json",
+    "task_id": 87,
+    "query": "Write a function to get the frequency of the elements in a list.",
+    "turn_history": {
+      "actions": [
+        "def get_frequency(lst):\n    frequency = {}\n    for item in lst:\n        if item in frequency:\n            frequency[item] += 1\n        else:\n            frequency[item] = 1\n    return frequency"
+      ],
+      "observations": [
+        "{'output': '', 'error': ''}"
+      ],
+      "rewards": [
+        1.0
+      ],
+      "valid_action": [
+        null
+      ]
+    },
+    "summary": {
+      "max_reward": 1.0,
+      "max_reward_idx": 0,
+      "turns_taken": 1,
+      "turns_max": 7
+    }
+  },
+  "88": {
+    "environment": "ic_python",
+    "dataset": "./data/python/mbpp/ic_mbpp.json",
+    "task_id": 88,
+    "query": "Write a function to find the closest smaller number than n.",
+    "turn_history": {
+      "actions": [
+        "def closest_smaller(n):\n    return n - 1"
+      ],
+      "observations": [
+        "{'output': '', 'error': ''}"
+      ],
+      "rewards": [
+        1.0
+      ],
+      "valid_action": [
+        null
+      ]
+    },
+    "summary": {
+      "max_reward": 1.0,
+      "max_reward_idx": 0,
+      "turns_taken": 1,
+      "turns_max": 7
+    }
+  },
+  "89": {
+    "environment": "ic_python",
+    "dataset": "./data/python/mbpp/ic_mbpp.json",
+    "task_id": 89,
+    "query": "Write a python function to find the length of the longest word.",
+    "turn_history": {
+      "actions": [
+        "def longest_word_length(text):\n    words = text.split()\n    max_len = len(max(words, key=len))\n    return max_len",
+        "def longest_word_length(text):\n    if not text:\n        return 0\n    words = text.split()\n    max_len = len(max(words, key=len))\n    return max_len",
+        "def longest_word_length(text):\n    if not text:\n        return 0\n    words = text.split()\n    if not words:\n        return 0\n    max_len = len(max(words, key=len))\n    return max_len",
+        "def longest_word_length(text):\n    if not text:\n        return 0\n    words = text.split()\n    if not words:\n        return 0\n    max_len = max(len(word) for word in words)\n    return max_len",
+        "def longest_word_length(text):\n    words = text.split()\n    max_len = max(len(word) for word in words)\n    return max_len",
+        "def longest_word_length(text):\n    words = text.split()\n    max_len = max(map(len, words))\n    return max_len",
+        "def longest_word_length(text):\n    words = text.split()\n    max_len = len(max(words, key=len))\n    return max_len"
+      ],
+      "observations": [
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again."
+      ],
+      "rewards": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "valid_action": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    "summary": {
+      "max_reward": 0.0,
+      "max_reward_idx": 0,
+      "turns_taken": 7,
+      "turns_max": 7
+    }
+  },
+  "90": {
+    "environment": "ic_python",
+    "dataset": "./data/python/mbpp/ic_mbpp.json",
+    "task_id": 90,
+    "query": "Write a function to check if a substring is present in a given list of string values.",
+    "turn_history": {
+      "actions": [
+        "def is_substring_present(lst, substr):\n    for string in lst:\n        if substr in string:\n            return True\n    return False"
+      ],
+      "observations": [
+        "{'output': '', 'error': ''}"
+      ],
+      "rewards": [
+        1.0
+      ],
+      "valid_action": [
+        null
+      ]
+    },
+    "summary": {
+      "max_reward": 1.0,
+      "max_reward_idx": 0,
+      "turns_taken": 1,
+      "turns_max": 7
+    }
+  },
+  "91": {
+    "environment": "ic_python",
+    "dataset": "./data/python/mbpp/ic_mbpp.json",
+    "task_id": 91,
+    "query": "Write a function to check whether the given number is undulating or not.",
+    "turn_history": {
+      "actions": [
+        "def is_undulating(n):\n    n = str(n)\n    if len(n) < 3:\n        return False\n    for i in range(len(n)-2):\n        if n[i] != n[i+2]:\n            return False\n    return True"
+      ],
+      "observations": [
+        "{'output': '', 'error': ''}"
+      ],
+      "rewards": [
+        1.0
+      ],
+      "valid_action": [
+        null
+      ]
+    },
+    "summary": {
+      "max_reward": 1.0,
+      "max_reward_idx": 0,
+      "turns_taken": 1,
+      "turns_max": 7
+    }
+  },
+  "92": {
+    "environment": "ic_python",
+    "dataset": "./data/python/mbpp/ic_mbpp.json",
+    "task_id": 92,
+    "query": "Write a function to calculate the value of 'a' to the power 'b'.",
+    "turn_history": {
+      "actions": [
+        "def power(a, b):\n    return a ** b"
+      ],
+      "observations": [
+        "{'output': '', 'error': ''}"
+      ],
+      "rewards": [
+        1.0
+      ],
+      "valid_action": [
+        null
+      ]
+    },
+    "summary": {
+      "max_reward": 1.0,
+      "max_reward_idx": 0,
+      "turns_taken": 1,
+      "turns_max": 7
+    }
+  },
+  "93": {
+    "environment": "ic_python",
+    "dataset": "./data/python/mbpp/ic_mbpp.json",
+    "task_id": 93,
+    "query": "Write a function to extract the index minimum value record from the given tuples.",
+    "turn_history": {
+      "actions": [
+        "def min_index_record(tuples):\n    min_index = min(range(len(tuples)), key=tuples.__getitem__)\n    return tuples[min_index]",
+        "def min_index_record(tuples):\n    min_index = min(range(len(tuples)), key=lambda index: tuples[index][1])\n    return tuples[min_index]",
+        "def min_index_record(tuples):\n    min_index = min(range(len(tuples)), key=lambda index: tuples[index][0])\n    return tuples[min_index]",
+        "def min_index_record(tuples):\n    min_index = min(range(len(tuples)), key=tuples.__getitem__)\n    return tuples[min_index]",
+        "def min_index_record(tuples):\n    min_index = min(range(len(tuples)), key=lambda index: tuples[index])\n    return min_index",
+        "def min_index_record(tuples):\n    min_index = min(range(len(tuples)), key=lambda index: tuples[index][1])\n    return tuples[min_index]",
+        "def min_index_record(tuples):\n    min_index = min(range(len(tuples)), key=tuples.__getitem__)\n    return tuples[min_index]"
+      ],
+      "observations": [
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again."
+      ],
+      "rewards": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "valid_action": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    "summary": {
+      "max_reward": 0.0,
+      "max_reward_idx": 0,
+      "turns_taken": 7,
+      "turns_max": 7
+    }
+  },
+  "94": {
+    "environment": "ic_python",
+    "dataset": "./data/python/mbpp/ic_mbpp.json",
+    "task_id": 94,
+    "query": "Write a python function to find the minimum length of sublist.",
+    "turn_history": {
+      "actions": [
+        "def min_sublist_length(lst):\n    if not lst:\n        return 0\n    return min(len(sublist) for sublist in lst)"
+      ],
+      "observations": [
+        "{'output': '', 'error': ''}"
+      ],
+      "rewards": [
+        1.0
+      ],
+      "valid_action": [
+        null
+      ]
+    },
+    "summary": {
+      "max_reward": 1.0,
+      "max_reward_idx": 0,
+      "turns_taken": 1,
+      "turns_max": 7
+    }
+  },
+  "95": {
+    "environment": "ic_python",
+    "dataset": "./data/python/mbpp/ic_mbpp.json",
+    "task_id": 95,
+    "query": "Write a python function to find the number of divisors of a given integer.",
+    "turn_history": {
+      "actions": [
+        "def num_of_divisors(n):\n    count = 0\n    for i in range(1, n+1):\n        if n % i == 0:\n            count += 1\n    return count"
+      ],
+      "observations": [
+        "{'output': '', 'error': ''}"
+      ],
+      "rewards": [
+        1.0
+      ],
+      "valid_action": [
+        null
+      ]
+    },
+    "summary": {
+      "max_reward": 1.0,
+      "max_reward_idx": 0,
+      "turns_taken": 1,
+      "turns_max": 7
+    }
+  },
+  "96": {
+    "environment": "ic_python",
+    "dataset": "./data/python/mbpp/ic_mbpp.json",
+    "task_id": 96,
+    "query": "Write a function to find frequency count of list of lists.",
+    "turn_history": {
+      "actions": [
+        "def frequency_count(list_of_lists):\n    frequency_dict = {}\n    for sublist in list_of_lists:\n        for item in sublist:\n            if item in frequency_dict:\n                frequency_dict[item] += 1\n            else:\n                frequency_dict[item] = 1\n    return frequency_dict"
+      ],
+      "observations": [
+        "{'output': '', 'error': ''}"
+      ],
+      "rewards": [
+        1.0
+      ],
+      "valid_action": [
+        null
+      ]
+    },
+    "summary": {
+      "max_reward": 1.0,
+      "max_reward_idx": 0,
+      "turns_taken": 1,
+      "turns_max": 7
+    }
+  },
+  "97": {
+    "environment": "ic_python",
+    "dataset": "./data/python/mbpp/ic_mbpp.json",
+    "task_id": 97,
+    "query": "Write a function to multiply all the numbers in a list and divide with the length of the list.",
+    "turn_history": {
+      "actions": [
+        "def multiply_and_divide(numbers):\n    product = 1\n    for num in numbers:\n        product *= num\n    return product / len(numbers)"
+      ],
+      "observations": [
+        "{'output': '', 'error': ''}"
+      ],
+      "rewards": [
+        1.0
+      ],
+      "valid_action": [
+        null
+      ]
+    },
+    "summary": {
+      "max_reward": 1.0,
+      "max_reward_idx": 0,
+      "turns_taken": 1,
+      "turns_max": 7
+    }
+  },
+  "98": {
+    "environment": "ic_python",
+    "dataset": "./data/python/mbpp/ic_mbpp.json",
+    "task_id": 98,
+    "query": "Write a function to convert the given decimal number to its binary equivalent.",
+    "turn_history": {
+      "actions": [
+        "def decimal_to_binary(n):\n    return bin(n).replace(\"0b\", \"\")"
+      ],
+      "observations": [
+        "{'output': '', 'error': ''}"
+      ],
+      "rewards": [
+        1.0
+      ],
+      "valid_action": [
+        null
+      ]
+    },
+    "summary": {
+      "max_reward": 1.0,
+      "max_reward_idx": 0,
+      "turns_taken": 1,
+      "turns_max": 7
+    }
+  },
+  "99": {
+    "environment": "ic_python",
+    "dataset": "./data/python/mbpp/ic_mbpp.json",
+    "task_id": 99,
+    "query": "Write a function to find the next smallest palindrome of a specified number.",
+    "turn_history": {
+      "actions": [
+        "def next_smallest_palindrome(num):\n    num = num + 1\n    while True:\n        if str(num) == str(num)[::-1]:\n            return num\n        num += 1"
+      ],
+      "observations": [
+        "{'output': '', 'error': ''}"
+      ],
+      "rewards": [
+        1.0
+      ],
+      "valid_action": [
+        null
+      ]
+    },
+    "summary": {
+      "max_reward": 1.0,
+      "max_reward_idx": 0,
+      "turns_taken": 1,
+      "turns_max": 7
+    }
+  },
+  "100": {
+    "environment": "ic_python",
+    "dataset": "./data/python/mbpp/ic_mbpp.json",
+    "task_id": 100,
+    "query": "Write a function to find the kth element in the given array.",
+    "turn_history": {
+      "actions": [
+        "def find_kth_element(arr, k):\n    if k <= len(arr):\n        return arr[k-1]\n    else:\n        return None",
+        "def find_kth_element(arr, k):\n    if k > 0 and k <= len(arr):\n        return arr[k-1]\n    else:\n        return None",
+        "def find_kth_element(arr, k):\n    if k > 0 and k <= len(arr):\n        return arr[k-1]\n    elif k < 0 and abs(k) <= len(arr):\n        return arr[k]\n    else:\n        return None",
+        "def find_kth_element(arr, k):\n    if k >= 0 and k < len(arr):\n        return arr[k]\n    else:\n        return None",
+        "def find_kth_element(arr, k):\n    if k > 0 and k <= len(arr):\n        return arr[k-1]\n    else:\n        return None",
+        "def find_kth_element(arr, k):\n    if k >= 1 and k <= len(arr):\n        return arr[k-1]\n    else:\n        return \"Invalid index\"",
+        "def find_kth_element(arr, k):\n    if k > 0 and k <= len(arr):\n        return arr[k-1]\n    else:\n        return \"Index out of range\""
+      ],
+      "observations": [
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again."
+      ],
+      "rewards": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "valid_action": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    "summary": {
+      "max_reward": 0.0,
+      "max_reward_idx": 0,
+      "turns_taken": 7,
+      "turns_max": 7
+    }
+  },
+  "101": {
+    "environment": "ic_python",
+    "dataset": "./data/python/mbpp/ic_mbpp.json",
+    "task_id": 101,
+    "query": "Write a function to convert snake case string to camel case string.",
+    "turn_history": {
+      "actions": [
+        "def snake_to_camel(snake_str):\n    components = snake_str.split('_')\n    return components[0] + ''.join(x.title() for x in components[1:])",
+        "def snake_to_camel(snake_str):\n    components = snake_str.split('_')\n    return ''.join(x.title() for x in components)"
+      ],
+      "observations": [
+        "Test case did not pass. Please try again.",
+        "{'output': '', 'error': ''}"
+      ],
+      "rewards": [
+        0.0,
+        1.0
+      ],
+      "valid_action": [
+        null,
+        null
+      ]
+    },
+    "summary": {
+      "max_reward": 1.0,
+      "max_reward_idx": 1,
+      "turns_taken": 2,
+      "turns_max": 7
+    }
+  },
+  "102": {
+    "environment": "ic_python",
+    "dataset": "./data/python/mbpp/ic_mbpp.json",
+    "task_id": 102,
+    "query": "Write a function to find eulerian number a(n, m).",
+    "turn_history": {
+      "actions": [
+        "def eulerian_number(n, m):\n    if m >= n or n == 0:\n        return 0\n    if m == 0 or m == n-1:\n        return 1\n    return (n-m) * eulerian_number(n-1, m-1) + (m+1) * eulerian_number(n-1, m)"
+      ],
+      "observations": [
+        "{'output': '', 'error': ''}"
+      ],
+      "rewards": [
+        1.0
+      ],
+      "valid_action": [
+        null
+      ]
+    },
+    "summary": {
+      "max_reward": 1.0,
+      "max_reward_idx": 0,
+      "turns_taken": 1,
+      "turns_max": 7
+    }
+  },
+  "103": {
+    "environment": "ic_python",
+    "dataset": "./data/python/mbpp/ic_mbpp.json",
+    "task_id": 103,
+    "query": "Write a function to sort each sublist of strings in a given list of lists using lambda function.",
+    "turn_history": {
+      "actions": [
+        "def sort_sublists(input_list):\n    return [sorted(sublist, key=lambda x: x) for sublist in input_list]"
+      ],
+      "observations": [
+        "{'output': '', 'error': ''}"
+      ],
+      "rewards": [
+        1.0
+      ],
+      "valid_action": [
+        null
+      ]
+    },
+    "summary": {
+      "max_reward": 1.0,
+      "max_reward_idx": 0,
+      "turns_taken": 1,
+      "turns_max": 7
+    }
+  },
+  "104": {
+    "environment": "ic_python",
+    "dataset": "./data/python/mbpp/ic_mbpp.json",
+    "task_id": 104,
+    "query": "Write a python function to count true booleans in the given list.",
+    "turn_history": {
+      "actions": [
+        "def count_true_booleans(lst):\n    return lst.count(True)"
+      ],
+      "observations": [
+        "{'output': '', 'error': ''}"
+      ],
+      "rewards": [
+        1.0
+      ],
+      "valid_action": [
+        null
+      ]
+    },
+    "summary": {
+      "max_reward": 1.0,
+      "max_reward_idx": 0,
+      "turns_taken": 1,
+      "turns_max": 7
+    }
+  },
+  "105": {
+    "environment": "ic_python",
+    "dataset": "./data/python/mbpp/ic_mbpp.json",
+    "task_id": 105,
+    "query": "Write a function to add the given list to the given tuples.",
+    "turn_history": {
+      "actions": [
+        "def add_list_to_tuple(tup, lst):\n    return tuple(list(tup) + lst)",
+        "def add_list_to_tuple(tup, lst):\n    return tuple(list(tup) + lst)",
+        "def add_list_to_tuple(tup, lst):\n    return tuple(list(tup) + lst)",
+        "def add_list_to_tuple(tup, lst):\n    return tuple(list(tup) + lst)",
+        "def add_list_to_tuple(tup, lst):\n    return tuple(list(tup) + lst)",
+        "def add_list_to_tuple(tup, lst):\n    return tuple(list(tup) + lst)",
+        "def add_list_to_tuple(tup, lst):\n    return tuple(list(tup) + lst)"
+      ],
+      "observations": [
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again."
+      ],
+      "rewards": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "valid_action": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    "summary": {
+      "max_reward": 0.0,
+      "max_reward_idx": 0,
+      "turns_taken": 7,
+      "turns_max": 7
+    }
+  },
+  "106": {
+    "environment": "ic_python",
+    "dataset": "./data/python/mbpp/ic_mbpp.json",
+    "task_id": 106,
+    "query": "Write a python function to count hexadecimal numbers for a given range.",
+    "turn_history": {
+      "actions": [
+        "def count_hexadecimal_numbers(start, end):\n    count = 0\n    for i in range(start, end+1):\n        try:\n            hex(i)\n            count += 1\n        except ValueError:\n            continue\n    return count",
+        "def count_hexadecimal_numbers(start, end):\n    return end - start + 1",
+        "def count_hexadecimal_numbers(start, end):\n    count = 0\n    for i in range(start, end+1):\n        if 0 <= i <= 15:\n            count += 1\n    return count",
+        "def count_hexadecimal_numbers(start, end):\n    count = 0\n    for i in range(start, end+1):\n        try:\n            hex(i)\n            count += 1\n        except ValueError:\n            pass\n    return count",
+        "def count_hexadecimal_numbers(start, end):\n    return end - start + 1 if start >= 0 and end >= 0 else 0",
+        "def count_hexadecimal_numbers(start, end):\n    if start < 0:\n        start = 0\n    if end < 0:\n        return 0\n    return end - start + 1",
+        "def count_hexadecimal_numbers(start, end):\n    if start < 0:\n        start = 0\n    if end < 0:\n        return 0\n    return int(end, 16) - int(start, 16) + 1"
+      ],
+      "observations": [
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again."
+      ],
+      "rewards": [
+        0.3333333333333333,
+        0.3333333333333333,
+        0.6666666666666666,
+        0.3333333333333333,
+        0.3333333333333333,
+        0.3333333333333333,
+        0.0
+      ],
+      "valid_action": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    "summary": {
+      "max_reward": 0.6666666666666666,
+      "max_reward_idx": 2,
+      "turns_taken": 7,
+      "turns_max": 7
+    }
+  },
+  "107": {
+    "environment": "ic_python",
+    "dataset": "./data/python/mbpp/ic_mbpp.json",
+    "task_id": 107,
+    "query": "Write a function to merge multiple sorted inputs into a single sorted iterator using heap queue algorithm.",
+    "turn_history": {
+      "actions": [
+        "```python import heapq  def merge_sorted_iterators(*iterables):     return heapq.merge(*iterables) ```",
+        "import heapq  def merge_sorted_iterators(*iterables):     return heapq.merge(*iterables)",
+        "import heapq  def merge_sorted_iterators(*iterables):     return heapq.merge(*iterables)",
+        "import heapq  def merge_sorted_iterators(*iterables):     return heapq.merge(*iterables)",
+        "import heapq  def merge_sorted_iterators(*iterables):     return heapq.merge(*iterables)",
+        "import heapq  def merge_sorted_iterators(*iterables):     return heapq.merge(*iterables)",
+        "import heapq  def merge_sorted_iterators(*iterables):     return heapq.merge(*iterables)"
+      ],
+      "observations": [
+        "Error executing action: invalid syntax (<unknown>, line 1)",
+        "Error executing action: invalid syntax (<unknown>, line 1)",
+        "Error executing action: invalid syntax (<unknown>, line 1)",
+        "Error executing action: invalid syntax (<unknown>, line 1)",
+        "Error executing action: invalid syntax (<unknown>, line 1)",
+        "Error executing action: invalid syntax (<unknown>, line 1)",
+        "Error executing action: invalid syntax (<unknown>, line 1)"
+      ],
+      "rewards": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "valid_action": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    "summary": {
+      "max_reward": 0,
+      "max_reward_idx": 0,
+      "turns_taken": 7,
+      "turns_max": 7
+    }
+  },
+  "108": {
+    "environment": "ic_python",
+    "dataset": "./data/python/mbpp/ic_mbpp.json",
+    "task_id": 108,
+    "query": "Write a python function to find the count of rotations of a binary string with odd value.",
+    "turn_history": {
+      "actions": [
+        "def count_rotations(binary_string):\n    count = 0\n    for i in range(len(binary_string)):\n        rotated = binary_string[i:] + binary_string[:i]\n        if int(rotated, 2) % 2 != 0:\n            count += 1\n    return count",
+        "def count_rotations(binary_string):\n    count = 0\n    for i in range(len(binary_string)):\n        rotated = binary_string[i:] + binary_string[:i]\n        if int(rotated, 2) % 2 != 0:\n            count += 1\n    return count",
+        "def count_rotations(binary_string):\n    count = 0\n    for i in range(len(binary_string)):\n        rotated = binary_string[i:] + binary_string[:i]\n        if int(rotated, 2) % 2 != 0:\n            count += 1\n    return count",
+        "def count_rotations(binary_string):\n    count = 0\n    for i in range(len(binary_string)):\n        rotated = binary_string[i:] + binary_string[:i]\n        if int(rotated, 2) % 2 != 0:\n            count += 1\n    return count",
+        "def count_rotations(binary_string):\n    count = 0\n    for i in range(len(binary_string)):\n        rotated = binary_string[i:] + binary_string[:i]\n        if int(rotated, 2) % 2 != 0:\n            count += 1\n    return count",
+        "def count_rotations(binary_string):\n    count = 0\n    for i in range(len(binary_string)):\n        rotated = binary_string[i:] + binary_string[:i]\n        if int(rotated, 2) % 2 != 0:\n            count += 1\n    return count",
+        "def count_rotations(binary_string):\n    count = 0\n    for i in range(len(binary_string)):\n        rotated = binary_string[i:] + binary_string[:i]\n        if int(rotated, 2) % 2 != 0:\n            count += 1\n    return count"
+      ],
+      "observations": [
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again."
+      ],
+      "rewards": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "valid_action": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    "summary": {
+      "max_reward": 0.0,
+      "max_reward_idx": 0,
+      "turns_taken": 7,
+      "turns_max": 7
+    }
+  },
+  "109": {
+    "environment": "ic_python",
+    "dataset": "./data/python/mbpp/ic_mbpp.json",
+    "task_id": 109,
+    "query": "Write a function to extract the ranges that are missing from the given list with the given start range and end range values.",
+    "turn_history": {
+      "actions": [
+        "def missing_ranges(nums, start, end):\n    result = []\n    nums = sorted(nums)\n    if start not in nums:\n        nums.insert(0, start-1)\n    if end not in nums:\n        nums.append(end+1)\n    for i in range(1, len(nums)):\n        if nums[i] - nums[i-1] > 1:\n            if nums[i-1] + 1 == nums[i] - 1:\n                result.append(str(nums[i-1] + 1))\n            else:\n                result.append(str(nums[i-1] + 1) + \"->\" + str(nums[i] - 1))\n    return result",
+        "def missing_ranges(nums, start, end):\n    result = []\n    nums = sorted(nums)\n    if start not in nums:\n        nums.insert(0, start-1)\n    if end not in nums:\n        nums.append(end+1)\n    for i in range(1, len(nums)):\n        if nums[i] - nums[i-1] > 1:\n            if nums[i-1] + 1 == nums[i] - 1:\n                result.append(nums[i-1] + 1)\n            else:\n                result.append((nums[i-1] + 1, nums[i] - 1))\n    return result",
+        "def missing_ranges(nums, start, end):\n    result = []\n    nums = sorted(nums)\n    if start not in nums:\n        nums.insert(0, start-1)\n    if end not in nums:\n        nums.append(end+1)\n    for i in range(1, len(nums)):\n        if nums[i] - nums[i-1] > 1:\n            if nums[i-1] + 1 == nums[i] - 1:\n                result.append([nums[i-1] + 1])\n            else:\n                result.append([nums[i-1] + 1, nums[i] - 1])\n    return result",
+        "def missing_ranges(nums, start, end):\n    result = []\n    nums = sorted(nums)\n    if start not in nums:\n        nums.insert(0, start)\n    if end not in nums:\n        nums.append(end)\n    for i in range(1, len(nums)):\n        if nums[i] - nums[i-1] > 1:\n            if nums[i-1] + 1 == nums[i] - 1:\n                result.append([nums[i-1] + 1])\n            else:\n                result.append([nums[i-1] + 1, nums[i] - 1])\n    return result",
+        "def missing_ranges(nums, start, end):\n    result = []\n    nums = sorted(nums)\n    if start not in nums:\n        nums.insert(0, start-1)\n    if end not in nums:\n        nums.append(end+1)\n    for i in range(1, len(nums)):\n        if nums[i] - nums[i-1] > 1:\n            if nums[i-1] + 1 == nums[i] - 1:\n                result.append((nums[i-1] + 1, nums[i-1] + 1))\n            else:\n                result.append((nums[i-1] + 1, nums[i] - 1))\n    return result",
+        "def missing_ranges(nums, start, end):\n    result = []\n    nums = sorted(nums)\n    if start not in nums:\n        nums.insert(0, start-1)\n    if end not in nums:\n        nums.append(end+1)\n    for i in range(1, len(nums)):\n        if nums[i] - nums[i-1] > 1:\n            result.append((nums[i-1] + 1, nums[i] - 1))\n    return result",
+        "def missing_ranges(nums, start, end):\n    nums = sorted(nums)\n    ranges = []\n    prev = start - 1\n     for num in nums:\n        if num == prev + 2:\n            ranges.append((prev + 1, prev + 1))\n        elif num > prev + 2:\n            ranges.append((prev + 1, num - 1))\n        prev = num\n     if end == prev + 1:\n        ranges.append((end, end))\n    elif end > prev + 1:\n        ranges.append((prev + 1, end))\n     return ranges"
+      ],
+      "observations": [
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "{'error': 'Error: unexpected indent (<string>, line 5)'}"
+      ],
+      "rewards": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "valid_action": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    "summary": {
+      "max_reward": 1.0,
+      "max_reward_idx": 6,
+      "turns_taken": 7,
+      "turns_max": 7
+    }
+  },
+  "110": {
+    "environment": "ic_python",
+    "dataset": "./data/python/mbpp/ic_mbpp.json",
+    "task_id": 110,
+    "query": "Write a function to find common elements in given nested lists. * list item * list item * list item * list item",
+    "turn_history": {
+      "actions": [
+        "def find_common_elements(nested_lists):\n    common_elements = set(nested_lists[0])\n    for lst in nested_lists[1:]:\n        common_elements.intersection_update(lst)\n    return list(common_elements)"
+      ],
+      "observations": [
+        "{'output': '', 'error': ''}"
+      ],
+      "rewards": [
+        1.0
+      ],
+      "valid_action": [
+        null
+      ]
+    },
+    "summary": {
+      "max_reward": 1.0,
+      "max_reward_idx": 0,
+      "turns_taken": 1,
+      "turns_max": 7
+    }
+  },
+  "111": {
+    "environment": "ic_python",
+    "dataset": "./data/python/mbpp/ic_mbpp.json",
+    "task_id": 111,
+    "query": "Write a python function to find the perimeter of a cylinder.",
+    "turn_history": {
+      "actions": [
+        "def cylinder_perimeter(radius, height):\n    import math\n    perimeter = 2 * math.pi * (radius + height)\n    return perimeter",
+        "def cylinder_perimeter(radius, height):\n    import math\n    perimeter = 2 * math.pi * radius * 2 + 2 * math.pi * height\n    return perimeter",
+        "def cylinder_perimeter(radius, height):\n    import math\n    perimeter = 2 * math.pi * radius\n    return perimeter",
+        "def cylinder_perimeter(radius, height):\n    import math\n    perimeter = 2 * math.pi * (radius + height)\n    return perimeter",
+        "def cylinder_perimeter(radius, height):\n    import math\n    perimeter = 2 * math.pi * radius * 2\n    return perimeter",
+        "def cylinder_perimeter(radius, height):\n    import math\n    perimeter = 2 * math.pi * radius\n    return perimeter",
+        "def cylinder_perimeter(radius, height):\n    import math\n    perimeter = 2 * math.pi * (radius + height)\n    return perimeter"
+      ],
+      "observations": [
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again."
+      ],
+      "rewards": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "valid_action": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    "summary": {
+      "max_reward": 0.0,
+      "max_reward_idx": 0,
+      "turns_taken": 7,
+      "turns_max": 7
+    }
+  },
+  "112": {
+    "environment": "ic_python",
+    "dataset": "./data/python/mbpp/ic_mbpp.json",
+    "task_id": 112,
+    "query": "Write a function to check if a string represents an integer or not.",
+    "turn_history": {
+      "actions": [
+        "def is_integer(s):\n    try:\n        int(s)\n        return True\n    except ValueError:\n        return False"
+      ],
+      "observations": [
+        "{'output': '', 'error': ''}"
+      ],
+      "rewards": [
+        1.0
+      ],
+      "valid_action": [
+        null
+      ]
+    },
+    "summary": {
+      "max_reward": 1.0,
+      "max_reward_idx": 0,
+      "turns_taken": 1,
+      "turns_max": 7
+    }
+  },
+  "113": {
+    "environment": "ic_python",
+    "dataset": "./data/python/mbpp/ic_mbpp.json",
+    "task_id": 113,
+    "query": "Write a function to assign frequency to each tuple in the given tuple list.",
+    "turn_history": {
+      "actions": [
+        "def assign_frequency(tuple_list):\n    frequency_dict = {}\n    for tup in tuple_list:\n        if tup in frequency_dict:\n            frequency_dict[tup] += 1\n        else:\n            frequency_dict[tup] = 1\n    return frequency_dict",
+        "def assign_frequency(tuple_list):\n    frequency_dict = {}\n    for tup in tuple_list:\n        if tup in frequency_dict:\n            frequency_dict[tup] += 1\n        else:\n            frequency_dict[tup] = 1\n    return [(key, value) for key, value in frequency_dict.items()]",
+        "def assign_frequency(tuple_list):\n    frequency_dict = {}\n    for tup in tuple_list:\n        if tup in frequency_dict:\n            frequency_dict[tup] += 1\n        else:\n            frequency_dict[tup] = 1\n    return frequency_dict",
+        "def assign_frequency(tuple_list):\n    frequency_dict = {}\n    for tup in tuple_list:\n        frequency_dict[tup] = frequency_dict.get(tup, 0) + 1\n    return frequency_dict",
+        "def assign_frequency(tuple_list):\n    frequency_dict = {}\n    for tup in tuple_list:\n        if tup in frequency_dict:\n            frequency_dict[tup] += 1\n        else:\n            frequency_dict[tup] = 1\n    return list(frequency_dict.items())",
+        "def assign_frequency(tuple_list):\n    frequency_dict = {}\n    for tup in tuple_list:\n        frequency_dict[tup] = frequency_dict.get(tup, 0) + 1\n    return [(key, value) for key, value in frequency_dict.items()]",
+        "def assign_frequency(tuple_list):\n    frequency_dict = {}\n    for tup in tuple_list:\n        frequency_dict[tup] = frequency_dict.get(tup, 0) + 1\n    return frequency_dict"
+      ],
+      "observations": [
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again."
+      ],
+      "rewards": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "valid_action": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    "summary": {
+      "max_reward": 0.0,
+      "max_reward_idx": 0,
+      "turns_taken": 7,
+      "turns_max": 7
+    }
+  },
+  "114": {
+    "environment": "ic_python",
+    "dataset": "./data/python/mbpp/ic_mbpp.json",
+    "task_id": 114,
+    "query": "Write a function to check whether all dictionaries in a list are empty or not.",
+    "turn_history": {
+      "actions": [
+        "def check_empty_dicts(dict_list):\n    return all(not d for d in dict_list)"
+      ],
+      "observations": [
+        "{'output': '', 'error': ''}"
+      ],
+      "rewards": [
+        1.0
+      ],
+      "valid_action": [
+        null
+      ]
+    },
+    "summary": {
+      "max_reward": 1.0,
+      "max_reward_idx": 0,
+      "turns_taken": 1,
+      "turns_max": 7
+    }
+  },
+  "115": {
+    "environment": "ic_python",
+    "dataset": "./data/python/mbpp/ic_mbpp.json",
+    "task_id": 115,
+    "query": "Write a function to convert a given tuple of positive integers into an integer.",
+    "turn_history": {
+      "actions": [
+        "def tuple_to_int(tup):\n    return int(''.join(map(str, tup)))"
+      ],
+      "observations": [
+        "{'output': '', 'error': ''}"
+      ],
+      "rewards": [
+        1.0
+      ],
+      "valid_action": [
+        null
+      ]
+    },
+    "summary": {
+      "max_reward": 1.0,
+      "max_reward_idx": 0,
+      "turns_taken": 1,
+      "turns_max": 7
+    }
+  },
+  "116": {
+    "environment": "ic_python",
+    "dataset": "./data/python/mbpp/ic_mbpp.json",
+    "task_id": 116,
+    "query": "Write a function to convert all possible convertible elements in the list to float.",
+    "turn_history": {
+      "actions": [
+        "def convert_to_float(lst):\n    for i in range(len(lst)):\n        try:\n            lst[i] = float(lst[i])\n        except ValueError:\n            pass\n    return lst",
+        "def convert_to_float(lst):\n    for i in range(len(lst)):\n        try:\n            lst[i] = float(lst[i])\n        except (ValueError, TypeError):\n            pass\n    return lst",
+        "def convert_to_float(lst):\n    new_lst = []\n    for i in lst:\n        try:\n            new_lst.append(float(i))\n        except (ValueError, TypeError):\n            new_lst.append(i)\n    return new_lst",
+        "def convert_to_float(lst):\n    return [float(i) if isinstance(i, (int, float, str)) and i.replace('.', '', 1).isdigit() else i for i in lst]",
+        "def convert_to_float(lst):\n    new_lst = []\n    for i in lst:\n        try:\n            new_lst.append(float(i))\n        except:\n            new_lst.append(i)\n    return new_lst",
+        "def convert_to_float(lst):\n    new_lst = []\n    for i in lst:\n        try:\n            new_lst.append(float(i))\n        except ValueError:\n            new_lst.append(i)\n    return new_lst",
+        "def convert_to_float(lst):\n    for i in range(len(lst)):\n        try:\n            lst[i] = float(lst[i])\n        except ValueError:\n            pass\n    return lst"
+      ],
+      "observations": [
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again."
+      ],
+      "rewards": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "valid_action": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    "summary": {
+      "max_reward": 0.0,
+      "max_reward_idx": 0,
+      "turns_taken": 7,
+      "turns_max": 7
+    }
+  },
+  "117": {
+    "environment": "ic_python",
+    "dataset": "./data/python/mbpp/ic_mbpp.json",
+    "task_id": 117,
+    "query": "[link text](https:// [link text](https:// [link text](https://)))write a function to convert a string to a list.",
+    "turn_history": {
+      "actions": [
+        "def string_to_list(input_string):\n    return list(input_string)",
+        "def string_to_list(input_string):\n    return input_string.split()"
+      ],
+      "observations": [
+        "Test case did not pass. Please try again.",
+        "{'output': '', 'error': ''}"
+      ],
+      "rewards": [
+        0.0,
+        1.0
+      ],
+      "valid_action": [
+        null,
+        null
+      ]
+    },
+    "summary": {
+      "max_reward": 1.0,
+      "max_reward_idx": 1,
+      "turns_taken": 2,
+      "turns_max": 7
+    }
+  },
+  "118": {
+    "environment": "ic_python",
+    "dataset": "./data/python/mbpp/ic_mbpp.json",
+    "task_id": 118,
+    "query": "Write a python function to find the element that appears only once in a sorted array.",
+    "turn_history": {
+      "actions": [
+        "def find_single_element(arr):\n    start = 0\n    end = len(arr) - 1\n     while start < end:\n        mid = (start + end) // 2\n        if mid % 2 == 0:\n            if arr[mid] == arr[mid + 1]:\n                start = mid + 2\n            else:\n                end = mid\n        else:\n            if arr[mid] == arr[mid - 1]:\n                start = mid + 1\n            else:\n                end = mid - 1\n     return arr[start]",
+        "def find_single_element(arr):\n    start = 0\n    end = len(arr) - 1\n    while start < end:\n        mid = (start + end) // 2\n        if mid % 2 == 0:\n            if arr[mid] == arr[mid + 1]:\n                start = mid + 2\n            else:\n                end = mid\n        else:\n            if arr[mid] == arr[mid - 1]:\n                start = mid + 1\n            else:\n                end = mid\n    return arr[start]",
+        "def find_single_element(arr):\n    start = 0\n    end = len(arr) - 1\n    while start < end:\n        mid = (start + end) // 2\n        if mid % 2 == 0:\n            if arr[mid] == arr[mid + 1]:\n                start = mid + 2\n            else:\n                end = mid\n        else:\n            if arr[mid] == arr[mid - 1]:\n                start = mid + 1\n            else:\n                end = mid - 1\n    return arr[start]",
+        "def find_single_element(arr):\n    start = 0\n    end = len(arr) - 1\n    while start < end:\n        mid = (start + end) // 2\n        if mid % 2 == 1:\n            if arr[mid] == arr[mid - 1]:\n                start = mid + 1\n            else:\n                end = mid\n        else:\n            if arr[mid] == arr[mid + 1]:\n                start = mid + 2\n            else:\n                end = mid\n    return arr[start]",
+        "def find_single_element(arr):\n    low = 0\n    high = len(arr) - 1\n     # Base cases\n    if high == 0:\n        return arr[0]\n    elif arr[0] != arr[1]:\n        return arr[0]\n    elif arr[high] != arr[high - 1]:\n        return arr[high]\n     # Binary search\n    while low <= high:\n        mid = (low + high) // 2\n         # If mid element is not equal to its neighbours\n        if arr[mid] != arr[mid - 1] and arr[mid] != arr[mid + 1]:\n            return arr[mid]\n         # If mid element is equal to its left neighbour and mid is even\n        elif arr[mid] == arr[mid - 1] and mid % 2 == 0:\n            high = mid - 1\n         # If mid element is equal to its right neighbour and mid is odd\n        elif arr[mid] == arr[mid + 1] and mid % 2 == 1:\n            high = mid - 1\n         else:\n            low = mid + 1\n     return -1"
+      ],
+      "observations": [
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "{'error': 'Error: unindent does not match any outer indentation level (<string>, line 23)'}"
+      ],
+      "rewards": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "valid_action": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    "summary": {
+      "max_reward": 1.0,
+      "max_reward_idx": 4,
+      "turns_taken": 5,
+      "turns_max": 7
+    }
+  },
+  "119": {
+    "environment": "ic_python",
+    "dataset": "./data/python/mbpp/ic_mbpp.json",
+    "task_id": 119,
+    "query": "Write a function to find the maximum product from the pairs of tuples within a given list.",
+    "turn_history": {
+      "actions": [
+        "def max_product_pairs(lst):\n    max_product = float('-inf')\n    for i in range(len(lst)):\n        for j in range(i+1, len(lst)):\n            product = lst[i][0]*lst[j][0] + lst[i][1]*lst[j][1]\n            if product > max_product:\n                max_product = product\n    return max_product",
+        "def max_product_pairs(lst):\n    max_product = float('-inf')\n    for i in range(len(lst)):\n        for j in range(i+1, len(lst)):\n            product = lst[i][0]*lst[j][0] + lst[i][1]*lst[j][1]\n            if product > max_product:\n                max_product = product\n    return max_product if max_product != float('-inf') else 0",
+        "def max_product_pairs(lst):\n    max_product = float('-inf')\n    for i in range(len(lst)):\n        for j in range(i+1, len(lst)):\n            product = max(lst[i][0]*lst[j][0], lst[i][1]*lst[j][1])\n            if product > max_product:\n                max_product = product\n    return max_product if max_product != float('-inf') else 0",
+        "def max_product_pairs(lst):\n    max_product = float('-inf')\n    for i in range(len(lst)):\n        for j in range(i+1, len(lst)):\n            product = max(lst[i][0]*lst[j][0], lst[i][1]*lst[j][1], lst[i][0]*lst[j][1], lst[i][1]*lst[j][0])\n            if product > max_product:\n                max_product = product\n    return max_product if max_product != float('-inf') else 0",
+        "def max_product_pairs(lst):\n    max_product = float('-inf')\n    for i in range(len(lst)):\n        for j in range(i+1, len(lst)):\n            product = lst[i][0]*lst[j][0] + lst[i][1]*lst[j][1]\n            if product > max_product:\n                max_product = product\n    return max_product if max_product != float('-inf') else 0",
+        "def max_product_pairs(lst):\n    max_product = float('-inf')\n    for i in range(len(lst)):\n        for j in range(i+1, len(lst)):\n            product = max(lst[i][0]*lst[j][0], lst[i][1]*lst[j][1])\n            if product > max_product:\n                max_product = product\n    return max_product if max_product != float('-inf') else 0",
+        "def max_product_pairs(lst):\n    max_product = float('-inf')\n    for i in range(len(lst)):\n        for j in range(i+1, len(lst)):\n            product = max(lst[i][0]*lst[j][0], lst[i][1]*lst[j][1], lst[i][0]*lst[j][1], lst[i][1]*lst[j][0])\n            if product > max_product:\n                max_product = product\n    return max_product if max_product != float('-inf') else 0"
+      ],
+      "observations": [
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again.",
+        "Test case did not pass. Please try again."
+      ],
+      "rewards": [
+        0.0,
+        0.0,
+        0.3333333333333333,
+        0.0,
+        0.0,
+        0.3333333333333333,
+        0.0
+      ],
+      "valid_action": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    "summary": {
+      "max_reward": 0.3333333333333333,
+      "max_reward_idx": 2,
+      "turns_taken": 7,
+      "turns_max": 7
+    }
+  }
+}
