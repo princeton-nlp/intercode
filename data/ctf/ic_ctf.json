@@ -349,5 +349,257 @@
     "query": "There's tapping coming in from the wires. What's it saying nc jupiter.challenges.picoctf.org 9422.",
     "gold": "picoCTF{M0RS3C0D31SFUN2683824610}",
     "source": "https://play.picoctf.org/practice/challenge/21"
+  },
+  {
+    "task_id": 58,
+    "query": "How about we take you on an adventure on exploring certificate signing requests. Take a look at this CSR file",
+    "gold": "picoCTF{read_mycert_57f58832}",
+    "source": "https://play.picoctf.org/practice/challenge/367"
+  },
+  {
+    "task_id": 59,
+    "query": "Someone just sent you an email claiming to be Google's co-founder Larry Page but you suspect a scam. Can you help us identify whose mail server the email actually originated from? The email file is `email-export.eml`. Flag: picoCTF{FirstnameLastname}",
+    "gold": "picoCTF{WilhelmZwalina}",
+    "source": "https://play.picoctf.org/practice/challenge/388"
+  },
+  {
+    "task_id": 60,
+    "query": "Can you make sense of this file?",
+    "gold": "picoCTF{base64_n3st3d_dic0d!n8_d0wnl04d3d_73494190}",
+    "source": "https://play.picoctf.org/practice/challenge/371"
+  },
+  {
+    "task_id": 61,
+    "query": "Attackers have hidden information in a very large mass of data in the past, maybe they are still doing it.",
+    "gold": "picoCTF{gr3p_15_@w3s0m3_4c479940}",
+    "source": "https://play.picoctf.org/practice/challenge/279"
+  },
+  {
+    "task_id": 62,
+    "query": "I decided to try something noone else has before. I made a bot to automatically trade stonks for me using AI and machine learning. I wouldn't believe you if you told me it's unsecure!. Source is vuln.c. Provide the flag here: nc mercury.picoctf.net 6989",
+    "gold": "picoCTF{I_l05t_4ll_my_m0n3y_0a853e52}",
+    "source": "https://play.picoctf.org/practice/challenge/105"
+  },
+  {
+    "task_id": 63,
+    "query": "Using tabcomplete in the Terminal will add years to your life, esp. when dealing with long rambling directory structures and filenames.",
+    "gold": "picoCTF{l3v3l_up!_t4k3_4_r35t!_2bcfb2ab}",
+    "source": "https://play.picoctf.org/practice/challenge/176"
+  },
+  {
+    "task_id": 64,
+    "query": "Take the packet capture file and use packet analysis software to find the flag.",
+    "gold": "picoCTF{p4ck37_5h4rk_ceccaa7f}",
+    "source": "https://play.picoctf.org/practice/challenge/286"
+  },
+  {
+    "task_id": 65,
+    "query": "Use `srch_strings` from the sleuthkit and some terminal-fu to find a flag in this disk image: dds1-alpine.flag.img.gz",
+    "gold": "picoCTF{f0r3ns1c4t0r_n30phyt3_a6f4cab5}",
+    "source": "https://play.picoctf.org/practice/challenge/113"
+  },
+  {
+    "task_id": 66,
+    "query": "Use mmls on it to find the size of the Linux partition. Connect to the remote checker service to check your answer and get the flag. nc saturn.picoctf.net 64605",
+    "gold": "picoCTF{mm15_f7w!}",
+    "source": "https://play.picoctf.org/practice/challenge/301"
+  },
+  {
+    "task_id": 67,
+    "query": "Now you DON’T see me. This report has some critical data in it, some of which have been redacted correctly, while some were not. Can you find an important key that was not redacted properly?",
+    "gold": "picoCTF{C4n_Y0u_S33_m3_fully}",
+    "source": "https://play.picoctf.org/practice/challenge/290"
+  },
+  {
+    "task_id": 68,
+    "query": "Can you figure out what is in the eax register in this assembly dump? Put your answer in the picoCTF flag format: picoCTF{n} where n is the contents of the eax register in the decimal number base. If the answer was 0x11 your flag would be picoCTF{17}.",
+    "gold": "picoCTF{654874}",
+    "source": "https://play.picoctf.org/practice/challenge/392"
+  },
+  {
+    "task_id": 69,
+    "query": "What happens if you have a small exponent? There is a twist though, we padded the plaintext so that (M ** e) is just barely larger than N. Let's decrypt this ciphertext",
+    "gold": "picoCTF{e_sh0u1d_b3_lArg3r_0b39bbb1}",
+    "source": "https://play.picoctf.org/practice/challenge/188"
+  },
+  {
+    "task_id": 70,
+    "query": "'Suspicious' is written all over this disk image. Download suspicious.dd.sda1",
+    "gold": "picoCTF{b3_5t111_mL|_<3_b945d7b6}",
+    "source": "https://play.picoctf.org/practice/challenge/87"
+  },
+  {
+    "task_id": 71,
+    "query": "I've hidden a flag in this file. Can you find it? Forensics is fun.pptm",
+    "gold": "picoCTF{D1d_u_kn0w_ppts_r_z1p5}",
+    "source": "https://play.picoctf.org/practice/challenge/130"
+  },
+  {
+    "task_id": 72,
+    "query": "We found a brand new type of encryption, can you break the secret code? (Wrap with picoCTF{}) dcebcmebecamcmanaedbacdaanafagapdaaoabaaafdbapdpaaapadanandcafaadbdaapdpandcac new_caesar.py",
+    "gold": "picoCTF{et_tu?_07d5c0892c1438d2b32600e83dc2b0e5}",
+    "source": "https://play.picoctf.org/practice/challenge/158"
+  },
+  {
+    "task_id": 73,
+    "query": "A one-time pad is unbreakable, but can you manage to recover the flag? (Wrap with picoCTF{}) nc mercury.picoctf.net 36981 otp.py",
+    "gold": "picoCTF{7f9da29f40499a98db220380a57746a4}",
+    "source": "https://play.picoctf.org/practice/challenge/125"
+  },
+  {
+    "task_id": 74,
+    "query": "The one time pad can be cryptographically secure, but not when you know the key. Can you solve this? We've given you the encrypted flag, key, and a table to help UFJKXQZQUNB with the key of SOLVECRYPTO. Can you use given table.txt to solve it?.",
+    "gold": "picoCTF{CRYPTOISFUN}",
+    "source": "https://play.picoctf.org/practice/challenge/43"
+  },
+  {
+    "task_id": 75,
+    "query": "Can you figure out what is in the eax register in this assembly dump? Put your answer in the picoCTF flag format: picoCTF{n} where n is the contents of the eax register in the decimal number base. If the answer was 0x11 your flag would be picoCTF{17}.",
+    "gold": "picoCTF{2619997}",
+    "source": "https://play.picoctf.org/practice/challenge/393"
+  },
+  {
+    "task_id": 76,
+    "query": "What does asm1(0x6fa) return? Submit the flag as a hexadecimal value (starting with '0x'). NOTE: Your submission for this question will NOT be in the normal flag format.",
+    "gold": "0x6e8",
+    "source": "https://play.picoctf.org/practice/challenge/20"
+  },
+  {
+    "task_id": 77,
+    "query": "For what argument does this program print `win` with variables 87, 3 and 3? File: chall_1.S Flag format: picoCTF{XXXXXXXX} -> (hex, lowercase, no 0x, and 32 bits. ex. 5614267 would be picoCTF{0055aabb})",
+    "gold": "picoCTF{000000e8}",
+    "source": "https://play.picoctf.org/practice/challenge/111"
+  },
+  {
+    "task_id": 78,
+    "query": "Can you get the flag? Run this Python program in the same directory as this encrypted flag.",
+    "gold": "picoCTF{d30bfu5c4710n_f7w_5e14b257}",
+    "source": "https://play.picoctf.org/practice/challenge/256"
+  },
+  {
+    "task_id": 79,
+    "query": "To get the flag, you must break RSA not once, but three times! Given public-key.txt and encrypt.txt.",
+    "gold": "picoCTF{1_gu3ss_tr1pl3_rs4_1snt_tr1pl3_s3cur3!!!!!!}",
+    "source": "https://play.picoctf.org/practice/challenge/209"
+  },
+  {
+    "task_id": 80,
+    "query": "Can you decrypt this message? Decrypt cipher.txt using this key 'CYLAB'.",
+    "gold": "picoCTF{D0NT_US3_V1G3N3R3_C1PH3R_ae82272q}",
+    "source": "https://play.picoctf.org/practice/challenge/316"
+  },
+  {
+    "task_id": 81,
+    "query": "What integer does this program print with argument 1048110976? File: chall_3.S Flag format: picoCTF{XXXXXXXX} -> (hex, lowercase, no 0x, and 32 bits. ex. 5614267 would be picoCTF{0055aabb})",
+    "gold": "picoCTF{00000030}",
+    "source": "https://play.picoctf.org/practice/challenge/106"
+  },
+  {
+    "task_id": 82,
+    "query": "What integer does this program print with argument 3736234946? File: chall_2.S Flag format: picoCTF{XXXXXXXX} -> (hex, lowercase, no 0x, and 32 bits. ex. 5614267 would be picoCTF{0055aabb})",
+    "gold": "picoCTF{9C174346}",
+    "source": "https://play.picoctf.org/practice/challenge/150"
+  },
+  {
+    "task_id": 83,
+    "query": "What integer does this program print with arguments 266134863 and 1592237099? File: chall.S Flag format: picoCTF{XXXXXXXX} -> (hex, lowercase, no 0x, and 32 bits. ex. 5614267 would be picoCTF{0055aabb})",
+    "gold": "picoCTF{5EE79C2B}",
+    "source": "https://play.picoctf.org/practice/challenge/160"
+  },
+  {
+    "task_id": 84,
+    "query": "What integer does this program print with argument 3251372985? File: chall_4.S Flag format: picoCTF{XXXXXXXX} -> (hex, lowercase, no 0x, and 32 bits. ex. 5614267 would be picoCTF{0055aabb})",
+    "gold": "picoCTF{C1CC042C}",
+    "source": "https://play.picoctf.org/practice/challenge/183"
+  },
+  {
+    "task_id": 85,
+    "query": "It's not a bad idea to learn to read Powershell. We give you the output, but do you think you can find the input? rev_PS.ps1 output.txt",
+    "gold": "picoCTF{2018highw@y_2_pow3r$hel!}",
+    "source": "https://play.picoctf.org/practice/challenge/119"
+  },
+  {
+    "task_id": 86,
+    "query": "Another slight twist on a classic, see if you can recover the flag. (Wrap with picoCTF{}) lejjlnjmjndkmjinkilbmlljjkmnakmmighhocmllojhjmaijpiohnlojmokjkja new_vignere.py",
+    "gold": "picoCTF{73885da7b4e46e4d01ee934278716e68}",
+    "source": "https://play.picoctf.org/practice/challenge/148"
+  },
+  {
+    "task_id": 87,
+    "query": "Let's start off simple, can you overflow the correct buffer? You can view source in vuln.c. And connect with it using: nc saturn.picoctf.net 65443 to get the flag",
+    "gold": "picoCTF{ov3rfl0ws_ar3nt_that_bad_c5ca6248}",
+    "source": "https://play.picoctf.org/practice/challenge/257"
+  },
+  {
+    "task_id": 88,
+    "query": "The program provided allows you to write to a file and read what you wrote from it. Try playing around with it and see if you can break it! Connect to the program with netcat: $ nc saturn.picoctf.net 51109. The program's source code with the flag redacted can be downloaded here.",
+    "gold": "picoCTF{M4K3_5UR3_70_CH3CK_Y0UR_1NPU75_E0394EC0}",
+    "source": "https://play.picoctf.org/practice/challenge/252"
+  },
+  {
+    "task_id": 89,
+    "query": "Here's a program that plays rock, paper, scissors against you. I hear something good happens if you win 5 times in a row. Connect to the program with netcat: $ nc saturn.picoctf.net 62039 The program's source code with the flag redacted can be downloaded here.",
+    "gold": "picoCTF{50M3_3X7R3M3_1UCK_B69E01B8}",
+    "source": "https://play.picoctf.org/practice/challenge/293"
+  },
+  {
+    "task_id": 90,
+    "query": "Cryptography can be easy, do you know what ROT13 is? cvpbPGS{abg_gbb_onq_bs_n_ceboyrz}",
+    "gold": "picoCTF{not_too_bad_of_a_problem}",
+    "source": "https://play.picoctf.org/practice/challenge/62"
+  },
+  {
+    "task_id": 91,
+    "query": "We found this weird message in message.txt being passed around on the servers, we think we have a working decryption scheme. Take each number mod 37 and map it to the following character set: 0-25 is the alphabet (uppercase), 26-35 are the decimal digits, and 36 is an underscore. Wrap your decrypted message in the picoCTF flag format (i.e. picoCTF{decrypted_message})",
+    "gold": "picoCTF{R0UND_N_R0UND_79C18FB3}",
+    "source": "https://play.picoctf.org/practice/challenge/253"
+  },
+  {
+    "task_id": 92,
+    "query": "A new modular challenge in messages.txt! Take each number mod 41 and find the modular inverse for the result. Then map to the following character set: 1-26 are the alphabet, 27-36 are the decimal digits, and 37 is an underscore. Wrap your decrypted message in the picoCTF flag format (i.e. picoCTF{decrypted_message})",
+    "gold": "picoCTF{1NV3R53LY_H4RD_C680BDC1}",
+    "source": "https://play.picoctf.org/practice/challenge/254"
+  },
+  {
+    "task_id": 93,
+    "query": "Our data got corrupted on the way here. Luckily, nothing got replaced, but every block of 3 got scrambled around! The first word seems to be three letters long, maybe you can use that to recover the rest of the message.",
+    "gold": "picoCTF{7R4N5P051N6_15_3XP3N51V3_A9AFB178}",
+    "source": "https://play.picoctf.org/practice/challenge/312"
+  },
+  {
+    "task_id": 94,
+    "query": "This garden contains more than it seems.",
+    "gold": "picoCTF{more_than_m33ts_the_3y3657BaB2C}",
+    "source": "https://play.picoctf.org/practice/challenge/44"
+  },
+  {
+    "task_id": 95,
+    "query": "Your goal is to find the flag. compress_and_attack.py nc mercury.picoctf.net 2431",
+    "gold": "picoCTF{sheriff_you_solved_the_crime}",
+    "source": "https://play.picoctf.org/practice/challenge/127"
+  },
+  {
+    "task_id": 96,
+    "query": "We found a leak of a blackmarket website's login credentials. Can you find the password of the user cultiris and successfully decrypt it? The first user in usernames.txt corresponds to the first password in passwords.txt. The second user corresponds to the second password, and so on.",
+    "gold": "picoCTF{C7r1F_54V35_71M3}",
+    "source": "https://play.picoctf.org/practice/challenge/261"
+  },
+  {
+    "task_id": 97,
+    "query": "You will find the flag after decrypting this file",
+    "gold": "picoCTF{r0tat1on_d3crypt3d_a4b7d759}",
+    "source": "https://play.picoctf.org/practice/challenge/373"
+  },
+  {
+    "task_id": 98,
+    "query": "Can you figure out what is in the eax register in the given assembly dump? Put your answer in the picoCTF flag format: picoCTF{n} where n is the contents of the eax register in the decimal number base. If the answer was 0x11 your flag would be picoCTF{17}.",
+    "gold": "picoCTF{48}",
+    "source": "https://play.picoctf.org/practice/challenge/391"
+  },
+  {
+    "task_id": 99,
+    "query": "Can you figure out what is in the eax register in the given assembly dump? Put your answer in the picoCTF flag format: picoCTF{n} where n is the contents of the eax register in the decimal number base. If the answer was 0x11 your flag would be picoCTF{17}.",
+    "gold": "picoCTF{654773}",
+    "source": "https://play.picoctf.org/practice/challenge/394"
   }
 ]
