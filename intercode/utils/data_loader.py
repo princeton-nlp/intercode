@@ -36,18 +36,18 @@ class IntercodeDataLoader():
         else:
             raise ValueError(f"Unsupported file type: {file_ext}")
 
-        if "gold" not in data.columns or "query" not in data.columns:
-            raise ValueError("Data must have columns/fields 'gold' and 'query'")
+        if "query" not in data.columns:
+            raise ValueError("Data must have 'query' column/field")
         return data
     
     def _validate_file_path(self, file_path: str):
         """Check if the file extension is one of tsv, csv, json, or pickle"""
         if not os.path.exists(file_path):
-            raise OSError("Invalid file path")
+            raise OSError(f"Invalid file path: {file_path}")
         valid_extensions = [".tsv", ".csv", ".pickle", ".pkl", ".json"]
         _, ext = os.path.splitext(file_path)
         if ext not in valid_extensions:
-            raise ValueError("File type is not supported")
+            raise ValueError(f"File type is not supported: {file_path}")
 
     def __len__(self):
         return len(self.data)

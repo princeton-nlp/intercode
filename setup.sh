@@ -15,3 +15,6 @@ docker build -t intercode-python -f docker/python.Dockerfile .
 
 echo "Setting up docker images for ctf..."
 docker build -t intercode-ctf -f docker/ctf.Dockerfile .
+
+echo "Setting up docker images for swe-bench..."
+docker build -t intercode-swe -f docker/swe.Dockerfile .
