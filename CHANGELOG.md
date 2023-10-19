@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file.
 
-## [1.0.2] - 10/27/2023
+## [1.0.2] - 10/19/2023
 
 * The InterCode [webpage](https://intercode-benchmark.github.io/) has been modified to be a leaderboard style 🏆.
 * If you evaluate on InterCode and would like to put your results on the leaderboard, please create an issue or email John directly 📧.
