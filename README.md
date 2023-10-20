@@ -81,6 +81,15 @@ If InterCode was installed successfully, the InterCode SQL environment should be
 You can `ctrl + c` at any to time to exit the environment.
 Check [`run_demo.py`](https://github.com/princeton-nlp/intercode/blob/master/run_demo.py#L21) for the latest full list of available environments.
 
+### 🧪 Run Experiments
+If you'd like to run the scripts in the `experiments` folder, make sure you have at least one of the following keys declared
+1. As an environment variable, or
+2. Specified in a `keys.cfg` file formatted as follows + located in the root of this repository:
+```
+OPENAI_API_KEY: 'key here'
+PALM_API_KEY: 'key here'
+```
+
 ## 🔎 Learn More
 If you'd like to...
 * Get a more in depth, but still brief overview of InterCode, see [here](https://github.com/princeton-nlp/intercode/wiki/1.-Environment-%F0%9F%97%BA%EF%B8%8F)

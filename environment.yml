@@ -16,6 +16,7 @@ dependencies:
     - pymysql
     - pytest
     - rich
+    - rpyc
     - scikit-learn
     - sqlalchemy
     - tenacity
