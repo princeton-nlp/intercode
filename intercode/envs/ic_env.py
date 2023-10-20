@@ -129,7 +129,8 @@ class IntercodeEnv(ABC, gym.Env):
             self.logger.info("-------------\nNew task episode initialized")
             self.query_idx = np.random.randint(0, len(self.data_loader)) if index is None else index
             self.record = self.data_loader.get(self.query_idx)
-            self.query, self.gold = self.record["query"], self.record["gold"]
+            self.query = self.record["query"]
+            self.gold = self.record["gold"] if "gold" in self.record else "N/A"
             self.logger.info(f"Query: {self.query}")
             self.logger.info(f"Gold: {self.gold}")
             self.observation = self.query

@@ -16,6 +16,7 @@ IMAGE_TO_SETTINGS = {
     "intercode-bash": "/bin/sh",
     "intercode-nl2bash": "/bin/bash",
     "intercode-ctf": "/bin/bash",
+    "intercode-swe": "/bin/bash",
 }
 
 class BashEnv(IntercodeEnv):

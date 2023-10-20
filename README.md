@@ -16,9 +16,9 @@ Build interactive code environments for interactive code agents.
 Please refer to the [change log](https://github.com/princeton-nlp/intercode/blob/master/CHANGELOG.md) for information on the latest updates to the InterCode environment.
 
 ## 👋 Overview
-InterCode is a **lightweight, flexible, and easy-to-use framework** for designing interactive code environments. Following the popular [`gym`](https://gymnasium.farama.org/) interface definition, InterCode makes it easy to quickly define a code environment and deploy an agent to operate in code within the context of the environment.
+InterCode is a lightweight, flexible, and easy-to-use **framework for designing interactive code environments** to **evaluate language agents that can code**.
 
-For an overview of InterCode, building interactive code tasks with InterCode, and evaluating agents on InterCode environments, please check out our [wiki](https://github.com/princeton-nlp/intercode/wiki), [website](https://intercode-benchmark.github.io/), and the original paper:
+For an overview of InterCode, building interactive code tasks with InterCode, and evaluating agents on InterCode environments, please check out our [website](https://intercode-benchmark.github.io/), [wiki](https://github.com/princeton-nlp/intercode/wiki), and the original paper:
 
 **[InterCode: Standardizing and Benchmarking Interactive Coding with Execution Feedback](https://arxiv.org/abs/2306.14898)**    
 [John Yang](https://john-b-yang.github.io/), [Akshara Prabhakar](https://aksh555.github.io/), [Karthik Narasimhan](https://www.cs.princeton.edu/~karthikn/), [Shunyu Yao](https://ysymyth.github.io/)
@@ -62,7 +62,9 @@ if __name__ == '__main__':
 ```
 3. Run the file (i.e. `python run_bash.py`)
 
-If InterCode was installed successfully, the InterCode Bash environment should be started successfully and a CLI interpreter should appear, allowing you to enter `bash` commands to interact with the task setting. You can `^c` at any to time to exit the environment. Similar starter code for the InterCode SQL environment is available on the PyPI [page](https://pypi.org/project/intercode-bench/).
+If InterCode was installed successfully, the InterCode Bash environment should be started successfully and a CLI interpreter should appear, allowing you to enter `bash` commands to interact with the task setting.
+You can `ctrl + c` at any to time to exit the environment.
+Similar starter code for the InterCode SQL environment is available on the PyPI [page](https://pypi.org/project/intercode-bench/).
 
 ### 💽 Build from Source
 1. Clone this repository, create a virtual environment, and install necessary dependencies
@@ -75,12 +77,14 @@ conda activate intercode
 2. Run `setup.sh` to create the docker images for the InterCode Bash, CTF, Python, and SQL environments
 3. Run `python run_demo.py sql`
 
-If InterCode was installed successfully, the InterCode SQL environment should be started successfully and a CLI interpreter should appear, allowing you to enter `SQL` commands to interact with the task environment. You can `^c` at any to time to exit the environment. You can run `python run_demo.py [bash|ctf|python|sql]` to interact with any of the current four InterCode environments.
+If InterCode was installed successfully, the InterCode SQL environment should be started successfully and a CLI interpreter should appear, allowing you to enter `SQL` commands to interact with the task environment.
+You can `ctrl + c` at any to time to exit the environment.
+Check [`run_demo.py`](https://github.com/princeton-nlp/intercode/blob/master/run_demo.py#L21) for the latest full list of available environments.
 
 ## 🔎 Learn More
 If you'd like to...
 * Get a more in depth, but still brief overview of InterCode, see [here](https://github.com/princeton-nlp/intercode/wiki/1.-Environment-%F0%9F%97%BA%EF%B8%8F)
-* Access the InterCode Bash, CTF, Python, or SQL environment, see [here](https://github.com/princeton-nlp/intercode/wiki/2.-Usage-%F0%9F%8E%AE)
+* Access an InterCode environment, see [here](https://github.com/princeton-nlp/intercode/wiki/2.-Usage-%F0%9F%8E%AE)
 * Build an interactive code task with InterCode, see [here](https://github.com/princeton-nlp/intercode/wiki/3.-Interface--%F0%9F%9B%A0%EF%B8%8F)
 * Run language and code agents on InterCode based environments, see [here](https://github.com/princeton-nlp/intercode/wiki/4.-Experiments-%F0%9F%A7%AA)
 
@@ -95,11 +99,12 @@ Contact person: [John Yang](https://john-b-yang.github.io/)
 If you find this repository helpful, feel free to cite our [publication](https://arxiv.org/abs/2306.14898).
 ```
 @inproceedings{yang2023intercode,
-  title = {InterCode: Standardizing and Benchmarking Interactive Coding with Execution Feedback},
-  author = {Yang, John and Prabhakar, Akshara and Narasimhan, Karthik and Yao, Shunyu},
-  booktitle = {ArXiv},
-  year = {2023},
-  html = {https://arxiv.org/abs/2207.01206}
+    title={InterCode: Standardizing and Benchmarking Interactive Coding with Execution Feedback}, 
+    author={John Yang and Akshara Prabhakar and Karthik Narasimhan and Shunyu Yao},
+    year={2023},
+    eprint={2306.14898},
+    archivePrefix={arXiv},
+    primaryClass={cs.CL}
 }
 ```
 

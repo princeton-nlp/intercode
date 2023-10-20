@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.2] - 10/19/2023
+
+* The InterCode [webpage](https://intercode-benchmark.github.io/) has been modified to be a leaderboard style 🏆.
+* If you evaluate on InterCode and would like to put your results on the leaderboard, please create an issue or email John directly 📧.
+* We wrote a standalone [report](https://john-b-yang.github.io/static/misc/preprint_InterCode_CTF.pdf) describing the operational **InterCode-CTF** 🚩 environment, a dataset of **100** task instances, and our initial experiments. 
+* 🚨 New Environment! The recently released [SWE-bench](https://swe-bench.github.io/) benchmark introduces *software engineering* as a task. To support agent-based approaches, we have released the **IC-SWE-bench** environment, which presents the SWE-bench task in an interactive setting!
+
+✍🏻 John 
+
 ## [1.0.1] - 8/15/2023
 
 Since its initial release, I am pleased to announce that InterCode has been extended to support a number of new languages and datasets. They are summarized as follows:

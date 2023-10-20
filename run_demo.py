@@ -2,7 +2,7 @@ import argparse
 import readline
 
 from intercode.envs import (
-    BashEnv, PythonEnv, SqlEnv, CTFEnv
+    BashEnv, PythonEnv, SqlEnv, CTFEnv, SWEEnv
 )
 from experiments.policies import HumanPolicy
 from typing import Dict, List
@@ -22,7 +22,8 @@ DEMO_MAP = {
     "bash": {"env": BashEnv, "image_name": "intercode-nl2bash", "data_path": "./data/bash/nl2bash/nl2bash_fs_1.json"},
     "python": {"env": PythonEnv, "image_name": "intercode-python", "data_path": "./data/python/mbpp/ic_mbpp.json"},
     "sql": {"env": SqlEnv, "image_name": "docker-env-sql", "data_path": "./data/sql/bird/ic_bird.json", "preprocess": preprocess_sql},
-    "ctf": {"env": CTFEnv, "image_name": "intercode-ctf", "data_path": "./data/ctf/ic_ctf.json", "preprocess": preprocess_ctf}
+    "ctf": {"env": CTFEnv, "image_name": "intercode-ctf", "data_path": "./data/ctf/ic_ctf.json", "preprocess": preprocess_ctf},
+    "swe": {"env": SWEEnv, "image_name": "intercode-swe", "data_path": "./data/swe-bench/ic_swe_bench.json"}
 }
 
 
