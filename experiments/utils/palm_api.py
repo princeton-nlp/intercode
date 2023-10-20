@@ -12,7 +12,6 @@ api_key = os.environ.get("PALM_API_KEY")
 if (api_key is None or api_key == "") and os.path.isfile(os.path.join(os.getcwd(), "keys.cfg")):
     cfg = config.Config('keys.cfg')
     api_key = cfg.get("PALM_API_KEY")
-assert(api_key != None)
 palm.configure(api_key=api_key)
 
 @retry.Retry()
