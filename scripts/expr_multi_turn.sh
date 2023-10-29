@@ -3,7 +3,7 @@
 # Data Paths
 # - (SQL)  ./data/sql/spider/ic_spider_dev.json
 # - (SQL)  ./data/test/sql_queries.csv
-# - (Bash) ./data/bash/nl2bash/nl2bash.json
+# - (Bash) ./data/nl2bash/nl2bash.json
 # - (Bash) ./data/test/bash_queries.json
 
 # Environments
@@ -20,7 +20,7 @@
 
 # Bash Call
 # python -m experiments.eval_n_turn \
-#     --data_path ./data/bash/nl2bash/nl2bash_fs_1.json \
+#     --data_path ./data/nl2bash/nl2bash_fs_1.json \
 #     --dialogue_limit 7 \
 #     --env bash \
 #     --image_name intercode-nl2bash \

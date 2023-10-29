@@ -11,7 +11,7 @@ python transform.py <Path to BIRD dataset>
 * You can also run this script on the 
 
 ## Dataset Description
-The script performs very simple adjustments to the BIRD-SQQL dataset to create an InterCode compatible version.
+The script performs very simple adjustments to the BIRD-SQL dataset to create an InterCode compatible version.
 
 To create the `ic_bird.json` task instances, the `transform.py` script iterates through the `dev.json` file and performs the following steps:
 1. Changes the names of the following fields:

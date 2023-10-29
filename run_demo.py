@@ -19,7 +19,7 @@ def preprocess_sql(record: Dict) -> List:
     return [f"use {db}"]
 
 DEMO_MAP = {
-    "bash": {"env": BashEnv, "image_name": "intercode-nl2bash", "data_path": "./data/bash/nl2bash/nl2bash_fs_1.json"},
+    "bash": {"env": BashEnv, "image_name": "intercode-nl2bash", "data_path": "./data/nl2bash/nl2bash_fs_1.json"},
     "python": {"env": PythonEnv, "image_name": "intercode-python", "data_path": "./data/python/mbpp/ic_mbpp.json"},
     "sql": {"env": SqlEnv, "image_name": "docker-env-sql", "data_path": "./data/sql/bird/ic_bird.json", "preprocess": preprocess_sql},
     "ctf": {"env": CTFEnv, "image_name": "intercode-ctf", "data_path": "./data/ctf/ic_ctf.json", "preprocess": preprocess_ctf},

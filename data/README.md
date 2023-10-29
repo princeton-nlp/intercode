@@ -1,12 +1,10 @@
 # InterCode Data
-This folder contains 1. the data for all datasets that have been converted to be InterCode-compatible and operable with one of the `bash`, `python`, or `sql` InterCode environments, and 2. the evaluation results from experiments presented in the main paper.
+This folder contains 1. the data for all datasets that have been converted to be InterCode compatible and operable with one of the InterCode environments, and 2. the evaluation results from experiments presented in the main paper.
 
 The directory is laid out as follows:
 ```
-├── bash/
-│   ├── nl2bash/
-│   └── test_bash_queries.json
 ├── ctf
+├── nl2bash/
 ├── python
 │   ├── apps/
 │   └── mbpp/
@@ -18,7 +16,7 @@ The directory is laid out as follows:
     ├── bird/
     └── spider/
 ```
-The `bash`, `python`, and `sql` folders contain corresponding datasets that have been migrated to be compatible with the named InterCode environment. Each subfolder usually contains a `README.md` describing how the conversion was performed, a `transform.py` that performs the described conversion, and data files that are the task instances and any additional setup required to run the dataset on InterCode.
+Each folder contains corresponding datasets that have been migrated to be compatible with one of the 5 InterCode environment. Each subfolder usually contains a `README.md` describing how the conversion was performed, a `transform.py` that performs the described conversion, and data files that are the task instances and any additional setup required to run the dataset on InterCode.
 
 The `results` directory has model-specific folders, each of which contains experiment results for the model run with different strategies (i.e. Try Again, ReAct, Plan & Solve). Each json file contains a list of trajectories, where each trajectory corresponds to information from a single task episode.
 
