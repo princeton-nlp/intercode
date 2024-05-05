@@ -40,21 +40,22 @@ pip install intercode-bench
 ```
 2. Copy + Paste the following code for interacting with the InterCode Bash environment into a python file (i.e. `run_bash.py`)
 ```python
-import readline
 from intercode.assets import bash_build_docker, bash_image_name, bash_test_data
 from intercode.envs import BashEnv
 
 if __name__ == '__main__':
     bash_build_docker()
-    env = BashEnv(bash_image_name, data_path=bash_test_data, traj_dir="logs/", verbose=True)
+    env = BashEnv(bash_image_name, data_path=bash_test_data, traj_dir="logs/", verbose=True) # Set verbose=False to silence Docker output
 
     try:
-        for idx in range(3):
-            env.reset()
-            obs, done = env.observation, False
+        for idx in range(24): # 24 data points in the test set
+            env.reset(idx) # pass the index to prevent random data selection
+            obs, done = env.observation, False # obs here is the natural language prompt
             while not done:
                 action = input('> ')
                 obs, reward, done, info = env.step(action)
+                # After passing 'submit' to action, reward contains the score for that iteration
+                # Note: Success Rate = (number of scores == 1.0 / total number of scores)
     except KeyboardInterrupt:
         print("Keyboard interrupt detected")
     finally:
