@@ -32,7 +32,7 @@ if (api_key is None or api_key == "") and os.path.isfile(os.path.join(os.getcwd(
 openai.api_key = api_key
 
 def llm(prompt, stop=["\n"]):
-    response = openai.Completion.create(
+    response = openai.completions.create(
       model="text-davinci-003",
       prompt=prompt,
       temperature=0,

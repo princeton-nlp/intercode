@@ -36,7 +36,7 @@ if (api_key is None or api_key == "") and os.path.isfile(os.path.join(os.getcwd(
 openai.api_key = api_key
 
 def llm(messages, stop=["\n"]):
-    response = openai.ChatCompletion.create(
+    response = openai.chat.completions.create(
         model="gpt-3.5-turbo",
         messages=messages,
         temperature=0,

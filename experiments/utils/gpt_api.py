@@ -20,12 +20,12 @@ openai.api_key = api_key
 # Define retry decorator to handle OpenAI API timeouts
 @retry(wait=wait_random_exponential(min=20, max=100), stop=stop_after_attempt(6))
 def completion_with_backoff(**kwargs):
-    return openai.Completion.create(**kwargs)
+    return openai.completions.create(**kwargs)
 
 # Define retry decorator to handle OpenAI API timeouts
 @retry(wait=wait_random_exponential(min=1, max=60), stop=stop_after_attempt(6))
 def chat_with_backoff(**kwargs):
-    return openai.ChatCompletion.create(**kwargs)
+    return openai.chat.completions.create(**kwargs)
 
 # Define GPT-3 completion function
 def CompletionGPT(phrase, model="text-davinci-003", num_samples=1):
