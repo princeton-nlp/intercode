@@ -2,12 +2,12 @@ FROM ubuntu:latest
 
 # Install required dependencies
 RUN apt-get update && \
-    apt-get install -y bash python3 python3-pip psmisc bsdmainutils cron imagemagick dnsutils git wget gcc sleuthkit netcat unzip curl gdb poppler-utils && \
+    apt-get install -y bash python3 python3-pip psmisc bsdmainutils cron imagemagick dnsutils git wget gcc sleuthkit netcat-openbsd unzip curl gdb poppler-utils && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
 # Install required pip dependencies
-RUN pip3 install pycryptodome
+RUN pip3 install --break-system-packages pycryptodome
 
 # Load in per-task assets
 COPY ../data/ctf/task_assets/. /ctf/
