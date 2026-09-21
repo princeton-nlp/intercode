@@ -27,7 +27,7 @@ class BashEnv(IntercodeEnv):
         super(BashEnv, self).__init__(image_name, **kwargs)
 
         # Establish connection with evaluation container
-        self.ctr_name_eval = f"{self.image_name}_ic_ctr_eval"
+        self.ctr_name_eval = f"{self.container_name}-eval"
         self.container_eval = get_container(self.ctr_name_eval, self.image_name)
     
     def reset_container(self) -> None:

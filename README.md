@@ -120,3 +120,23 @@ If you find this repository helpful, feel free to cite our [publication](https:/
 
 ## 🪪 License
 MIT. Check `LICENSE.md`.
+
+
+### Independent environment containers
+
+Each environment instance now creates a uniquely named execution container;
+Bash environments also get a separate grading container. `reset()` continues to
+reuse the current instance's container, while a new instance starts fresh even
+when it uses the same image. Closing one environment no longer stops another
+instance's container. Stopped containers remain available for inspection, as
+before, and are no longer adopted by new environments.
+
+This fixes implicit container/filesystem sharing. Explicit shared volume mounts,
+network access, and the fixed host ports in SQL/Python environments are unchanged;
+this is not a claim of complete sandbox isolation for every backend.
+
+Regression checks: `PYTHONPATH=. python -m pytest tests/test_trial_isolation.py -q`.
+With a built CTF image, run `INTERCODE_DOCKER_TESTS=1 PYTHONPATH=. python -m pytest
+tests/test_trial_isolation.py -q`; `INTERCODE_TEST_IMAGE` can select another image
+with Bash and an initialized Git working directory. Docker tests exercise command
+execution, reset, scoring, independent files, and closing one of two live trials.

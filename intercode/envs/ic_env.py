@@ -5,6 +5,7 @@ import datetime, json, logging, os, re
 from abc import ABC, abstractmethod
 from rich.logging import RichHandler
 from typing import Dict, List, Tuple
+from uuid import uuid4
 
 from intercode.utils import IntercodeDataLoader, get_container
 
@@ -73,7 +74,8 @@ class IntercodeEnv(ABC, gym.Env):
 
         # Establish connection with execution container
         self.image_name = image_name
-        self.container_name = f"{self.image_name}_ic_ctr"
+        # Each environment owns its container, including concurrent uses of one image.
+        self.container_name = f"intercode-{uuid4().hex}"
         self.container = get_container(self.container_name, self.image_name, **kwargs)
         self.logger.info(f"Connected to `{self.container_name}` container")
         
